@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Не с понедельника — челлендж на 30 дней</title>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#131B3A;--navy-mid:#1C2754;--navy-light:#2B3D80;
+  --accent:#4F6AFF;--accent-hover:#3B52E0;
+  --bg-light:#FAFBFF;--white:#fff;
+  --text-on-dark:#F0F2FF;--text-muted-dark:#A8AFCF;
+  --text:#1E2133;--text-sec:#555770;--text-muted:#9498B3;
+  --border:rgba(22,33,82,.07);--border-dark:rgba(255,255,255,.08);
+  --radius:20px;--radius-sm:14px;
+  --shadow:0 2px 8px rgba(22,33,82,.05),0 12px 40px rgba(22,33,82,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg-light);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* ══ BUTTONS ══ */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;border:none;cursor:pointer;transition:all .2s}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 8px 24px rgba(79,106,255,.3)}
+.btn-white{background:#fff;color:var(--navy)}
+.btn-white:hover{background:#f0f2ff;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.btn-ghost{background:transparent;color:var(--accent);border:1.5px solid rgba(79,106,255,.3)}
+.btn-ghost:hover{background:rgba(79,106,255,.06);border-color:var(--accent)}
+.btn-ghost-white{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+.btn-ghost-white:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+
+/* ══ HERO — dark ══ */
+.hero{background:var(--navy);color:#fff;min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 28px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,rgba(79,106,255,.15) 0%,transparent 60%);pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.hero h1{font-size:clamp(52px,9vw,120px);font-weight:700;line-height:1.0;margin-bottom:28px;letter-spacing:-2px}
+.hero-sub{font-size:19px;color:var(--text-on-dark);max-width:440px;font-weight:400;line-height:1.7;margin-bottom:12px}
+.hero-date{font-size:15px;color:var(--text-on-dark);font-weight:600;margin-bottom:48px;opacity:0.8}
+
+/* ══ SECTION labels ══ */
+section{padding:96px 0}
+.s-label{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:16px}
+.s-label-light{color:var(--text-muted)}
+.s-label-dark{color:var(--text-muted-dark)}
+.s-title{font-family:'Comfortaa',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:600;line-height:1.2;margin-bottom:20px}
+.s-title-light{color:var(--navy)}
+.s-title-dark{color:#fff}
+.s-sub{font-size:17px;font-weight:300;line-height:1.7;margin-bottom:48px;max-width:560px}
+.s-sub-light{color:var(--text-sec)}
+.s-sub-dark{color:var(--text-on-dark);font-weight:400}
+
+/* ══ ABOUT — light ══ */
+.about p{font-size:17px;color:var(--text-sec);margin-bottom:18px;font-weight:300;line-height:1.8;max-width:600px}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.pillar{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);transition:all .25s}
+.pillar:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(22,33,82,.06),0 20px 56px rgba(22,33,82,.12)}
+.pillar svg{width:40px;height:40px;margin-bottom:18px}
+.pillar h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.pillar p{font-size:14px;color:var(--text-sec);line-height:1.6;font-weight:300}
+
+/* ══ GROUPS — dark ══ */
+.groups-section{background:var(--navy);color:#fff}
+.groups-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.g-card{background:var(--navy-mid);border:1px solid var(--border-dark);border-radius:var(--radius);padding:36px 30px 30px;display:flex;flex-direction:column;transition:all .25s;position:relative;overflow:hidden}
+.g-card:hover{background:#212e60;border-color:rgba(79,106,255,.2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.g-card svg{width:36px;height:36px;margin-bottom:16px}
+.g-name{font-family:'Comfortaa',sans-serif;font-size:24px;font-weight:700;margin-bottom:10px}
+.g-desc{font-size:15px;color:var(--text-muted-dark);line-height:1.6;font-weight:400;flex-grow:1;margin-bottom:24px}
+.g-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.g-price{font-size:22px;font-weight:700}
+.g-price small{font-size:13px;color:var(--text-muted-dark);font-weight:400}
+.g-card .btn{padding:13px 24px;font-size:14px;white-space:nowrap}
+
+/* ══ MECHANICS — light ══ */
+.mech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.m-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow)}
+.m-card.wide{grid-column:1/-1}
+.m-card svg{width:32px;height:32px;margin-bottom:14px}
+.m-card h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.m-card p{font-size:14px;color:var(--text-sec);line-height:1.65;font-weight:300}
+.m-card-img{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.m-card-img .m-card-content{padding:28px 24px 24px}
+.m-card-img .m-card-content svg{width:32px;height:32px;margin-bottom:14px}
+.m-card-photo{overflow:hidden;border-bottom:1px solid var(--border);order:-1}
+.m-card-photo img{width:100%;height:auto;object-fit:contain;display:block;transition:transform .3s}
+.m-card-img:hover .m-card-photo img{transform:scale(1.03)}
+.m-card-photo-double{display:grid;grid-template-columns:1fr 1fr;gap:0;order:-1;border-bottom:1px solid var(--border)}
+.m-card-photo-double img{height:160px;object-fit:cover}
+
+/* ══ FOR WHOM — dark ══ */
+.for-whom{background:var(--navy);color:#fff}
+.fw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.fw-item{background:var(--navy-mid);border:1px solid var(--border-dark);border-radius:var(--radius-sm);padding:20px 22px;font-size:15px;color:#fff;font-weight:500;line-height:1.55;display:flex;align-items:flex-start;gap:14px;transition:all .2s}
+.fw-item:hover{background:#212e60;border-color:rgba(79,106,255,.2)}
+.fw-dot{width:8px;height:8px;min-width:8px;background:var(--accent);border-radius:50%;margin-top:7px}
+.fw-full{grid-column:1/-1;max-width:520px}
+
+/* ══ REVIEWS — light ══ */
+.reviews-wrap{overflow:hidden;position:relative}
+.reviews-track{display:flex;gap:16px;transition:transform .45s cubic-bezier(.25,.46,.45,.94)}
+.r-card{min-width:340px;max-width:340px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;flex-shrink:0;box-shadow:var(--shadow)}
+.r-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.r-avatar{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),#7B8CFF);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff}
+.r-name{font-weight:600;color:var(--navy);font-size:15px}
+.r-text{font-size:14px;color:var(--text-sec);line-height:1.7;font-weight:300}
+
+.r-card-img{display:flex;flex-direction:column}
+.r-card-img .r-photo{border-top:1px solid var(--border);overflow:hidden;margin-top:14px}
+.r-card-img .r-photo img{width:100%;height:auto;object-fit:contain;display:block;border-radius:0 0 16px 16px}
+.r-controls{display:flex;gap:10px;margin-top:28px}
+.r-controls button{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--white);color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s;box-shadow:0 2px 8px rgba(22,33,82,.06)}
+.r-controls button:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 4px 16px rgba(79,106,255,.15)}
+
+/* ══ OFFER — dark ══ */
+.offer{background:var(--navy);color:#fff;text-align:center;padding:100px 28px 120px;position:relative;overflow:hidden}
+.offer::before{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(79,106,255,.12) 0%,transparent 60%);pointer-events:none}
+.offer-quote{font-family:'Comfortaa',sans-serif;font-size:clamp(18px,2.5vw,23px);font-style:italic;color:var(--text-on-dark);max-width:560px;margin:0 auto 10px;line-height:1.55}
+.offer-author{font-size:14px;color:var(--text-muted-dark);margin-bottom:56px}
+.offer-price{font-family:'Comfortaa',sans-serif;font-size:clamp(42px,6vw,64px);font-weight:700;margin-bottom:4px}
+.offer-sub{font-size:15px;color:var(--text-muted-dark);margin-bottom:8px;font-weight:400}
+.offer-date{font-size:16px;color:var(--accent);font-weight:600;margin-bottom:36px}
+.offer-note{font-size:14px;color:var(--text-muted-dark);margin-top:20px;font-weight:400}
+
+footer{background:var(--navy);color:var(--text-muted-dark);padding:32px 0;text-align:center;border-top:1px solid var(--border-dark)}
+footer p{font-size:13px}
+
+@media(max-width:768px){
+  .pillars,.groups-grid,.mech-grid,.fw-grid{grid-template-columns:1fr}
+  .m-card.wide{grid-column:auto}
+  .r-card{min-width:290px;max-width:290px}
+  .g-bottom{flex-direction:column;align-items:stretch}
+  .fw-full{max-width:100%}
+  section{padding:64px 0}
+  .hero{padding:60px 32px 50px}
+  .hero h1{font-size:clamp(32px,10vw,48px);letter-spacing:-1px;padding:0 12px}
+  .hero-sub{font-size:16px;padding:0 16px}
+}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <h1>НЕ С<br>ПОНЕДЕЛЬНИКА</h1>
+  <p class="hero-sub">30 дней. Одна привычка.<br>Группа, с которой не сольёшься.</p>
+  <div class="hero-date">Старт — 24 марта</div>
+  <a href="javascript:void(0)" onclick="document.getElementById('groups').scrollIntoView({behavior:'smooth'})" class="btn btn-accent">Хочу участвовать</a>
+  <div style="margin-top:16px;font-size:14px;color:var(--text-muted-dark);font-weight:400">Ставка на вход — 7 770 ₽</div>
+</section>
+
+<!-- ══ ABOUT — light ══ -->
+<section class="about reveal">
+  <div class="container">
+    <div class="s-label s-label-light">Про что челлендж</div>
+    <div class="about">
+      <p>Жёсткая дисциплина и надрыв не работают. Когда жизнь плотно забита — сила воли заканчивается быстрее, чем день.</p>
+      <p>По моему опыту работает другое: мягкое внедрение + окружение, которое само по себе мотивирует.</p>
+      <p>Я это соединил и получился челлендж:</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="6" stroke="#4F6AFF" stroke-width="2"/><circle cx="26" cy="14" r="6" stroke="#4F6AFF" stroke-width="2"/><circle cx="20" cy="26" r="6" stroke="#4F6AFF" stroke-width="2"/></svg>
+        <h3>Окружение</h3>
+        <p>Группа людей, которые каждый день делают то же самое. Видишь их отчёты — встаёшь и делаешь.</p>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 20a12 12 0 0124 0" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="20" r="3" fill="#4F6AFF"/><path d="M20 8v4M8 20h4M32 20h-4" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Мягкая система</h3>
+        <p>Маленький шаг каждый день. Плюс ежедневные вопросы для саморефлексии.</p>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 8v6M14 28h12M12 22c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/><path d="M16 28v4M24 28v4" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Поддержка</h3>
+        <p>Созвоны, материалы, бот, совместные активности.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GROUPS — dark ══ -->
+<section class="groups-section reveal" id="groups">
+  <div class="container">
+    <div class="s-label s-label-dark">Выбери направление</div>
+    <div class="s-title s-title-dark">Четыре привычки</div>
+    <div class="s-sub s-sub-dark">Ставка на вход — 7 770 ₽. Выбери одну и внедряй 30 дней.<br><span style="font-size:14px;opacity:0.7">Выбираешь одно направление на весь поток</span></div>
+    <div class="groups-grid">
+      <div class="g-card">
+        <svg viewBox="0 0 36 36" fill="none"><path d="M18 6c1 2 3 4 3 7 0 3-2 5-3 5s-3-2-3-5c0-3 2-5 3-7z" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/><path d="M10 30l4-8M26 30l-4-8" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="20" r="3" stroke="#4F6AFF" stroke-width="2"/></svg>
+        <div class="g-name">Спорт каждый день</div>
+        <div class="g-desc">Любая активность: бег, зал, коврик, 10 000 шагов. Фиксируешь на старте — делаешь каждый день.</div>
+        <div class="g-bottom">
+          <div class="g-price">7 770 ₽ <small>/ 30 дней</small></div>
+          <a href="https://danilasavchenko.getplatinum.ru/payment/qoBCP2k" class="btn btn-accent" target="_blank">Выбрать</a>
+        </div>
+      </div>
+      <div class="g-card">
+        <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="10" stroke="#4F6AFF" stroke-width="2"/><circle cx="18" cy="18" r="4" stroke="#4F6AFF" stroke-width="2"/><circle cx="18" cy="18" r="1.5" fill="#4F6AFF"/></svg>
+        <div class="g-name">Фокус</div>
+        <div class="g-desc">Висящие задачи, до которых не доходят руки. Каждый понедельник — составляешь список. Всю неделю — закрываешь по одной.</div>
+        <div class="g-bottom">
+          <div class="g-price">7 770 ₽ <small>/ 30 дней</small></div>
+          <a href="https://danilasavchenko.getplatinum.ru/payment/f20CwNi" class="btn btn-accent" target="_blank">Выбрать</a>
+        </div>
+      </div>
+      <div class="g-card">
+        <svg viewBox="0 0 36 36" fill="none"><path d="M18 8c-5 4-10 8-10 14a10 10 0 0020 0c0-6-5-10-10-14z" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/><path d="M18 22v4" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="g-name">Осознанность</div>
+        <div class="g-desc">Медитация, дневник или ретроспектива дня. Каждый день — вопросы для саморефлексии. Воскресенье — день самоощущения и анализа.</div>
+        <div class="g-bottom">
+          <div class="g-price">7 770 ₽ <small>/ 30 дней</small></div>
+          <a href="https://danilasavchenko.getplatinum.ru/payment/lwMHrGS" class="btn btn-accent" target="_blank">Выбрать</a>
+        </div>
+      </div>
+      <div class="g-card">
+        <svg viewBox="0 0 36 36" fill="none"><path d="M18 6l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="#4F6AFF" stroke-width="2" stroke-linejoin="round"/><path d="M10 28h16" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="g-name">Аскеза</div>
+        <div class="g-desc">Отказ от того, что забирает энергию. Скроллинг ленты, телефон перед сном и после пробуждения, алкоголь, курение, вредная еда. 30 дней без — и смотришь, что изменилось.</div>
+        <div class="g-bottom">
+          <div class="g-price">7 770 ₽ <small>/ 30 дней</small></div>
+          <a href="https://danilasavchenko.getplatinum.ru/payment/t5agisG" class="btn btn-accent" target="_blank">Выбрать</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MECHANICS — light ══ -->
+<section class="reveal" id="mechanics">
+  <div class="container">
+    <div class="s-label s-label-light">Формат</div>
+    <div class="s-title s-title-light">Как всё пройдёт</div>
+    <div style="margin-bottom:36px"></div>
+    <div class="mech-grid">
+      <div class="m-card m-card-img">
+        <div class="m-card-content">
+          <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" stroke="#4F6AFF" stroke-width="2"/><path d="M10 14h12M10 20h8" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>Ежедневный отчёт</h3>
+          <p>Каждый день присылаешь отчёт в свой чат — бот-помощник принимает его.</p>
+        </div>
+        <div class="m-card-photo"><img src="1.jpg" alt="Отчёт участника"></div>
+      </div>
+      <div class="m-card m-card-img">
+        <div class="m-card-content">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="8" cy="16" r="4" stroke="#4F6AFF" stroke-width="2"/><circle cx="24" cy="16" r="4" stroke="#4F6AFF" stroke-width="2"/><circle cx="16" cy="8" r="4" stroke="#4F6AFF" stroke-width="2"/><path d="M12 12l4-4M20 12l-4-4" stroke="#4F6AFF" stroke-width="1.5"/></svg>
+          <h3>Три созвона</h3>
+          <p>Первый — знакомимся, получаем мотивацию, выбираем что приятного сделаем себе по завершении 30 дней. Второй — поддержка. Третий — как сохранить привычку вне челленджа.</p>
+        </div>
+        <div class="m-card-photo"><img src="2.jpg" alt="Групповой созвон"></div>
+      </div>
+      <div class="m-card m-card-img">
+        <div class="m-card-content">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="#4F6AFF" stroke-width="2"/><path d="M12 16l3 3 5-6" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Совместные активности</h3>
+          <p>Совместные медитации, пробежки, завтраки-рефлексии по городам, йога, растяжки.</p>
+        </div>
+        <div class="m-card-photo"><img src="3.jpg" alt="Совместная медитация"></div>
+      </div>
+      <div class="m-card m-card-img">
+        <div class="m-card-content">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M16 4l3 8h8l-6 5 2 8-7-5-7 5 2-8-6-5h8z" stroke="#4F6AFF" stroke-width="2" stroke-linejoin="round"/></svg>
+          <h3>Штрафы</h3>
+          <p>Пропустил отчёт — штраф 500 ₽ в любой благотворительный фонд. На отработку 24 часа. Не успел — выбываешь.</p>
+        </div>
+        <div class="m-card-photo"><img src="4.jpg" alt="Штраф в фонд"></div>
+      </div>
+      <div class="m-card m-card-img">
+        <div class="m-card-content">
+          <svg viewBox="0 0 32 32" fill="none"><rect x="6" y="4" width="20" height="24" rx="3" stroke="#4F6AFF" stroke-width="2"/><path d="M12 10h8M12 16h8M12 22h4" stroke="#4F6AFF" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>Библиотека</h3>
+          <p>Полезные материалы выходят каждый вторник, четверг и воскресенье.</p>
+        </div>
+        <div class="m-card-photo"><img src="5.jpg" alt="Библиотека материалов"></div>
+      </div>
+    </div>
+    <div style="margin-top:40px"><a href="javascript:void(0)" onclick="document.getElementById('groups').scrollIntoView({behavior:'smooth'})" class="btn btn-ghost">Выбрать привычку</a></div>
+  </div>
+</section>
+
+<!-- ══ FOR WHOM — dark ══ -->
+<section class="for-whom reveal">
+  <div class="container">
+    <div class="s-label s-label-dark">Узнаёшь себя?</div>
+    <div class="s-title s-title-dark">Тебе точно на челлендж, если:</div>
+    <div style="margin-bottom:36px"></div>
+    <div class="fw-grid">
+      <div class="fw-item"><div class="fw-dot"></div>Держишься 3–4 недели, а потом срываешься. Каждый раз.</div>
+      <div class="fw-item"><div class="fw-dot"></div>Задачи копятся месяцами. Откладываешь на потом — и это портит жизнь.</div>
+      <div class="fw-item"><div class="fw-dot"></div>Достигаешь всего ценой нервов. Дрючишь себя — и теряешь связь с собой и близкими.</div>
+      <div class="fw-item"><div class="fw-dot"></div>Потеряла режим и берега. Засыпаешь под рассветы и сутками не выходишь из дома.</div>
+      <div class="fw-item"><div class="fw-dot"></div>В голове постоянно крутится мыслежевалка. Сложно отключиться даже на пять минут.</div>
+      <div class="fw-item"><div class="fw-dot"></div>Много раз пыталась начать медитировать, бегать, вести дневник. Сливалась.</div>
+      <div class="fw-item fw-full"><div class="fw-dot"></div>Хочешь не рекорды — а маленькие шаги, которые приживутся.</div>
+    </div>
+    <div style="margin-top:40px"><a href="https://t.me/notfrommonday_bot" class="btn btn-ghost-white" target="_blank">Подробности в боте</a></div>
+  </div>
+</section>
+
+<!-- ══ REVIEWS — light ══ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-label s-label-light">Отзывы</div>
+    <div class="s-title s-title-light">Что говорят участники</div>
+    <div style="margin-bottom:36px"></div>
+    <div class="reviews-wrap">
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">Ю</div><div class="r-name">Юлия</div></div><div class="r-text">Сегодня весь день ходила и благодарила себя за эту привычку. Столько красоты вижу с ней</div><div class="r-photo"><img src="6.jpg" alt=""></div></div>
+
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">Д</div><div class="r-name">Дарья</div></div><div class="r-text">Я закрыла много висящих вопросов благодаря ежедневным действиям. Просто делать хотя бы по чуть-чуть — быстрее и менее энергозатратно, чем постоянно откладывать и носить в голове</div><div class="r-photo"><img src="7.jpg" alt=""></div></div>
+
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">Г</div><div class="r-name">Григорий</div></div><div class="r-text">Начал выбирать медитации под задачу дня: осознанность, спокойствие, расслабление. Очень нравится такой подход</div><div class="r-photo"><img src="8.jpg" alt=""></div></div>
+
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">М</div><div class="r-name">Мери</div></div><div class="r-text">Ответственность перед людьми коррелируется с уважением к себе. Очень благодарна, что я здесь — у меня уже привычка перед сном посвятить время себе</div><div class="r-photo"><img src="9.jpg" alt=""></div></div>
+
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">Н</div><div class="r-name">Никита</div></div><div class="r-text">Привязка ежедневных прогулок к другим активностям работает: и норму закрываю, и бытовые дела по пути — а выходные свободны</div><div class="r-photo"><img src="10.jpg" alt=""></div></div>
+
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">М</div><div class="r-name">Мария Ч.</div></div><div class="r-text">Выложили медитацию «Любовь к себе». Такой кайф. В середине появилось сопротивление, но оно отступило</div><div class="r-photo"><img src="11.jpg" alt=""></div></div>
+
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">Е</div><div class="r-name">Евгения</div></div><div class="r-text">Сегодня делала медитацию в движении из чата. Понравилось</div><div class="r-photo"><img src="12.jpg" alt=""></div></div>
+
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">Л</div><div class="r-name">Лика</div></div><div class="r-text">Завершила работу над концепцией дизайн-бюро. Раньше не пробовала групповой формат — и оказалось, работает! Вы невероятная сила и поддержка</div><div class="r-photo"><img src="13.jpg" alt=""></div></div>
+
+        <div class="r-card r-card-img"><div class="r-header"><div class="r-avatar">М</div><div class="r-name">Мария</div></div><div class="r-text">Два года мечтала об этом! Большие дела откладываются, потому что ты не готов. Вариант один — добирать потихоньку, лучше каждый день</div><div class="r-photo"><img src="14.jpg" alt=""></div></div>
+      </div>
+      <div class="r-controls"><button onclick="scrollR(-1)">←</button><button onclick="scrollR(1)">→</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OFFER — dark ══ -->
+<section class="offer reveal">
+  <div class="container">
+    <div class="offer-quote">«Вам не нужно стать другим человеком. Нужно стать лучшей версией себя с помощью маленьких ежедневных шагов»</div>
+    <div class="offer-author">Джеймс Клир, «Атомные привычки»</div>
+    <div class="offer-price">7 770 ₽</div>
+    <div class="offer-sub">ставка на вход</div>
+    <div class="offer-date">Старт — 24 марта</div>
+    <a href="javascript:void(0)" onclick="document.getElementById('groups').scrollIntoView({behavior:'smooth'})" class="btn btn-accent">Забрать место</a>
+    
+  </div>
+</section>
+
+<footer><div class="container"><p>Не с понедельника · 2026</p></div></footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+let p=0;const t=document.getElementById('reviewsTrack');
+function scrollR(d){const w=t.querySelector('.r-card').offsetWidth+16;const m=t.scrollWidth-t.parentElement.offsetWidth;p=Math.max(0,Math.min(p+d*w,m));t.style.transform=`translateX(-${p}px)`}
+let dr=false,sx,sl;
+t.addEventListener('mousedown',e=>{dr=true;sx=e.pageX;sl=p});
+t.addEventListener('mousemove',e=>{if(!dr)return;e.preventDefault();p=Math.max(0,Math.min(sl+sx-e.pageX,t.scrollWidth-t.parentElement.offsetWidth));t.style.transform=`translateX(-${p}px)`});
+document.addEventListener('mouseup',()=>dr=false);
+t.addEventListener('touchstart',e=>{sx=e.touches[0].pageX;sl=p});
+t.addEventListener('touchmove',e=>{p=Math.max(0,Math.min(sl+sx-e.touches[0].pageX,t.scrollWidth-t.parentElement.offsetWidth));t.style.transform=`translateX(-${p}px)`});
+</script>
+</body>
+</html>
