@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Челлендж «Не с понедельника» — Фокус</title>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f7f4;
+  --card: #ffffff;
+  --border: #e4e2dd;
+  --text: #1a1a1f;
+  --text2: #6b6b78;
+  --accent: #1e3a6e;
+  --accent2: #2b5ea7;
+  --green: #1a9d55;
+  --blue: #2b7fd4;
+  --purple: #7c4dff;
+  --pink: #e0436c;
+  --yellow: #c9920a;
+  --teal: #0e8a7d;
+  --orange: #d4652b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  min-height: 100vh;
+}
+.noise {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 100;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.header { text-align: center; margin-bottom: 56px; position: relative; }
+.header::before {
+  content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(30,58,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 20px;
+}
+h1 { font-family: 'Dela Gothic One', sans-serif; font-size: clamp(28px, 5vw, 48px); line-height: 1.15; letter-spacing: -1px; margin-bottom: 12px; }
+h1 span { color: var(--accent); }
+.subtitle { color: var(--text2); font-size: 15px; font-weight: 500; }
+
+.big-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
+.big-stat {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 28px 24px; position: relative; overflow: hidden;
+  transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.big-stat:hover { transform: translateY(-2px); border-color: var(--accent); }
+.big-stat .icon { font-size: 28px; margin-bottom: 12px; }
+.big-stat .value { font-family: 'Dela Gothic One', sans-serif; font-size: 32px; line-height: 1.1; margin-bottom: 4px; }
+.big-stat .label { color: var(--text2); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.big-stat .glow { position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; opacity: 0.12; pointer-events: none; }
+
+.section { margin-bottom: 40px; }
+.section-title {
+  font-family: 'Dela Gothic One', sans-serif; font-size: 20px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.leaderboard {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.progress-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.progress-row:last-child { border: none; }
+.progress-name { width: 190px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.progress-bar-bg { flex: 1; height: 24px; background: rgba(0,0,0,0.04); border-radius: 6px; overflow: hidden; }
+.progress-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 11px; font-weight: 700; color: #fff; min-width: fit-content; }
+.progress-count { width: 50px; text-align: right; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+
+/* Category pills */
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+.cat-pill {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.cat-pill .cat-icon { font-size: 24px; margin-bottom: 6px; }
+.cat-pill .cat-num { font-family: 'Dela Gothic One', sans-serif; font-size: 22px; margin-bottom: 2px; }
+.cat-pill .cat-label { color: var(--text2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+
+/* Participant cards */
+.participants { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.participant {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: border-color 0.2s;
+}
+.participant:hover { border-color: #c0c0c0; }
+.participant .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.participant .name { font-weight: 700; font-size: 15px; }
+.participant .streak {
+  background: rgba(30,58,110,0.1); color: var(--accent); font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px; white-space: nowrap;
+}
+.participant .desc { color: var(--text2); font-size: 13px; line-height: 1.6; margin-bottom: 10px; }
+.participant .big-task {
+  background: rgba(30,58,110,0.04); border: 1px solid rgba(30,58,110,0.1); border-radius: 8px;
+  padding: 8px 12px; font-size: 12.5px; font-weight: 600; color: var(--accent); line-height: 1.5;
+}
+
+/* Trophy wall */
+.trophies { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.trophy {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.trophy .t-who { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.trophy .t-what { color: var(--text2); font-size: 13px; line-height: 1.6; }
+.trophy .t-what strong { color: var(--text); }
+.trophy .t-tag {
+  display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px;
+  background: rgba(26,157,85,0.08); color: var(--green); border: 1px solid rgba(26,157,85,0.15);
+}
+
+/* Insights */
+.insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.insight {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.insight .emoji { font-size: 32px; margin-bottom: 10px; }
+.insight .hl-title { font-weight: 800; font-size: 15px; margin-bottom: 6px; }
+.insight .hl-desc { color: var(--text2); font-size: 13px; line-height: 1.6; }
+.insight .hl-desc strong { color: var(--text); }
+
+.footer { text-align: center; margin-top: 56px; color: var(--text2); font-size: 12px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.big-stat, .participant, .insight, .trophy, .progress-row, .cat-pill { animation: fadeUp 0.5s ease both; }
+.big-stat:nth-child(1) { animation-delay: 0.05s; }
+.big-stat:nth-child(2) { animation-delay: 0.1s; }
+.big-stat:nth-child(3) { animation-delay: 0.15s; }
+.big-stat:nth-child(4) { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="container">
+
+<div class="header">
+  <div class="badge">Итоги челленджа</div>
+  <h1>Фокус 🎯 <span>«Не с понедельника»</span></h1>
+  <div class="subtitle">Группа «Фокус» · 17 февраля — 17 марта 2026 · 14 участников · 30 дней<br>Цель: каждый день закрывать одну висящую задачу</div>
+</div>
+
+<!-- Big stats -->
+<div class="big-stats">
+  <div class="big-stat">
+    <div class="icon">✅</div>
+    <div class="value" style="color:var(--accent)">308</div>
+    <div class="label">Задач закрыто</div>
+    <div class="glow" style="background:var(--accent)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">👥</div>
+    <div class="value" style="color:var(--teal)">14</div>
+    <div class="label">Участников</div>
+    <div class="glow" style="background:var(--teal)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">📊</div>
+    <div class="value" style="color:var(--green)">~22</div>
+    <div class="label">Задач / чел. в среднем</div>
+    <div class="glow" style="background:var(--green)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">🤖</div>
+    <div class="value" style="color:var(--purple)">AI</div>
+    <div class="label">Активно использовали</div>
+    <div class="glow" style="background:var(--purple)"></div>
+  </div>
+</div>
+
+<!-- Category breakdown -->
+<div class="section">
+  <div class="section-title">📂 Какие задачи закрывали</div>
+  <div class="cat-grid">
+    <div class="cat-pill"><div class="cat-icon">💼</div><div class="cat-num" style="color:var(--accent)">166</div><div class="cat-label">Работа / бизнес</div></div>
+    <div class="cat-pill"><div class="cat-icon">🏠</div><div class="cat-num" style="color:var(--orange)">72</div><div class="cat-label">Быт / дом</div></div>
+    <div class="cat-pill"><div class="cat-icon">📋</div><div class="cat-num" style="color:var(--blue)">61</div><div class="cat-label">Планирование</div></div>
+    <div class="cat-pill"><div class="cat-icon">📄</div><div class="cat-num" style="color:var(--yellow)">31</div><div class="cat-label">Документы</div></div>
+    <div class="cat-pill"><div class="cat-icon">🏥</div><div class="cat-num" style="color:var(--pink)">24</div><div class="cat-label">Здоровье</div></div>
+    <div class="cat-pill"><div class="cat-icon">🤝</div><div class="cat-num" style="color:var(--teal)">9</div><div class="cat-label">Делегирование</div></div>
+  </div>
+</div>
+
+<!-- Leaderboard -->
+<div class="section">
+  <div class="section-title">🔥 Дисциплина: ежедневные отчёты</div>
+  <div class="leaderboard">
+    <div class="progress-row"><div class="progress-name">Лика Артэн</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Danila Savchenko</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Виктория Темурзиева</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Зоя Бильгин</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Николай Заляпин</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Elvira Polonskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:97%;background:var(--green)">29 / 30</div></div><div class="progress-count">97%</div></div>
+    <div class="progress-row"><div class="progress-name">Ирина Баранова</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">28 / 30</div></div><div class="progress-count">93%</div></div>
+    <div class="progress-row"><div class="progress-name">Anna Smirnova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">28 / 30</div></div><div class="progress-count">93%</div></div>
+    <div class="progress-row"><div class="progress-name">Evgenia</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">28 / 30</div></div><div class="progress-count">93%</div></div>
+    <div class="progress-row"><div class="progress-name">Дарья</div><div class="progress-bar-bg"><div class="progress-bar" style="width:67%;background:var(--text2)">20 / 30</div></div><div class="progress-count">67%</div></div>
+    <div class="progress-row"><div class="progress-name">Maria</div><div class="progress-bar-bg"><div class="progress-bar" style="width:47%;background:var(--text2)">14 / 30</div></div><div class="progress-count">47%</div></div>
+    <div class="progress-row"><div class="progress-name">Max Mezhonis</div><div class="progress-bar-bg"><div class="progress-bar" style="width:33%;background:var(--text2)">10 / 30</div></div><div class="progress-count">33%</div></div>
+    <div class="progress-row"><div class="progress-name">Данил Евстратов</div><div class="progress-bar-bg"><div class="progress-bar" style="width:30%;background:var(--text2)">9 / 30</div></div><div class="progress-count">30%</div></div>
+    <div class="progress-row"><div class="progress-name">Александр Саяпин</div><div class="progress-bar-bg"><div class="progress-bar" style="width:17%;background:var(--text2)">5 / 30</div></div><div class="progress-count">17%</div></div>
+  </div>
+</div>
+
+<!-- Participant profiles -->
+<div class="section">
+  <div class="section-title">👤 Каждый участник и его «висяки»</div>
+  <div class="participants">
+
+    <div class="participant">
+      <div class="top"><div class="name">🏆 Лика Артэн</div><div class="streak">30 отчётов</div></div>
+      <div class="desc">Перезапускала дизайн-бюро после творческого выгорания. За месяц прошла полный цикл: от рефлексии до бизнес-модели, шаблонов и процессов. «Наконец согласилась, что хочу глубины и мастерства, а не масштаба».</div>
+      <div class="big-task">🎯 Перезапуск дизайн-бюро — от философии до бизнес-процессов</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">🏆 Зоя Бильгин</div><div class="streak">30 отчётов</div></div>
+      <div class="desc">Три года пыталась поступить на РКИ — наконец зачислена! Откладывала поход в миграционку 2 года — записалась. Параллельно перестроила режим сына с помощью GPT.</div>
+      <div class="big-task">🎯 Зачисление на обучение РКИ (3-я попытка за 2 года) ✅</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Danila Savchenko</div><div class="streak">30 отчётов</div></div>
+      <div class="desc">Куратор. Удалил задачи, висевшие 2 года в Todoist. Настроил AI-ассистента (OpenClaw + API Todoist + Claude для браузера). «Наблюдаю, как Claude проходит по почте и нажимает "отписаться от спама"».</div>
+      <div class="big-task">🎯 Настройка AI-ассистента для задач и автоматизации</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Виктория Темурзиева</div><div class="streak">30 отчётов</div></div>
+      <div class="desc">Вгрузила задачи в GPT для анализа и оптимизации. Научилась планировать от ресурсов, а не от давления. К концу челленджа: «Впервые все привычки done и встала в 6 утра».</div>
+      <div class="big-task">🎯 Система планирования задач через AI-анализ</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Николай Заляпин</div><div class="streak">30 отчётов</div></div>
+      <div class="desc">Закрывал здоровье (врачи, откладывал с ноября), учился контенту и рилсам, проектировал шкаф в AutoCAD, оформил Claude и настроил планировщик.</div>
+      <div class="big-task">🎯 Курс по контенту + проект сценариев в Claude</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Elvira Polonskaya</div><div class="streak">29 отчётов</div></div>
+      <div class="desc">Вышла из токсичных отношений (шла к этому год). Нашла няню (висело месяцы). Купила абонемент на фортепиано (откладывала 2 года). Прошла курс по мейк-апу.</div>
+      <div class="big-task">🎯 Выход из токсичных отношений (больше года)</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Ирина Баранова</div><div class="streak">28 отчётов</div></div>
+      <div class="desc">Открыла силу делегирования. Начала генеалогическое древо. Записалась к ортодонту. Освоила нативный контент «в такси». Прошла курс по ИИ.</div>
+      <div class="big-task">🎯 Делегирование + генеалогическое древо семьи</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Anna Smirnova</div><div class="streak">28 отчётов</div></div>
+      <div class="desc">Оформила патентного доверенного для ТЗ. Собрала визуал для бренда гранолы. Рассказала в блоге про студию отца. Починила открытку сына. Рассчитала бюджет.</div>
+      <div class="big-task">🎯 Регистрация ТЗ + запуск бренда гранолы</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Evgenia</div><div class="streak">28 отчётов</div></div>
+      <div class="desc">Готовилась к экзамену на права в ОАЭ — 614 вопросов. Перешла экватор, заменила думскроллинг на шахматы. Красила кабинет как «медитацию».</div>
+      <div class="big-task">🎯 Получение прав в Эмиратах (614 вопросов теории)</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Дарья</div><div class="streak">20 отчётов</div></div>
+      <div class="desc">ВНЖ саботировала 3 месяца — за неделю фокуса всё сделала! Медкомиссия, СНИЛС, госуслуги, нотариус. Подала на развод. Ушла на 10-дневную Випассану.</div>
+      <div class="big-task">🎯 ВНЖ в России (саботировала 3 месяца) — закрыто за 1 неделю ✅</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Max Mezhonis</div><div class="streak">10 отчётов</div></div>
+      <div class="desc">Уволил сотрудника, которого не мог уволить 1,5 года. Переустановил все пароли компании. Оплатил разработку AI-сервиса (подходил 2 месяца).</div>
+      <div class="big-task">🎯 Увольнение + запуск AI-стартапа внутри компании</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Maria</div><div class="streak">14 отчётов</div></div>
+      <div class="desc">Выбросила мозаику на 4000 элементов. Расклеила объявления на ферму (тянула месяц). Запросила регистрацию бренда (полгода). Свидание с мужем после долгого перерыва.</div>
+      <div class="big-task">🎯 Регистрация бренда фермы + земельный вопрос</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Данил Евстратов</div><div class="streak">9 отчётов</div></div>
+      <div class="desc">Начал публиковать контент (преодолел страх). Заказал клининг. Наладил питание с AI. Вернул практику чтения. Разобрал ёлку.</div>
+      <div class="big-task">🎯 Преодоление страха публичности + AI-контент</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Александр Саяпин</div><div class="streak">5 отчётов</div></div>
+      <div class="desc">Консультировал жену по открытию консалтингового агентства. 18 лет в недвижимости, начинает новое направление.</div>
+      <div class="big-task">🎯 Консалтинг-агентство для жены</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Trophy wall: biggest wins -->
+<div class="section">
+  <div class="section-title">🏆 Стена побед: самые долгие «висяки», наконец закрытые</div>
+  <div class="trophies">
+    <div class="trophy">
+      <div class="t-who">Дарья</div>
+      <div class="t-what"><strong>ВНЖ в России</strong> — саботировала 3 месяца, закрыла за 1 неделю фокуса. «Оказалось, всё гораздо понятнее, чем я себе рисовала».</div>
+      <div class="t-tag">висело 3 месяца</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Elvira Polonskaya</div>
+      <div class="t-what"><strong>Вышла из токсичных отношений</strong> — шла к этому решению больше года.</div>
+      <div class="t-tag">висело >1 года</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Elvira Polonskaya</div>
+      <div class="t-what"><strong>Абонемент на фортепиано</strong> — откладывала 2 года, пошла на первое занятие.</div>
+      <div class="t-tag">висело 2 года</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Зоя Бильгин</div>
+      <div class="t-what"><strong>Зачисление на обучение РКИ</strong> — 3-я попытка, 2 года откладывала. Наконец зачислена.</div>
+      <div class="t-tag">висело 2 года</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Зоя Бильгин</div>
+      <div class="t-what"><strong>Поход в миграционку</strong> — откладывала около 2 лет.</div>
+      <div class="t-tag">висело ~2 года</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Max Mezhonis</div>
+      <div class="t-what"><strong>Увольнение сотрудника</strong> — давал 100500 шансов 1,5 года. «8 лет в компании, но задачи не закрывает».</div>
+      <div class="t-tag">висело 1,5 года</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Elvira Polonskaya</div>
+      <div class="t-what"><strong>Визит к врачам</strong> — откладывала год.</div>
+      <div class="t-tag">висело 1 год</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Николай Заляпин</div>
+      <div class="t-what"><strong>Врачи</strong> — с ноября собирался, наконец записался и сходил.</div>
+      <div class="t-tag">висело 4 месяца</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Danila Savchenko</div>
+      <div class="t-what"><strong>Удалил задачи</strong>, висевшие 2 года в Todoist. «Очевидно, что руки не дойдут никогда. Чувствую себя отлично!»</div>
+      <div class="t-tag">висело 2 года</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Elvira Polonskaya</div>
+      <div class="t-what"><strong>Курс по мейк-апу</strong> — «откладывала не помню сколько лет».</div>
+      <div class="t-tag">висело ??? лет</div>
+    </div>
+  </div>
+</div>
+
+<!-- Insights -->
+<div class="section">
+  <div class="section-title">✨ Главные наблюдения</div>
+  <div class="insights">
+    <div class="insight">
+      <div class="emoji">🤖</div>
+      <div class="hl-title">AI стал инструментом фокуса</div>
+      <div class="hl-desc">Участники активно использовали <strong>GPT, Claude, DeepSeek, OpenClaw</strong> — от анализа задач и оптимизации расписания до автоматизации почты и создания AI-ассистентов. Виктория скормила задачи GPT для анализа. Данила настроил Claude для автоочистки почты.</div>
+    </div>
+    <div class="insight">
+      <div class="emoji">💡</div>
+      <div class="hl-title">Главный барьер — не сложность, а старт</div>
+      <div class="hl-desc"><strong>Дарья:</strong> «ВНЖ оказалось гораздо понятнее, чем я себе рисовала». <strong>Ирина:</strong> «Финансовая задачка занимает 5 минут — именно её я откладываю до последнего». Большинство «висяков» закрывались за часы, не дни.</div>
+    </div>
+    <div class="insight">
+      <div class="emoji">🌍</div>
+      <div class="hl-title">География задач</div>
+      <div class="hl-desc">Задачи закрывали из <strong>Москвы, Стамбула, Дубая, Красной Поляны</strong> и даже в самолёте. Evgenia сдавала на права в ОАЭ, Зоя ходила в миграционку в Турции, Elvira путешествовала с младенцем.</div>
+    </div>
+    <div class="insight">
+      <div class="emoji">🎯</div>
+      <div class="hl-title">Удалить задачу — тоже победа</div>
+      <div class="hl-desc"><strong>Danila:</strong> «Нашел три задачи, на которые можно плюнуть — висели 2 года. Чувствую себя отлично!» <strong>Maria:</strong> выбросила мозаику на 4000 элементов, которую не собирала. Иногда лучшее решение — отпустить.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
