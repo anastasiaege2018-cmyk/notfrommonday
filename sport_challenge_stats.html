@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Челлендж «Не с понедельника» — Спорт</title>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f7f4;
+  --card: #ffffff;
+  --card-hover: #fafafa;
+  --border: #e4e2dd;
+  --text: #1a1a1f;
+  --text2: #6b6b78;
+  --accent: #1e3a6e;
+  --accent2: #2b5ea7;
+  --green: #1a9d55;
+  --blue: #2b7fd4;
+  --purple: #7c4dff;
+  --pink: #e0436c;
+  --yellow: #c9920a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.noise {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 100;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(30,58,110,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+h1 span { color: var(--accent); }
+
+.subtitle {
+  color: var(--text2);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Big stat cards */
+.big-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.big-stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.big-stat:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.big-stat .icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.big-stat .value {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 32px;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.big-stat .label {
+  color: var(--text2);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.big-stat .glow {
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* Section */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Participant cards */
+.participants {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.participant {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  transition: border-color 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.participant:hover { border-color: #c0c0c0; }
+
+.participant .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.participant .name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.participant .streak {
+  background: rgba(30,58,110,0.1);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.participant .activity-type {
+  color: var(--text2);
+  font-size: 12.5px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.participant .metrics {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.metric {
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.metric .num {
+  color: var(--text);
+}
+
+.metric .unit {
+  color: var(--text2);
+  margin-left: 2px;
+}
+
+/* Color coded metrics */
+.m-steps .num { color: var(--green); }
+.m-km .num { color: var(--blue); }
+.m-pushups .num { color: var(--accent); }
+.m-squats .num { color: var(--purple); }
+.m-plank .num { color: var(--yellow); }
+
+/* Progress bar */
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.progress-row:last-child { border: none; }
+
+.progress-name {
+  width: 160px;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 24px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1s ease;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  min-width: fit-content;
+}
+
+.progress-count {
+  width: 50px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Highlights */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.highlight {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.highlight .emoji { font-size: 32px; margin-bottom: 10px; }
+.highlight .hl-title { font-weight: 800; font-size: 15px; margin-bottom: 6px; }
+.highlight .hl-desc { color: var(--text2); font-size: 13px; line-height: 1.6; }
+.highlight .hl-desc strong { color: var(--text); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 56px;
+  color: var(--text2);
+  font-size: 12px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.big-stat, .participant, .highlight, .progress-row {
+  animation: fadeUp 0.5s ease both;
+}
+
+.big-stat:nth-child(1) { animation-delay: 0.05s; }
+.big-stat:nth-child(2) { animation-delay: 0.1s; }
+.big-stat:nth-child(3) { animation-delay: 0.15s; }
+.big-stat:nth-child(4) { animation-delay: 0.2s; }
+.big-stat:nth-child(5) { animation-delay: 0.25s; }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="container">
+
+<div class="header">
+  <div class="badge">Итоги челленджа</div>
+  <h1>Спорт 🏃 <span>«Не с понедельника»</span></h1>
+  <div class="subtitle">Группа «Спорт» · 17 февраля — 17 марта 2026 · 14 участников · 30 дней</div>
+</div>
+
+<!-- Big stats -->
+<div class="big-stats">
+  <div class="big-stat">
+    <div class="icon">🚶</div>
+    <div class="value" style="color:var(--green)">670 000+</div>
+    <div class="label">Шагов пройдено</div>
+    <div class="glow" style="background:var(--green)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">🏃</div>
+    <div class="value" style="color:var(--blue)">452+ км</div>
+    <div class="label">Набегали / находили</div>
+    <div class="glow" style="background:var(--blue)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">💪</div>
+    <div class="value" style="color:var(--accent)">1 488</div>
+    <div class="label">Отжиманий</div>
+    <div class="glow" style="background:var(--accent)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">🦵</div>
+    <div class="value" style="color:var(--purple)">1 100+</div>
+    <div class="label">Приседаний</div>
+    <div class="glow" style="background:var(--purple)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">📋</div>
+    <div class="value" style="color:var(--yellow)">347</div>
+    <div class="label">Отчётов всего</div>
+    <div class="glow" style="background:var(--yellow)"></div>
+  </div>
+</div>
+
+<!-- Reports leaderboard -->
+<div class="section">
+  <div class="section-title">🔥 Отчёты: кто ни дня без спорта</div>
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px;">
+    
+    <div class="progress-row"><div class="progress-name">Дарья</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Ruben Lokk</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Olya Kharitonova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Anastasia Popova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:97%;background:var(--green)">29 / 30</div></div><div class="progress-count">97%</div></div>
+    <div class="progress-row"><div class="progress-name">Danila Savchenko</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">28 / 30</div></div><div class="progress-count">93%</div></div>
+    <div class="progress-row"><div class="progress-name">Nikita Gudkov</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">28 / 30</div></div><div class="progress-count">93%</div></div>
+    <div class="progress-row"><div class="progress-name">Yulia Yakovenko</div><div class="progress-bar-bg"><div class="progress-bar" style="width:90%;background:var(--blue)">27 / 30</div></div><div class="progress-count">90%</div></div>
+    <div class="progress-row"><div class="progress-name">Ekaterina K.</div><div class="progress-bar-bg"><div class="progress-bar" style="width:90%;background:var(--blue)">27 / 30</div></div><div class="progress-count">90%</div></div>
+    <div class="progress-row"><div class="progress-name">Yuliia Lysak</div><div class="progress-bar-bg"><div class="progress-bar" style="width:87%;background:var(--blue)">26 / 30</div></div><div class="progress-count">87%</div></div>
+    <div class="progress-row"><div class="progress-name">Veronika M.</div><div class="progress-bar-bg"><div class="progress-bar" style="width:87%;background:var(--blue)">26 / 30</div></div><div class="progress-count">87%</div></div>
+    <div class="progress-row"><div class="progress-name">Konstantin</div><div class="progress-bar-bg"><div class="progress-bar" style="width:83%;background:var(--blue)">25 / 30</div></div><div class="progress-count">83%</div></div>
+    <div class="progress-row"><div class="progress-name">Elvira Polonskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:83%;background:var(--blue)">25 / 30</div></div><div class="progress-count">83%</div></div>
+    <div class="progress-row"><div class="progress-name">LizaKha</div><div class="progress-bar-bg"><div class="progress-bar" style="width:63%;background:var(--text2)">19 / 30</div></div><div class="progress-count">63%</div></div>
+    <div class="progress-row"><div class="progress-name">Kristina Kuruma</div><div class="progress-bar-bg"><div class="progress-bar" style="width:37%;background:var(--text2)">11 / 30</div></div><div class="progress-count">37%</div></div>
+    
+  </div>
+</div>
+
+<!-- Participant profiles -->
+<div class="section">
+  <div class="section-title">👤 Что делал каждый участник</div>
+  <div class="participants">
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">🏆 Дарья</div>
+        <div class="streak">30/30 дней</div>
+      </div>
+      <div class="activity-type">Шаги + йога + пилатес + бассейн + танцы + кикбоксинг + верховая езда + теннис</div>
+      <div class="metrics">
+        <div class="metric m-steps"><span class="num">384 590</span><span class="unit">шагов</span></div>
+        <div class="metric m-km"><span class="num">273,7</span><span class="unit">км</span></div>
+        <div class="metric"><span class="num">~13 700</span><span class="unit">шаг/день</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">🏆 Ruben Lokk</div>
+        <div class="streak">30/30 дней</div>
+      </div>
+      <div class="activity-type">Шаги + силовая + бег · из Еревана</div>
+      <div class="metrics">
+        <div class="metric m-steps"><span class="num">192 000+</span><span class="unit">шагов</span></div>
+        <div class="metric m-km"><span class="num">50+</span><span class="unit">км</span></div>
+        <div class="metric"><span class="num">~12 000</span><span class="unit">шаг/день</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">🏆 Olya Kharitonova</div>
+        <div class="streak">30/30 дней</div>
+      </div>
+      <div class="activity-type">Приседания + планка + шаги + бег</div>
+      <div class="metrics">
+        <div class="metric m-squats"><span class="num">~1 020</span><span class="unit">приседаний</span></div>
+        <div class="metric m-steps"><span class="num">43 500+</span><span class="unit">шагов</span></div>
+        <div class="metric m-plank"><span class="num">17+</span><span class="unit">дней планки</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Danila Savchenko</div>
+        <div class="streak">28/30 дней</div>
+      </div>
+      <div class="activity-type">Отжимания (цель: 100) + йога · куратор группы</div>
+      <div class="metrics">
+        <div class="metric m-pushups"><span class="num">1 488</span><span class="unit">отжиманий</span></div>
+        <div class="metric"><span class="num">60→92</span><span class="unit">прогресс/день</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Anastasia Popova</div>
+        <div class="streak">29/30 дней</div>
+      </div>
+      <div class="activity-type">Силовая + пилатес на сапе + бег + кардио</div>
+      <div class="metrics">
+        <div class="metric"><span class="num">12</span><span class="unit">силовых</span></div>
+        <div class="metric"><span class="num">3</span><span class="unit">пилатеса</span></div>
+        <div class="metric"><span class="num">5</span><span class="unit">пробежек</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Konstantin</div>
+        <div class="streak">25/30 дней</div>
+      </div>
+      <div class="activity-type">Мультиспорт: бег + вело + плавание + шаги + приседания</div>
+      <div class="metrics">
+        <div class="metric m-km"><span class="num">76</span><span class="unit">км</span></div>
+        <div class="metric"><span class="num">7</span><span class="unit">вело</span></div>
+        <div class="metric"><span class="num">3</span><span class="unit">бассейн</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Veronika M.</div>
+        <div class="streak">26/30 дней</div>
+      </div>
+      <div class="activity-type">Бег + планка + плавание + дайвинг (Красное море!)</div>
+      <div class="metrics">
+        <div class="metric"><span class="num">18</span><span class="unit">пробежек</span></div>
+        <div class="metric"><span class="num">3</span><span class="unit">плавание</span></div>
+        <div class="metric"><span class="num">50</span><span class="unit">приседаний</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Yulia Yakovenko</div>
+        <div class="streak">27/30 дней</div>
+      </div>
+      <div class="activity-type">Силовая + плавание + шаги</div>
+      <div class="metrics">
+        <div class="metric"><span class="num">7</span><span class="unit">силовых</span></div>
+        <div class="metric"><span class="num">2</span><span class="unit">бассейн</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">LizaKha</div>
+        <div class="streak">19/30 дней</div>
+      </div>
+      <div class="activity-type">Приседания каждый день (встроила в рутину)</div>
+      <div class="metrics">
+        <div class="metric m-squats"><span class="num">17</span><span class="unit">дней приседаний</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Ekaterina K.</div>
+        <div class="streak">27/30 дней</div>
+      </div>
+      <div class="activity-type">Прогулки + ходьба + шаги</div>
+      <div class="metrics">
+        <div class="metric"><span class="num">26</span><span class="unit">прогулок</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Elvira Polonskaya</div>
+        <div class="streak">25/30 дней</div>
+      </div>
+      <div class="activity-type">Шаги + прогулки + силовая</div>
+      <div class="metrics">
+        <div class="metric m-steps"><span class="num">12 000+</span><span class="unit">шагов</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Yuliia Lysak</div>
+        <div class="streak">26/30 дней</div>
+      </div>
+      <div class="activity-type">Прогулки + шаги + силовая + бег</div>
+      <div class="metrics">
+        <div class="metric m-km"><span class="num">8</span><span class="unit">км бег</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Nikita Gudkov</div>
+        <div class="streak">28/30 дней</div>
+      </div>
+      <div class="activity-type">Тренировки (фото/видео отчёты)</div>
+      <div class="metrics">
+        <div class="metric"><span class="num">27</span><span class="unit">тренировок</span></div>
+      </div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">Kristina Kuruma</div>
+        <div class="streak">11/30 дней</div>
+      </div>
+      <div class="activity-type">Силовая + прогулки + плавание</div>
+      <div class="metrics">
+        <div class="metric"><span class="num">7</span><span class="unit">силовых</span></div>
+        <div class="metric"><span class="num">1</span><span class="unit">бассейн</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Highlights -->
+<div class="section">
+  <div class="section-title">✨ Примечательное</div>
+  <div class="highlights">
+    <div class="highlight">
+      <div class="emoji">🥇</div>
+      <div class="hl-title">Абсолютный чемпион по шагам</div>
+      <div class="hl-desc"><strong>Дарья</strong> — 384 590 шагов и 274 км за 28 дней. В среднем ~13 700 шагов/день. Плюс йога, пилатес, кикбоксинг, танцы, верховая езда и большой теннис.</div>
+    </div>
+    <div class="highlight">
+      <div class="emoji">📈</div>
+      <div class="hl-title">Лучший прогресс</div>
+      <div class="hl-desc"><strong>Danila Savchenko</strong> — стартовал с 60 отжиманий, дошёл до 92. Суммарно ~1 488 отжиманий. Цель 100 — почти достигнута!</div>
+    </div>
+    <div class="highlight">
+      <div class="emoji">🌍</div>
+      <div class="hl-title">География челленджа</div>
+      <div class="hl-desc">Участники писали из <strong>Москвы, Еревана, Екатеринбурга, Самарканда</strong> и даже <strong>Красного моря</strong> (Вероника ныряла с дайвингом между пробежками).</div>
+    </div>
+    <div class="highlight">
+      <div class="emoji">💎</div>
+      <div class="hl-title">Железная дисциплина</div>
+      <div class="hl-desc"><strong>3 участника</strong> — Дарья, Рубен и Оля — не пропустили ни одного дня из 30. Идеальный streak.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
