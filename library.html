@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Библиотека — Не с понедельника</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --focus:#2563EB;--focus-bg:#EFF6FF;--focus-mid:#DBEAFE;
+  --mindful:#7C3AED;--mindful-bg:#F5F3FF;--mindful-mid:#EDE9FE;
+  --ascetic:#D97706;--ascetic-bg:#FFFBEB;--ascetic-mid:#FEF3C7;
+  --sport:#059669;--sport-bg:#ECFDF5;--sport-mid:#D1FAE5;
+  --text:#1A1A2E;--text-s:#64748B;--text-m:#94A3B8;
+  --bg:#FAFBFF;--white:#fff;--border:#E2E8F0;--border-l:#F1F5F9;
+  --sh-s:0 1px 3px rgba(0,0,0,.04);--sh-m:0 4px 16px rgba(0,0,0,.06);
+  --r:16px;--rs:10px;
+}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:820px;margin:0 auto;padding:0 24px}
+
+/* === HEADER === */
+header{padding:48px 0 0;text-align:center}
+.shelf{display:flex;justify-content:center;gap:10px;margin-bottom:24px}
+.bk{width:24px;border-radius:2px 5px 5px 2px;position:relative;animation:bkIn .5s ease backwards}
+.bk::after{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:rgba(0,0,0,.12);border-radius:2px 0 0 2px}
+.bk:nth-child(1){background:var(--focus);height:40px;animation-delay:.08s}
+.bk:nth-child(2){background:var(--mindful);height:34px;animation-delay:.12s}
+.bk:nth-child(3){background:var(--ascetic);height:38px;animation-delay:.16s}
+.bk:nth-child(4){background:var(--sport);height:32px;animation-delay:.2s}
+.bk:nth-child(5){background:#D97706;height:36px;animation-delay:.24s}
+@keyframes bkIn{from{opacity:0;transform:scaleY(0)}to{opacity:1;transform:scaleY(1)}}
+.hlabel{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);padding:6px 16px;border-radius:100px;font-size:12px;font-weight:600;color:var(--text-s);margin-bottom:18px;box-shadow:var(--sh-s);letter-spacing:.02em}
+.hlabel svg{flex-shrink:0}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(30px,6vw,50px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+header h1 i{font-style:italic;color:var(--focus);font-weight:600}
+.sub{color:var(--text-s);font-size:15px;max-width:420px;margin:0 auto;line-height:1.55}
+
+
+/* === TABS === */
+.tw{margin-top:32px;position:sticky;top:0;z-index:100;background:var(--bg);padding:10px 0 14px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tb{padding:9px 18px;border:2px solid transparent;background:var(--white);color:var(--text-s);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;border-radius:100px;white-space:nowrap;transition:all .25s;box-shadow:var(--sh-s);display:flex;align-items:center;gap:7px}
+.tb .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tb[data-t="focus"] .dot{background:var(--focus)}
+.tb[data-t="mind"] .dot{background:var(--mindful)}
+.tb[data-t="asc"] .dot{background:var(--ascetic)}
+.tb[data-t="sport"] .dot{background:var(--sport)}
+.tb:hover{border-color:var(--border)}
+.tb[data-t="focus"].on{background:var(--focus-bg);border-color:var(--focus);color:var(--focus)}
+.tb[data-t="mind"].on{background:var(--mindful-bg);border-color:var(--mindful);color:var(--mindful)}
+.tb[data-t="asc"].on{background:var(--ascetic-bg);border-color:var(--ascetic);color:var(--ascetic)}
+.tb[data-t="sport"].on{background:var(--sport-bg);border-color:var(--sport);color:var(--sport)}
+
+/* === CONTENT === */
+.main{padding:20px 0 80px}
+.tc{display:none;animation:fu .35s ease}
+.tc.on{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* === ISSUE CARD === */
+.ic{background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin-bottom:14px;overflow:hidden;transition:box-shadow .3s,border-color .3s}
+.ic:hover:not(.lk){box-shadow:var(--sh-m)}
+.ic.lk{background:var(--bg);border-color:var(--border-l);opacity:.7}
+.ih{padding:24px;cursor:pointer;display:flex;align-items:flex-start;gap:16px;user-select:none}
+.inum{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;margin-top:2px}
+.ic.lk .inum{background:var(--border-l);color:var(--text-m)}
+.im{flex:1;min-width:0}
+.idate{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.ititle{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,28px);font-weight:700;line-height:1.2;letter-spacing:-.02em}
+.ic.lk .ititle{color:var(--text-m);font-size:clamp(16px,3vw,20px)}
+.ic.lk .idate{color:var(--text-m)}
+.itoggle{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s;color:var(--text-m);margin-top:6px}
+.ic.op .itoggle{transform:rotate(180deg)}
+.ic.lk .itoggle svg{display:none}
+.ic.lk .itoggle::after{content:'';width:18px;height:18px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394A3B8' stroke-width='2'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");background-size:contain}
+.ib{display:none;padding:4px 24px 28px}
+.ic.op .ib{display:block;animation:fu .3s ease}
+
+/* group colors for numbers & dates */
+[data-g="focus"] .ic:not(.lk) .inum{background:var(--focus);color:#fff}
+[data-g="focus"] .ic:not(.lk) .idate{color:var(--focus)}
+[data-g="mind"] .ic:not(.lk) .inum{background:var(--mindful);color:#fff}
+[data-g="mind"] .ic:not(.lk) .idate{color:var(--mindful)}
+[data-g="asc"] .ic:not(.lk) .inum{background:var(--ascetic);color:#fff}
+[data-g="asc"] .ic:not(.lk) .idate{color:var(--ascetic)}
+[data-g="sport"] .ic:not(.lk) .inum{background:var(--sport);color:#fff}
+[data-g="sport"] .ic:not(.lk) .idate{color:var(--sport)}
+
+/* === BODY CONTENT === */
+.ib h3{font-size:17px;font-weight:700;margin:28px 0 12px;letter-spacing:-.01em}
+.ib p{margin-bottom:14px;font-size:15px;line-height:1.75}
+.hbox{border-left:3px solid;border-radius:0 var(--rs) var(--rs) 0;padding:18px 22px;margin:20px 0}
+[data-g="focus"] .hbox{background:var(--focus-bg);border-color:var(--focus)}
+[data-g="mind"] .hbox{background:var(--mindful-bg);border-color:var(--mindful)}
+[data-g="asc"] .hbox{background:var(--ascetic-bg);border-color:var(--ascetic)}
+[data-g="sport"] .hbox{background:var(--sport-bg);border-color:var(--sport)}
+.hbox p{margin-bottom:0}
+.formula{background:var(--white);border:1px solid var(--focus-mid);border-radius:var(--rs);padding:14px 20px;margin:16px 0;font-weight:600;font-size:15px;text-align:center;color:#1D4ED8}
+.ex{color:var(--text-s);padding-left:16px;border-left:2px solid var(--border);margin:12px 0;font-size:14px;line-height:1.8}
+.stg{background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:16px 20px;margin:12px 0}
+.stg .sl{font-weight:700;font-size:14px;margin-bottom:4px}
+.stg p{margin-bottom:0;font-size:14px}
+.cta{border-radius:var(--rs);padding:18px 22px;margin:24px 0 8px}
+[data-g="focus"] .cta{background:linear-gradient(135deg,var(--focus-bg),var(--focus-mid))}
+[data-g="mind"] .cta{background:linear-gradient(135deg,var(--mindful-bg),var(--mindful-mid))}
+[data-g="asc"] .cta{background:linear-gradient(135deg,var(--ascetic-bg),var(--ascetic-mid))}
+[data-g="sport"] .cta{background:linear-gradient(135deg,var(--sport-bg),var(--sport-mid))}
+.cta p{margin-bottom:0;font-weight:600;font-size:14px}
+.ib a{color:var(--focus);text-decoration:none;font-weight:500;transition:opacity .2s}
+.ib a:hover{opacity:.7}
+.lc{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:14px 18px;margin:8px 0;transition:border-color .2s;text-decoration:none!important;color:var(--text)!important}
+.lc:hover{border-color:var(--focus);opacity:1!important}
+.li{width:36px;height:36px;background:var(--focus-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;font-weight:700;color:var(--focus)}
+.lt{font-size:14px;font-weight:600}
+.ld{font-size:12px;color:var(--text-m)}
+
+/* PROMPT */
+.pb{background:#0F172A;color:#E2E8F0;border-radius:var(--rs);padding:24px;margin:20px 0;font-size:13px;line-height:1.8;position:relative}
+.pb::before{content:'ПРОМПТ';position:absolute;top:12px;right:16px;font-size:10px;font-weight:700;letter-spacing:.1em;color:#475569}
+.pb p{color:#CBD5E1;font-size:13px;margin-bottom:10px}
+.pb strong{color:#93C5FD}
+.pb .ps{color:#60A5FA;font-weight:700;margin-top:14px;display:block}
+.cbtn{margin-top:16px;background:var(--focus);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s}
+.cbtn:hover{background:#1D4ED8}
+.cbtn.ok{background:#059669}
+
+/* QUESTIONS */
+.qg{display:grid;gap:8px;margin:16px 0}
+.qi{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;background:var(--white);border:1px solid var(--border-l);border-radius:var(--rs);font-size:14px;line-height:1.6}
+.qn{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0}
+[data-g="focus"] .qn{background:var(--focus-bg);color:var(--focus)}
+[data-g="mind"] .qn{background:var(--mindful-bg);color:var(--mindful)}
+[data-g="asc"] .qn{background:var(--ascetic-bg);color:var(--ascetic)}
+[data-g="sport"] .qn{background:var(--sport-bg);color:var(--sport)}
+
+/* === DONE CHECKBOX === */
+.done-box{margin-top:32px;border:2px dashed var(--border);border-radius:var(--r);padding:24px;display:flex;align-items:flex-start;gap:16px;cursor:pointer;transition:all .3s;user-select:none}
+.done-box:hover{border-color:var(--text-m)}
+.done-box.checked{border-style:solid}
+[data-g="focus"] .done-box.checked{border-color:var(--focus);background:var(--focus-bg)}
+[data-g="mind"] .done-box.checked{border-color:var(--mindful);background:var(--mindful-bg)}
+[data-g="asc"] .done-box.checked{border-color:var(--ascetic);background:var(--ascetic-bg)}
+[data-g="sport"] .done-box.checked{border-color:var(--sport);background:var(--sport-bg)}
+.done-check{width:28px;height:28px;border:2px solid var(--border);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s;margin-top:1px}
+.done-box.checked .done-check{border-color:transparent}
+[data-g="focus"] .done-box.checked .done-check{background:var(--focus);color:#fff}
+[data-g="mind"] .done-box.checked .done-check{background:var(--mindful);color:#fff}
+[data-g="asc"] .done-box.checked .done-check{background:var(--ascetic);color:#fff}
+[data-g="sport"] .done-box.checked .done-check{background:var(--sport);color:#fff}
+.done-check svg{opacity:0;transition:opacity .2s}
+.done-box.checked .done-check svg{opacity:1}
+.done-text{font-size:15px;font-weight:600;line-height:1.5}
+.done-text span{display:block;font-weight:400;font-size:13px;color:var(--text-s);margin-top:4px}
+
+
+/* === SECTION HEAD === */
+.sec-head{font-family:'Playfair Display',serif;font-size:clamp(20px,3.5vw,26px);font-weight:700;letter-spacing:-.02em;line-height:1.25;margin:40px 0 16px;padding-bottom:14px;border-bottom:2px solid var(--border-l);display:flex;align-items:flex-start;gap:14px}
+.sec-head:first-child{margin-top:8px}
+.sec-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;margin-top:2px}
+[data-g="focus"] .sec-num{background:var(--focus-bg);color:var(--focus)}
+[data-g="mind"] .sec-num{background:var(--mindful-bg);color:var(--mindful)}
+[data-g="asc"] .sec-num{background:var(--ascetic-bg);color:var(--ascetic)}
+[data-g="sport"] .sec-num{background:var(--sport-bg);color:var(--sport)}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 0 60px;border-top:1px solid var(--border-l)}
+footer p{color:var(--text-m);font-size:13px}
+footer a{color:var(--focus);text-decoration:none;font-weight:600}
+
+/* === MOBILE === */
+@media(max-width:640px){
+  .container{padding:0 16px}
+  header{padding:28px 0 0}
+  .shelf{gap:8px;margin-bottom:18px}
+  .bk{width:20px}
+  header h1{font-size:28px}
+  .sub{font-size:14px}
+  .tw{padding:8px 0 10px}
+  .tb{padding:8px 14px;font-size:12px;gap:5px}
+  .tb .dot{width:6px;height:6px}
+  .ih{padding:18px 16px;gap:12px}
+  .inum{width:38px;height:38px;font-size:14px}
+  .ititle{font-size:20px}
+  .ic.lk .ititle{font-size:15px}
+  .ib{padding:4px 16px 22px}
+  .ib h3{font-size:16px;margin:22px 0 10px}
+  .ib p{font-size:14px}
+  .pb{padding:16px;font-size:12px}
+  .pb p{font-size:12px}
+  .formula{font-size:14px;padding:12px 16px}
+  .ex{font-size:13px}
+  .stg{padding:14px 16px}
+  .qi{padding:11px 14px;font-size:13px}
+  .done-box{padding:18px 16px;gap:12px}
+  .done-text{font-size:14px}
+  .done-text span{font-size:12px}
+  .lc{padding:12px 14px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<div class="shelf"><div class="bk"></div><div class="bk"></div><div class="bk"></div><div class="bk"></div><div class="bk"></div></div>
+<div class="hlabel">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+Библиотека челленджа
+</div>
+<h1>Не с <i>понедельника</i></h1>
+<p class="sub">Материалы, практики и&nbsp;инструменты для&nbsp;каждого дня твоего челленджа.<br>Новые выпуски — вторник, четверг, суббота</p>
+</div>
+</header>
+
+<div class="tw">
+<div class="container">
+<div class="tabs">
+<button class="tb on" data-t="focus"><span class="dot"></span>Фокус</button>
+<button class="tb" data-t="mind"><span class="dot"></span>Осознанность</button>
+<button class="tb" data-t="asc"><span class="dot"></span>Аскеза</button>
+<button class="tb" data-t="sport"><span class="dot"></span>Спорт</button>
+</div>
+</div>
+</div>
+
+<section class="main">
+<div class="container" id="root"></div>
+</section>
+
+<footer><div class="container"><p>Не с понедельника · 30 дней · <a href="https://notfrommonday.ru/" target="_blank">notfrommonday.ru</a></p></div></footer>
+
+<script>
+const CHV='<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const CHK='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
+const QS=['За что ты благодарен прямо сейчас?','Какой недавний момент ты хотел бы пережить ещё раз?','Какая мысль занимает тебя больше всего в последнее время?','Что стоит за твоим «не хочу» — усталость, страх или что-то другое?','В какие моменты тебе по-настоящему спокойно?','Что ты откладываешь и почему это тебя тревожит?','Что забирает твою энергию, но ты продолжаешь это делать?','Если бы ты уже был тем, кем хочешь стать — как бы ты поступил сейчас?','Что ты знаешь о себе сейчас, чего не знал год назад?','Что ты разрешаешь другим, но не разрешаешь себе?','Что для тебя значит «быть в ресурсе»?','В какие моменты ты чувствуешь, что живёшь, а не существуешь?','Что ты хочешь чувствовать чаще?','Какая маленькая вещь может улучшить завтрашний день?','Ты чаще говоришь себе «молодец» или «мало стараешься»?'];
+
+const LOCK=[['2','26 марта — четверг'],['3','29 марта — суббота'],['4','31 марта — вторник'],['5','2 апреля — четверг'],['6','5 апреля — суббота'],['7','7 апреля — вторник'],['8','9 апреля — четверг'],['9','12 апреля — суббота'],['10','14 апреля — вторник'],['11','16 апреля — четверг'],['12','19 апреля — суббота']];
+
+function qHTML(){return '<div class="qg">'+QS.map((q,i)=>`<div class="qi"><div class="qn">${i+1}</div><div>${q}</div></div>`).join('')+'</div>';}
+
+function lockHTML(){return LOCK.map(([n,d])=>`<div class="ic lk"><div class="ih"><div class="inum">${n}</div><div class="im"><div class="idate">${d}</div><div class="ititle">Выпуск ${n}</div></div><div class="itoggle"></div></div></div>`).join('');}
+
+function genBlock(intro){return`
+
+<p>Самая частая причина, по которой привычка не приживается — у неё нет конкретного места в расписании.</p>
+<p>${intro}</p>
+<p>Джеймс Клир называет это <strong>habit stacking</strong> — привязка новой привычки к уже существующей. Берёшь действие, которое делаешь на автомате, и цепляешь к нему новое.</p>
+<div class="formula">После [текущая привычка] я делаю [новая привычка]</div>
+<div class="ex">После того как налью кофе → открою список задач и выберу одну<br>После того как почищу зубы → сяду на коврик на 5 минут<br>После того как закрою ноутбук → положу телефон в другую комнату</div>
+<p>Мозг уже построил нейронную цепочку для старого действия. Ты просто подключаешь новое звено. Не нужна сила воли — нужен триггер.</p>
+<div class="cta"><p>Запиши одну привязку для своей привычки прямо в чат группы. Формат: «После [что] я делаю [что]».</p></div>`;}
+
+function reflBlock(){return`<div class="sec-head"><div class="sec-num">3</div><div>15 вопросов для вечерней саморефлексии</div></div><p>Каждый вечер задай себе один вопрос. По одному в день. Записывай ответ или просто подумай перед сном.</p>${qHTML()}`;}
+
+const T={
+focus:{
+  g:'focus',
+  headline:'Как привязать привычку<br>к своему дню',
+  intro:'«Буду закрывать задачи каждый день» — это намерение.<br>«Открою список задач сразу после того, как налью кофе» — это система.',
+  specific:`
+<div class="sec-head"><div class="sec-num">2</div><div>Распаковка висящих задач:<br>метод «всё из головы»</div></div>
+<p>Знаешь ощущение, когда задач много, но непонятно с чего начать? Они живут в голове — хаотично, без структуры, и каждая кажется одинаково важной.</p>
+<h3>Шаг 1 — Выгрузка</h3>
+<p>Запиши всё. Вообще всё: от «сделать презентацию» до «починить кран». Не фильтруй. Дай себе 10–15 минут.</p>
+<h3>Шаг 2 — Сортировка</h3>
+<div class="stg"><div class="sl" style="color:#DC2626">Важно + Срочно</div><p>Делаю сегодня или завтра. Без вариантов.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Важно + Не срочно</div><p>Ставлю в план на неделю. Стратегические задачи.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Не важно + Срочно</div><p>Делегирую или автоматизирую.</p></div>
+<div class="stg"><div class="sl" style="color:#94A3B8">Не важно + Не срочно</div><p>Вычёркиваю без сожалений.</p></div>
+<h3>Шаг 3 — Одна задача в день</h3>
+<p>Из красной и жёлтой зоны выбери по одной на каждый день. Маленький шаг > грандиозный план.</p>
+<h3>Промпт для личного ассистента по задачам</h3>
+<p>Скопируй этот промпт в ChatGPT или Claude. ИИ поможет распаковать задачи и составить план на неделю.</p>
+<div class="pb" id="prompt-text">
+<p>Ты — мой личный проджект-менеджер и бизнес-ассистент. Помоги разобраться с висящими задачами и составить реалистичный план на неделю.</p>
+<p>Правила:<br>— Не переходи к следующему шагу, пока не получишь ответ.<br>— Будь поддерживающим, следи за нагрузкой.<br>— Запоминай дедлайны и события.</p>
+<span class="ps">Этап 1 — Сферы:</span><p>Спроси, в каких сферах жизни есть задачи (работа, личное, здоровье, быт, проекты).</p>
+<span class="ps">Этап 2 — Цели:</span><p>Спроси про глобальные или краткосрочные цели. Зафиксируй без комментариев.</p>
+<span class="ps">Этап 3 — Распаковка:</span><p>Поочерёдно задай вопросы по каждой сфере для выявления конкретных задач.</p>
+<span class="ps">Этап 4 — Режим:</span><p>Спроси формат (таблица/список) и темп (1 задача в день или блоком).</p>
+<span class="ps">После сбора:</span><p>Распредели по матрице: важно+срочно → немедленно, важно+не срочно → запланировать, не важно+срочно → делегировать, не важно+не срочно → отсеять. Составь план. Начни диалог.</p>
+<button class="cbtn" onclick="copyPrompt(this)">Скопировать промпт</button>
+</div>`,
+  done:'Я прочитал(а) первый выпуск, пойду распаковывать задачи',
+  doneSub:'Открой промпт, скопируй и начни диалог с ИИ прямо сейчас'
+},
+mind:{
+  g:'mind',
+  headline:'Как привязать привычку<br>к своему дню',
+  intro:'«Буду медитировать каждый день» — это намерение.<br>«Буду медитировать сразу после того, как включу чайник» — это система.',
+  specific:`
+<div class="sec-head"><div class="sec-num">2</div><div>Рекомендации практик</div></div><h3>Приложения для медитации</h3>
+<a href="https://www.prostoapp.ru/" target="_blank" class="lc"><div class="li">P</div><div><div class="lt">Prosto</div><div class="ld">14 дней бесплатно · обучающие уроки · персональный план · 1 290 ₽/полгода</div></div></a>
+<a href="https://apps.apple.com/ru/app/meditopia-%D1%81%D0%BE%D0%BD-%D0%B8-%D0%BC%D0%B5%D0%B4%D0%B8%D1%82%D0%B0%D1%86%D0%B8%D1%8F/id1190294015" target="_blank" class="lc"><div class="li">M</div><div><div class="lt">Meditopia</div><div class="ld">Бесплатная неделя · уроки и план медитаций · 1 790 ₽/год</div></div></a>
+<p style="margin-top:8px">Сам провёл с Prosto сотни медитаций — очень рекомендую. У них подробнее план и обучающие уроки для начинающих.</p>
+<h3>Подборка медитаций без приложений</h3>
+<a href="https://www.youtube.com/watch?v=29VXLjtc-Jo" target="_blank" class="lc"><div class="li">▶</div><div><div class="lt">Аффирмация для настройки на день</div><div class="ld">YouTube</div></div></a>
+<a href="https://www.youtube.com/watch?v=vLh3VZJBgY4" target="_blank" class="lc"><div class="li">▶</div><div><div class="lt">Медитация для снятия тревоги</div><div class="ld">YouTube</div></div></a>
+<a href="https://www.youtube.com/watch?v=edR8bnvF_wk" target="_blank" class="lc"><div class="li">▶</div><div><div class="lt">Медитация «погружение в себя»</div><div class="ld">YouTube</div></div></a>
+<a href="https://www.youtube.com/@tokiwellbeing" target="_blank" class="lc"><div class="li">▶</div><div><div class="lt">Канал Toki Well-being</div><div class="ld">YouTube · подборка практик</div></div></a>
+<a href="https://wemeditate.com/ru/meditations" target="_blank" class="lc"><div class="li">W</div><div><div class="lt">We Meditate</div><div class="ld">wemeditate.com · бесплатные медитации</div></div></a>
+<p style="margin-top:12px">Медитации от Алины — мои любимые, слушал их сотни раз. Пробуй разные, находи своё.</p>`,
+  done:'Я прочитал(а) первый выпуск, пойду медитировать',
+  doneSub:'Выбери одну практику из списка и попробуй сегодня'
+},
+asc:{
+  g:'asc',
+  headline:'Как привязать привычку<br>к своему дню',
+  intro:'«Откажусь от скроллинга перед сном» — это намерение.<br>«Каждый вечер в 22:00 кладу телефон на зарядку в другой комнате» — это система.',
+  specific:`
+<div class="sec-head"><div class="sec-num">2</div><div>Что происходит с мозгом<br>при отказе от привычки</div></div>
+<p>Чтобы было проще пройти 30 дней — давай разберёмся, что происходит внутри. В момент сопротивления знание — это опора.</p>
+<h3>Как работает дофаминовая петля</h3>
+<p>Мозг не различает «полезное» и «вредное». Он различает «даёт дофамин» и «не даёт». Скроллинг, сахар, сигарета, уведомления — быстрые источники. Мозг привыкает и хочет не удовольствия — а повторения.</p>
+<p>Это не слабость характера. Это нейрохимия.</p>
+<h3>Что будет происходить</h3>
+<div class="stg"><div class="sl" style="color:#DC2626">Дни 1–3. Раздражение</div><p>Мозг привык получать дофамин по расписанию — и вдруг ты это убрал. Скука, раздражительность, беспокойство. Это не ты — это нервная система требует привычную дозу. Если хочется бросить — ты именно там, где нужно.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Дни 4–7. Торг</div><p>Мозг меняет тактику. Не кричит — уговаривает. «Ну один раз можно», «ты же и так молодец». Самый хитрый этап. Каждый отказ — тренировка новой нейронной связи.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Дни 8–14. Тишина</div><p>Острота уходит. У дня появляется больше пространства. Ты спокойнее, спишь лучше. Мозг адаптируется к более ровному уровню дофамина.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Дни 15–21. Новая норма</div><p>Всё реже вспоминаешь о том, от чего отказался. Откаты в стрессе возможны — мозг выбирает знакомое. Просто заметь и выбери заново.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Дни 22–30. Переосмысление</div><p>Ты уже знаешь ответ: «А оно мне вообще нужно?» Большинство удивляются, как мало скучают по тому, что казалось незаменимым.</p></div>
+<div class="hbox"><p><strong>Когда накатывает:</strong> не борись, а наблюдай. Скажи себе: «О, это дофаминовый запрос. Я его вижу. Он пройдёт через 10–15 минут». Острое желание — волна. Она поднимается и опускается. Не действуй на пике.</p></div>`,
+  done:'Я прочитал(а) первый выпуск, пойду наблюдать за своими триггерами',
+  doneSub:'Сегодня просто замечай моменты, когда тянет к привычке. Не борись — наблюдай'
+},
+sport:{
+  g:'sport',
+  headline:'Как привязать привычку<br>к своему дню',
+  intro:'«Буду тренироваться каждый день» — это намерение.<br>«Сразу после утреннего кофе надеваю кроссовки» — это система.',
+  specific:`
+<div class="sec-head"><div class="sec-num">2</div><div>Правило двух минут</div></div>
+<p>Самое сложное в ежедневной активности — начать. Не тренировка, а момент, когда нужно встать и надеть кроссовки.</p>
+<p>Джеймс Клир предлагает: <strong>любая привычка должна начинаться с версии, которая занимает менее двух минут.</strong></p>
+<div class="ex">«Бегать 5 км» → «Надеть кроссовки и выйти за дверь»<br>«Йога 30 минут» → «Раскатать коврик и встать в одну позу»<br>«10 000 шагов» → «Пройти один квартал после обеда»</div>
+<p>Как только начал — инерция работает на тебя. 90% дней продолжишь. А когда нет сил — хотя бы минимум. Цепочка не разорвана.</p>
+<div class="hbox"><p><strong>Бонус-челлендж на эту неделю:</strong> найди одну «лишнюю» возможность для движения. Лестница вместо лифта. Прогулка во время звонка. Приседания, пока греется еда. Не замена тренировке — слой поверх.</p></div>`,
+  done:'Я прочитал(а) первый выпуск, пойду двигаться',
+  doneSub:'Надень кроссовки. Остальное приложится'
+}
+};
+
+function build(key){
+const t=T[key];
+let h=`<div class="tc${key==='focus'?' on':''}" id="t-${key}" data-g="${t.g}">`;
+h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">1</div><div class="im"><div class="idate">24 марта — вторник</div><div class="ititle">${t.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=genBlock(t.intro);
+h+=t.specific;
+h+=reflBlock();
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${t.done}<span>${t.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+h+=lockHTML();
+h+=`</div>`;
+return h;
+}
+
+document.getElementById('root').innerHTML=build('focus')+build('mind')+build('asc')+build('sport');
+
+document.querySelectorAll('.tb').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.tc').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.getElementById('t-'+b.dataset.t).classList.add('on');
+  });
+});
+
+function tog(h){const c=h.parentElement;if(!c.classList.contains('lk'))c.classList.toggle('op');}
+
+function toggleDone(el){el.classList.toggle('checked');}
+
+function copyPrompt(btn){
+  const el=document.getElementById('prompt-text');
+  const t=el.innerText.replace('Скопировать промпт','').replace('Скопировано','').trim();
+  navigator.clipboard.writeText(t).then(()=>{
+    btn.textContent='Скопировано';btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent='Скопировать промпт';btn.classList.remove('ok');},2000);
+  });
+}
+</script>
+</body>
+</html>
