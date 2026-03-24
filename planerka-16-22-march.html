@@ -8,11 +8,11 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',-apple-system,sans-serif;background:#f8f9fc;color:#0f172a;font-size:14px;line-height:1.5}
-.hdr{background:#fff;border-bottom:1px solid #e5e7eb;padding:16px 24px;display:flex;justify-content:space-between;align-items:flex-end}
-.tabs{background:#fff;border-bottom:1px solid #e5e7eb;padding:0 24px;display:flex;overflow-x:auto}
-.tab{padding:9px 15px;font-size:12px;font-weight:500;border:none;background:none;color:#94a3b8;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.hdr{padding:16px 24px;display:flex;justify-content:space-between;align-items:flex-end;max-width:1200px;margin:0 auto}
+.tabs{background:#fff;padding:0 24px;display:flex;overflow-x:auto}
+.tab{padding:12px 22px;font-size:14px;font-weight:500;border:none;background:none;color:#94a3b8;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
 .tab.active{color:#6366f1;font-weight:600;border-bottom-color:#6366f1}
-.ct{padding:14px 24px;max-width:1100px;display:none}.ct.active{display:block}
+.ct{padding:20px 24px;max-width:1000px;margin:0 auto;display:none}.ct.active{display:block}
 .kr{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:8px}
 .k{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:13px 15px;flex:1 1 148px;min-width:142px}
 .kl{font-size:11px;color:#94a3b8;margin-bottom:2px}.kv{font-size:20px;font-weight:700}.kd{font-size:12px;font-weight:600;margin-top:2px}
@@ -34,15 +34,15 @@ tr.tot{background:#f8fafc;font-weight:700}
 </style>
 </head>
 <body>
-<div class="hdr">
+<div style="background:#fff;border-bottom:1px solid #e5e7eb"><div class="hdr">
   <div><div style="font-size:11px;font-weight:600;color:#6366f1;text-transform:uppercase;letter-spacing:0.1em">Отчёт о размещении · Циан</div><div style="font-size:20px;font-weight:800;margin-top:2px">16 – 22 марта 2026</div></div>
   <div style="display:flex;gap:14px">
     <div style="text-align:right"><div style="font-size:10px;color:#94a3b8">Экономия аукцион</div><div style="font-size:16px;font-weight:700;color:#059669">−168 689 ₽</div></div>
     <div style="text-align:right"><div style="font-size:10px;color:#94a3b8">Обращений</div><div style="font-size:16px;font-weight:700">521 <span style="font-size:12px;color:#059669">+17</span></div></div>
     <div style="text-align:right"><div style="font-size:10px;color:#94a3b8">Объектов</div><div style="font-size:16px;font-weight:700;color:#64748b">433</div></div>
   </div>
-</div>
-<div class="tabs" id="tabs">
+</div></div>
+<div style="background:#fff;border-bottom:1px solid #e5e7eb"><div class="tabs" style="max-width:1200px;margin:0 auto" id="tabs">
   <button class="tab active" onclick="sw('overview')">Обзор</button>
   <button class="tab" onclick="sw('rent')">Аренда</button>
   <button class="tab" onclick="sw('sale')">Продажа</button>
@@ -50,7 +50,7 @@ tr.tot{background:#f8fafc;font-weight:700}
   <button class="tab" onclick="sw('competitors')">Конкуренты</button>
   <button class="tab" onclick="sw('avito')">Авито</button>
   <button class="tab" onclick="sw('insights')">💡 Гипотезы</button>
-</div>
+</div></div>
 
 <!-- OVERVIEW -->
 <div class="ct active" id="t-overview">
