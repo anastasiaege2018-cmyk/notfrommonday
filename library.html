@@ -158,6 +158,16 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 
 
 
+
+/* === VIDEO LINK === */
+.vid-link{display:flex;align-items:center;gap:14px;padding:18px 22px;border-radius:var(--rs);margin:20px 0;text-decoration:none!important;color:var(--text)!important;border:1px solid var(--border);background:var(--white);transition:border-color .2s,box-shadow .2s}
+.vid-link:hover{border-color:var(--focus);box-shadow:var(--sh-m);opacity:1!important}
+.vid-link .vid-play{width:44px;height:44px;background:#FF0000;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vid-link .vid-play svg{margin-left:2px}
+.vid-link .vid-info{flex:1}
+.vid-link .vid-title{font-size:14px;font-weight:700;line-height:1.4}
+.vid-link .vid-sub{font-size:12px;color:var(--text-m);margin-top:2px}
+
 /* === MILESTONE === */
 .milestone{text-align:left;margin:36px 0 16px;padding:28px 24px;border-radius:var(--r);position:relative;overflow:hidden}
 [data-g="focus"] .milestone{background:linear-gradient(135deg,var(--focus-bg),var(--focus-mid))}
@@ -253,7 +263,7 @@ const CHK='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="c
 
 const QS=['За что ты благодарен прямо сейчас?','Какой недавний момент ты хотел бы пережить ещё раз?','Какая мысль занимает тебя больше всего в последнее время?','Что стоит за твоим «не хочу» — усталость, страх или что-то другое?','В какие моменты тебе по-настоящему спокойно?','Что ты откладываешь и почему это тебя тревожит?','Что забирает твою энергию, но ты продолжаешь это делать?','Если бы ты уже был тем, кем хочешь стать — как бы ты поступил сейчас?','Что ты знаешь о себе сейчас, чего не знал год назад?','Что ты разрешаешь другим, но не разрешаешь себе?','Что для тебя значит «быть в ресурсе»?','В какие моменты ты чувствуешь, что живёшь, а не существуешь?','Что ты хочешь чувствовать чаще?','Какая маленькая вещь может улучшить завтрашний день?','Ты чаще говоришь себе «молодец» или «мало стараешься»?'];
 
-const LOCK=[['5','2 апреля — четверг'],['6','5 апреля — суббота'],['7','7 апреля — вторник'],['8','9 апреля — четверг'],['9','12 апреля — суббота'],['10','14 апреля — вторник'],['11','16 апреля — четверг'],['12','19 апреля — суббота']];
+const LOCK=[['6','5 апреля — суббота'],['7','7 апреля — вторник'],['8','9 апреля — четверг'],['9','12 апреля — суббота'],['10','14 апреля — вторник'],['11','16 апреля — четверг'],['12','19 апреля — суббота']];
 
 function qHTML(){return '<div class="qg">'+QS.map((q,i)=>`<div class="qi"><div class="qn">${i+1}</div><div>${q}</div></div>`).join('')+'</div>';}
 
@@ -610,6 +620,93 @@ sport:{
 }
 };
 
+const I5={
+focus:{
+  headline:'Мотивация угасает.<br>Удовлетворение — нет',
+  specific:`
+<p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
+<p>Но через 5–6 дней она начала угасать. И это нормально — так устроен мозг. Мотивация по природе кратковременна.</p>
+<p>То, на чём вы двигаетесь сейчас — совсем другое. Это <strong>удовлетворение от собственных маленьких шагов</strong>. Тихое внутреннее ощущение: «Как классно, что я сделал. Как классно, что не сдался». Вот это — настоящая продвигающая сила. На ней можно двигаться очень долго и очень далеко.</p>
+<p>Можно иногда подкреплять себя мотивацией извне — в этом нет ничего плохого. Вот, например, отличная лекция от Гарвардского университета про то, что на самом деле делает жизнь счастливой:</p>
+<a href="https://www.youtube.com/watch?v=g6S8rLTVW44" target="_blank" class="vid-link">
+<div class="vid-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+<div class="vid-info"><div class="vid-title">Посмотреть видео на YouTube</div><div class="vid-sub">Отличная лекция для подзарядки</div></div>
+</a>
+<p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
+<p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты быстрее открываешь список. Или уже не мучаешься с выбором задачи — просто берёшь и делаешь. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот момент, когда хотел пропустить — но не пропустил. Никто не аплодировал. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, стало чуть спокойнее в голове. Или чувство контроля вернулось. Или ты просто начал доводить дела до конца. Это твоё — и сравнивать не с кем.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
+  doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
+},
+mind:{
+  headline:'Мотивация угасает.<br>Удовлетворение — нет',
+  specific:`
+<p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
+<p>Но через 5–6 дней она начала угасать. И это нормально — так устроен мозг. Мотивация по природе кратковременна.</p>
+<p>То, на чём вы двигаетесь сейчас — совсем другое. Это <strong>удовлетворение от собственных маленьких шагов</strong>. Тихое внутреннее ощущение: «Как классно, что я сделал. Как классно, что не сдался». Вот это — настоящая продвигающая сила. На ней можно двигаться очень долго и очень далеко.</p>
+<p>Можно иногда подкреплять себя мотивацией извне — в этом нет ничего плохого. Вот, например, отличная лекция от Гарвардского университета про то, что на самом деле делает жизнь счастливой:</p>
+<a href="https://www.youtube.com/watch?v=g6S8rLTVW44" target="_blank" class="vid-link">
+<div class="vid-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+<div class="vid-info"><div class="vid-title">Посмотреть видео на YouTube</div><div class="vid-sub">Отличная лекция для подзарядки</div></div>
+</a>
+<p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
+<p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты быстрее находишь тишину внутри. Или уже садишься без внутреннего спора. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот момент, когда мысли скакали, а ты всё равно досидел. Никто не знает. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты стал чуть внимательнее к моменту. Или засыпаешь спокойнее. Или реже реагируешь на автомате. Это твоё.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
+  doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
+},
+asc:{
+  headline:'Мотивация угасает.<br>Удовлетворение — нет',
+  specific:`
+<p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
+<p>Но через 5–6 дней она начала угасать. И это нормально — так устроен мозг. Мотивация по природе кратковременна.</p>
+<p>То, на чём вы двигаетесь сейчас — совсем другое. Это <strong>удовлетворение от собственных маленьких шагов</strong>. Тихое внутреннее ощущение: «Как классно, что я сделал. Как классно, что не сдался». Вот это — настоящая продвигающая сила. На ней можно двигаться очень долго и очень далеко.</p>
+<p>Можно иногда подкреплять себя мотивацией извне — в этом нет ничего плохого. Вот, например, отличная лекция от Гарвардского университета про то, что на самом деле делает жизнь счастливой:</p>
+<a href="https://www.youtube.com/watch?v=g6S8rLTVW44" target="_blank" class="vid-link">
+<div class="vid-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+<div class="vid-info"><div class="vid-title">Посмотреть видео на YouTube</div><div class="vid-sub">Отличная лекция для подзарядки</div></div>
+</a>
+<p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
+<p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты уже не тянешься к триггеру на автомате. Или желание стало тише и проходит быстрее. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот момент, когда хотелось сорваться — а ты переждал волну. Молча. Без медалей. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, появилось больше времени. Или ты стал спокойнее реагировать. Или просто чувствуешь себя чище. Это твоё — и сравнивать не с кем.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
+  doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
+},
+sport:{
+  headline:'Мотивация угасает.<br>Удовлетворение — нет',
+  specific:`
+<p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
+<p>Но через 5–6 дней она начала угасать. И это нормально — так устроен мозг. Мотивация по природе кратковременна.</p>
+<p>То, на чём вы двигаетесь сейчас — совсем другое. Это <strong>удовлетворение от собственных маленьких шагов</strong>. Тихое внутреннее ощущение: «Как классно, что я сделал. Как классно, что не сдался». Вот это — настоящая продвигающая сила. На ней можно двигаться очень долго и очень далеко.</p>
+<p>Можно иногда подкреплять себя мотивацией извне — в этом нет ничего плохого. Вот, например, отличная лекция от Гарвардского университета про то, что на самом деле делает жизнь счастливой:</p>
+<a href="https://www.youtube.com/watch?v=g6S8rLTVW44" target="_blank" class="vid-link">
+<div class="vid-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+<div class="vid-info"><div class="vid-title">Посмотреть видео на YouTube</div><div class="vid-sub">Отличная лекция для подзарядки</div></div>
+</a>
+<p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
+<p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты встаёшь быстрее. Или дистанция, которая казалась длинной, теперь пролетает. Или ты просто меньше уговариваешь себя начать. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот день, когда было тяжело — а ты всё равно вышел. Или хотя бы размялся дома. Никто не видел. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, появилось больше энергии. Или ты лучше спишь. Или настроение стало ровнее. Это твоё — и сравнивать не с кем.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
+  doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
+}
+};
+
 function build(key){
 const t=T[key];
 const i2=I2[key];
@@ -637,13 +734,21 @@ h+=i3.specific;
 h+=i3.reflection;
 h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i3.done}<span>${i3.doneSub}</span></div></div>`;
 h+=`</div></div>`;
-// Issue 4 (open)
+// Issue 4 (collapsed)
 const i4=I4[key];
-h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">4</div><div class="im"><div class="idate">31 марта — вторник</div><div class="ititle">${i4.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">4</div><div class="im"><div class="idate">31 марта — вторник</div><div class="ititle">${i4.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
 h+=`<div class="ib">`;
 h+=i4.specific;
 h+=i4.reflection;
 h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i4.done}<span>${i4.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 5 (open)
+const i5=I5[key];
+h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">5</div><div class="im"><div class="idate">2 апреля — четверг</div><div class="ititle">${i5.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i5.specific;
+h+=i5.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i5.done}<span>${i5.doneSub}</span></div></div>`;
 h+=`</div></div>`;
 h+=lockHTML();
 h+=`</div>`;
