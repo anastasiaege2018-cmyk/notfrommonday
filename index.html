@@ -34,7 +34,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-light);color:var(--tex
 
 /* ══ HERO — dark ══ */
 .hero{background:var(--navy);color:#fff;min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 28px 80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,rgba(79,106,255,.15) 0%,transparent 60%);pointer-events:none}
+.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.35;z-index:0}
+.hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(19,27,58,0.4) 0%,rgba(19,27,58,0.7) 100%);z-index:0;pointer-events:none}
 .hero>*{position:relative;z-index:1}
 .hero h1{font-size:clamp(52px,9vw,120px);font-weight:700;line-height:1.0;margin-bottom:28px;letter-spacing:-2px}
 .hero-sub{font-size:19px;color:var(--text-on-dark);max-width:440px;font-weight:400;line-height:1.7;margin-bottom:12px}
@@ -160,6 +161,9 @@ footer p{font-size:13px}
 
 <!-- ══ HERO ══ -->
 <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="hero-video.mp4" type="video/mp4">
+  </video>
   <h1>НЕ С<br>ПОНЕДЕЛЬНИКА</h1>
   <p class="hero-sub">30 дней. Одна привычка.<br>Группа, с которой не сольёшься.</p>
   <div class="hero-date">Старт — 24 марта</div>
