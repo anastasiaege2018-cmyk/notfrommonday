@@ -34,10 +34,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-light);color:var(--tex
 
 /* ══ HERO — dark ══ */
 .hero{background:#000;color:#fff;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 28px;position:relative;overflow:hidden}
-.hero-video{position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:0}
-.hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.35) 100%);z-index:1;pointer-events:none}
-.hero>*{position:relative;z-index:2}
-.hero>.hero-video{z-index:0;position:absolute}
+.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.35) 100%);z-index:2;pointer-events:none}
+.hero-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center}
 .hero-label{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,3vw,26px);font-weight:400;color:rgba(255,255,255,0.95);margin-bottom:8px;letter-spacing:1px;text-shadow:0 2px 20px rgba(0,0,0,0.5)}
 .hero h1{font-size:clamp(52px,9vw,120px);font-weight:700;line-height:1.0;margin-bottom:28px;letter-spacing:-2px;text-shadow:0 4px 30px rgba(0,0,0,0.5)}
 .hero-sub{font-size:19px;color:rgba(255,255,255,0.9);max-width:440px;font-weight:400;line-height:1.7;margin-bottom:12px;text-shadow:0 2px 15px rgba(0,0,0,0.5)}
@@ -164,14 +163,17 @@ footer p{font-size:13px}
 
 <!-- ══ HERO ══ -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
     <source src="hero-video.mp4" type="video/mp4">
   </video>
-  <div class="hero-label">сообщество</div>
-  <h1>НЕ С<br>ПОНЕДЕЛЬНИКА</h1>
-  <p class="hero-sub">Люди. Привычки и изменения.</p>
-  <div class="hero-date">Старт — 28 апреля</div>
-  <a href="javascript:void(0)" onclick="document.getElementById('groups').scrollIntoView({behavior:'smooth'})" class="btn btn-accent">Иду</a>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">сообщество</div>
+    <h1>НЕ С<br>ПОНЕДЕЛЬНИКА</h1>
+    <p class="hero-sub">Люди. Привычки и изменения.</p>
+    <div class="hero-date">Старт — 28 апреля</div>
+    <a href="javascript:void(0)" onclick="document.getElementById('groups').scrollIntoView({behavior:'smooth'})" class="btn btn-accent">Иду</a>
+  </div>
 </section>
 
 <!-- ══ ABOUT — light ══ -->
