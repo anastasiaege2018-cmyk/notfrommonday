@@ -231,7 +231,7 @@ footer p{font-size:13px}
         <div class="g-desc">Любая активность: бег, зал, коврик, 10 000 шагов. Фиксируешь на старте — делаешь каждый день.</div>
         <div class="g-bottom">
           <div class="g-price"><span class="price-now"></span><span class="price-old"></span> <small>/ 30 дней</small></div>
-          <a href="#" class="btn btn-warm pay-link" target="_blank">Выбрать</a>
+          <a href="#" class="btn btn-warm pay-link" onclick="try{ym(108165954,'reachGoal','payment_click')}catch(e){}" target="_blank">Выбрать</a>
         </div>
       </div>
       <div class="g-card" data-dir="focus">
@@ -240,7 +240,7 @@ footer p{font-size:13px}
         <div class="g-desc">Висящие задачи, до которых не доходят руки. Каждый понедельник — составляешь список. Всю неделю — закрываешь по одной.</div>
         <div class="g-bottom">
           <div class="g-price"><span class="price-now"></span><span class="price-old"></span> <small>/ 30 дней</small></div>
-          <a href="#" class="btn btn-warm pay-link" target="_blank">Выбрать</a>
+          <a href="#" class="btn btn-warm pay-link" onclick="try{ym(108165954,'reachGoal','payment_click')}catch(e){}" target="_blank">Выбрать</a>
         </div>
       </div>
       <div class="g-card" data-dir="mind">
@@ -249,7 +249,7 @@ footer p{font-size:13px}
         <div class="g-desc">Ежедневная медитация или любая другая практика на замедление / внимание / осознание.</div>
         <div class="g-bottom">
           <div class="g-price"><span class="price-now"></span><span class="price-old"></span> <small>/ 30 дней</small></div>
-          <a href="#" class="btn btn-warm pay-link" target="_blank">Выбрать</a>
+          <a href="#" class="btn btn-warm pay-link" onclick="try{ym(108165954,'reachGoal','payment_click')}catch(e){}" target="_blank">Выбрать</a>
         </div>
       </div>
       <div class="g-card" data-dir="new">
@@ -258,7 +258,7 @@ footer p{font-size:13px}
         <div class="g-desc">30 дней — каждый день пробуешь что-то новое. Один урок, один пост, одно знакомство, один AI-эксперимент.</div>
         <div class="g-bottom">
           <div class="g-price"><span class="price-now"></span><span class="price-old"></span> <small>/ 30 дней</small></div>
-          <a href="#" class="btn btn-warm pay-link" target="_blank">Выбрать</a>
+          <a href="#" class="btn btn-warm pay-link" onclick="try{ym(108165954,'reachGoal','payment_click')}catch(e){}" target="_blank">Выбрать</a>
         </div>
       </div>
     </div>
@@ -561,7 +561,7 @@ function sendPair(){
   const d1=document.getElementById('p1dir').value,d2=document.getElementById('p2dir').value;
   if(!n1||!n2){alert('Укажите @ник обоих участников');return;}
   const r=refName?' ref='+refName:'';
-  window.open('https://t.me/notfrommonday_bot?start='+encodeURIComponent('pair '+n1+' '+d1+' '+n2+' '+d2+' mode='+mode+r),'_blank');
+  try{ym(108165954,'reachGoal','pair_request')}catch(e){};window.open('https://t.me/notfrommonday_bot?start='+encodeURIComponent('pair '+n1+' '+d1+' '+n2+' '+d2+' mode='+mode+r),'_blank');
 }
 
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08});
