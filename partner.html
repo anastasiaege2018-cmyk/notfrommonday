@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Партнёрская панель — Не с понедельника</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F5F0EB;--card:#fff;--text:#1A1A1F;--text-sec:#6B6B76;
+  --warm:#C4723A;--warm-light:#FAF5F0;--border:#E8E0D8;
+  --radius:16px;--shadow:0 2px 12px rgba(0,0,0,.06);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.container{max-width:680px;margin:0 auto;padding:0 20px}
+
+header{background:var(--text);padding:20px 0}
+header .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;color:#fff;font-size:18px;font-weight:700}
+.badge{background:var(--warm);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
+
+.hero{padding:48px 0 32px;text-align:center}
+.partner-name{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,40px);font-weight:700;margin-bottom:8px}
+.partner-sub{color:var(--text-sec);font-size:15px}
+
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.stat-card{background:var(--card);border-radius:var(--radius);padding:24px 16px;text-align:center;box-shadow:var(--shadow)}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,36px);font-weight:700;line-height:1}
+.stat-num.warm{color:var(--warm)}
+.stat-label{font-size:12px;color:var(--text-sec);margin-top:8px;font-weight:500}
+
+.commission-box{background:var(--card);border:2px solid var(--warm);border-radius:var(--radius);padding:24px 28px;margin-bottom:32px;box-shadow:var(--shadow)}
+.commission-box h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.commission-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+.commission-row:last-child{border:none}
+.commission-row span:last-child{font-weight:700;color:var(--warm)}
+
+.link-box{background:var(--card);border-radius:var(--radius);padding:24px 28px;margin-bottom:32px;box-shadow:var(--shadow)}
+.link-box h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.link-row{display:flex;gap:8px;align-items:center}
+.link-input{flex:1;background:var(--warm-light);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:14px;font-family:monospace;color:var(--text);outline:none}
+.copy-btn{background:var(--warm);color:#fff;border:none;border-radius:10px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap}
+.copy-btn:hover{opacity:.9}
+.copied{background:#2a7a4b!important}
+
+.info-box{background:var(--warm-light);border:1px solid rgba(196,114,58,.2);border-radius:var(--radius);padding:20px 24px;margin-bottom:32px;font-size:14px;color:var(--text-sec);line-height:1.7}
+.info-box strong{color:var(--text)}
+
+footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
+
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">не с понедельника</div>
+    <div class="badge">партнёр</div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="hero">
+    <!-- ═══ НАЗВАНИЕ БЛОГЕРА ═══ -->
+    <div class="partner-name">КАНАЛ БЛОГЕРА</div>
+    <div class="partner-sub">Партнёрская программа — Не с понедельника</div>
+  </div>
+
+  <!-- ═══ СТАТИСТИКА — МЕНЯТЬ ЦИФРЫ ═══ -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Переходов</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Купили</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">Конверсия</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num warm">0 ₽</div>
+      <div class="stat-label">Заработок</div>
+    </div>
+  </div>
+
+  <!-- ═══ КОМИССИИ ═══ -->
+  <div class="commission-box">
+    <h3>Комиссия за каждого купившего</h3>
+    <div class="commission-row"><span>Соло-тариф (8 880 ₽)</span><span>+1 700 ₽</span></div>
+    <div class="commission-row"><span>Тариф 1+1 (11 110 ₽)</span><span>+2 100 ₽</span></div>
+    <div class="commission-row"><span>Начисляется</span><span>при оплате</span></div>
+  </div>
+
+  <!-- ═══ ССЫЛКА ═══ -->
+  <div class="link-box">
+    <h3>Твоя ссылка</h3>
+    <div class="link-row">
+      <!-- ═══ МЕНЯТЬ КОД РЕФЕРАЛА ═══ -->
+      <input class="link-input" id="refLink" value="https://notfrommonday.ru/?r=a3f8b2" readonly>
+      <button class="copy-btn" id="copyBtn" onclick="copyLink()">Копировать</button>
+    </div>
+  </div>
+
+  <!-- ═══ ИНФО ═══ -->
+  <div class="info-box">
+    <strong>Как это работает:</strong> люди переходят по твоей ссылке на сайт, видят специальную цену и оплачивают. Количество переходов мы отслеживаем через Яндекс.Метрику по параметру <code>?r=</code>. Данные обновляются вручную.
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>Не с понедельника · 2026</p>
+  </div>
+</footer>
+
+<script>
+function copyLink(){
+  const inp=document.getElementById('refLink');
+  inp.select();
+  navigator.clipboard.writeText(inp.value).then(()=>{
+    const btn=document.getElementById('copyBtn');
+    btn.textContent='Скопировано ✓';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Копировать';btn.classList.remove('copied')},2000);
+  });
+}
+</script>
+</body>
+</html>
