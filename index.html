@@ -587,6 +587,7 @@ if(refName){
 }
 
 const API='https://api.notfrommonday.ru';
+if(refName){fetch(API+'/api/track-visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:refName})}).catch(()=>{});}
 function showAlert(text){
   const html=String(text).replace(/@([A-Za-z0-9_]+)/g,'<a href="https://t.me/$1" target="_blank" rel="noopener" style="color:var(--warm);text-decoration:underline">@$1</a>');
   const ov=document.createElement('div');

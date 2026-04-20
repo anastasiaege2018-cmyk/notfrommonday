@@ -45,8 +45,20 @@ header .container{display:flex;align-items:center;justify-content:space-between}
 .copy-btn:hover{opacity:.9}
 .copied{background:#2a7a4b!important}
 
+.recent-box{background:var(--card);border-radius:var(--radius);padding:24px 28px;margin-bottom:32px;box-shadow:var(--shadow)}
+.recent-box h3{font-size:16px;font-weight:700;margin-bottom:14px}
+.recent-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+.recent-row:last-child{border:none}
+.recent-row .tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:12px;background:var(--warm-light);color:var(--warm);text-transform:uppercase}
+.recent-row .direction{flex:1;padding:0 12px;color:var(--text)}
+.recent-row .when{color:var(--text-sec);font-size:12px;font-variant-numeric:tabular-nums}
+.muted{color:var(--text-sec);font-size:13px;text-align:center;padding:16px 0}
+
 .info-box{background:var(--warm-light);border:1px solid rgba(196,114,58,.2);border-radius:var(--radius);padding:20px 24px;margin-bottom:32px;font-size:14px;color:var(--text-sec);line-height:1.7}
 .info-box strong{color:var(--text)}
+
+.refresh-btn{background:transparent;color:var(--text-sec);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;cursor:pointer;margin:0 auto 24px;display:block}
+.refresh-btn:hover{color:var(--text);border-color:var(--warm)}
 
 footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
 
@@ -66,52 +78,53 @@ footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
 
 <div class="container">
   <div class="hero">
-    <!-- ═══ НАЗВАНИЕ БЛОГЕРА ═══ -->
-    <div class="partner-name">Соня</div>
+    <div class="partner-name" id="partnerName">…</div>
     <div class="partner-sub">Партнёрская программа — Не с понедельника</div>
   </div>
 
-  <!-- ═══ СТАТИСТИКА — МЕНЯТЬ ЦИФРЫ ═══ -->
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-num">0</div>
+      <div class="stat-num" id="stVisits">—</div>
       <div class="stat-label">Переходов</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">0</div>
+      <div class="stat-num" id="stPurchases">—</div>
       <div class="stat-label">Купили</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">0%</div>
+      <div class="stat-num" id="stConversion">—</div>
       <div class="stat-label">Конверсия</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num warm">0 ₽</div>
+      <div class="stat-num warm" id="stEarnings">—</div>
       <div class="stat-label">Заработок</div>
     </div>
   </div>
 
-  <!-- ═══ КОМИССИИ ═══ -->
+  <button class="refresh-btn" id="refreshBtn">Обновить статистику</button>
+
   <div class="commission-box">
     <h3>Комиссия за каждого купившего</h3>
-    <div class="commission-row"><span>Соло-тариф (8 880 ₽)</span><span>+1 700 ₽</span></div>
-    <div class="commission-row"><span>Тариф 1+1 (11 110 ₽)</span><span>+2 100 ₽</span></div>
+    <div class="commission-row"><span>Соло-тариф</span><span>+1 700 ₽</span></div>
+    <div class="commission-row"><span>Тариф 1+1</span><span>+2 100 ₽</span></div>
     <div class="commission-row"><span>Начисляется</span><span>при оплате</span></div>
   </div>
 
-  <!-- ═══ ССЫЛКА ═══ -->
+  <div class="recent-box">
+    <h3>Последние оплаты</h3>
+    <div id="recentList"><div class="muted">загрузка…</div></div>
+  </div>
+
   <div class="link-box">
     <h3>Твоя ссылка</h3>
     <div class="link-row">
-      <!-- ═══ МЕНЯТЬ КОД РЕФЕРАЛА ═══ -->
-      <input class="link-input" id="refLink" value="https://notfrommonday.ru/?r=a3f8b2" readonly>
+      <input class="link-input" id="refLink" value="https://notfrommonday.ru/sonya.html" readonly>
       <button class="copy-btn" id="copyBtn" onclick="copyLink()">Копировать</button>
     </div>
   </div>
 
-  <!-- ═══ ИНФО ═══ -->
   <div class="info-box">
-    <strong>Как это работает:</strong> люди переходят по твоей ссылке на сайт, видят специальную цену и оплачивают. Количество переходов мы отслеживаем через Яндекс.Метрику по параметру <code>?r=</code>. Данные обновляются вручную.
+    <strong>Как это работает:</strong> люди переходят по твоей ссылке, видят специальную цену и оплачивают. Мы считаем переходы и оплаты автоматически. Данные обновляются в реальном времени — нажми «Обновить», чтобы подтянуть свежие.
   </div>
 </div>
 
@@ -122,16 +135,59 @@ footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
 </footer>
 
 <script>
+const API='https://api.notfrommonday.ru';
+const REF_TO_NAME={'sonya':'Соня','blogger2':'Блогер'};
+const REF_TO_LINK={
+  'sonya':'https://notfrommonday.ru/sonya.html',
+  'blogger2':'https://notfrommonday.ru/?r=x7k2d9'
+};
+const ref=(new URLSearchParams(location.search).get('ref')||'sonya').toLowerCase();
+
+document.getElementById('partnerName').textContent=REF_TO_NAME[ref]||ref;
+document.getElementById('refLink').value=REF_TO_LINK[ref]||'https://notfrommonday.ru/';
+
+function fmtRub(n){return new Intl.NumberFormat('ru-RU').format(n)+' ₽'}
+function fmtDate(iso){
+  try{const d=new Date(iso);return d.toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});}catch(e){return iso}
+}
+
+async function loadStats(){
+  try{
+    const res=await fetch(API+'/api/partner-stats?ref='+encodeURIComponent(ref));
+    const j=await res.json();
+    if(!j.ok)throw new Error(j.error||'api_error');
+    document.getElementById('stVisits').textContent=j.visits;
+    document.getElementById('stPurchases').textContent=j.total_purchases;
+    document.getElementById('stConversion').textContent=j.conversion+'%';
+    document.getElementById('stEarnings').textContent=fmtRub(j.earnings);
+
+    const box=document.getElementById('recentList');
+    if(!j.recent||!j.recent.length){
+      box.innerHTML='<div class="muted">пока нет оплат</div>';
+    }else{
+      box.innerHTML=j.recent.map(r=>{
+        const tag=r.kind==='combo'?'1+1':'соло';
+        return `<div class="recent-row"><span class="tag">${tag}</span><span class="direction">${r.direction||'—'}</span><span class="when">${fmtDate(r.received_at)}</span></div>`;
+      }).join('');
+    }
+  }catch(e){
+    document.getElementById('stVisits').textContent='?';
+    document.getElementById('recentList').innerHTML='<div class="muted">Не удалось загрузить: '+e.message+'</div>';
+  }
+}
+
 function copyLink(){
   const inp=document.getElementById('refLink');
   inp.select();
   navigator.clipboard.writeText(inp.value).then(()=>{
     const btn=document.getElementById('copyBtn');
-    btn.textContent='Скопировано ✓';
-    btn.classList.add('copied');
+    btn.textContent='Скопировано ✓';btn.classList.add('copied');
     setTimeout(()=>{btn.textContent='Копировать';btn.classList.remove('copied')},2000);
   });
 }
+
+document.getElementById('refreshBtn').addEventListener('click',loadStats);
+loadStats();
 </script>
 </body>
 </html>
