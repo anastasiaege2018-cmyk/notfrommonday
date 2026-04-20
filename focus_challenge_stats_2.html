@@ -7,11 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f8f7f4; --card: #fff; --card-hover: #fafafa; --border: #e4e2dd;
+  --bg: #f8f7f4; --card: #fff; --border: #e4e2dd;
   --text: #1a1a1f; --text2: #6b6b78;
   --accent: #7c4dff; --accent2: #a57dff;
-  --green: #1a9d55; --blue: #2b7fd4; --purple: #7c4dff; --pink: #e0436c;
-  --yellow: #c9920a; --teal: #0e8a7d;
+  --green: #1a9d55; --blue: #2b7fd4; --yellow: #c9920a; --teal: #0e8a7d;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; min-height: 100vh; overflow-x: hidden; }
@@ -50,7 +49,6 @@ h1 span { color: var(--accent); }
 .participant .name { font-family: 'Dela Gothic One', sans-serif; font-size: 16px; line-height: 1.2; }
 .participant .streak { font-size: 12px; font-weight: 700; color: var(--accent); white-space: nowrap; }
 .participant .desc { font-size: 14px; color: var(--text2); line-height: 1.55; margin-bottom: 12px; }
-.participant .qt { background: var(--bg); border-left: 3px solid var(--accent); padding: 10px 14px; margin: 10px 0 12px; font-size: 13px; color: var(--text); font-style: italic; border-radius: 4px; line-height: 1.45; }
 .participant .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .participant .tag { font-size: 11px; padding: 4px 10px; border-radius: 100px; font-weight: 600; background: var(--bg); color: var(--text2); border: 1px solid var(--border); }
 .insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
@@ -78,7 +76,7 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
 <div class="big-stats">
   <div class="big-stat">
     <div class="icon">🎯</div>
-    <div class="value" style="color:var(--accent)">436</div>
+    <div class="value" style="color:var(--accent)">455</div>
     <div class="label">Отчётов за челлендж</div>
     <div class="glow" style="background:var(--accent)"></div>
   </div>
@@ -90,13 +88,13 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
   </div>
   <div class="big-stat">
     <div class="icon">🏆</div>
-    <div class="value" style="color:var(--green)">0</div>
+    <div class="value" style="color:var(--green)">7</div>
     <div class="label">Дошли до 28/28</div>
     <div class="glow" style="background:var(--green)"></div>
   </div>
   <div class="big-stat">
     <div class="icon">📈</div>
-    <div class="value" style="color:var(--blue)">82%</div>
+    <div class="value" style="color:var(--blue)">86%</div>
     <div class="label">Среднее выполнение</div>
     <div class="glow" style="background:var(--blue)"></div>
   </div>
@@ -106,220 +104,201 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
 <div class="section">
   <div class="section-title">🔥 Дисциплина: кто не пропускал</div>
   <div class="leaderboard">
-    <div class="progress-row"><div class="progress-name">Алёна По</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Olya Kharitonova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Евгения</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Лика Артэн</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Natalya Dyakova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Николай Заляпин</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Evgeniya Lamteva</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Alina Ushakova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">26 / 28</div></div><div class="progress-count">93%</div></div>
-    <div class="progress-row"><div class="progress-name">Raisa Voitsekhovskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">26 / 28</div></div><div class="progress-count">93%</div></div>
-    <div class="progress-row"><div class="progress-name">Yulia Yakovenko</div><div class="progress-bar-bg"><div class="progress-bar" style="width:89%;background:var(--green)">25 / 28</div></div><div class="progress-count">89%</div></div>
-    <div class="progress-row"><div class="progress-name">Абрамян Мери</div><div class="progress-bar-bg"><div class="progress-bar" style="width:86%;background:var(--blue)">24 / 28</div></div><div class="progress-count">86%</div></div>
-    <div class="progress-row"><div class="progress-name">Maksim Starov</div><div class="progress-bar-bg"><div class="progress-bar" style="width:82%;background:var(--blue)">23 / 28</div></div><div class="progress-count">82%</div></div>
-    <div class="progress-row"><div class="progress-name">Yulia Zalesskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:82%;background:var(--blue)">23 / 28</div></div><div class="progress-count">82%</div></div>
-    <div class="progress-row"><div class="progress-name">Данила Савченко</div><div class="progress-bar-bg"><div class="progress-bar" style="width:79%;background:var(--blue)">22 / 28</div></div><div class="progress-count">79%</div></div>
-    <div class="progress-row"><div class="progress-name">Тема</div><div class="progress-bar-bg"><div class="progress-bar" style="width:75%;background:var(--blue)">21 / 28</div></div><div class="progress-count">75%</div></div>
-    <div class="progress-row"><div class="progress-name">Tatiana Bartiuk</div><div class="progress-bar-bg"><div class="progress-bar" style="width:57%;background:var(--text2)">16 / 28</div></div><div class="progress-count">57%</div></div>
-    <div class="progress-row"><div class="progress-name">Dasha</div><div class="progress-bar-bg"><div class="progress-bar" style="width:57%;background:var(--text2)">16 / 28</div></div><div class="progress-count">57%</div></div>
-    <div class="progress-row"><div class="progress-name">Elvira Polonskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:54%;background:var(--text2)">15 / 28</div></div><div class="progress-count">54%</div></div>
-    <div class="progress-row"><div class="progress-name">Pavel Pletnev</div><div class="progress-bar-bg"><div class="progress-bar" style="width:36%;background:var(--text2)">10 / 28</div></div><div class="progress-count">36%</div></div>
+    <div class="progress-row"><div class="progress-name">Алёна По</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Olya Kharitonova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Евгения</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Лика Артэн</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Natalya Dyakova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Николай Заляпин</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Evgeniya Lamteva</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Alina Ushakova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
+    <div class="progress-row"><div class="progress-name">Raisa Voitsekhovskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
+    <div class="progress-row"><div class="progress-name">Yulia Yakovenko</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">26 / 28</div></div><div class="progress-count">93%</div></div>
+    <div class="progress-row"><div class="progress-name">Абрамян Мери</div><div class="progress-bar-bg"><div class="progress-bar" style="width:89%;background:var(--green)">25 / 28</div></div><div class="progress-count">89%</div></div>
+    <div class="progress-row"><div class="progress-name">Maksim Starov</div><div class="progress-bar-bg"><div class="progress-bar" style="width:86%;background:var(--blue)">24 / 28</div></div><div class="progress-count">86%</div></div>
+    <div class="progress-row"><div class="progress-name">Yulia Zalesskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:86%;background:var(--blue)">24 / 28</div></div><div class="progress-count">86%</div></div>
+    <div class="progress-row"><div class="progress-name">Данила Савченко</div><div class="progress-bar-bg"><div class="progress-bar" style="width:82%;background:var(--blue)">23 / 28</div></div><div class="progress-count">82%</div></div>
+    <div class="progress-row"><div class="progress-name">Тема ❤️</div><div class="progress-bar-bg"><div class="progress-bar" style="width:79%;background:var(--blue)">22 / 28</div></div><div class="progress-count">79%</div></div>
+    <div class="progress-row"><div class="progress-name">Tatiana Bartiuk</div><div class="progress-bar-bg"><div class="progress-bar" style="width:61%;background:var(--text2)">17 / 28</div></div><div class="progress-count">61%</div></div>
+    <div class="progress-row"><div class="progress-name">Dasha</div><div class="progress-bar-bg"><div class="progress-bar" style="width:61%;background:var(--text2)">17 / 28</div></div><div class="progress-count">61%</div></div>
+    <div class="progress-row"><div class="progress-name">Elvira Polonskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:57%;background:var(--text2)">16 / 28</div></div><div class="progress-count">57%</div></div>
+    <div class="progress-row"><div class="progress-name">Pavel Pletnev</div><div class="progress-bar-bg"><div class="progress-bar" style="width:39%;background:var(--text2)">11 / 28</div></div><div class="progress-count">39%</div></div>
   </div>
 </div>
 
 <!-- Participants -->
 <div class="section">
-  <div class="section-title">👤 Каждый участник и его практика</div>
+  <div class="section-title">👤 Каждый участник и его итоги</div>
   <div class="participants">
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Алёна По</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Алёна По</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Алёна, 38, продуктовый и фродовый аналитик в геймдеве, выбрала «Фокус» ради задач по «приёмке своей ипотечной квартиры». Она отмечает, что «классно уходит тревога перед делом при смещении акцента» с личного дела на задание челленджа. Договорилась о приёмке и искала юриста по взысканию неустойки за просрочку.</div>
-      <blockquote class="qt">«отмечаю то, как классно уходит тревога перед делом при смещении акцента»</blockquote>
-      <div class="tags"><span class="tag morning">приёмка ипотечной квартиры</span></div>
+      <div class="desc">Держала фокус на приёмке ипотечной квартиры: нашла грамотного приёмщика по рекомендации, договорилась с юристом по неустойке, доехала до приёмки. Осознала: «как классно уходит тревога перед делом при смещении акцента».</div>
+      <div class="tags"><span class="tag">приёмка квартиры</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Olya Kharitonova</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Olya Kharitonova</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Оля, 43, HRD «в отставке», мама троих детей в Петербурге, называет себя «фанаткой детей, спорта и книг». В фокусе у неё бытовые и семейные дела, запуск разговорного клуба Stranger Things и подготовка книжной встречи по «Люси Краун». Отмечает: «когда вот так это выписываешь, точно пойдешь и сделаешь, не сместив приоритет на другое».</div>
-      <blockquote class="qt">«Жду новую неделю и новую свежую энергию жить»</blockquote>
-      <div class="tags"><span class="tag morning">семья, быт, книжный клуб</span></div>
+      <div class="desc">Запустила книжный клуб и английский разговорный клуб для подростков-фанатов Stranger Things, организовала опрос HR-команды проекта. «Поняла, что когда вот так это выписываешь, точно пойдешь и сделаешь, не сместив приоритет на другое».</div>
+      <div class="tags"><span class="tag">разговорный клуб</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Евгения</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Евгения</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Евгения, 56, UX/UI-дизайнер в стартапе, пришла в фокус, потому что «есть целый список классных дел». Её ежедневный план включал «1 занятие по n8n», посты в тг-канал, английский и чтение бумажной книги; на неделю — аренду машиноместа, спортклуб и танцы. В финале съездила в Бодрум и разведала места для пробежки.</div>
-      <blockquote class="qt">«Думаю, в компании это будет веселее))»</blockquote>
-      <div class="tags"><span class="tag morning">бытовые задачи, учёба, спорт</span></div>
+      <div class="desc">Каждый день — занятие по n8n, пост в тг-канал, английский. Арендовала машиноместо, записалась в спортклуб, долетела до Бодрума. #подарок — «отключу телефон на сутки, буду наслаждаться отсутствием обязательств».</div>
+      <div class="tags"><span class="tag">список дел</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Лика Артэн</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Лика Артэн</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Лика проходит «уже второй поток Фокуса» и работает над «перезапуском своего дизайн-бюро». За челлендж придумала новую структуру дизайн-альбома, сделала шаблон в InDesign, разобралась с форматом подачи спецификаций и составила шорт-лист курсов по ИИ для визуализаций. Пишет: «когда пишу рукой - в голове больше ясности».</div>
-      <blockquote class="qt">«Придумала и утвердила новую структуру дизайн-альбома»</blockquote>
-      <div class="tags"><span class="tag morning">перезапуск дизайн-бюро</span></div>
+      <div class="desc">Перезапуск дизайн-бюро: придумала и утвердила новую структуру дизайн-альбома, собрала шаблон в InDesign, нашла компромисс по сметам — «этот момент мучал меня последние несколько проектов».</div>
+      <div class="tags"><span class="tag">перезапуск бюро</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Natalya Dyakova</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Natalya Dyakova</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Наталья из Чебоксар, художник по стеклу, выбрала фокус, потому что «от многозадачности в итоге многое откладываю и не продвигаюсь к цели». За месяц выгрузила задачи в таблицы с помощью Клода, начала пробежки и холодный душ, сдала вторсырьё и посетила Форум городских инициатив. В финале признаёт: «делаю много и по чуть-чуть, но по сути задачи не закрываются полностью».</div>
-      <blockquote class="qt">«решила «съедать» по одному пучку в день»</blockquote>
-      <div class="tags"><span class="tag morning">систематизация задач художника</span></div>
+      <div class="desc">Выгрузила все задачи в таблицу с помощью Клода, первая встреча с «10й из Аномалии» прошла успешно. Наконец-то сдала накопленное вторсырьё — «не складывалось к ним доехать почти полгода».</div>
+      <div class="tags"><span class="tag">проект и рутина</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Николай Заляпин</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Николай Заляпин</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Николай, системный аналитик в банке, помогает жене с проектом по хоумстейджингу и называет себя «жёстким прокрастинатором». В этом потоке использовал навык «Планировщик задач» в Claude и решил утренние задачи делать до работы. К финалу снял и выложил два рилса, отмечая: «Очень много вопросов к качеству. Но начало положено».</div>
-      <blockquote class="qt">«Мы залили два рилса»</blockquote>
-      <div class="tags"><span class="tag morning">рилсы для хоумстейджинга</span></div>
+      <div class="desc">Сделал и залил два рилса для проекта жены по хоумстейджингу — «это случилось, мы залили два рилса». Стал делать задачи утром до работы, чтобы справляться с прокрастинацией.</div>
+      <div class="tags"><span class="tag">рилсы и утро</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Evgeniya Lamteva</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Evgeniya Lamteva</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Женя, 42, занимается обучением и развитием в корпорации, пришла в фокус, «тк есть много мелких дел, которые откладываю». Вела два списка — «делишки» и активности по трём фокусам года: здоровье, отношения, проявленность. В финале закрыла висяки: «почистила фильтры водяные и переконструировала шкаф», сделала дело на госуслугах для родителей.</div>
-      <blockquote class="qt">«Нравится мне как работает вселенная))»</blockquote>
-      <div class="tags"><span class="tag morning">мелкие висящие дела</span></div>
+      <div class="desc">Закрыла накопившиеся висяки: купила винный шкаф, переконструировала шкаф под длинное пальто, почистила водяные фильтры, дошла до пилатеса, закрыла нудное дело на госуслугах за родителей.</div>
+      <div class="tags"><span class="tag">висящие дела</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥈 Alina Ushakova</div>
-        <div class="streak">26 отчётов</div>
+        <div class="streak">27 отчётов</div>
       </div>
-      <div class="desc">Алина, 41, пришла «с привычкой Осознанность», до этого медитациями не занималась. Выяснила, что её «лучшее время для медитации - перед сном», и пыталась расширить осознанность на повседневность — например, не ругаться за рулём. Месяц шёл параллельно с соревнованиями дочери по синхронному плаванию и книжным клубом по «Гроздьям гнева».</div>
-      <blockquote class="qt">«Хочу эту свою неприглядную сторону личности перевоспитать»</blockquote>
-      <div class="tags"><span class="tag morning">осознанность и медитация</span></div>
+      <div class="desc">Совмещала медитацию с поездками на соревнования дочери по синхронному плаванию. «Осознала, что моё лучшее время для медитации — перед сном». Организовала фотоальбом класса сама после отказа спец-компании.</div>
+      <div class="tags"><span class="tag">медитация и семья</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥈 Raisa Voitsekhovskaya</div>
-        <div class="streak">26 отчётов</div>
+        <div class="streak">27 отчётов</div>
       </div>
-      <div class="desc">Раиса, 43, психолог из Москвы, взяла «спорт и фокус, что бы в команде единомышленников внедрить здоровые привычки». В списке недели — обновить компьютер, забронировать летний лагерь, начать кейс по «Наблюдению за младенцами», разобрать гардероб, заказать фотокнигу. В финале отмечает, что «благодаря совместной встрече и технике Pomodoro, очень рутинная, отложенная задача сделалась легко».</div>
-      <blockquote class="qt">«все начатые дела окончательно выполнены»</blockquote>
-      <div class="tags"><span class="tag morning">спорт и бытовые висяки</span></div>
+      <div class="desc">Закрыла план недели: обновила рабочий комп, записалась в Управу, заказала фотокнигу, согласовала с дочкой план подготовки к ОГЭ. «Благодаря совместной встрече и технике Pomodoro, очень рутинная, отложенная задача сделалась легко».</div>
+      <div class="tags"><span class="tag">важные задачи</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥈 Yulia Yakovenko</div>
-        <div class="streak">25 отчётов</div>
+        <div class="streak">26 отчётов</div>
       </div>
-      <div class="desc">Юля, 42, из Переделкино, «окончательно задолбалась» в корпорациях и запускает два собственных проекта. Первую неделю посвятила випассане, «чтобы очистить мысли и перейти к действиям», и параллельно стала амбассадором приюта для собак. К финалу записалась на день открытых дверей и дизайнер взялась за проект.</div>
-      <blockquote class="qt">«проекты сами себя не запустят»</blockquote>
-      <div class="tags"><span class="tag morning">запуск собственных проектов</span></div>
+      <div class="desc">Запускала два собственных проекта после ухода из корпораций: записалась на день открытых дверей, дизайнер взялась за проект. Первую неделю посвятила випассане, чтобы «очистить мысли и перейти к действиям».</div>
+      <div class="tags"><span class="tag">запуск проектов</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥉 Абрамян Мери</div>
-        <div class="streak">24 отчётов</div>
+        <div class="name">🥈 Абрамян Мери</div>
+        <div class="streak">25 отчётов</div>
       </div>
-      <div class="desc">Мери, 41, специализируется на госфинансировании, выбрала фокус, чтобы «приоритизировать дела, которые вечно не успеваю (систематизировать бытовую жизнь)». За челлендж расчехлила рабочий гардероб, передала план по проекту, увиделась с помощницей Нелли и начала учиться писать промты. К финалу сходила на баскетбол и помогла родителям с дачей и МФЦ.</div>
-      <blockquote class="qt">«подключаюсь к неизбежному будущему»</blockquote>
-      <div class="tags"><span class="tag morning">бытовые и рабочие висяки</span></div>
+      <div class="desc">Расчехлила рабочий гардероб и раздала ненужное в фонд, передала план по проекту, выбралась вовремя с работы, вынесли со старый диван родителям. «Сегодня насвиданичелась с собой и составила план на май».</div>
+      <div class="tags"><span class="tag">бытовая систематизация</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥉 Maksim Starov</div>
-        <div class="streak">23 отчётов</div>
+        <div class="streak">24 отчётов</div>
       </div>
-      <div class="desc">Максим, 38, из Костромы, ИТ-предприниматель, пишет что «чрезмерно много хочу успеть за 24 часа — нужен фокус!». На неделю запланировал КП по продаже бизнес-направления, поездку команды в Сколково, ДР сына в банном комплексе и обследование папы. В финале провёл два дня на даче: «рыбалка, днем волейбол, вечером кино».</div>
-      <blockquote class="qt">«С таким составом хоть в разведку»</blockquote>
-      <div class="tags"><span class="tag morning">приоритеты в IT-предпринимательстве</span></div>
+      <div class="desc">Продал отвлекающее бизнес-направление последних 9 лет, съездил с командой в Сколково на повышение квалификации, отправил папу на обследование. «Несколько раз словил себя в моменте про то что рад что получилось задуманное».</div>
+      <div class="tags"><span class="tag">продажа бизнеса</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥉 Yulia Zalesskaya</div>
-        <div class="streak">23 отчётов</div>
+        <div class="streak">24 отчётов</div>
       </div>
-      <div class="desc">Юля, психолог и CHO в российско-новозеландской компании, пришла «чтобы держать фокус на том, что для меня сейчас важно. А то часто ухожу в более мелкие и срочные дела». За месяц сходила на лекцию в МГУ «ТОЛЬКО из-за челленджа», сделала чекап родинок, уплатила налоги и штраф, побывала на концерте Мацуева. Отмечает, что «спорт например вообще просел».</div>
-      <blockquote class="qt">«надо провести ревизию целей»</blockquote>
-      <div class="tags"><span class="tag morning">фокус на важном в работе и здоровье</span></div>
+      <div class="desc">Дошла до остеопата, сделала чекап родинок — «откладывала года 2, очень успешно в итоге», уплатила налоги, сходила на лекцию в МГУ «ТОЛЬКО из-за челленджа». Сходила на любимого Мацуева.</div>
+      <div class="tags"><span class="tag">отложенное здоровье</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥉 Данила Савченко</div>
-        <div class="streak">22 отчётов</div>
+        <div class="streak">23 отчётов</div>
       </div>
-      <div class="desc">Даня ведёт челлендж и параллельно «боевую неделю» — самым сложным называет общение с сыном от первого брака, обучение которого взял на себя. Записывает разговоры на plaude и «разгоняет план действий через ChatGPT», делает встречи по учёбе с сыном через расшифровку ИИ. Также закрывал задачу с оборудованием через Авито.</div>
-      <blockquote class="qt">«у меня супер боевая неделя»</blockquote>
-      <div class="tags"><span class="tag morning">учёба сына и AI-инструменты</span></div>
+      <div class="desc">Ведущий челленджа. Взял на себя обучение сына от первого брака — записывает разговоры и разгоняет через ChatGPT как с психологом по подросткам. Закрыл задачу с оборудованием через Авито.</div>
+      <div class="tags"><span class="tag">ведущий и сын</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥉 Тема</div>
-        <div class="streak">21 отчётов</div>
+        <div class="name">🥉 Тема ❤️</div>
+        <div class="streak">22 отчётов</div>
       </div>
-      <div class="desc">Артём, 27, из Анапы, у которого «несколько IT продуктов и небольшое рекламное агентство», выбрал фокус потому что «учусь быть усидчивым и сфокусированным». Запустил и тестирует новый продукт, делал апдейт другого продукта. Отмечает: «благодаря отчетом, стал четче понимать что вообще делаю». В финальные дни поделился рецептом борща на квашеной капусте.</div>
-      <blockquote class="qt">«эти отчеты даются ой как не просто»</blockquote>
-      <div class="tags"><span class="tag morning">IT-продукты и блог</span></div>
+      <div class="desc">Запустил новый IT-продукт и тестирует его сутки, доделал отложенный апдейт на 80%. «Благодаря отчётом, стал четче понимать что вообще делаю». Автор средства для песка от мазута в Анапе.</div>
+      <div class="tags"><span class="tag">запуск продукта</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">Tatiana Bartiuk</div>
-        <div class="streak">16 отчётов</div>
+        <div class="streak">17 отчётов</div>
       </div>
-      <div class="desc">Татьяна, 49, карьерный консультант и коуч, «в последнее время чувствую как раз расфокус». Один из её фокусов — «перезагрузка отношений»: писала письмо мужу, ввела в семье утренний ритуал «focus of the day». Приступила «к разработке личной стратегии с GPT и коучем», адаптировала цели на 2026-2027 через буддистскую практику «помятование».</div>
-      <blockquote class="qt">«Хочу определить приоритеты и дойти в них до результатов»</blockquote>
-      <div class="tags"><span class="tag morning">личная стратегия и отношения</span></div>
+      <div class="desc">Фокусы — отношения и реализация: разговор с мужем с позитивным результатом, sold out по мероприятию, ввела в семье ритуал «focus of the day», начала личную стратегию с GPT и коучем.</div>
+      <div class="tags"><span class="tag">стратегия и отношения</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">Dasha</div>
-        <div class="streak">16 отчётов</div>
+        <div class="streak">17 отчётов</div>
       </div>
-      <div class="desc">Даша в первый день не удержалась и «выписала 20 пунктов». За челлендж определила маршрут по Азии, навела порядок в заметках по обучению, сходила на тренировку после долгого перерыва. В финальные дни — дни «без сладкого», тренинги от психолога и сессия с психологом.</div>
-      <blockquote class="qt">«Посмотрим сколько в итоге сделаю»</blockquote>
-      <div class="tags"><span class="tag morning">обучение и быт</span></div>
+      <div class="desc">Определила маршрут по Азии, вернулась к тренировкам после перерыва, навела порядок в заметках по обучению. Держала день без сладкого, смотрела тренинги и ходила на сессии с психологом.</div>
+      <div class="tags"><span class="tag">маршрут и тренировки</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">Elvira Polonskaya</div>
-        <div class="streak">15 отчётов</div>
+        <div class="streak">16 отчётов</div>
       </div>
-      <div class="desc">Эльвира составила список по категориям: дом (измельчитель, тюль, комод), хобби (вокал, фортепьяно, процесс Хоффмана, обучение по ИИ), висящие дела (исполнительная надпись, смена резины) и здоровье/аскеза. Заполнила анкету и записалась на интервью по процессу Хоффмана, пела «с живым оркестром», продолжала искать няню и переговоры по алиментам.</div>
-      <blockquote class="qt">«первый раз буду петь в таком формате, волнуюсь»</blockquote>
-      <div class="tags"><span class="tag morning">дом, хобби и висящие дела</span></div>
+      <div class="desc">Записалась на процесс Хоффмана, спела в первый раз с живым оркестром на концерте, продолжила переговоры по алиментам, сходила к двум врачам. Разбиралась с исполнительной надписью нотариуса онлайн.</div>
+      <div class="tags"><span class="tag">концерт и висяки</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">Pavel Pletnev</div>
-        <div class="streak">10 отчётов</div>
+        <div class="streak">11 отчётов</div>
       </div>
-      <div class="desc">Павел, 50, предприниматель с фитнес-клубами и клиникой эстетической медицины, был «в 100+ странах» и «очень люблю прокрастинировать и объяснять себе, почему так надо было». Список недели включал ВНЖ Испании, рекрутмент руководителя клиники, собеседования с врачами, МРТ плеча и пептидный протокол. В финальных отчётах — подготовка оффера директору клиники и презентация новой мотивации для отдела продаж.</div>
-      <blockquote class="qt">«Доволен как слон»</blockquote>
-      <div class="tags"><span class="tag morning">бизнес-висяки и ВНЖ Испании</span></div>
+      <div class="desc">Провёл 4 собеседования вместо 3 и подготовил оффер директору клиники, презентовал новую мотивацию отдела продаж, доехал до врача «(задержка на 3 недели)». «Доволен как слон».</div>
+      <div class="tags"><span class="tag">директор клиники</span></div>
     </div>
   </div>
 </div>
@@ -330,24 +309,24 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
   <div class="insights">
 
     <div class="insight">
-      <div class="emoji">🎯</div>
-      <div class="hl-title">Фокус = на «висящих» делах</div>
-      <div class="hl-desc">Самые частые темы: приёмка квартиры, запуск собственных проектов, бытовые висяки, обучение и курсы, рабочие задачи. Общее: то, что долго откладывалось и наконец-то получило внимание.</div>
-    </div>
-    <div class="insight">
       <div class="emoji">🧠</div>
       <div class="hl-title">Смещение акцента работает</div>
       <div class="hl-desc"><strong>Алёна:</strong> «классно уходит тревога перед делом при смещении акцента — что мне надо не столько сделать это дело, сколько выполнить задание челленджа».</div>
     </div>
     <div class="insight">
-      <div class="emoji">🤖</div>
-      <div class="hl-title">AI-инструменты в ходу</div>
-      <div class="hl-desc">Участники использовали Claude, ChatGPT, plaude, n8n — для планирования, расшифровки встреч, структурирования задач и обучения.</div>
+      <div class="emoji">✍️</div>
+      <div class="hl-title">Выписанное — сделанное</div>
+      <div class="hl-desc"><strong>Olya:</strong> «когда вот так это выписываешь, точно пойдешь и сделаешь, не сместив приоритет на другое». <strong>Natalya:</strong> «решила „съедать" по одному пучку в день».</div>
     </div>
     <div class="insight">
-      <div class="emoji">📊</div>
-      <div class="hl-title">Структура помогает</div>
-      <div class="hl-desc"><strong>Natalya:</strong> «решила „съедать" по одному пучку в день». <strong>Olya:</strong> «когда вот так это выписываешь, точно пойдешь и сделаешь, не сместив приоритет на другое».</div>
+      <div class="emoji">🤖</div>
+      <div class="hl-title">AI-инструменты в ходу</div>
+      <div class="hl-desc">Claude, ChatGPT, plaude, n8n — для планирования, расшифровки встреч, структурирования задач и обучения. Многие использовали навык «Планировщик задач» в Claude.</div>
+    </div>
+    <div class="insight">
+      <div class="emoji">💡</div>
+      <div class="hl-title">Тема:</div>
+      <div class="hl-desc">«благодаря отчётом, стал четче понимать что вообще делаю — эти отчеты даются ой как не просто». Формат ежедневной сверки помог удерживать направление.</div>
     </div>
 
   </div>

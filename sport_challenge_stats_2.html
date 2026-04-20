@@ -7,11 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f8f7f4; --card: #fff; --card-hover: #fafafa; --border: #e4e2dd;
+  --bg: #f8f7f4; --card: #fff; --border: #e4e2dd;
   --text: #1a1a1f; --text2: #6b6b78;
   --accent: #1a9d55; --accent2: #2ac06f;
-  --green: #1a9d55; --blue: #2b7fd4; --purple: #7c4dff; --pink: #e0436c;
-  --yellow: #c9920a; --teal: #0e8a7d;
+  --green: #1a9d55; --blue: #2b7fd4; --yellow: #c9920a; --teal: #0e8a7d;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; min-height: 100vh; overflow-x: hidden; }
@@ -50,7 +49,6 @@ h1 span { color: var(--accent); }
 .participant .name { font-family: 'Dela Gothic One', sans-serif; font-size: 16px; line-height: 1.2; }
 .participant .streak { font-size: 12px; font-weight: 700; color: var(--accent); white-space: nowrap; }
 .participant .desc { font-size: 14px; color: var(--text2); line-height: 1.55; margin-bottom: 12px; }
-.participant .qt { background: var(--bg); border-left: 3px solid var(--accent); padding: 10px 14px; margin: 10px 0 12px; font-size: 13px; color: var(--text); font-style: italic; border-radius: 4px; line-height: 1.45; }
 .participant .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .participant .tag { font-size: 11px; padding: 4px 10px; border-radius: 100px; font-weight: 600; background: var(--bg); color: var(--text2); border: 1px solid var(--border); }
 .insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
@@ -78,7 +76,7 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
 <div class="big-stats">
   <div class="big-stat">
     <div class="icon">💪</div>
-    <div class="value" style="color:var(--accent)">312</div>
+    <div class="value" style="color:var(--accent)">323</div>
     <div class="label">Отчётов за челлендж</div>
     <div class="glow" style="background:var(--accent)"></div>
   </div>
@@ -90,13 +88,13 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
   </div>
   <div class="big-stat">
     <div class="icon">🏆</div>
-    <div class="value" style="color:var(--green)">2</div>
+    <div class="value" style="color:var(--green)">4</div>
     <div class="label">Дошли до 28/28</div>
     <div class="glow" style="background:var(--green)"></div>
   </div>
   <div class="big-stat">
     <div class="icon">📈</div>
-    <div class="value" style="color:var(--blue)">86%</div>
+    <div class="value" style="color:var(--blue)">89%</div>
     <div class="label">Среднее выполнение</div>
     <div class="glow" style="background:var(--blue)"></div>
   </div>
@@ -108,32 +106,31 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
   <div class="leaderboard">
     <div class="progress-row"><div class="progress-name">Anastasia Popova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
     <div class="progress-row"><div class="progress-name">Данила Савченко</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
-    <div class="progress-row"><div class="progress-name">Yulia Yakovenko</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">T K</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Yulia</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">26 / 28</div></div><div class="progress-count">93%</div></div>
-    <div class="progress-row"><div class="progress-name">Raisa Voitsekhovskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">26 / 28</div></div><div class="progress-count">93%</div></div>
-    <div class="progress-row"><div class="progress-name">Дарья</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">26 / 28</div></div><div class="progress-count">93%</div></div>
-    <div class="progress-row"><div class="progress-name">Nikita Gudkov</div><div class="progress-bar-bg"><div class="progress-bar" style="width:89%;background:var(--green)">25 / 28</div></div><div class="progress-count">89%</div></div>
-    <div class="progress-row"><div class="progress-name">Natalia</div><div class="progress-bar-bg"><div class="progress-bar" style="width:86%;background:var(--blue)">24 / 28</div></div><div class="progress-count">86%</div></div>
-    <div class="progress-row"><div class="progress-name">Vicky Tsoy</div><div class="progress-bar-bg"><div class="progress-bar" style="width:86%;background:var(--blue)">24 / 28</div></div><div class="progress-count">86%</div></div>
-    <div class="progress-row"><div class="progress-name">Artem Batukaev</div><div class="progress-bar-bg"><div class="progress-bar" style="width:86%;background:var(--blue)">24 / 28</div></div><div class="progress-count">86%</div></div>
-    <div class="progress-row"><div class="progress-name">Daria Tsema</div><div class="progress-bar-bg"><div class="progress-bar" style="width:61%;background:var(--text2)">17 / 28</div></div><div class="progress-count">61%</div></div>
-    <div class="progress-row"><div class="progress-name">Elvira Polonskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:36%;background:var(--text2)">10 / 28</div></div><div class="progress-count">36%</div></div>
+    <div class="progress-row"><div class="progress-name">Yulia Yakovenko</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">T K</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Yulia</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
+    <div class="progress-row"><div class="progress-name">Raisa Voitsekhovskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
+    <div class="progress-row"><div class="progress-name">Дарья</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
+    <div class="progress-row"><div class="progress-name">Nikita Gudkov</div><div class="progress-bar-bg"><div class="progress-bar" style="width:93%;background:var(--green)">26 / 28</div></div><div class="progress-count">93%</div></div>
+    <div class="progress-row"><div class="progress-name">Natalia</div><div class="progress-bar-bg"><div class="progress-bar" style="width:89%;background:var(--green)">25 / 28</div></div><div class="progress-count">89%</div></div>
+    <div class="progress-row"><div class="progress-name">Vicky Tsoy</div><div class="progress-bar-bg"><div class="progress-bar" style="width:89%;background:var(--green)">25 / 28</div></div><div class="progress-count">89%</div></div>
+    <div class="progress-row"><div class="progress-name">Artem Batukaev</div><div class="progress-bar-bg"><div class="progress-bar" style="width:89%;background:var(--green)">25 / 28</div></div><div class="progress-count">89%</div></div>
+    <div class="progress-row"><div class="progress-name">Daria Tsema</div><div class="progress-bar-bg"><div class="progress-bar" style="width:64%;background:var(--text2)">18 / 28</div></div><div class="progress-count">64%</div></div>
+    <div class="progress-row"><div class="progress-name">Elvira Polonskaya</div><div class="progress-bar-bg"><div class="progress-bar" style="width:39%;background:var(--text2)">11 / 28</div></div><div class="progress-count">39%</div></div>
   </div>
 </div>
 
 <!-- Participants -->
 <div class="section">
-  <div class="section-title">👤 Каждый участник и его практика</div>
+  <div class="section-title">👤 Каждый участник и его итоги</div>
   <div class="participants">
     <div class="participant">
       <div class="top">
         <div class="name">🏆 Anastasia Popova</div>
         <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Настя из Москвы пришла в челлендж с мечтой «научиться подтягиваться» и целью «хочу планку себе долгую». В процессе открыла «сезон уличных тренировок OCR» и завершила поток пробежкой у океана перед тренировками по серфингу, отмечая: «я за процесс в большей степени, мне просто кайфово заниматься».</div>
-      <blockquote class="qt">«мне просто жизненно необходимо куда-то девать энергию»</blockquote>
-      <div class="tags"><span class="tag morning">бег, OCR, серфинг</span></div>
+      <div class="desc">Открыла сезон уличных тренировок OCR: «это было просто капец как сложно, но очень круто». Завершила челлендж пробежкой у океана и первой тренировкой по серфингу.</div>
+      <div class="tags"><span class="tag">бег, OCR, серфинг</span></div>
     </div>
 
     <div class="participant">
@@ -141,119 +138,107 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
         <div class="name">🏆 Данила Савченко</div>
         <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Данила начал с первой пробежки в футболке, отметив: «Холодно млин но верю что скоро весна…». Готовился к «восхождению на 6500 в мае», бегал с новой группой друзей из Хамовников и встретился на разминку и бег с подписчиком-брокером, назвав это «Идеальный network».</div>
-      <blockquote class="qt">«Готовить надо себя к восхождению на 6500 в мае»</blockquote>
-      <div class="tags"><span class="tag morning">бег</span></div>
+      <div class="desc">Готовился к восхождению на 6500 в мае — бегал с рюкзаком, пробовал новые маршруты и группы. Одна из встреч обернулась неожиданным знакомством: «Идеальный network».</div>
+      <div class="tags"><span class="tag">бег, альпинизм</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Yulia Yakovenko</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Yulia Yakovenko</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Юля из Переделкино пришла во второй поток после первого, где «поменяла график тренировок (добавила 1 силовую), установила fat secret и слежу за кбжу». Поставила дополнительную цель «похудеть на 3-5 кг» и к финалу написала: «силовая тренировка и дорожка, полюбила силовые с вами!».</div>
-      <blockquote class="qt">«полюбила силовые с вами!»</blockquote>
-      <div class="tags"><span class="tag morning">силовые, ходьба</span></div>
+      <div class="desc">Полюбила силовые: «силовая тренировка и дорожка, полюбила силовые с вами!». По итогам первого потока добавила силовую в график и начала следить за КБЖУ.</div>
+      <div class="tags"><span class="tag">силовые, бег</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 T K</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 T K</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">T K разделил спорт на три категории: «бег от 5км, кросс фит от часа и силовые тренировки от полутора часов». Тренировался дома с одной рукой («Отжимания на правой руке (пока нельзя вторую использовать)»), а в финале грузил вещи на дачу: «Полную газель загрузили, полную газель разгрузили».</div>
-      <blockquote class="qt">«очень свежо в майке сейчас бегать, особенно если заблудился случайно в парке)»</blockquote>
-      <div class="tags"><span class="tag morning">бег, кроссфит, силовые</span></div>
+      <div class="desc">Разбил спорт на три категории — бег, кроссфит и силовые. Даже с травмой руки не прерывался: отжимался на одной руке и делал кардио-сеты по 100 повторений.</div>
+      <div class="tags"><span class="tag">бег, кроссфит, силовые</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥈 Yulia</div>
-        <div class="streak">26 отчётов</div>
+        <div class="streak">27 отчётов</div>
       </div>
-      <div class="desc">Юля — интерьерный дизайнер из района Краснопресненского парка. Взяла себе две задачи: «10 000 шагов (или 10 км на вело) ежедневно и „стоп-еда" после 19:00». Отмечала: «сегодня дошла до rockets и обратно ) аккурат 10 тыс шагов)))».</div>
-      <blockquote class="qt">«сегодня дошла до rockets и обратно ) аккурат 10 тыс шагов)))»</blockquote>
-      <div class="tags"><span class="tag morning">ходьба, велосипед</span></div>
+      <div class="desc">Ввела в жизнь 10 000 шагов ежедневно и «стоп-еду после 19:00». Ходила пешком до Rockets и обратно — «аккурат 10 тыс шагов».</div>
+      <div class="tags"><span class="tag">шаги, вело</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥈 Raisa Voitsekhovskaya</div>
-        <div class="streak">26 отчётов</div>
+        <div class="streak">27 отчётов</div>
       </div>
-      <div class="desc">Раиса, психолог из Москвы, ставила цели: «10.000 шагов/ день + офп, бег», «бассейн-1 р/н, скандинавская ходьба - 2 р/н, теннис -2 р/н». За поток поплавала «10 бассейнов кролем, 10 брасом и 6 на спине», делала домашнюю йогу и попробовала Падел: «2 часа на корте пролетели».</div>
-      <blockquote class="qt">«равномерные и регулярные занятия спортом и активности»</blockquote>
-      <div class="tags"><span class="tag morning">бег, бассейн, теннис</span></div>
+      <div class="desc">Собрала свой идеальный спорт-микс: бассейн («10 бассейнов кролем, 10 брасом и 6 на спине»), ОФП, теннис, скандинавская ходьба. В финале попробовала Падел — «2 часа на корте пролетели».</div>
+      <div class="tags"><span class="tag">бассейн, теннис, бег</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥈 Дарья</div>
-        <div class="streak">26 отчётов</div>
+        <div class="streak">27 отчётов</div>
       </div>
-      <div class="desc">Дарья с первого дня отчитывалась развёрнуто: «15,2 тыс шагов, 11,5 км», «40 мин силовых в тренажерном зале», пилатес и кор-тренировки. К концу добавила «1,5 часа верховой езды» и отметила: «судя по данным телефона, это вообще впервые в жизни такой месяц у меня, со всеми днями закрытыми».</div>
-      <blockquote class="qt">«впервые в жизни такой месяц у меня, со всеми днями закрытыми»</blockquote>
-      <div class="tags"><span class="tag morning">силовые, пилатес, верховая езда</span></div>
+      <div class="desc">Впервые в жизни закрыла все дни месяца по активности: «судя по данным телефона, это вообще впервые в жизни такой месяц у меня, со всеми днями закрытыми». Совмещала силовые, пилатес, верховую езду и теннис.</div>
+      <div class="tags"><span class="tag">силовые, верховая езда</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥈 Nikita Gudkov</div>
+        <div class="streak">26 отчётов</div>
+      </div>
+      <div class="desc">Оставил для второго потока ту же цель — 10к шагов в день, добавив пробежки при благоприятных условиях. Подготовил себе запас движения на сезон пыльцы.</div>
+      <div class="tags"><span class="tag">шаги, бег</span></div>
+    </div>
+
+    <div class="participant">
+      <div class="top">
+        <div class="name">🥈 Natalia</div>
         <div class="streak">25 отчётов</div>
       </div>
-      <div class="desc">Никита оставил ту же цель, что и в первом потоке — «10к шагов в день», учитывая, что «скоро в Москве будет много пыльцы и есть шанс не каждый день иметь возможность выйти из дома». Планировал «факультативно добавлять пробежки при благоприятных условиях».</div>
-      <blockquote class="qt">«начну факультативно добавлять пробежки при благоприятных условиях!»</blockquote>
-      <div class="tags"><span class="tag morning">ходьба, бег</span></div>
+      <div class="desc">Беременность и запрет на силовые не помешали двигаться: «первый раз за многие годы пошла на работу пешком». С диагнозом гестационного диабета движение стало частью терапии.</div>
+      <div class="tags"><span class="tag">шаги</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥉 Natalia</div>
-        <div class="streak">24 отчётов</div>
+        <div class="name">🥈 Vicky Tsoy</div>
+        <div class="streak">25 отчётов</div>
       </div>
-      <div class="desc">Наталья — юрист из Москвы, сейчас беременна, силовые тренировки ей запретили, поэтому цель «неамбициозные, но важные» — «10 тыс шагов каждый день». Отметила: «Первый раз за многие годы пошла на работу пешком)». Позже поставили сахарный диабет беременных, и движение стало ещё важнее.</div>
-      <blockquote class="qt">«Первый раз за многие годы пошла на работу пешком)»</blockquote>
-      <div class="tags"><span class="tag morning">ходьба (10 тыс шагов)</span></div>
+      <div class="desc">Вернула бег и регулярные тренировки в жизнь после года затишья — с 2-3 тренировок в месяц к стабильной рутине. Уже строит планы на следующий поток по фокусу.</div>
+      <div class="tags"><span class="tag">бег, тренировки</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
-        <div class="name">🥉 Vicky Tsoy</div>
-        <div class="streak">24 отчётов</div>
+        <div class="name">🥈 Artem Batukaev</div>
+        <div class="streak">25 отчётов</div>
       </div>
-      <div class="desc">Вика, преподаватель китайского из Москвы, хотела «вернуть спорт и бег в свою жизнь»: «из нынешней точки 2-3 тренировки в месяц, хочу вернуться к своим стабильным 3 тренировкам в неделю». В финале отметила: «какие вообще красивые, интересные и умные люди собрались в челлендже!».</div>
-      <blockquote class="qt">«Хочу вернуть спорт и бег в свою жизнь)»</blockquote>
-      <div class="tags"><span class="tag morning">бег, тренировки</span></div>
-    </div>
-
-    <div class="participant">
-      <div class="top">
-        <div class="name">🥉 Artem Batukaev</div>
-        <div class="streak">24 отчётов</div>
-      </div>
-      <div class="desc">Артём живёт в Дубае и вошёл в челлендж, «чтобы снова наладить my daily sports routine поскорее (очень не хватает спорта в текущие дни в ОАЭ)». В отчётах — зарядка, отжимания, «10 дорожек в бассейне», а к концу — тренировки f45 в 6 утра.</div>
-      <blockquote class="qt">«очень не хватает спорта в текущие дни в ОАЭ»</blockquote>
-      <div class="tags"><span class="tag morning">бассейн, силовые, f45</span></div>
+      <div class="desc">Из Дубая наладил daily sports routine: зарядка, отжимания, 10 дорожек в бассейне, утренние F45 в 6 утра. Прилетел в Москву к общей тренировке — «повышенный уровень сложности».</div>
+      <div class="tags"><span class="tag">бассейн, F45, силовые</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">Daria Tsema</div>
-        <div class="streak">17 отчётов</div>
+        <div class="streak">18 отчётов</div>
       </div>
-      <div class="desc">Даша, юрист-нутрициолог из Москвы, «в последние полгода выпала из регулярных спортивных активностей» и взяла челлендж, «чтобы мягко вернуть спорт в свою жизнь». Начала с малого: «зарядка, 50 приседаний», продолжала домашними тренировками и зарядкой даже в тяжёлые дни: «Лучше чем ничего».</div>
-      <blockquote class="qt">«беру этот челлендж чтобы мягко вернуть спорт в свою жизнь»</blockquote>
-      <div class="tags"><span class="tag morning">домашние тренировки, зарядка</span></div>
+      <div class="desc">Мягко вернула спорт в жизнь после полугода паузы — начала с зарядки и 50 приседаний, дошла до часовых домашних тренировок. Даже в тяжёлые дни держала минимум: «Лучше чем ничего».</div>
+      <div class="tags"><span class="tag">домашние тренировки</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">Elvira Polonskaya</div>
-        <div class="streak">10 отчётов</div>
+        <div class="streak">11 отчётов</div>
       </div>
-      <div class="desc">Эльвира отчитывалась о шагах и танцах: «Несмотря на то что пол дня в полете нашагала таки норму)», «сегодня в качестве спорта танцы на dépêche mode))». Отдельно поблагодарила: «спасибо этому чату за идею слушать аудиокниги во время нашагивания шагов))».</div>
-      <blockquote class="qt">«спасибо этому чату за идею слушать аудиокниги во время нашагивания шагов))»</blockquote>
-      <div class="tags"><span class="tag morning">ходьба, танцы</span></div>
+      <div class="desc">Нашла свой формат движения: «спасибо этому чату за идею слушать аудиокниги во время нашагивания шагов». Спорт через танцы на Depeche Mode и шаги в полёте.</div>
+      <div class="tags"><span class="tag">шаги, танцы</span></div>
     </div>
   </div>
 </div>
@@ -264,24 +249,24 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
   <div class="insights">
 
     <div class="insight">
-      <div class="emoji">👟</div>
+      <div class="emoji">🔄</div>
       <div class="hl-title">Возвращение в движение</div>
-      <div class="hl-desc"><strong>Vicky:</strong> «Хочу вернуть спорт и бег в свою жизнь». <strong>Daria T.:</strong> «беру этот челлендж чтобы мягко вернуть спорт в свою жизнь». Многие приходили после долгого перерыва.</div>
+      <div class="hl-desc"><strong>Vicky:</strong> «Хочу вернуть спорт и бег в свою жизнь». <strong>Daria Tsema:</strong> «беру этот челлендж чтобы мягко вернуть спорт в свою жизнь». Многие приходили после долгого перерыва.</div>
+    </div>
+    <div class="insight">
+      <div class="emoji">🏆</div>
+      <div class="hl-title">Впервые в жизни</div>
+      <div class="hl-desc"><strong>Дарья:</strong> «судя по данным телефона, это вообще впервые в жизни такой месяц у меня, со всеми днями закрытыми». <strong>Natalia:</strong> «первый раз за многие годы пошла на работу пешком».</div>
     </div>
     <div class="insight">
       <div class="emoji">🏃</div>
       <div class="hl-title">Разнообразие форматов</div>
-      <div class="hl-desc">От бега и силовых до пилатеса, верховой езды, падела, йоги, OCR, бассейна и танцев на Depeche Mode. Каждый нашёл своё.</div>
+      <div class="hl-desc">Бег, силовые, пилатес, верховая езда, падел, йога, OCR, бассейн, F45, танцы на Depeche Mode. Каждый нашёл своё.</div>
     </div>
     <div class="insight">
-      <div class="emoji">📱</div>
-      <div class="hl-title">Счётчики и приложения</div>
-      <div class="hl-desc">Fat Secret, fitbit, счётчики шагов, отметки КБЖУ — для тех, кому важна цифра.</div>
-    </div>
-    <div class="insight">
-      <div class="emoji">💡</div>
-      <div class="hl-title">Главный инсайт Дарьи</div>
-      <div class="hl-desc">«Судя по данным телефона, это вообще впервые в жизни такой месяц у меня, со всеми днями закрытыми» — про закрытые тренировочные дни за весь месяц.</div>
+      <div class="emoji">💚</div>
+      <div class="hl-title">Даже в сложных условиях</div>
+      <div class="hl-desc"><strong>Natalia</strong> беременна, силовые запретили — ходила 10 тыс шагов в день. <strong>T K</strong> тренировался с травмированной рукой. <strong>Daria Tsema:</strong> «Лучше чем ничего».</div>
     </div>
 
   </div>

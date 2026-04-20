@@ -7,11 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f8f7f4; --card: #fff; --card-hover: #fafafa; --border: #e4e2dd;
+  --bg: #f8f7f4; --card: #fff; --border: #e4e2dd;
   --text: #1a1a1f; --text2: #6b6b78;
   --accent: #c9920a; --accent2: #e5b035;
-  --green: #1a9d55; --blue: #2b7fd4; --purple: #7c4dff; --pink: #e0436c;
-  --yellow: #c9920a; --teal: #0e8a7d;
+  --green: #1a9d55; --blue: #2b7fd4; --yellow: #c9920a; --teal: #0e8a7d;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; min-height: 100vh; overflow-x: hidden; }
@@ -50,7 +49,6 @@ h1 span { color: var(--accent); }
 .participant .name { font-family: 'Dela Gothic One', sans-serif; font-size: 16px; line-height: 1.2; }
 .participant .streak { font-size: 12px; font-weight: 700; color: var(--accent); white-space: nowrap; }
 .participant .desc { font-size: 14px; color: var(--text2); line-height: 1.55; margin-bottom: 12px; }
-.participant .qt { background: var(--bg); border-left: 3px solid var(--accent); padding: 10px 14px; margin: 10px 0 12px; font-size: 13px; color: var(--text); font-style: italic; border-radius: 4px; line-height: 1.45; }
 .participant .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .participant .tag { font-size: 11px; padding: 4px 10px; border-radius: 100px; font-weight: 600; background: var(--bg); color: var(--text2); border: 1px solid var(--border); }
 .insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
@@ -78,7 +76,7 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
 <div class="big-stats">
   <div class="big-stat">
     <div class="icon">🚫</div>
-    <div class="value" style="color:var(--accent)">48</div>
+    <div class="value" style="color:var(--accent)">50</div>
     <div class="label">Отчётов за челлендж</div>
     <div class="glow" style="background:var(--accent)"></div>
   </div>
@@ -90,13 +88,13 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
   </div>
   <div class="big-stat">
     <div class="icon">🏆</div>
-    <div class="value" style="color:var(--green)">0</div>
+    <div class="value" style="color:var(--green)">1</div>
     <div class="label">Дошли до 28/28</div>
     <div class="glow" style="background:var(--green)"></div>
   </div>
   <div class="big-stat">
     <div class="icon">📈</div>
-    <div class="value" style="color:var(--blue)">86%</div>
+    <div class="value" style="color:var(--blue)">89%</div>
     <div class="label">Среднее выполнение</div>
     <div class="glow" style="background:var(--blue)"></div>
   </div>
@@ -106,33 +104,31 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
 <div class="section">
   <div class="section-title">🔥 Дисциплина: кто не пропускал</div>
   <div class="leaderboard">
-    <div class="progress-row"><div class="progress-name">Дарья</div><div class="progress-bar-bg"><div class="progress-bar" style="width:96%;background:var(--green)">27 / 28</div></div><div class="progress-count">96%</div></div>
-    <div class="progress-row"><div class="progress-name">Grigoriy Lazarev</div><div class="progress-bar-bg"><div class="progress-bar" style="width:75%;background:var(--blue)">21 / 28</div></div><div class="progress-count">75%</div></div>
+    <div class="progress-row"><div class="progress-name">Дарья</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">28 / 28</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Grigoriy Lazarev</div><div class="progress-bar-bg"><div class="progress-bar" style="width:79%;background:var(--blue)">22 / 28</div></div><div class="progress-count">79%</div></div>
   </div>
 </div>
 
 <!-- Participants -->
 <div class="section">
-  <div class="section-title">👤 Каждый участник и его практика</div>
+  <div class="section-title">👤 Каждый участник и его итоги</div>
   <div class="participants">
     <div class="participant">
       <div class="top">
-        <div class="name">🥈 Дарья</div>
-        <div class="streak">27 отчётов</div>
+        <div class="name">🏆 Дарья</div>
+        <div class="streak">28 отчётов</div>
       </div>
-      <div class="desc">Даша совмещала аскезу со спортом: её отчёты фиксируют «без алкоголя, десертов и переработки», а фокус был «на здоровье: спорт, массаж, сон». Параллельно она занималась с тренером и пересматривала питание: «я жутко недоедала белка (как и многие), переедала Жиров и недобирала углеводов», поэтому «решила жиры в этом месяце снизить, а правильный белок - повысить». Месяц отмечен и крупными событиями — «Я подала документы на ВНЖ» и домашними практиками вроде выпечки гранолы.</div>
-      <blockquote class="qt">«без алкоголя, десертов и переработки»</blockquote>
-      <div class="tags"><span class="tag morning">без алкоголя, десертов и переработанного мяса</span></div>
+      <div class="desc">Держала аскезу без алкоголя, десертов и переработанного мяса и параллельно шла в направлении «Спорт». Закрыла давнюю цель: «Я подала документы на ВНЖ». С тренером впервые разобралась в КБЖУ — оказалось, «жутко недоедала белка», пересобрала рацион и «чувствую гораздо больше сил».</div>
+      <div class="tags"><span class="tag">без алкоголя, десертов и переработки</span></div>
     </div>
 
     <div class="participant">
       <div class="top">
         <div class="name">🥉 Grigoriy Lazarev</div>
-        <div class="streak">21 отчётов</div>
+        <div class="streak">22 отчётов</div>
       </div>
-      <div class="desc">Гриша выбрал аскезу ради качества сна: «будут откладывать гаджеты в 22:00 и брать их снова в руки не раньше 9:00». Вечернее и утреннее время он заменил чтением: «Договорился с дочкой вместе читать книгу перед сном», а утром вместо залипания в телефон — книга, «итог за 2 дня 250 прочитанных страниц и оценка сна по часам 96 баллов». В финале отмечает: «на работе хардкор, но время без гаджетов и как следствие хороший сон очень выручают».</div>
-      <blockquote class="qt">«Сегодня вместо гаджетов спорт, открыли сезон»</blockquote>
-      <div class="tags"><span class="tag morning">гаджеты 22:00–9:00</span></div>
+      <div class="desc">Сооснователь бренда GRI заменил вечерний и утренний скроллинг на книгу с дочкой: «итог за 2 дня 250 прочитанных страниц и оценка сна по часам 96 баллов». На работе хардкор, но «время без гаджетов и как следствие хороший сон очень выручают». Финал встретил спортом — открыл беговой сезон кроссом в Зеленограде.</div>
+      <div class="tags"><span class="tag">без гаджетов 22:00–9:00</span></div>
     </div>
   </div>
 </div>
@@ -144,18 +140,18 @@ footer { text-align: center; padding: 40px 0 0; color: var(--text2); font-size: 
 
     <div class="insight">
       <div class="emoji">📵</div>
-      <div class="hl-title">Грише: гаджеты → книга</div>
-      <div class="hl-desc">«Итог за 2 дня 250 прочитанных страниц и оценка сна по часам 96 баллов» — Гриша заменил утреннее и вечернее залипание в телефоне чтением с дочкой.</div>
+      <div class="hl-title">Гаджеты → книга</div>
+      <div class="hl-desc"><strong>Grigoriy:</strong> «итог за 2 дня 250 прочитанных страниц и оценка сна по часам 96 баллов». Утро и вечер без телефона = плюс книга, плюс качество сна.</div>
     </div>
     <div class="insight">
       <div class="emoji">🥗</div>
-      <div class="hl-title">Даше: еда + спорт</div>
-      <div class="hl-desc">«Без алкоголя, десертов и переработки» + пересмотр КБЖУ с тренером. Совмещала аскезу с параллельной группой Спорта.</div>
+      <div class="hl-title">Аскеза + пересбор рациона</div>
+      <div class="hl-desc"><strong>Дарья:</strong> «без алкоголя, десертов и переработки» + впервые разобралась с КБЖУ с тренером: «жутко недоедала белка». Результат — «чувствую гораздо больше сил».</div>
     </div>
     <div class="insight">
-      <div class="emoji">💤</div>
-      <div class="hl-title">Сон — главный бонус</div>
-      <div class="hl-desc">Для Гриши: «время без гаджетов и как следствие хороший сон очень выручают». Улучшение сна — общий эффект аскезы от гаджетов.</div>
+      <div class="emoji">🎯</div>
+      <div class="hl-title">Попутные цели закрыты</div>
+      <div class="hl-desc"><strong>Дарья</strong> за месяц подала документы на ВНЖ. <strong>Grigoriy</strong> открыл беговой сезон кроссом в Зеленограде. Аскеза освободила ресурс на главное.</div>
     </div>
 
   </div>
