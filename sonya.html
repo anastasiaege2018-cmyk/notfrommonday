@@ -587,14 +587,27 @@ if(mode==='blogger'){
 }
 
 const API='https://api.notfrommonday.ru';
+function showAlert(text){
+  const html=String(text).replace(/@([A-Za-z0-9_]+)/g,'<a href="https://t.me/$1" target="_blank" rel="noopener" style="color:var(--warm);text-decoration:underline">@$1</a>');
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:10000;padding:20px;backdrop-filter:blur(4px)';
+  const bx=document.createElement('div');
+  bx.style.cssText='background:var(--card-dark);border:1px solid var(--border-dark);border-radius:14px;padding:28px 24px;max-width:420px;width:100%;color:#fff;font-size:15px;line-height:1.6;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.5)';
+  bx.innerHTML='<div style="margin-bottom:20px">'+html+'</div><button style="background:var(--warm);color:#fff;border:none;padding:10px 28px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer">Понятно</button>';
+  const cl=()=>ov.remove();
+  bx.querySelector('button').addEventListener('click',cl);
+  ov.addEventListener('click',e=>{if(e.target===ov)cl();});
+  document.addEventListener('keydown',function onKey(e){if(e.key==='Escape'){cl();document.removeEventListener('keydown',onKey);}});
+  ov.appendChild(bx); document.body.appendChild(ov);
+}
 async function paySolo(dir,btn){
   const orig=btn.textContent;btn.textContent='Загрузка…';btn.style.pointerEvents='none';
   try{
     const res=await fetch(API+'/api/create-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({direction:dir,mode:mode,ref:refName||'sonya'})});
     const j=await res.json();
     if(j.ok&&j.formUrl){window.location=j.formUrl;return;}
-    alert('Не удалось создать оплату. Попробуйте ещё раз.');
-  }catch(e){alert('Ошибка соединения: '+e.message);}
+    showAlert('Не удалось создать оплату. Попробуйте ещё раз.');
+  }catch(e){showAlert('Ошибка соединения: '+e.message);}
   btn.textContent=orig;btn.style.pointerEvents='';
 }
 
@@ -617,16 +630,16 @@ if(op)op.textContent=pr.solo+' ₽';
 async function sendPair(){
   const n1=document.getElementById('p1nick').value.trim(),n2=document.getElementById('p2nick').value.trim();
   const d1=document.getElementById('p1dir').value,d2=document.getElementById('p2dir').value;
-  if(!n1||!n2){alert('Укажите @ник обоих участников');return;}
+  if(!n1||!n2){showAlert('Укажите @ник обоих участников');return;}
   try{ym(108165954,'reachGoal','pair_request')}catch(e){};
   // Создаём оплату через наш API (GetPlatinum init-payment-url)
   try{
     const res=await fetch(API+'/api/create-pair-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nick1:n1,dir1:d1,nick2:n2,dir2:d2,mode:mode,ref:refName||'sonya'})});
     const j=await res.json();
     if(j.ok&&j.formUrl){window.open(j.formUrl,'_blank');return;}
-    if(res.status===409&&j.message){alert(j.message);return;}
-    alert('Не удалось создать оплату. Попробуйте ещё раз.');
-  }catch(e){alert('Ошибка соединения: '+e.message);}
+    if(res.status===409&&j.message){showAlert(j.message);return;}
+    showAlert('Не удалось создать оплату. Попробуйте ещё раз.');
+  }catch(e){showAlert('Ошибка соединения: '+e.message);}
 }
 
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08});
