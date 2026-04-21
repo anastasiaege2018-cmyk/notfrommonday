@@ -100,6 +100,7 @@ footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
     Бот <code>@notfrommonday_bot</code> → <code>?utm_campaign=notfrommonday_bot</code><br>
     Бот <code>@privichnikbot</code> → <code>?utm_campaign=privichnikbot</code><br>
     Сообщество → <code>?utm_campaign=community</code><br>
+    Каналы 1-го потока (regular-лендинг) → <code>index-regular.html?utm_campaign=1st_cohort_chats</code><br>
     Sonya (партнёрка) считается отдельно: <a href="partner.html?ref=sonya">partner.html?ref=sonya</a>
   </div>
 </div>
@@ -114,6 +115,7 @@ const SOURCES=[
   {ref:'notfrommonday_bot', label:'Бот @notfrommonday_bot', cls:'c1'},
   {ref:'privichnikbot',     label:'Бот @privichnikbot',     cls:'c2'},
   {ref:'community',         label:'Сообщество',             cls:'c3'},
+  {ref:'1st_cohort_chats',  label:'Каналы 1-го потока',     cls:'c1'},
 ];
 const REF_TO_LABEL=Object.fromEntries(SOURCES.map(s=>[s.ref,s.label]));
 
