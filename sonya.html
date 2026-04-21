@@ -638,7 +638,7 @@ async function sendPair(){
   try{
     const res=await fetch(API+'/api/create-pair-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nick1:n1,dir1:d1,nick2:n2,dir2:d2,mode:mode,ref:refName||'sonya'})});
     const j=await res.json();
-    if(j.ok&&j.formUrl){window.open(j.formUrl,'_blank');return;}
+    if(j.ok&&j.formUrl){window.location=j.formUrl;return;}
     if(res.status===409&&j.message){showAlert(j.message);return;}
     showAlert('Не удалось создать оплату. Попробуйте ещё раз.');
   }catch(e){showAlert('Ошибка соединения: '+e.message);}
