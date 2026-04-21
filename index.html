@@ -558,7 +558,9 @@ footer p{font-size:13px}
    'regular' → 9 990₽ (без зачёркнутой)
    ?r=КОД   → блогер = те же цены что early
    ══════════════════════════════════════════ */
-const PRICE_MODE = 'early';
+// Авто-переключение цены: до 25 апреля 00:00 по МСК — early, после — regular
+const HIKE_AT = new Date('2026-04-25T00:00:00+03:00').getTime();
+const PRICE_MODE = Date.now() >= HIKE_AT ? 'regular' : 'early';
 
 const REF_MAP = { 'a3f8b2':'sonya', 'x7k2d9':'blogger2' };
 const PRICES = {
@@ -657,7 +659,7 @@ t.addEventListener('touchmove',e=>{p=Math.max(0,Math.min(sl+sx-e.touches[0].page
 // Timer - starts April 22 2026, runs 2 days
 (function(){
   const start=new Date('2026-04-17T00:00:00+03:00').getTime(); // ТЕСТ! Поменять на 2026-04-22 перед запуском
-  const end=new Date('2026-04-24T00:00:00+03:00').getTime();
+  const end=new Date('2026-04-25T00:00:00+03:00').getTime();
   function tick(){
     const now=Date.now();
     if(now<start||now>end){return;}
