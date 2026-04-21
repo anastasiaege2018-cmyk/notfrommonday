@@ -575,7 +575,8 @@ const LINKS = {
 
 const urlP=new URLSearchParams(location.search);
 const refCode=urlP.get('r');
-const refName=refCode?(REF_MAP[refCode]||refCode):null;
+const utmCampaign=urlP.get('utm_campaign');
+const refName=refCode?(REF_MAP[refCode]||refCode):(utmCampaign||null);
 const mode=refName?'blogger':PRICE_MODE;
 const pr=PRICES[mode], lk=LINKS[mode];
 

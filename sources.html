@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Источники трафика — Не с понедельника</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F5F0EB;--card:#fff;--text:#1A1A1F;--text-sec:#6B6B76;
+  --warm:#C4723A;--warm-light:#FAF5F0;--border:#E8E0D8;
+  --green:#2a7a4b;--blue:#2b7fd4;--purple:#7c4dff;
+  --radius:16px;--shadow:0 2px 12px rgba(0,0,0,.06);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+header{background:var(--text);padding:20px 0}
+header .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;color:#fff;font-size:18px;font-weight:700}
+.badge{background:var(--warm);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
+.hero{padding:32px 0 24px;text-align:center}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,36px);font-weight:700;margin-bottom:6px}
+.hero p{color:var(--text-sec);font-size:14px}
+
+.totals{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:28px}
+.total-card{background:var(--card);border-radius:var(--radius);padding:22px 18px;text-align:center;box-shadow:var(--shadow)}
+.total-num{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,32px);font-weight:700;line-height:1}
+.total-num.warm{color:var(--warm)}
+.total-num.green{color:var(--green)}
+.total-num.blue{color:var(--blue)}
+.total-label{font-size:11px;color:var(--text-sec);margin-top:8px;font-weight:600;text-transform:uppercase;letter-spacing:0.3px}
+
+.sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:28px}
+.src-card{background:var(--card);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow);border-top:4px solid var(--warm)}
+.src-card.c1{border-top-color:var(--blue)}
+.src-card.c2{border-top-color:var(--purple)}
+.src-card.c3{border-top-color:var(--warm)}
+.src-name{font-weight:700;font-size:15px;margin-bottom:14px;font-family:'Playfair Display',serif}
+.src-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px}
+.src-row:last-child{border:none}
+.src-row .k{color:var(--text-sec)}
+.src-row .v{font-weight:700}
+.conv{color:var(--green)!important}
+.revenue{color:var(--warm)!important}
+
+.recent-box{background:var(--card);border-radius:var(--radius);padding:24px 28px;margin-bottom:28px;box-shadow:var(--shadow)}
+.recent-box h3{font-size:16px;font-weight:700;margin-bottom:14px}
+.recent-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;gap:10px;flex-wrap:wrap}
+.recent-row:last-child{border:none}
+.recent-row .src-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;background:var(--warm-light);color:var(--warm);text-transform:uppercase}
+.recent-row .direction{flex:1;min-width:140px}
+.recent-row .amount{font-weight:700;color:var(--warm)}
+.recent-row .when{color:var(--text-sec);font-size:12px;font-variant-numeric:tabular-nums}
+.muted{color:var(--text-sec);font-size:13px;text-align:center;padding:16px 0}
+
+.info-box{background:var(--warm-light);border:1px solid rgba(196,114,58,.2);border-radius:var(--radius);padding:18px 24px;margin-bottom:24px;font-size:13px;color:var(--text-sec);line-height:1.6}
+.info-box strong{color:var(--text)}
+.info-box code{background:#fff;padding:2px 8px;border-radius:4px;font-size:12px}
+
+.refresh-btn{background:transparent;color:var(--text-sec);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;cursor:pointer;margin:0 auto 24px;display:block}
+.refresh-btn:hover{color:var(--text);border-color:var(--warm)}
+footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">не с понедельника</div>
+    <div class="badge">источники</div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="hero">
+    <h1>Источники трафика</h1>
+    <p>Данные по рассылкам и сообществу. Обновляется в реальном времени.</p>
+  </div>
+
+  <div class="totals" id="totals">
+    <div class="total-card"><div class="total-num" id="tVisits">—</div><div class="total-label">Переходов всего</div></div>
+    <div class="total-card"><div class="total-num blue" id="tClicks">—</div><div class="total-label">Кликов на оплату</div></div>
+    <div class="total-card"><div class="total-num green" id="tPayments">—</div><div class="total-label">Оплат</div></div>
+    <div class="total-card"><div class="total-num warm" id="tRevenue">—</div><div class="total-label">Выручка</div></div>
+  </div>
+
+  <button class="refresh-btn" id="refreshBtn">Обновить</button>
+
+  <div class="sources" id="sources"></div>
+
+  <div class="recent-box">
+    <h3>Последние оплаты</h3>
+    <div id="recentList"><div class="muted">загрузка…</div></div>
+  </div>
+
+  <div class="info-box">
+    <strong>Метки для рассылок:</strong><br>
+    Бот <code>@notfrommonday_bot</code> → <code>?utm_campaign=notfrommonday_bot</code><br>
+    Бот <code>@privichnikbot</code> → <code>?utm_campaign=privichnikbot</code><br>
+    Сообщество → <code>?utm_campaign=community</code><br>
+    Sonya (партнёрка) считается отдельно: <a href="partner.html?ref=sonya">partner.html?ref=sonya</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container"><p>Не с понедельника · 2026</p></div>
+</footer>
+
+<script>
+const API='https://api.notfrommonday.ru';
+const SOURCES=[
+  {ref:'notfrommonday_bot', label:'Бот @notfrommonday_bot', cls:'c1'},
+  {ref:'privichnikbot',     label:'Бот @privichnikbot',     cls:'c2'},
+  {ref:'community',         label:'Сообщество',             cls:'c3'},
+];
+const REF_TO_LABEL=Object.fromEntries(SOURCES.map(s=>[s.ref,s.label]));
+
+function fmtRub(n){return new Intl.NumberFormat('ru-RU').format(n)+' ₽'}
+function fmtDate(iso){try{return new Date(iso).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return iso}}
+
+async function load(){
+  const url = API+'/api/sources-stats?refs='+SOURCES.map(s=>encodeURIComponent(s.ref)).join(',');
+  try{
+    const res=await fetch(url);
+    const j=await res.json();
+    if(!j.ok) throw new Error(j.error||'err');
+
+    // totals
+    let v=0,c=0,p=0,r=0;
+    j.sources.forEach(s=>{v+=s.visits;c+=s.clicks;p+=s.payments;r+=s.revenue_rub});
+    document.getElementById('tVisits').textContent=v;
+    document.getElementById('tClicks').textContent=c;
+    document.getElementById('tPayments').textContent=p;
+    document.getElementById('tRevenue').textContent=fmtRub(r);
+
+    // per source
+    const sBox=document.getElementById('sources');
+    sBox.innerHTML=j.sources.map(s=>{
+      const srcDef=SOURCES.find(x=>x.ref===s.ref)||{label:s.ref,cls:''};
+      return `
+      <div class="src-card ${srcDef.cls}">
+        <div class="src-name">${srcDef.label}</div>
+        <div class="src-row"><span class="k">Переходов</span><span class="v">${s.visits}</span></div>
+        <div class="src-row"><span class="k">Кликов на оплату</span><span class="v">${s.clicks}</span></div>
+        <div class="src-row"><span class="k">Оплат</span><span class="v">${s.payments} (соло ${s.solo} / 1+1 ${s.combo})</span></div>
+        <div class="src-row"><span class="k">Конверсия</span><span class="v conv">${s.conversion}%</span></div>
+        <div class="src-row"><span class="k">Выручка</span><span class="v revenue">${fmtRub(s.revenue_rub)}</span></div>
+      </div>`;
+    }).join('');
+
+    // recent payments across sources
+    const all=[];
+    j.sources.forEach(s=>s.recent.forEach(m=>all.push({...m, ref:s.ref})));
+    all.sort((a,b)=>a.received_at<b.received_at?1:-1);
+    const rBox=document.getElementById('recentList');
+    if(!all.length){rBox.innerHTML='<div class="muted">пока нет оплат по отмеченным источникам</div>';}
+    else{
+      rBox.innerHTML=all.slice(0,15).map(m=>{
+        const srcLbl=REF_TO_LABEL[m.ref]||m.ref;
+        const tag=m.kind==='combo'?'1+1':'соло';
+        return `<div class="recent-row">
+          <span class="src-tag">${srcLbl}</span>
+          <span class="direction">${tag} — ${m.direction||'—'}</span>
+          <span class="amount">${fmtRub(m.amount_rub)}</span>
+          <span class="when">${fmtDate(m.received_at)}</span>
+        </div>`;
+      }).join('');
+    }
+  }catch(e){
+    document.getElementById('recentList').innerHTML='<div class="muted">Ошибка: '+e.message+'</div>';
+  }
+}
+
+document.getElementById('refreshBtn').addEventListener('click',load);
+load();
+</script>
+</body>
+</html>
