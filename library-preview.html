@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Библиотека — превью (Не с понедельника)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --focus:#2563EB;--focus-bg:#EFF6FF;--focus-mid:#DBEAFE;
+  --mindful:#7C3AED;--mindful-bg:#F5F3FF;--mindful-mid:#EDE9FE;
+  --ascetic:#D97706;--ascetic-bg:#FFFBEB;--ascetic-mid:#FEF3C7;
+  --sport:#059669;--sport-bg:#ECFDF5;--sport-mid:#D1FAE5;
+  --text:#1A1A2E;--text-s:#64748B;--text-m:#94A3B8;
+  --bg:#FAFBFF;--white:#fff;--border:#E2E8F0;--border-l:#F1F5F9;
+  --sh-s:0 1px 3px rgba(0,0,0,.04);--sh-m:0 4px 16px rgba(0,0,0,.06);
+  --r:16px;--rs:10px;
+}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:820px;margin:0 auto;padding:0 24px}
+
+/* === HEADER === */
+header{padding:48px 0 0;text-align:center}
+.shelf{display:flex;justify-content:center;gap:10px;margin-bottom:24px}
+.bk{width:24px;border-radius:2px 5px 5px 2px;position:relative;animation:bkIn .5s ease backwards}
+.bk::after{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:rgba(0,0,0,.12);border-radius:2px 0 0 2px}
+.bk:nth-child(1){background:var(--focus);height:40px;animation-delay:.08s}
+.bk:nth-child(2){background:var(--mindful);height:34px;animation-delay:.12s}
+.bk:nth-child(3){background:var(--ascetic);height:38px;animation-delay:.16s}
+.bk:nth-child(4){background:var(--sport);height:32px;animation-delay:.2s}
+.bk:nth-child(5){background:#D97706;height:36px;animation-delay:.24s}
+@keyframes bkIn{from{opacity:0;transform:scaleY(0)}to{opacity:1;transform:scaleY(1)}}
+.hlabel{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);padding:6px 16px;border-radius:100px;font-size:12px;font-weight:600;color:var(--text-s);margin-bottom:18px;box-shadow:var(--sh-s);letter-spacing:.02em}
+.hlabel svg{flex-shrink:0}
+.preview-badge{display:inline-block;background:var(--focus);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(30px,6vw,50px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+header h1 i{font-style:italic;color:var(--focus);font-weight:600}
+.sub{color:var(--text-s);font-size:15px;max-width:420px;margin:0 auto;line-height:1.55}
+
+
+/* === TABS === */
+.tw{margin-top:32px;position:sticky;top:0;z-index:100;background:var(--bg);padding:10px 0 14px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tb{padding:9px 18px;border:2px solid transparent;background:var(--white);color:var(--text-s);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;border-radius:100px;white-space:nowrap;transition:all .25s;box-shadow:var(--sh-s);display:flex;align-items:center;gap:7px}
+.tb .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tb[data-t="focus"] .dot{background:var(--focus)}
+.tb[data-t="mind"] .dot{background:var(--mindful)}
+.tb[data-t="asc"] .dot{background:var(--ascetic)}
+.tb[data-t="sport"] .dot{background:var(--sport)}
+.tb:hover{border-color:var(--border)}
+.tb[data-t="focus"].on{background:var(--focus-bg);border-color:var(--focus);color:var(--focus)}
+.tb[data-t="mind"].on{background:var(--mindful-bg);border-color:var(--mindful);color:var(--mindful)}
+.tb[data-t="asc"].on{background:var(--ascetic-bg);border-color:var(--ascetic);color:var(--ascetic)}
+.tb[data-t="sport"].on{background:var(--sport-bg);border-color:var(--sport);color:var(--sport)}
+
+/* === CONTENT === */
+.main{padding:20px 0 80px}
+.tc{display:none;animation:fu .35s ease}
+.tc.on{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* === ISSUE CARD === */
+.ic{background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin-bottom:14px;overflow:hidden;transition:box-shadow .3s,border-color .3s}
+.ic:hover:not(.lk){box-shadow:var(--sh-m)}
+.ic.lk{background:var(--bg);border-color:var(--border-l);opacity:.7}
+.ih{padding:24px;cursor:pointer;display:flex;align-items:flex-start;gap:16px;user-select:none}
+.inum{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;margin-top:2px}
+.ic.lk .inum{background:var(--border-l);color:var(--text-m)}
+.im{flex:1;min-width:0}
+.idate{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.ititle{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,28px);font-weight:700;line-height:1.2;letter-spacing:-.02em}
+.ic.lk .ititle{color:var(--text-m);font-size:clamp(16px,3vw,20px)}
+.ic.lk .idate{color:var(--text-m)}
+.itoggle{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s;color:var(--text-m);margin-top:6px}
+.ic.op .itoggle{transform:rotate(180deg)}
+.ic.lk .itoggle svg{display:none}
+.ic.lk .itoggle::after{content:'';width:18px;height:18px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394A3B8' stroke-width='2'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");background-size:contain}
+.ib{display:none;padding:4px 24px 28px}
+.ic.op .ib{display:block;animation:fu .3s ease}
+
+/* group colors for numbers & dates */
+[data-g="focus"] .ic:not(.lk) .inum{background:var(--focus);color:#fff}
+[data-g="focus"] .ic:not(.lk) .idate{color:var(--focus)}
+[data-g="mind"] .ic:not(.lk) .inum{background:var(--mindful);color:#fff}
+[data-g="mind"] .ic:not(.lk) .idate{color:var(--mindful)}
+[data-g="asc"] .ic:not(.lk) .inum{background:var(--ascetic);color:#fff}
+[data-g="asc"] .ic:not(.lk) .idate{color:var(--ascetic)}
+[data-g="sport"] .ic:not(.lk) .inum{background:var(--sport);color:#fff}
+[data-g="sport"] .ic:not(.lk) .idate{color:var(--sport)}
+
+/* === BODY CONTENT === */
+.ib h3{font-size:17px;font-weight:700;margin:28px 0 12px;letter-spacing:-.01em}
+.ib p{margin-bottom:14px;font-size:15px;line-height:1.75}
+.hbox{border-left:3px solid;border-radius:0 var(--rs) var(--rs) 0;padding:18px 22px;margin:20px 0}
+[data-g="focus"] .hbox{background:var(--focus-bg);border-color:var(--focus)}
+[data-g="mind"] .hbox{background:var(--mindful-bg);border-color:var(--mindful)}
+[data-g="asc"] .hbox{background:var(--ascetic-bg);border-color:var(--ascetic)}
+[data-g="sport"] .hbox{background:var(--sport-bg);border-color:var(--sport)}
+.hbox p{margin-bottom:0}
+.formula{background:var(--white);border:1px solid var(--focus-mid);border-radius:var(--rs);padding:14px 20px;margin:16px 0;font-weight:600;font-size:15px;text-align:center;color:#1D4ED8}
+.ex{color:var(--text-s);padding-left:16px;border-left:2px solid var(--border);margin:12px 0;font-size:14px;line-height:1.8}
+.stg{background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:16px 20px;margin:12px 0}
+.stg .sl{font-weight:700;font-size:14px;margin-bottom:4px}
+.stg p{margin-bottom:0;font-size:14px}
+.cta{border-radius:var(--rs);padding:18px 22px;margin:24px 0 8px}
+[data-g="focus"] .cta{background:linear-gradient(135deg,var(--focus-bg),var(--focus-mid))}
+[data-g="mind"] .cta{background:linear-gradient(135deg,var(--mindful-bg),var(--mindful-mid))}
+[data-g="asc"] .cta{background:linear-gradient(135deg,var(--ascetic-bg),var(--ascetic-mid))}
+[data-g="sport"] .cta{background:linear-gradient(135deg,var(--sport-bg),var(--sport-mid))}
+.cta p{margin-bottom:0;font-weight:600;font-size:14px}
+.ib a{color:var(--focus);text-decoration:none;font-weight:500;transition:opacity .2s}
+.ib a:hover{opacity:.7}
+.lc{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:14px 18px;margin:8px 0;transition:border-color .2s;text-decoration:none!important;color:var(--text)!important}
+.lc:hover{border-color:var(--focus);opacity:1!important}
+.li{width:36px;height:36px;background:var(--focus-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;font-weight:700;color:var(--focus)}
+.lt{font-size:14px;font-weight:600}
+.ld{font-size:12px;color:var(--text-m)}
+
+/* PROMPT */
+.pb{background:#0F172A;color:#E2E8F0;border-radius:var(--rs);padding:24px;margin:20px 0;font-size:13px;line-height:1.8;position:relative}
+.pb::before{content:'ПРОМПТ';position:absolute;top:12px;right:16px;font-size:10px;font-weight:700;letter-spacing:.1em;color:#475569}
+.pb p{color:#CBD5E1;font-size:13px;margin-bottom:10px}
+.pb strong{color:#93C5FD}
+.pb .ps{color:#60A5FA;font-weight:700;margin-top:14px;display:block}
+.cbtn{margin-top:16px;background:var(--focus);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s}
+.cbtn:hover{background:#1D4ED8}
+.cbtn.ok{background:#059669}
+
+/* QUESTIONS */
+.qg{display:grid;gap:8px;margin:16px 0}
+.qi{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;background:var(--white);border:1px solid var(--border-l);border-radius:var(--rs);font-size:14px;line-height:1.6}
+.qn{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0}
+[data-g="focus"] .qn{background:var(--focus-bg);color:var(--focus)}
+[data-g="mind"] .qn{background:var(--mindful-bg);color:var(--mindful)}
+[data-g="asc"] .qn{background:var(--ascetic-bg);color:var(--ascetic)}
+[data-g="sport"] .qn{background:var(--sport-bg);color:var(--sport)}
+
+/* === DONE CHECKBOX === */
+.done-box{margin-top:32px;border:2px dashed var(--border);border-radius:var(--r);padding:24px;display:flex;align-items:flex-start;gap:16px;cursor:pointer;transition:all .3s;user-select:none}
+.done-box:hover{border-color:var(--text-m)}
+.done-box.checked{border-style:solid}
+[data-g="focus"] .done-box.checked{border-color:var(--focus);background:var(--focus-bg)}
+[data-g="mind"] .done-box.checked{border-color:var(--mindful);background:var(--mindful-bg)}
+[data-g="asc"] .done-box.checked{border-color:var(--ascetic);background:var(--ascetic-bg)}
+[data-g="sport"] .done-box.checked{border-color:var(--sport);background:var(--sport-bg)}
+.done-check{width:28px;height:28px;border:2px solid var(--border);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s;margin-top:1px}
+.done-box.checked .done-check{border-color:transparent}
+[data-g="focus"] .done-box.checked .done-check{background:var(--focus);color:#fff}
+[data-g="mind"] .done-box.checked .done-check{background:var(--mindful);color:#fff}
+[data-g="asc"] .done-box.checked .done-check{background:var(--ascetic);color:#fff}
+[data-g="sport"] .done-box.checked .done-check{background:var(--sport);color:#fff}
+.done-check svg{opacity:0;transition:opacity .2s}
+.done-box.checked .done-check svg{opacity:1}
+.done-text{font-size:15px;font-weight:600;line-height:1.5}
+.done-text span{display:block;font-weight:400;font-size:13px;color:var(--text-s);margin-top:4px}
+
+
+
+
+/* === VIDEO LINK === */
+.vid-link{display:flex;align-items:center;gap:14px;padding:18px 22px;border-radius:var(--rs);margin:20px 0;text-decoration:none!important;color:var(--text)!important;border:1px solid var(--border);background:var(--white);transition:border-color .2s,box-shadow .2s}
+.vid-link:hover{border-color:var(--focus);box-shadow:var(--sh-m);opacity:1!important}
+.vid-link .vid-play{width:44px;height:44px;background:#FF0000;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vid-link .vid-play svg{margin-left:2px}
+.vid-link .vid-info{flex:1}
+.vid-link .vid-title{font-size:14px;font-weight:700;line-height:1.4}
+.vid-link .vid-sub{font-size:12px;color:var(--text-m);margin-top:2px}
+
+/* === MILESTONE === */
+.milestone{text-align:left;margin:36px 0 16px;padding:28px 24px;border-radius:var(--r);position:relative;overflow:hidden}
+[data-g="focus"] .milestone{background:linear-gradient(135deg,var(--focus-bg),var(--focus-mid))}
+[data-g="mind"] .milestone{background:linear-gradient(135deg,var(--mindful-bg),var(--mindful-mid))}
+[data-g="asc"] .milestone{background:linear-gradient(135deg,var(--ascetic-bg),var(--ascetic-mid))}
+[data-g="sport"] .milestone{background:linear-gradient(135deg,var(--sport-bg),var(--sport-mid))}
+.milestone .ml-num{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+[data-g="focus"] .milestone .ml-num{color:var(--focus)}
+[data-g="mind"] .milestone .ml-num{color:var(--mindful)}
+[data-g="asc"] .milestone .ml-num{color:var(--ascetic)}
+[data-g="sport"] .milestone .ml-num{color:var(--sport)}
+.milestone .ml-text{font-size:14px;line-height:1.7;color:var(--text)}
+
+/* === SECTION HEAD === */
+.sec-head{font-family:'Playfair Display',serif;font-size:clamp(20px,3.5vw,26px);font-weight:700;letter-spacing:-.02em;line-height:1.25;margin:40px 0 16px;padding-bottom:14px;border-bottom:2px solid var(--border-l);display:flex;align-items:flex-start;gap:14px}
+.sec-head:first-child{margin-top:8px}
+.sec-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;margin-top:2px}
+[data-g="focus"] .sec-num{background:var(--focus-bg);color:var(--focus)}
+[data-g="mind"] .sec-num{background:var(--mindful-bg);color:var(--mindful)}
+[data-g="asc"] .sec-num{background:var(--ascetic-bg);color:var(--ascetic)}
+[data-g="sport"] .sec-num{background:var(--sport-bg);color:var(--sport)}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 0 60px;border-top:1px solid var(--border-l)}
+footer p{color:var(--text-m);font-size:13px}
+footer a{color:var(--focus);text-decoration:none;font-weight:600}
+
+/* === MOBILE === */
+@media(max-width:640px){
+  .container{padding:0 16px}
+  header{padding:28px 0 0}
+  .shelf{gap:8px;margin-bottom:18px}
+  .bk{width:20px}
+  header h1{font-size:28px}
+  .sub{font-size:14px}
+  .tw{padding:8px 0 10px}
+  .tb{padding:8px 14px;font-size:12px;gap:5px}
+  .tb .dot{width:6px;height:6px}
+  .ih{padding:18px 16px;gap:12px}
+  .inum{width:38px;height:38px;font-size:14px}
+  .ititle{font-size:20px}
+  .ic.lk .ititle{font-size:15px}
+  .ib{padding:4px 16px 22px}
+  .ib h3{font-size:16px;margin:22px 0 10px}
+  .ib p{font-size:14px}
+  .pb{padding:16px;font-size:12px}
+  .pb p{font-size:12px}
+  .formula{font-size:14px;padding:12px 16px}
+  .ex{font-size:13px}
+  .stg{padding:14px 16px}
+  .qi{padding:11px 14px;font-size:13px}
+  .done-box{padding:18px 16px;gap:12px}
+  .done-text{font-size:14px}
+  .done-text span{font-size:12px}
+  .lc{padding:12px 14px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<div class="shelf"><div class="bk"></div><div class="bk"></div><div class="bk"></div><div class="bk"></div><div class="bk"></div></div>
+<div class="hlabel">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+Библиотека челленджа
+</div>
+<h1>Не с <i>понедельника</i></h1>
+<p class="sub">Материалы, практики и&nbsp;инструменты для&nbsp;каждого дня твоего челленджа.<br>Новые выпуски — вторник, четверг, суббота</p>
+</div>
+</header>
+
+<div class="tw">
+<div class="container">
+<div class="tabs">
+<button class="tb on" data-t="focus"><span class="dot"></span>Фокус</button>
+<button class="tb" data-t="mind"><span class="dot"></span>Осознанность</button>
+<button class="tb" data-t="asc"><span class="dot"></span>Аскеза</button>
+<button class="tb" data-t="sport"><span class="dot"></span>Спорт</button>
+</div>
+</div>
+</div>
+
+<section class="main">
+<div class="container" id="root"></div>
+</section>
+
+<footer><div class="container"><p>Не с понедельника · 30 дней · <a href="https://notfrommonday.ru/" target="_blank">notfrommonday.ru</a></p></div></footer>
+
+<script>
+const CHV='<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const CHK='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
+const QS=['За что ты благодарен прямо сейчас?','Какой недавний момент ты хотел бы пережить ещё раз?','Какая мысль занимает тебя больше всего в последнее время?','Что стоит за твоим «не хочу» — усталость, страх или что-то другое?','В какие моменты тебе по-настоящему спокойно?','Что ты откладываешь и почему это тебя тревожит?','Что забирает твою энергию, но ты продолжаешь это делать?','Если бы ты уже был тем, кем хочешь стать — как бы ты поступил сейчас?','Что ты знаешь о себе сейчас, чего не знал год назад?','Что ты разрешаешь другим, но не разрешаешь себе?','Что для тебя значит «быть в ресурсе»?','В какие моменты ты чувствуешь, что живёшь, а не существуешь?','Что ты хочешь чувствовать чаще?','Какая маленькая вещь может улучшить завтрашний день?','Ты чаще говоришь себе «молодец» или «мало стараешься»?'];
+
+const STATS2={
+  focus:{url:'focus_challenge_stats_2.html',  title:'Фокус — итоги',       sub:'Дисциплина, практика, результаты каждого участника'},
+  mind: {url:'mindfulness_challenge_stats.html', title:'Осознанность — итоги 1-го потока', sub:'Во 2-м потоке направление не выбрали. Итоги первого потока ждут'},
+  asc:  {url:'asceza_challenge_stats_2.html', title:'Аскеза — итоги',     sub:'Двое на 28 дней — и что из этого получилось'},
+  sport:{url:'sport_challenge_stats_2.html',  title:'Спорт — итоги',      sub:'Километры, отжимания, возвращение в движение'},
+};
+
+function qHTML(){return '<div class="qg">'+QS.map((q,i)=>`<div class="qi"><div class="qn">${i+1}</div><div>${q}</div></div>`).join('')+'</div>';}
+
+function stats2HTML(key){
+  const s=STATS2[key]; if(!s) return '';
+  return `<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">12</div><div class="im"><div class="idate">21 апреля — вторник</div><div class="ititle">Итоги 2-го потока</div></div><div class="itoggle">${CHV}</div></div>`+
+    `<div class="ib"><p>Забрали 28 дней. Вот что у кого получилось — реальные отчёты, цифры и цитаты из чата.</p>`+
+    `<a href="${s.url}" target="_blank" class="lc"><div class="li">📊</div><div><div class="lt">${s.title}</div><div class="ld">${s.sub}</div></div></a>`+
+    `</div></div>`;
+}
+
+function genBlock(intro){return`
+
+<p>Самая частая причина, по которой привычка не приживается — у неё нет конкретного места в расписании.</p>
+<p>${intro}</p>
+<p>Джеймс Клир называет это <strong>habit stacking</strong> — привязка новой привычки к уже существующей. Берёшь действие, которое делаешь на автомате, и цепляешь к нему новое.</p>
+<div class="formula">После [текущая привычка] я делаю [новая привычка]</div>
+<div class="ex">После того как налью кофе → открою список задач и выберу одну<br>После того как почищу зубы → сяду на коврик на 5 минут<br>После того как закрою ноутбук → положу телефон в другую комнату</div>
+<p>Мозг уже построил нейронную цепочку для старого действия. Ты просто подключаешь новое звено. Не нужна сила воли — нужен триггер.</p>
+<div class="cta"><p>Запиши одну привязку для своей привычки прямо в чат группы. Формат: «После [что] я делаю [что]».</p></div>`;}
+
+function reflBlock(n){return`<div class="sec-head"><div class="sec-num">${n}</div><div>15 вопросов для вечерней саморефлексии</div></div><p>Каждый вечер задай себе один вопрос. По одному в день. Записывай ответ или просто подумай перед сном.</p>${qHTML()}`;}
+
+const T={
+focus:{
+  g:'focus',
+  headline:'Как вписать привычку<br>в своё расписание',
+  intro:'«Буду закрывать задачи каждый день» — это намерение.<br>«Открою список задач сразу после того, как налью кофе» — это система.',
+  specific:`
+<div class="sec-head"><div class="sec-num">2</div><div>Распаковка висящих задач:<br>метод «всё из головы»</div></div>
+<p>Знаешь ощущение, когда задач много, но непонятно с чего начать? Они живут в голове — хаотично, без структуры, и каждая кажется одинаково важной.</p>
+<h3>Шаг 1 — Выгрузка</h3>
+<p>Запиши всё. Вообще всё: от «сделать презентацию» до «починить кран». Не фильтруй. Дай себе 10–15 минут.</p>
+<h3>Шаг 2 — Сортировка</h3>
+<div class="stg"><div class="sl" style="color:#DC2626">Важно + Срочно</div><p>Делаю сегодня или завтра. Без вариантов.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Важно + Не срочно</div><p>Ставлю в план на неделю. Стратегические задачи.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Не важно + Срочно</div><p>Делегирую или автоматизирую.</p></div>
+<div class="stg"><div class="sl" style="color:#94A3B8">Не важно + Не срочно</div><p>Вычёркиваю без сожалений.</p></div>
+<h3>Шаг 3 — Одна задача в день</h3>
+<p>Из красной и жёлтой зоны выбери по одной на каждый день. Маленький шаг > грандиозный план.</p>
+<h3>Промпт для личного ассистента по задачам</h3>
+<p>Скопируй этот промпт в ChatGPT или Claude. ИИ поможет распаковать задачи и составить план на неделю.</p>
+<div class="pb" id="prompt-text">
+<p>Ты — мой личный проджект-менеджер и бизнес-ассистент. Помоги разобраться с висящими задачами и составить реалистичный план на неделю.</p>
+<p>Правила:<br>— Не переходи к следующему шагу, пока не получишь ответ.<br>— Будь поддерживающим, следи за нагрузкой.<br>— Запоминай дедлайны и события.</p>
+<span class="ps">Этап 1 — Сферы:</span><p>Спроси, в каких сферах жизни есть задачи (работа, личное, здоровье, быт, проекты).</p>
+<span class="ps">Этап 2 — Цели:</span><p>Спроси про глобальные или краткосрочные цели. Зафиксируй без комментариев.</p>
+<span class="ps">Этап 3 — Распаковка:</span><p>Поочерёдно задай вопросы по каждой сфере для выявления конкретных задач.</p>
+<span class="ps">Этап 4 — Режим:</span><p>Спроси формат (таблица/список) и темп (1 задача в день или блоком).</p>
+<span class="ps">После сбора:</span><p>Распредели по матрице: важно+срочно → немедленно, важно+не срочно → запланировать, не важно+срочно → делегировать, не важно+не срочно → отсеять. Составь план. Начни диалог.</p>
+<button class="cbtn" onclick="copyPrompt(this)">Скопировать промпт</button>
+</div>`,
+  done:'Я прочитал(а) первый выпуск, пойду распаковывать задачи',
+  doneSub:'Открой промпт, скопируй и начни диалог с ИИ прямо сейчас'
+},
+mind:{
+  g:'mind',
+  headline:'Как вписать привычку<br>в своё расписание',
+  intro:'«Буду медитировать каждый день» — это намерение.<br>«Буду медитировать сразу после того, как включу чайник» — это система.',
+  specific:`
+<div class="sec-head"><div class="sec-num">2</div><div>Рекомендации практик</div></div><h3>Приложения для медитации</h3>
+<a href="https://www.prostoapp.ru/" target="_blank" class="lc"><div class="li">P</div><div><div class="lt">Prosto</div><div class="ld">14 дней бесплатно · обучающие уроки · персональный план · 1 290 ₽/полгода</div></div></a>
+<a href="https://apps.apple.com/ru/app/meditopia-%D1%81%D0%BE%D0%BD-%D0%B8-%D0%BC%D0%B5%D0%B4%D0%B8%D1%82%D0%B0%D1%86%D0%B8%D1%8F/id1190294015" target="_blank" class="lc"><div class="li">M</div><div><div class="lt">Meditopia</div><div class="ld">Бесплатная неделя · уроки и план медитаций · 1 790 ₽/год</div></div></a>
+<p style="margin-top:8px">Сам провёл с Prosto сотни медитаций — очень рекомендую. У них подробнее план и обучающие уроки для начинающих.</p>
+<h3>Подборка медитаций без приложений</h3>
+<a href="https://www.youtube.com/watch?v=29VXLjtc-Jo" target="_blank" class="lc"><div class="li">▶</div><div><div class="lt">Аффирмация для настройки на день</div><div class="ld">YouTube</div></div></a>
+<a href="https://www.youtube.com/watch?v=vLh3VZJBgY4" target="_blank" class="lc"><div class="li">▶</div><div><div class="lt">Медитация для снятия тревоги</div><div class="ld">YouTube</div></div></a>
+<a href="https://www.youtube.com/watch?v=edR8bnvF_wk" target="_blank" class="lc"><div class="li">▶</div><div><div class="lt">Медитация «погружение в себя»</div><div class="ld">YouTube</div></div></a>
+<a href="https://www.youtube.com/@tokiwellbeing" target="_blank" class="lc"><div class="li">▶</div><div><div class="lt">Канал Toki Well-being</div><div class="ld">YouTube · подборка практик</div></div></a>
+<a href="https://wemeditate.com/ru/meditations" target="_blank" class="lc"><div class="li">W</div><div><div class="lt">We Meditate</div><div class="ld">wemeditate.com · бесплатные медитации</div></div></a>
+<p style="margin-top:12px">Медитации от Алины — мои любимые, слушал их сотни раз. Пробуй разные, находи своё.</p>`,
+  done:'Я прочитал(а) первый выпуск, пойду медитировать',
+  doneSub:'Выбери одну практику из списка и попробуй сегодня'
+},
+asc:{
+  g:'asc',
+  headline:'Как вписать привычку<br>в своё расписание',
+  intro:'«Откажусь от скроллинга перед сном» — это намерение.<br>«Каждый вечер в 22:00 кладу телефон на зарядку в другой комнате» — это система.',
+  specific:`
+<div class="sec-head"><div class="sec-num">2</div><div>Что происходит с мозгом<br>при отказе от привычки</div></div>
+<p>Чтобы было проще пройти 30 дней — давай разберёмся, что происходит внутри. В момент сопротивления знание — это опора.</p>
+<h3>Как работает дофаминовая петля</h3>
+<p>Мозг не различает «полезное» и «вредное». Он различает «даёт дофамин» и «не даёт». Скроллинг, сахар, сигарета, уведомления — быстрые источники. Мозг привыкает и хочет не удовольствия — а повторения.</p>
+<p>Это не слабость характера. Это нейрохимия.</p>
+<h3>Что будет происходить</h3>
+<div class="stg"><div class="sl" style="color:#DC2626">Дни 1–3. Раздражение</div><p>Мозг привык получать дофамин по расписанию — и вдруг ты это убрал. Скука, раздражительность, беспокойство. Это не ты — это нервная система требует привычную дозу. Если хочется бросить — ты именно там, где нужно.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Дни 4–7. Торг</div><p>Мозг меняет тактику. Не кричит — уговаривает. «Ну один раз можно», «ты же и так молодец». Самый хитрый этап. Каждый отказ — тренировка новой нейронной связи.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Дни 8–14. Тишина</div><p>Острота уходит. У дня появляется больше пространства. Ты спокойнее, спишь лучше. Мозг адаптируется к более ровному уровню дофамина.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Дни 15–21. Новая норма</div><p>Всё реже вспоминаешь о том, от чего отказался. Откаты в стрессе возможны — мозг выбирает знакомое. Просто заметь и выбери заново.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Дни 22–30. Переосмысление</div><p>Ты уже знаешь ответ: «А оно мне вообще нужно?» Большинство удивляются, как мало скучают по тому, что казалось незаменимым.</p></div>
+<div class="hbox"><p><strong>Когда накатывает:</strong> не борись, а наблюдай. Скажи себе: «О, это дофаминовый запрос. Я его вижу. Он пройдёт через 10–15 минут». Острое желание — волна. Она поднимается и опускается. Не действуй на пике.</p></div>`,
+  done:'Я прочитал(а) первый выпуск, пойду наблюдать за своими триггерами',
+  doneSub:'Сегодня просто замечай моменты, когда тянет к привычке. Не борись — наблюдай'
+},
+sport:{
+  g:'sport',
+  headline:'Как вписать привычку<br>в своё расписание',
+  intro:'«Буду тренироваться каждый день» — это намерение.<br>«Сразу после утреннего кофе надеваю кроссовки» — это система.',
+  specific:`
+<div class="sec-head"><div class="sec-num">2</div><div>Правило двух минут</div></div>
+<p>Самое сложное в ежедневной активности — начать. Не тренировка, а момент, когда нужно встать и надеть кроссовки.</p>
+<p>Джеймс Клир предлагает: <strong>любая привычка должна начинаться с версии, которая занимает менее двух минут.</strong></p>
+<div class="ex">«Бегать 5 км» → «Надеть кроссовки и выйти за дверь»<br>«Йога 30 минут» → «Раскатать коврик и встать в одну позу»<br>«10 000 шагов» → «Пройти один квартал после обеда»</div>
+<p>Как только начал — инерция работает на тебя. 90% дней продолжишь. А когда нет сил — хотя бы минимум. Цепочка не разорвана.</p>
+<div class="hbox"><p><strong>Бонус-челлендж на эту неделю:</strong> найди одну «лишнюю» возможность для движения. Лестница вместо лифта. Прогулка во время звонка. Приседания, пока греется еда. Не замена тренировке — слой поверх.</p></div>`,
+  done:'Я прочитал(а) первый выпуск, пойду двигаться',
+  doneSub:'Надень кроссовки. Остальное приложится'
+}
+};
+
+const I2={
+focus:{
+  headline:'Среда решает:<br>подготовь пространство для фокуса',
+  specific:`
+<p>Джеймс Клир пишет: <strong>«Люди думают, что им не хватает мотивации. На самом деле им не хватает среды».</strong> Мотивация конечна. Среда — постоянна.</p>
+<h3>Подготовь пространство для фокуса</h3>
+<p>Если каждый раз перед задачей нужно разгрести стол, найти ручку, открыть файлы и закрыть 40 вкладок — ты тратишь энергию ещё до начала. Среда должна работать на тебя.</p>
+<h3>Что можно сделать прямо сегодня</h3>
+<div class="stg"><div class="sl" style="color:#2563EB">Рабочее место</div><p>Вечером оставь стол чистым. Положи только то, что нужно для завтрашней задачи. Но не только убери лишнее — добавь приятное: цветы, увлажнитель воздуха, стакан воды, таймер. Место, за которым хочется сидеть — место, за которое садишься без сопротивления.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Список на бумаге</div><p>Распечатай или выпиши от руки все свои висящие задачи. Вечером бери маркер и выделяй ту, которую закроешь завтра. Физическое выделение — это микрообязательство перед собой. А зачёркивать выполненное — отдельное удовольствие.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Цифровая среда</div><p>Закрой все вкладки. Открой только ту, которая нужна. Поставь телефон на авиарежим или убери из поля зрения. Чем меньше отвлечений видишь — тем меньше решений принимаешь.</p></div>
+`,
+  reflection:`<div class="hbox" style="margin-top:36px"><p><strong>Вопрос дня:</strong> Ты уже три дня внедряешь привычку. Что изменилось в ощущениях? Может, появилось больше ясности? Чуть меньше тревоги? Замечай даже маленькие сдвиги — они твои, и сравнивать не с кем.</p></div>`,
+  done:'Я прочитал(а) второй выпуск, пойду готовить рабочее место',
+  doneSub:'Убери лишнее, добавь приятное и выдели маркером задачу на завтра'
+},
+mind:{
+  headline:'Среда решает:<br>создай точку медитации',
+  specific:`
+<p>Джеймс Клир пишет: <strong>«Люди думают, что им не хватает мотивации. На самом деле им не хватает среды».</strong> Мотивация конечна. Среда — постоянна.</p>
+<h3>Создай точку медитации</h3>
+<p>Если каждый раз нужно искать тихий угол, доставать подушку и придумывать, куда сесть — порог входа слишком высокий. Мозг выберет «потом». Среда должна приглашать к практике.</p>
+<h3>Что можно сделать прямо сегодня</h3>
+<div class="stg"><div class="sl" style="color:#7C3AED">Место</div><p>Выбери один конкретный угол или стул. Это теперь твоя точка медитации. Не нужна отдельная комната — достаточно одного постоянного места.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Подушка и плед</div><p>Положи подушку для медитации (или обычную) на это место. Пусть лежит там всегда. Плед рядом — если прохладно. Чем меньше нужно готовить, тем легче начать.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Наушники</div><p>Если медитируешь с приложением или по аудио — оставляй наушники рядом с подушкой. Не в сумке, не на зарядке в другой комнате. Рядом.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Атмосфера</div><p>Свеча, аромалампа, приглушённый свет — любая мелочь, которая переключает мозг в режим «сейчас замедляюсь». Ритуал входа снижает сопротивление.</p></div>
+<p>Когда место готово и ждёт тебя — практика перестаёт быть решением. Она становится действием по умолчанию.</p>
+`,
+  reflection:`<div class="hbox" style="margin-top:36px"><p><strong>Вопрос дня:</strong> Ты уже три дня в практике. Что ты замечаешь? Может, стало чуть тише внутри? Или наоборот — всплыло что-то, чего раньше не слышал? Всё это — часть процесса. И то, что ты делаешь это каждый день — уже результат.</p></div>`,
+  done:'Я прочитал(а) второй выпуск, пойду готовить место для практики',
+  doneSub:'Положи подушку, плед и наушники в одно место — пусть ждут тебя'
+},
+asc:{
+  headline:'Среда решает:<br>убери триггеры из поля зрения',
+  specific:`
+<p>Джеймс Клир формулирует так: <strong>«Сделай плохую привычку невидимой, а хорошую — очевидной».</strong> Среда определяет поведение больше, чем намерение.</p>
+<h3>Убери триггеры из поля зрения</h3>
+<p>Сила воли ограничена. Каждый раз, когда ты видишь триггер и сознательно отказываешься — ты тратишь ресурс. Задача не в том, чтобы стать сильнее. А в том, чтобы реже нуждаться в силе.</p>
+<h3>Что можно сделать прямо сегодня</h3>
+<div class="stg"><div class="sl" style="color:#D97706">Телефон</div><p>Убери приложения-триггеры с главного экрана. Перенеси в папку на последний экран. Удали виджеты соцсетей. Выключи уведомления. Чем больше действий нужно, чтобы добраться — тем реже ты это делаешь.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Дом</div><p>Убери из видимости то, от чего отказываешься. Сигареты — в закрытый шкаф. Сладкое — не покупай домой. Алкоголь — с полки в кладовку. Невидимое не вызывает желания.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Замена</div><p>На место убранного триггера положи альтернативу. Вместо телефона на тумбочке — книга. Вместо конфет на столе — орехи или фрукты. Мозг ищет действие — дай ему лучший вариант.</p></div>
+`,
+  reflection:`<div class="hbox" style="margin-top:36px"><p><strong>Вопрос дня:</strong> Три дня без привычки — это уже поступок. Что ты замечаешь в себе? Может, появилось немного свободного времени? Или ты стал внимательнее к тому, что происходит вокруг? Не сравнивай себя с другими — замечай свои изменения.</p></div>`,
+  done:'Я прочитал(а) второй выпуск, пойду убирать триггеры',
+  doneSub:'Начни с телефона: перенеси приложения-триггеры в папку на последний экран'
+},
+sport:{
+  headline:'Среда решает:<br>собери всё заранее',
+  specific:`
+<p>Исследования показывают: <strong>люди, которые готовят спортивную форму заранее, тренируются на 40% чаще.</strong> Не мотивация, не дисциплина — просто убранный барьер.</p>
+<h3>Собери всё заранее</h3>
+<p>Утро. Будильник. Ты собирался на тренировку, но нужно найти футболку, кроссовки, наушники, бутылку воды... И вот ты уже думаешь: «Ладно, завтра». Среда решает за тебя, если ты позволишь.</p>
+<h3>Что можно сделать прямо сегодня</h3>
+<div class="stg"><div class="sl" style="color:#059669">Вечерняя подготовка</div><p>Собери спортивную одежду с вечера. Положи рядом с кроватью или у входной двери. Утром не думай — просто одевайся.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Коврик на виду</div><p>Если занимаешься дома — раскатай коврик и оставь. Пусть лежит на полу постоянно. Каждый раз, когда видишь его, мозг получает сигнал: «Тут тренируются».</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Кроссовки у двери</div><p>Для тех, кто ходит или бегает — поставь кроссовки прямо у выхода. Визуальный якорь, который работает без напоминаний.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Плейлист и маршрут</div><p>Подготовь плейлист или подкаст заранее. Если бегаешь — проложи маршрут. Чем меньше решений утром, тем больше шансов выйти.</p></div>
+`,
+  reflection:`<div class="hbox" style="margin-top:36px"><p><strong>Вопрос дня:</strong> Три дня подряд ты двигался. Что ты чувствуешь в теле? Может, чуть больше энергии? Лучше спишь? Замечай это — не потому что нужно, а потому что ты заслуживаешь видеть свой прогресс. Не чужой — свой.</p></div>`,
+  done:'Я прочитал(а) второй выпуск, пойду собирать форму на завтра',
+  doneSub:'Положи одежду и кроссовки у кровати — утром просто оденься'
+}
+};
+
+const I3={
+focus:{
+  headline:'Не на 100%?<br>Это и есть система',
+  specific:`
+<h3>Половина привычки лучше, чем ноль</h3>
+<p>Бывают дни, когда задачу не хочется даже открывать. Когда сил хватает только на то, чтобы встать и дойти до кухни. И в такие дни кажется: раз не могу на полную — лучше вообще не начинать.</p>
+<p>Это ловушка. Джеймс Клир говорит об этом прямо: <strong>«Не пропускай дважды. Пропустить один раз — случайность. Пропустить дважды — начало новой привычки».</strong></p>
+<p>Поэтому в дни, когда тяжело, правило одно: сделай минимальную версию.</p>
+<div class="ex">Вместо «закрыть задачу» — просто открой список и прочитай одну строчку<br>Вместо «разобрать проект» — напиши один следующий шаг<br>Вместо часа работы — 10 минут. Или 5. Или 2</div>
+<h3>Почему это работает</h3>
+<p>Представь: ты делаешь привычку на 50% каждый день в течение года. Это 365 раз. А теперь представь: ты делаешь на 100%, но через силу, и через две недели выпадаешь на месяц. Потом снова рывок — и снова откат.</p>
+<p>Кто через год будет впереди? Тот, кто не разрывал цепочку.</p>
+<div class="hbox"><p><strong>Главный принцип:</strong> ты не строишь результат. Ты строишь идентичность. Каждый день, когда ты открываешь список задач — даже на минуту — ты подтверждаешь: «Я человек, который работает над своими задачами». Это важнее любого конкретного результата.</p></div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">5 из 30 пройдено</div><div class="ml-text">Пять дней ты выбираешь задачу и закрываешь её. Или хотя бы открываешь список. Это не мелочь — это новая привычка, которая уже формируется.<br><br>Мы видим, как вы стараетесь, как вмещаете привычку в плотный день, как ищете время. Не сравнивайте себя с другими — сравнивайте только с собой пять дней назад.<br><br><strong>Поблагодарите себя сегодня. Вы это заслужили.</strong></div></div>`,
+  done:'Я прочитал(а) третий выпуск и благодарю себя за эти 5 дней',
+  doneSub:'Серьёзно. Скажи себе спасибо. Вслух или про себя — но скажи'
+},
+mind:{
+  headline:'Не на 100%?<br>Это и есть система',
+  specific:`
+<h3>Половина практики лучше, чем ноль</h3>
+<p>Бывают дни, когда медитация не идёт. Мысли скачут, тело не может усидеть, и через минуту хочется встать. В такие дни кажется: раз не получается нормально — зачем вообще садиться?</p>
+<p>Это ловушка. Джеймс Клир говорит об этом прямо: <strong>«Не пропускай дважды. Пропустить один раз — случайность. Пропустить дважды — начало новой привычки».</strong></p>
+<p>Поэтому в дни, когда тяжело, правило одно: сделай минимальную версию.</p>
+<div class="ex">Вместо 15 минут медитации — сядь и сделай 5 глубоких вдохов<br>Вместо полноценной практики — просто закрой глаза на минуту<br>Вместо приложения — послушай тишину, пока закипает чайник</div>
+<h3>Почему это работает</h3>
+<p>Представь: ты медитируешь по 5 минут каждый день в течение года. Это 365 практик. А теперь представь: ты сидишь по 20 минут, но через две недели бросаешь на месяц. Потом возвращаешься — и снова бросаешь.</p>
+<p>Кто через год будет спокойнее? Тот, кто не разрывал цепочку.</p>
+<div class="hbox"><p><strong>Главный принцип:</strong> ты не строишь навык медитации. Ты строишь идентичность. Каждый раз, когда ты садишься — даже на минуту — ты подтверждаешь: «Я человек, который практикует осознанность». Это важнее любого таймера.</p></div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">5 из 30 пройдено</div><div class="ml-text">Пять дней ты находишь время замедлиться. Садишься, закрываешь глаза, дышишь. Иногда на 15 минут, иногда на две. Неважно. Важно, что ты это делаешь.<br><br>Мы видим, как вы стараетесь вписать практику в свой ритм, как ищете своё время и место. Не сравнивайте себя с другими — у каждого свой темп.<br><br><strong>Поблагодарите себя сегодня. Вы это заслужили.</strong></div></div>`,
+  done:'Я прочитал(а) третий выпуск и благодарю себя за эти 5 дней',
+  doneSub:'Серьёзно. Скажи себе спасибо. Вслух или про себя — но скажи'
+},
+asc:{
+  headline:'Не на 100%?<br>Это и есть система',
+  specific:`
+<h3>Один срыв — не провал</h3>
+<p>Бывают дни, когда рука сама тянется. Ты не заметил — и уже скроллишь. Или взял сигарету. Или съел то, от чего отказался. И первая мысль: «Ну всё, я сломался. Можно больше не стараться».</p>
+<p>Это ловушка. Джеймс Клир говорит об этом прямо: <strong>«Не пропускай дважды. Пропустить один раз — случайность. Пропустить дважды — начало новой привычки».</strong></p>
+<p>Один срыв ничего не отменяет. Отменяет только решение сдаться после срыва.</p>
+<div class="ex">Сорвался на скроллинг на 20 минут → положи телефон и продолжи день без него<br>Съел сладкое → следующий приём пищи сделай по плану<br>Закурил одну → не кури вторую. Вот и всё</div>
+<h3>Почему это работает</h3>
+<p>Представь: 25 дней из 30 ты держишь аскезу. 5 дней — срывы. Это 83% успеха. А теперь представь: ты держишься 10 дней идеально, срываешься, решаешь «всё бесполезно» и бросаешь. Это 33%.</p>
+<p>Несовершенная аскеза, которую ты продолжаешь — сильнее идеальной, которую ты бросил.</p>
+<div class="hbox"><p><strong>Главный принцип:</strong> ты не строишь рекорд воздержания. Ты строишь идентичность. Каждый день, когда ты выбираешь отказ — даже после вчерашнего срыва — ты подтверждаешь: «Я человек, который управляет своими привычками». Один плохой день не определяет, кто ты.</p></div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">5 из 30 пройдено</div><div class="ml-text">Пять дней ты наблюдаешь за собой, за своими триггерами, за тем, как мозг пытается уговорить тебя вернуться. Это непросто — и то, что ты здесь, говорит о многом.<br><br>Мы видим, как вы держитесь, как ищете замены, как справляетесь с желанием. Не сравнивайте себя с другими — у каждого своя аскеза и свой темп.<br><br><strong>Поблагодарите себя сегодня. Вы это заслужили.</strong></div></div>`,
+  done:'Я прочитал(а) третий выпуск и благодарю себя за эти 5 дней',
+  doneSub:'Серьёзно. Скажи себе спасибо. Вслух или про себя — но скажи'
+},
+sport:{
+  headline:'Не на 100%?<br>Это и есть система',
+  specific:`
+<h3>Половина тренировки лучше, чем ноль</h3>
+<p>Бывают дни, когда тело не хочет. Когда после работы единственное желание — лечь и не двигаться. И в такие дни кажется: раз не могу полноценную тренировку — зачем вообще начинать?</p>
+<p>Это ловушка. Джеймс Клир говорит об этом прямо: <strong>«Не пропускай дважды. Пропустить один раз — случайность. Пропустить дважды — начало новой привычки».</strong></p>
+<p>Поэтому в дни, когда тяжело, правило одно: сделай минимальную версию.</p>
+<div class="ex">Вместо 10 000 шагов — выйди на 10-минутную прогулку<br>Вместо полноценной тренировки — сделай 5 приседаний и 5 отжиманий<br>Вместо часа в зале — одна планка на 30 секунд</div>
+<h3>Почему это работает</h3>
+<p>Представь: ты делаешь лёгкую тренировку каждый день целый год. Это 365 тренировок. А теперь представь: ты убиваешься в зале три раза в неделю, через месяц выгораешь и не тренируешься два месяца. Потом снова рывок — и снова откат.</p>
+<p>Кто через год будет в лучшей форме? Тот, кто не разрывал цепочку.</p>
+<div class="hbox"><p><strong>Главный принцип:</strong> ты не строишь тело за 30 дней. Ты строишь идентичность. Каждый раз, когда ты двигаешься — даже 5 минут — ты подтверждаешь: «Я человек, который тренируется каждый день». Это важнее любого количества повторений.</p></div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">5 из 30 пройдено</div><div class="ml-text">Пять дней ты встаёшь и двигаешься. Иногда полноценная тренировка, иногда просто прогулка. Неважно. Важно, что ты не останавливаешься.<br><br>Мы видим, как вы вписываете спорт в плотный график, как находите 15 минут там, где казалось — нет ни одной. Не сравнивайте себя с другими — ваш темп, ваш прогресс, ваша победа.<br><br><strong>Поблагодарите себя сегодня. Вы это заслужили.</strong></div></div>`,
+  done:'Я прочитал(а) третий выпуск и благодарю себя за эти 5 дней',
+  doneSub:'Серьёзно. Скажи себе спасибо. Вслух или про себя — но скажи'
+}
+};
+
+const I4={
+focus:{
+  headline:'Долина разочарования:<br>почему кажется, что ничего не работает',
+  specific:`
+<p>Ты делаешь привычку уже неделю. И возможно, тебя накрывает мысль: «А смысл?» Результатов вроде нет. Задачи не кончаются. Список не тает. Ощущение — бег на месте.</p>
+<p>Джеймс Клир называет это <strong>Долиной разочарования</strong>. Мы ожидаем, что прогресс будет линейным: делаешь → получаешь. Но в реальности привычки работают как кубик льда. Ты греешь его с −10° до 0° — ничего не происходит. Работа копится, но результат пока невидим. И именно тут большинство бросает.</p>
+<p>Вся работа, которую ты делаешь сейчас — не впустую. Она копится. Точка перелома ещё впереди.</p>
+<div class="hbox"><p><strong>Помни:</strong> ты закрываешь по одной задаче в день. За неделю — семь. За месяц — тридцать. Через полгода ты не узнаешь свой список. Но сейчас, на 8-й день, этого не видно. И это нормально.</p></div>
+<div class="sec-head"><div class="sec-num">2</div><div>Карманный коуч: промпт для разбора затыков</div></div>
+<p>Если чувствуешь, что скатываешься, обесцениваешь или не понимаешь, зачем продолжать — попробуй этот инструмент. Скопируй промпт в ChatGPT или Claude и пройди короткий диалог. Иногда достаточно 5 вопросов, чтобы увидеть, что мешает на самом деле.</p>
+<div class="pb" id="prompt-text-4f">
+<p>Ты — мой карманный коуч на время 30-дневного челленджа по внедрению привычки. Я внедряю привычку закрывать одну висящую задачу каждый день. Сейчас идёт вторая неделя.</p>
+<p>Твой стиль: тёплый, лаконичный, без канцеляризмов. Твоя задача — помочь разобраться с тем, что мешает продолжать, подсветить мои паттерны и помочь не бросить.</p>
+<p><strong>Правила:</strong><br>— Один вопрос за раз. Задал → дождался ответа → подтвердил, что услышал → следующий.<br>— Не давай советов сразу. Сначала помоги увидеть, что происходит: «Похоже, твой мозг сейчас делает Х, потому что Y».<br>— Говори простыми словами. Без списков, без формальностей.</p>
+<p>Дисклеймер (в первом сообщении): ты — ИИ-помощник для рефлексии. Ты не заменяешь психолога, но можешь помочь разложить мысли по полочкам.</p>
+<p><strong>Начни с приветствия и первого вопроса. После каждого ответа — следующий:</strong></p>
+<span class="ps">1.</span> <p>Как тебя зовут и какую привычку ты внедряешь?</p>
+<span class="ps">2.</span> <p>Как прошла первая неделя — одним словом или метафорой?</p>
+<span class="ps">3.</span> <p>Что сейчас мешает больше всего: нет времени, нет сил, или ощущение «а зачем это вообще»?</p>
+<span class="ps">4.</span> <p>Когда привычка далась легко — что было по-другому в тот день?</p>
+<span class="ps">5.</span> <p>Что бы ты сказал другу, который хочет бросить на 8-й день?</p>
+<p><strong>После 5-го вопроса:</strong><br>1. Резюме в 2–3 предложениях: как ты понял моё состояние.<br>2. Одно микро-действие на 1 минуту прямо сейчас.<br>3. Спроси: «Хочешь разобрать что-то конкретное — ситуацию, мысль, затык?»</p>
+<button class="cbtn" onclick="copyP(this,'prompt-text-4f')">Скопировать промпт</button>
+</div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">8 из 30</div><div class="ml-text">Неделю назад ты сомневался, стоит ли начинать. Ты начал. Ты закрываешь задачи каждый день — даже когда не хочется, даже когда кажется бессмысленным.<br><br>Это уже не про список задач. Это про то, кем ты выбираешь быть.<br><br><strong>Ты на верном пути. Продолжай.</strong></div></div>`,
+  done:'Я прочитал(а) четвёртый выпуск и продолжаю',
+  doneSub:'Долина разочарования — это часть пути. Ты уже в ней. Значит, всё идёт как надо'
+},
+mind:{
+  headline:'Долина разочарования:<br>почему кажется, что ничего не работает',
+  specific:`
+<p>Ты медитируешь уже неделю. И возможно, тебя накрывает мысль: «А смысл?» Мысли всё так же скачут. Спокойствия вроде не прибавилось. Иногда после практики даже хуже — потому что начинаешь замечать, сколько шума внутри.</p>
+<p>Джеймс Клир называет это <strong>Долиной разочарования</strong>. Мы ожидаем, что прогресс будет линейным: делаешь → получаешь. Но привычки работают как кубик льда. Ты греешь его с −10° до 0° — ничего не происходит. Работа копится, но результат невидим. И именно тут большинство бросает.</p>
+<p>Вся работа, которую ты делаешь — не впустую. Она копится. Точка перелома впереди.</p>
+<div class="hbox"><p><strong>Помни:</strong> то, что ты замечаешь шум в голове — это уже результат. Раньше ты его не слышал, потому что не останавливался. Осознанность начинается не с тишины, а с честного наблюдения.</p></div>
+<div class="sec-head"><div class="sec-num">2</div><div>Карманный коуч: промпт для разбора затыков</div></div>
+<p>Если чувствуешь, что скатываешься или не понимаешь, зачем продолжать — попробуй этот инструмент. Скопируй промпт в ChatGPT или Claude и пройди короткий диалог.</p>
+<div class="pb" id="prompt-text-4m">
+<p>Ты — мой карманный коуч на время 30-дневного челленджа. Я практикую ежедневную медитацию. Сейчас идёт вторая неделя.</p>
+<p>Твой стиль: тёплый, лаконичный, без канцеляризмов. Твоя задача — помочь разобраться с тем, что мешает продолжать, подсветить паттерны и помочь не бросить.</p>
+<p><strong>Правила:</strong><br>— Один вопрос за раз. Задал → дождался ответа → подтвердил → следующий.<br>— Не давай советов сразу. Сначала помоги увидеть: «Похоже, твой мозг сейчас делает Х, потому что Y».<br>— Простые слова. Без списков и формальностей.</p>
+<p>Дисклеймер (в первом сообщении): ты — ИИ-помощник для рефлексии. Не заменяешь психолога, но помогаешь разложить мысли.</p>
+<p><strong>Начни с приветствия и первого вопроса:</strong></p>
+<span class="ps">1.</span> <p>Как тебя зовут и какую практику осознанности ты делаешь?</p>
+<span class="ps">2.</span> <p>Как прошла первая неделя — одним словом или метафорой?</p>
+<span class="ps">3.</span> <p>Что сейчас мешает: нет времени, не получается сосредоточиться, или ощущение «а зачем»?</p>
+<span class="ps">4.</span> <p>Когда практика далась легко — что было по-другому в тот день?</p>
+<span class="ps">5.</span> <p>Что бы ты сказал другу, который хочет бросить медитацию на 8-й день?</p>
+<p><strong>После 5-го вопроса:</strong><br>1. Резюме в 2–3 предложениях.<br>2. Одно микро-действие на 1 минуту прямо сейчас.<br>3. Спроси: «Хочешь разобрать что-то конкретное?»</p>
+<button class="cbtn" onclick="copyP(this,'prompt-text-4m')">Скопировать промпт</button>
+</div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">8 из 30</div><div class="ml-text">Неделю назад ты не знал, получится ли сидеть в тишине хотя бы 5 минут. Ты сидишь. Каждый день.<br><br>Это уже не про медитацию. Это про то, кем ты выбираешь быть.<br><br><strong>Ты на верном пути. Продолжай.</strong></div></div>`,
+  done:'Я прочитал(а) четвёртый выпуск и продолжаю',
+  doneSub:'Долина разочарования — это часть пути. Ты уже в ней. Значит, всё идёт как надо'
+},
+asc:{
+  headline:'Долина разочарования:<br>почему кажется, что ничего не работает',
+  specific:`
+<p>Ты держишь аскезу уже неделю. И возможно, тебя накрывает: «А что изменилось-то?» Жизнь вроде та же. Энергии больше не стало. А желание вернуться к старому — всё ещё здесь.</p>
+<p>Джеймс Клир называет это <strong>Долиной разочарования</strong>. Мы ожидаем линейный прогресс: отказался → стало лучше. Но привычки работают как кубик льда. Ты греешь его с −10° до 0° — ничего не видно. Работа копится, результат невидим. И именно тут большинство бросает.</p>
+<p>Вся работа — не впустую. Она копится. Точка перелома впереди.</p>
+<div class="hbox"><p><strong>Помни:</strong> то, что ты всё ещё хочешь вернуться к привычке — нормально. Это не значит, что аскеза не работает. Это значит, что мозг ещё перестраивается. Каждый день без — это ещё один градус к точке перелома.</p></div>
+<div class="sec-head"><div class="sec-num">2</div><div>Карманный коуч: промпт для разбора затыков</div></div>
+<p>Если чувствуешь, что скатываешься или обесцениваешь свой путь — попробуй этот инструмент. Скопируй промпт и пройди диалог.</p>
+<div class="pb" id="prompt-text-4a">
+<p>Ты — мой карманный коуч на время 30-дневного челленджа. Я практикую аскезу — отказ от привычки, которая забирает энергию. Сейчас вторая неделя.</p>
+<p>Твой стиль: тёплый, лаконичный, без канцеляризмов. Задача — помочь разобраться, что мешает, подсветить паттерны и помочь не бросить.</p>
+<p><strong>Правила:</strong><br>— Один вопрос за раз.<br>— Не давай советов сразу. Сначала: «Похоже, твой мозг делает Х, потому что Y».<br>— Простые слова.</p>
+<p>Дисклеймер: ты — ИИ для рефлексии. Не заменяешь психолога.</p>
+<p><strong>Вопросы по очереди:</strong></p>
+<span class="ps">1.</span> <p>Как тебя зовут и от чего ты отказался на челлендже?</p>
+<span class="ps">2.</span> <p>Как прошла первая неделя — одним словом или метафорой?</p>
+<span class="ps">3.</span> <p>Что мешает больше всего: тянет обратно, ощущение бессмысленности, или усталость от контроля?</p>
+<span class="ps">4.</span> <p>Был ли день, когда ты вообще не думал о привычке? Что было по-другому?</p>
+<span class="ps">5.</span> <p>Что бы ты сказал другу, который хочет сорваться на 8-й день?</p>
+<p><strong>После 5-го вопроса:</strong><br>1. Резюме в 2–3 предложениях.<br>2. Одно микро-действие на 1 минуту.<br>3. «Хочешь разобрать что-то конкретное?»</p>
+<button class="cbtn" onclick="copyP(this,'prompt-text-4a')">Скопировать промпт</button>
+</div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">8 из 30</div><div class="ml-text">Неделю назад ты не знал, сможешь ли продержаться и три дня. Ты прошёл восемь. С срывами или без — ты здесь.<br><br>Это уже не про отказ. Это про то, кем ты выбираешь быть.<br><br><strong>Ты на верном пути. Продолжай.</strong></div></div>`,
+  done:'Я прочитал(а) четвёртый выпуск и продолжаю',
+  doneSub:'Долина разочарования — это часть пути. Ты уже в ней. Значит, всё идёт как надо'
+},
+sport:{
+  headline:'Долина разочарования:<br>почему кажется, что ничего не работает',
+  specific:`
+<p>Ты тренируешься уже неделю. И возможно, тебя накрывает: «А смысл?» Тело не изменилось. Бегать не стало легче. Весы показывают то же самое.</p>
+<p>Джеймс Клир называет это <strong>Долиной разочарования</strong>. Мы ожидаем линейный прогресс: тренируешься → получаешь результат. Но привычки работают как кубик льда. Ты греешь его с −10° до 0° — ничего не видно. Работа копится, результат невидим. И именно тут большинство бросает.</p>
+<p>Вся работа — не впустую. Она копится. Точка перелома впереди.</p>
+<div class="hbox"><p><strong>Помни:</strong> тело перестраивается не за неделю, а за месяцы. Но привычка двигаться каждый день — это то, что запускает всё остальное. Ты строишь не тело. Ты строишь систему, которая построит тело.</p></div>
+<div class="sec-head"><div class="sec-num">2</div><div>Карманный коуч: промпт для разбора затыков</div></div>
+<p>Если чувствуешь, что скатываешься или не понимаешь, зачем продолжать — попробуй этот инструмент. Скопируй и пройди диалог.</p>
+<div class="pb" id="prompt-text-4s">
+<p>Ты — мой карманный коуч на время 30-дневного челленджа. Я внедряю ежедневную физическую активность. Сейчас вторая неделя.</p>
+<p>Твой стиль: тёплый, лаконичный. Задача — помочь разобраться, что мешает, и помочь не бросить.</p>
+<p><strong>Правила:</strong><br>— Один вопрос за раз.<br>— Не давай советов сразу: «Похоже, твой мозг делает Х, потому что Y».<br>— Простые слова.</p>
+<p>Дисклеймер: ты — ИИ для рефлексии. Не заменяешь тренера или психолога.</p>
+<p><strong>Вопросы по очереди:</strong></p>
+<span class="ps">1.</span> <p>Как тебя зовут и какую активность ты делаешь каждый день?</p>
+<span class="ps">2.</span> <p>Как прошла первая неделя — одним словом или метафорой?</p>
+<span class="ps">3.</span> <p>Что мешает больше всего: нет времени, нет сил, или «а зачем, если ничего не меняется»?</p>
+<span class="ps">4.</span> <p>Когда тренировка далась легко — что было по-другому?</p>
+<span class="ps">5.</span> <p>Что бы ты сказал другу, который хочет бросить спорт на 8-й день?</p>
+<p><strong>После 5-го вопроса:</strong><br>1. Резюме в 2–3 предложениях.<br>2. Одно микро-действие на 1 минуту.<br>3. «Хочешь разобрать что-то конкретное?»</p>
+<button class="cbtn" onclick="copyP(this,'prompt-text-4s')">Скопировать промпт</button>
+</div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">8 из 30</div><div class="ml-text">Неделю назад ты не знал, получится ли двигаться каждый день. Ты двигаешься. Восемь дней подряд.<br><br>Это уже не про спорт. Это про то, кем ты выбираешь быть.<br><br><strong>Ты на верном пути. Продолжай.</strong></div></div>`,
+  done:'Я прочитал(а) четвёртый выпуск и продолжаю',
+  doneSub:'Долина разочарования — это часть пути. Ты уже в ней. Значит, всё идёт как надо'
+}
+};
+
+const I5={
+focus:{
+  headline:'Мотивация угасает.<br>Удовлетворение — нет',
+  specific:`
+<p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
+<p>Но через 5–6 дней она начала угасать. И это нормально — так устроен мозг. Мотивация по природе кратковременна.</p>
+<p>То, на чём вы двигаетесь сейчас — совсем другое. Это <strong>удовлетворение от собственных маленьких шагов</strong>. Тихое внутреннее ощущение: «Как классно, что я сделал. Как классно, что не сдался». Вот это — настоящая продвигающая сила. На ней можно двигаться очень долго и очень далеко.</p>
+<p>Можно иногда подкреплять себя мотивацией извне — в этом нет ничего плохого. Вот, например, отличная лекция от Гарвардского университета про то, что на самом деле делает жизнь счастливой:</p>
+<a href="https://www.youtube.com/watch?v=g6S8rLTVW44" target="_blank" class="vid-link">
+<div class="vid-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+<div class="vid-info"><div class="vid-title">Посмотреть видео на YouTube</div><div class="vid-sub">Отличная лекция для подзарядки</div></div>
+</a>
+<p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
+<p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты быстрее открываешь список. Или уже не мучаешься с выбором задачи — просто берёшь и делаешь. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот момент, когда хотел пропустить — но не пропустил. Никто не аплодировал. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, стало чуть спокойнее в голове. Или чувство контроля вернулось. Или ты просто начал доводить дела до конца. Это твоё — и сравнивать не с кем.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
+  doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
+},
+mind:{
+  headline:'Мотивация угасает.<br>Удовлетворение — нет',
+  specific:`
+<p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
+<p>Но через 5–6 дней она начала угасать. И это нормально — так устроен мозг. Мотивация по природе кратковременна.</p>
+<p>То, на чём вы двигаетесь сейчас — совсем другое. Это <strong>удовлетворение от собственных маленьких шагов</strong>. Тихое внутреннее ощущение: «Как классно, что я сделал. Как классно, что не сдался». Вот это — настоящая продвигающая сила. На ней можно двигаться очень долго и очень далеко.</p>
+<p>Можно иногда подкреплять себя мотивацией извне — в этом нет ничего плохого. Вот, например, отличная лекция от Гарвардского университета про то, что на самом деле делает жизнь счастливой:</p>
+<a href="https://www.youtube.com/watch?v=g6S8rLTVW44" target="_blank" class="vid-link">
+<div class="vid-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+<div class="vid-info"><div class="vid-title">Посмотреть видео на YouTube</div><div class="vid-sub">Отличная лекция для подзарядки</div></div>
+</a>
+<p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
+<p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты быстрее находишь тишину внутри. Или уже садишься без внутреннего спора. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот момент, когда мысли скакали, а ты всё равно досидел. Никто не знает. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты стал чуть внимательнее к моменту. Или засыпаешь спокойнее. Или реже реагируешь на автомате. Это твоё.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
+  doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
+},
+asc:{
+  headline:'Мотивация угасает.<br>Удовлетворение — нет',
+  specific:`
+<p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
+<p>Но через 5–6 дней она начала угасать. И это нормально — так устроен мозг. Мотивация по природе кратковременна.</p>
+<p>То, на чём вы двигаетесь сейчас — совсем другое. Это <strong>удовлетворение от собственных маленьких шагов</strong>. Тихое внутреннее ощущение: «Как классно, что я сделал. Как классно, что не сдался». Вот это — настоящая продвигающая сила. На ней можно двигаться очень долго и очень далеко.</p>
+<p>Можно иногда подкреплять себя мотивацией извне — в этом нет ничего плохого. Вот, например, отличная лекция от Гарвардского университета про то, что на самом деле делает жизнь счастливой:</p>
+<a href="https://www.youtube.com/watch?v=g6S8rLTVW44" target="_blank" class="vid-link">
+<div class="vid-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+<div class="vid-info"><div class="vid-title">Посмотреть видео на YouTube</div><div class="vid-sub">Отличная лекция для подзарядки</div></div>
+</a>
+<p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
+<p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты уже не тянешься к триггеру на автомате. Или желание стало тише и проходит быстрее. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот момент, когда хотелось сорваться — а ты переждал волну. Молча. Без медалей. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, появилось больше времени. Или ты стал спокойнее реагировать. Или просто чувствуешь себя чище. Это твоё — и сравнивать не с кем.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
+  doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
+},
+sport:{
+  headline:'Мотивация угасает.<br>Удовлетворение — нет',
+  specific:`
+<p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
+<p>Но через 5–6 дней она начала угасать. И это нормально — так устроен мозг. Мотивация по природе кратковременна.</p>
+<p>То, на чём вы двигаетесь сейчас — совсем другое. Это <strong>удовлетворение от собственных маленьких шагов</strong>. Тихое внутреннее ощущение: «Как классно, что я сделал. Как классно, что не сдался». Вот это — настоящая продвигающая сила. На ней можно двигаться очень долго и очень далеко.</p>
+<p>Можно иногда подкреплять себя мотивацией извне — в этом нет ничего плохого. Вот, например, отличная лекция от Гарвардского университета про то, что на самом деле делает жизнь счастливой:</p>
+<a href="https://www.youtube.com/watch?v=g6S8rLTVW44" target="_blank" class="vid-link">
+<div class="vid-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+<div class="vid-info"><div class="vid-title">Посмотреть видео на YouTube</div><div class="vid-sub">Отличная лекция для подзарядки</div></div>
+</a>
+<p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
+<p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты встаёшь быстрее. Или дистанция, которая казалась длинной, теперь пролетает. Или ты просто меньше уговариваешь себя начать. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот день, когда было тяжело — а ты всё равно вышел. Или хотя бы размялся дома. Никто не видел. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, появилось больше энергии. Или ты лучше спишь. Или настроение стало ровнее. Это твоё — и сравнивать не с кем.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
+  doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
+}
+};
+
+const I6={
+focus:{
+  headline:'Стало легко?<br>Значит, пора усложнить на чуть-чуть',
+  specific:`
+<p>Если привычка стала слишком лёгкой — мозг начинает скучать. А скука — главный враг регулярности. Не сложность, не лень, не нехватка времени. Скука.</p>
+<p>Джеймс Клир описывает простой принцип: <strong>привычка держится, когда она чуть сложнее, чем комфортно</strong>. Не настолько, чтобы хотелось бросить. Но достаточно, чтобы было интересно.</p>
+<p>Ты уже 12 дней закрываешь по одной задаче. Это стало привычным. Отлично — значит, фундамент есть. Теперь можно аккуратно добавить один градус.</p>
+<h3>Как это сделать</h3>
+<div class="stg"><div class="sl" style="color:#2563EB">Усложни задачу, а не количество</div><p>Вместо «закрыть любую задачу» — возьми ту, которую откладывал дольше всего. Не добавляй вторую задачу — сделай одну, но ту самую.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Добавь ограничение по времени</div><p>Поставь таймер на 25 минут и попробуй уложиться. Лёгкое давление фокусирует внимание и превращает рутину в вызов.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Запиши результат</div><p>После закрытия задачи — одно предложение: что сделал и что почувствовал. Это добавляет осознанности и закрепляет удовлетворение.</p></div>
+<p>Не нужно прыгать с одной задачи на пять. Один градус. Чуть-чуть сложнее. Чуть-чуть интереснее. Этого достаточно, чтобы привычка не превратилась в рутину.</p>
+`,
+  reflection:`<div class="sec-head"><div class="sec-num">2</div><div>Вопросы на выходные</div></div>
+<p>Выходные — хорошее время, чтобы остановиться и посмотреть на свою неделю со стороны.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Какой момент на этой неделе дал тебе больше всего удовлетворения?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Не самый продуктивный, а именно тот, после которого ты подумал: «Да, вот это было хорошо». Запомни это ощущение — оно твой компас.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Что на следующей неделе ты хочешь сделать чуть иначе?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Не «лучше». Не «больше». Именно иначе. Может, другое время. Другой подход. Один маленький эксперимент.</p></div></div>`,
+  done:'Я прочитал(а) шестой выпуск и готов добавить один градус',
+  doneSub:'Выбери на понедельник ту задачу, которую откладывал дольше всего'
+},
+mind:{
+  headline:'Стало легко?<br>Значит, пора усложнить на чуть-чуть',
+  specific:`
+<p>Если привычка стала слишком лёгкой — мозг начинает скучать. А скука — главный враг регулярности. Не сложность, не лень, не нехватка времени. Скука.</p>
+<p>Джеймс Клир описывает простой принцип: <strong>привычка держится, когда она чуть сложнее, чем комфортно</strong>. Не настолько, чтобы хотелось бросить. Но достаточно, чтобы было интересно.</p>
+<p>Ты уже 12 дней медитируешь. Это стало привычным. Отлично — значит, фундамент есть. Теперь можно аккуратно добавить один градус.</p>
+<h3>Как это сделать</h3>
+<div class="stg"><div class="sl" style="color:#7C3AED">Добавь 2 минуты</div><p>Если сидишь 5 минут — попробуй 7. Не 20. Не час. Два минуты. Этого достаточно, чтобы мозг почувствовал лёгкий вызов.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Попробуй другую практику</div><p>Если медитируешь с приложением — попробуй в тишине. Если всегда утром — попробуй вечером. Если дышишь — попробуй сканирование тела. Новизна поддерживает интерес.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Медитация без подготовки</div><p>Попробуй сесть без таймера, без приложения, без наушников. Просто закрой глаза и побудь с собой. Без инструкции — только ты и тишина. Это следующий уровень.</p></div>
+<p>Один градус. Чуть-чуть сложнее. Чуть-чуть глубже. Этого достаточно, чтобы практика оставалась живой.</p>
+`,
+  reflection:`<div class="sec-head"><div class="sec-num">2</div><div>Вопросы на выходные</div></div>
+<p>Выходные — хорошее время, чтобы остановиться и посмотреть на свою неделю со стороны.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Какой момент на этой неделе дал тебе больше всего покоя?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Не обязательно во время медитации. Может, по дороге домой. Или перед сном. Вспомни это ощущение — оно говорит тебе, куда идти.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Что на следующей неделе ты хочешь попробовать в своей практике?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Другое время? Другая длительность? Тишина вместо приложения? Один маленький эксперимент — чтобы практика оставалась живой.</p></div></div>`,
+  done:'Я прочитал(а) шестой выпуск и готов добавить один градус',
+  doneSub:'На следующей неделе попробуй одну вещь иначе'
+},
+asc:{
+  headline:'Стало легко?<br>Значит, пора усложнить на чуть-чуть',
+  specific:`
+<p>Если отказ стал привычным — это отличный знак. Но если он стал слишком привычным — мозг может начать скучать. А скука — это момент, когда мы рискуем расслабиться и сорваться «потому что уже и так молодец».</p>
+<p>Джеймс Клир описывает простой принцип: <strong>привычка держится, когда она чуть сложнее, чем комфортно</strong>. Для аскезы это значит — добавить глубину, а не ещё один запрет.</p>
+<p>Ты уже 12 дней держишь отказ. Фундамент есть. Теперь можно добавить один градус — не в сторону жёсткости, а в сторону осознанности.</p>
+<h3>Как это сделать</h3>
+<div class="stg"><div class="sl" style="color:#D97706">Замечай, когда тянет — и записывай</div><p>Не просто «хочется» — а что происходило перед этим. Устал? Поссорился? Заскучал? Записывай триггер. Через неделю ты увидишь паттерн — и это мощнее любого запрета.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Замени пустоту на что-то новое</div><p>Если ты убрал скроллинг — что вместо него? Если бросил сахар — чем балуешь себя? Аскеза работает, когда на месте старого появляется новое и приятное.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Расскажи кому-то, что делаешь</div><p>Не чтобы похвастаться. А чтобы проговорить. Когда ты объясняешь другому, зачем ты это делаешь — ты объясняешь это себе. И становится яснее.</p></div>
+`,
+  reflection:`<div class="sec-head"><div class="sec-num">2</div><div>Вопросы на выходные</div></div>
+<p>Выходные — хорошее время остановиться и посмотреть на свою неделю.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">В какой момент на этой неделе ты почувствовал себя свободнее всего?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Не «когда было легко отказаться», а когда ты вообще не вспомнил о привычке. Этот момент — знак, что перестройка идёт.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Что ты положил на место того, от чего отказался?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Если пока ничего — подумай об этом. Пустота тянет обратно. А замена — закрепляет новое.</p></div></div>`,
+  done:'Я прочитал(а) шестой выпуск и добавляю осознанности',
+  doneSub:'Начни записывать триггеры — что происходит перед тем, как тянет к привычке'
+},
+sport:{
+  headline:'Стало легко?<br>Значит, пора усложнить на чуть-чуть',
+  specific:`
+<p>Если тренировка стала слишком лёгкой — мозг начинает скучать. А скука — главный враг регулярности. Не усталость, не боль в мышцах. Скука.</p>
+<p>Джеймс Клир описывает простой принцип: <strong>привычка держится, когда она чуть сложнее, чем комфортно</strong>. Не настолько, чтобы хотелось бросить. Но достаточно, чтобы после тренировки было ощущение: «О, сегодня было чуть иначе».</p>
+<p>Ты уже 12 дней двигаешься. Это стало нормой. Отлично — фундамент есть. Теперь можно добавить один градус.</p>
+<h3>Как это сделать</h3>
+<div class="stg"><div class="sl" style="color:#059669">Добавь, а не замени</div><p>Ходишь 10 000 шагов — добавь 1 000. Делаешь планку 30 секунд — попробуй 40. Йога 10 минут — попробуй 12. Не революция — эволюция.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Попробуй новый формат</div><p>Если всегда бегаешь — попробуй интервалы. Если йога — добавь одну новую позу. Если тренажёрка — смени порядок упражнений. Новизна включает внимание.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Засеки и сравни с собой</div><p>Замерь что-нибудь: время, расстояние, количество. Не чтобы гнаться — а чтобы видеть, что ты уже не тот, что 12 дней назад. Цифры не врут.</p></div>
+<p>Один градус. Чуть-чуть сложнее. Чуть-чуть интереснее. Тело скажет спасибо.</p>
+`,
+  reflection:`<div class="sec-head"><div class="sec-num">2</div><div>Вопросы на выходные</div></div>
+<p>Выходные — хорошее время, чтобы остановиться и посмотреть на свою неделю.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Какая тренировка на этой неделе принесла больше всего удовольствия?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Не самая тяжёлая. Та, после которой ты подумал: «Вот это было кайфово». Запомни — и делай так чаще.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Что на следующей неделе ты хочешь попробовать нового в тренировке?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Новый маршрут? Другое время? Другой формат? Один маленький эксперимент — чтобы тело не привыкало.</p></div></div>`,
+  done:'Я прочитал(а) шестой выпуск и готов добавить один градус',
+  doneSub:'На следующей неделе усложни свою привычку на чуть-чуть'
+}
+};
+
+const I7={
+focus:{
+  headline:'Почему вместе<br>получается больше',
+  specific:`
+<p>Две недели. Ты здесь не один — и это не случайность.</p>
+<p>Джеймс Клир пишет: <strong>мы перенимаем привычки трёх групп — близкого окружения, большинства и тех, кем восхищаемся</strong>. Когда ты видишь, что рядом с тобой люди делают то же самое каждый день — мозг считывает это как норму. Как норму. Как что-то само собой разумеющееся.</p>
+<p>Вот почему группа работает. Не потому что кто-то заставляет. А потому что когда ты видишь чужой отчёт — ты думаешь: «Окей, и я могу». Когда делишься своим — получаешь подтверждение: «То, что я делаю — имеет значение».</p>
+<h3>Три вещи, которые даёт комьюнити</h3>
+<div class="stg"><div class="sl" style="color:#2563EB">Нормализация</div><p>Когда все вокруг закрывают задачи каждый день — это перестаёт казаться чем-то особенным. Это просто то, что мы делаем. А «то, что мы делаем» — самый мощный двигатель привычки.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Поддержка без давления</div><p>Никто не проверяет, не контролирует. Но ты знаешь, что тебя видят. И этого достаточно. Исследования показывают: люди, которые делятся прогрессом с группой, удерживают привычку в 2–3 раза дольше.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Зеркало</div><p>Иногда ты не замечаешь свой прогресс, пока не увидишь его глазами другого. Чужое «вау, ты уже две недели это делаешь» может дать больше, чем месяц внутренней мотивации.</p></div>
+<div class="hbox"><p><strong>Что можно сделать сегодня:</strong> напиши в чат группы одно предложение — что изменилось за эти две недели. А ещё — напиши одно сообщение человеку, чьи отчёты ты читал всё это время и кто тебя вдохновляет. Просто скажи ему об этом. Иногда одно тёплое слово держит сильнее, чем неделя мотивации.</p></div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">14 из 30</div><div class="ml-text">Две недели. Почти половина пути. Ты делаешь это не один — и именно поэтому ты всё ещё здесь.<br><br>Каждый отчёт, каждое сообщение в чат, каждое «я сделал» — это поддержка для тех, кто читает и молча продолжает.<br><br><strong>Спасибо, что ты в этой группе. Она сильнее благодаря тебе.</strong></div></div>`,
+  done:'Я прочитал(а) седьмой выпуск и напишу в чат',
+  doneSub:'Одно наблюдение о себе + одно тёплое слово тому, кто вдохновляет'
+},
+mind:{
+  headline:'Почему вместе<br>получается больше',
+  specific:`
+<p>Две недели. Ты здесь не один — и это не случайность.</p>
+<p>Джеймс Клир пишет: <strong>мы перенимаем привычки трёх групп — близкого окружения, большинства и тех, кем восхищаемся</strong>. Когда ты видишь, что рядом с тобой люди медитируют каждый день — мозг считывает это как норму. Как норму. Как часть дня.</p>
+<p>Вот почему группа работает. Когда ты видишь чужой отчёт — ты думаешь: «Значит, и я могу». Когда делишься своим — получаешь подтверждение: «Моя практика — настоящая».</p>
+<h3>Три вещи, которые даёт комьюнити</h3>
+<div class="stg"><div class="sl" style="color:#7C3AED">Нормализация</div><p>Когда все вокруг медитируют — это перестаёт быть «странным увлечением». Это просто то, что мы делаем. А «то, что мы делаем» — самый мощный двигатель привычки.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Поддержка без давления</div><p>Никто не проверяет, медитировал ли ты сегодня. Но ты знаешь, что тебя видят. Исследования показывают: люди, которые делятся прогрессом с группой, удерживают привычку в 2–3 раза дольше.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Глубина через чужой опыт</div><p>Кто-то пробует медитацию в тишине, кто-то — с приложением, кто-то — на прогулке. Чужой опыт расширяет твою практику. Ты узнаёшь про способы, до которых сам бы не дошёл.</p></div>
+<div class="hbox"><p><strong>Что можно сделать сегодня:</strong> напиши в чат группы одно наблюдение — что ты заметил в своей практике за две недели. А ещё — напиши одно сообщение человеку из группы, чьи отчёты тебя вдохновляют. Просто скажи ему. Иногда одно тёплое слово держит сильнее, чем неделя мотивации.</p></div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">14 из 30</div><div class="ml-text">Две недели. Почти половина пути. Ты делаешь это не один — и именно поэтому ты всё ещё здесь.<br><br>Каждый отчёт, каждое «я сел и подышал» в чат — это поддержка для тех, кто читает и молча продолжает.<br><br><strong>Спасибо, что ты в этой группе. Она сильнее благодаря тебе.</strong></div></div>`,
+  done:'Я прочитал(а) седьмой выпуск и напишу в чат',
+  doneSub:'Одно наблюдение о себе + одно тёплое слово тому, кто вдохновляет'
+},
+asc:{
+  headline:'Почему вместе<br>получается больше',
+  specific:`
+<p>Две недели. Ты здесь не один — и это не случайность.</p>
+<p>Джеймс Клир пишет: <strong>мы перенимаем привычки трёх групп — близкого окружения, большинства и тех, кем восхищаемся</strong>. Когда ты видишь, что рядом с тобой люди держат аскезу каждый день — мозг считывает это как норму. Как осознанный выбор, который делают люди вокруг тебя.</p>
+<p>Вот почему группа работает. Когда ты видишь чужой отчёт — тебе легче продолжать. Когда делишься своим — ты фиксируешь своё решение вслух. А то, что сказано вслух, сложнее отменить.</p>
+<h3>Три вещи, которые даёт комьюнити</h3>
+<div class="stg"><div class="sl" style="color:#D97706">Нормализация</div><p>Когда все вокруг осознанно отказываются от того, что забирает энергию — это перестаёт казаться лишением. Это выбор. И ты не один, кто его делает.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Честность</div><p>В группе можно сказать: «Сегодня чуть не сорвался». И никто не осудит. Потому что все проходят через то же самое. Эта честность снимает напряжение и помогает продолжать.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Страховка</div><p>Когда тяжело — ты помнишь, что завтра нужно написать отчёт. Не из страха, а потому что группа ждёт. И это тонкое «меня видят» работает мощнее, чем любое обещание себе.</p></div>
+<div class="hbox"><p><strong>Что можно сделать сегодня:</strong> напиши в чат одно предложение — что изменилось за эти две недели. А ещё — напиши одно сообщение тому участнику, чьи отчёты ты читал и кто тебя поддерживал. Просто скажи ему об этом. Одно тёплое слово держит сильнее, чем неделя мотивации.</p></div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">14 из 30</div><div class="ml-text">Две недели. Почти половина пути. Ты держишь аскезу не один — и именно поэтому ты всё ещё здесь.<br><br>Каждое честное сообщение в чат — это опора для тех, кто читает и думает: «Раз они могут — значит, и я могу».<br><br><strong>Спасибо, что ты в этой группе. Она сильнее благодаря тебе.</strong></div></div>`,
+  done:'Я прочитал(а) седьмой выпуск и напишу в чат',
+  doneSub:'Одно наблюдение о себе + одно тёплое слово тому, кто вдохновляет'
+},
+sport:{
+  headline:'Почему вместе<br>получается больше',
+  specific:`
+<p>Две недели. Ты здесь не один — и это не случайность.</p>
+<p>Джеймс Клир пишет: <strong>мы перенимаем привычки трёх групп — близкого окружения, большинства и тех, кем восхищаемся</strong>. Когда ты видишь, что рядом с тобой люди двигаются каждый день — мозг считывает это как норму. Как обычную часть дня.</p>
+<p>Вот почему группа работает. Чужой отчёт «пробежал 3 км» — и ты думаешь: «Ладно, и я пойду». Твой отчёт «сделал планку» — и кто-то, кто уже лёг на диван, встаёт и раскатывает коврик.</p>
+<h3>Три вещи, которые даёт комьюнити</h3>
+<div class="stg"><div class="sl" style="color:#059669">Нормализация</div><p>Когда все вокруг тренируются каждый день — это перестаёт быть подвигом. Это просто «то, что мы делаем». А «то, что мы делаем» — самый мощный двигатель привычки.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Заражение энергией</div><p>Кто-то пишет, что пробежал под дождём. Кто-то — что впервые сделал отжимание. Чужая энергия заразительна. Ты буквально подпитываешься от группы в те дни, когда своей батарейки не хватает.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Вдохновение форматами</div><p>Кто-то бегает, кто-то делает йогу, кто-то ходит. Чужой формат может стать твоим открытием. В группе ты узнаёшь про способы двигаться, до которых сам бы не дошёл.</p></div>
+<div class="hbox"><p><strong>Что можно сделать сегодня:</strong> напиши в чат группы одно предложение — что изменилось за эти две недели. А ещё — напиши одно сообщение человеку из группы, кто тебя вдохновляет своими отчётами. Просто скажи ему. Одно тёплое слово держит сильнее, чем неделя мотивации.</p></div>
+`,
+  reflection:`<div class="milestone"><div class="ml-num">14 из 30</div><div class="ml-text">Две недели. Почти половина пути. Ты двигаешься не один — и именно поэтому ты всё ещё здесь.<br><br>Каждый отчёт, каждое фото с тренировки, каждое «я вышел» — это энергия для тех, кто сегодня сомневается.<br><br><strong>Спасибо, что ты в этой группе. Она сильнее благодаря тебе.</strong></div></div>`,
+  done:'Я прочитал(а) седьмой выпуск и напишу в чат, что изменилось',
+  doneSub:'Одно предложение. Для себя и для тех, кто рядом'
+}
+};
+
+const I8={
+focus:{
+  headline:'Привяжи удовольствие<br>к привычке',
+  specific:`
+<p>17 дней. Больше половины. Привычка уже встроена в день — но иногда всё равно приходится себя уговаривать. Есть способ сделать так, чтобы уговаривать не пришлось.</p>
+<p>Джеймс Клир называет это <strong>temptation bundling</strong> — связка удовольствия с привычкой. Принцип простой: соедини то, что нужно делать, с тем, что хочется делать. Мозг начинает ассоциировать привычку не с усилием, а с наградой.</p>
+<h3>Как это работает</h3>
+<div class="stg"><div class="sl" style="color:#2563EB">Формула</div><p>Делая [привычка, которую внедряю], я одновременно получаю [то, что мне нравится].</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Кофе из любимой кофейни</div><p>Покупаешь свой любимый напиток — но только после того, как закрыл задачу дня. Не до, не вместо. После. Мозг быстро запоминает: задача → кофе → кайф.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Любимый подкаст или музыка</div><p>Выбери один подкаст или плейлист, который слушаешь только во время работы над задачей. Больше нигде. Через несколько дней мозг будет хотеть включить задачу, чтобы послушать подкаст.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Приятное место</div><p>Есть задача, которую откладываешь? Возьми ноутбук и иди в кафе. Или на балкон. Или в парк. Смена обстановки + приятная атмосфера = задача перестаёт быть врагом.</p></div>
+<p>Суть не в том, чтобы себя обмануть. А в том, чтобы перестать воевать с мозгом и начать с ним договариваться. Он хочет удовольствие — дай ему удовольствие. Но на твоих условиях.</p>
+<div class="hbox"><p><strong>Попробуй сегодня:</strong> выбери одну связку — что приятного ты получишь во время или сразу после своей привычки? Запиши и попробуй завтра.</p></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) восьмой выпуск и придумал свою связку',
+  doneSub:'Запиши: после [привычка] я получаю [удовольствие]'
+},
+mind:{
+  headline:'Привяжи удовольствие<br>к привычке',
+  specific:`
+<p>17 дней. Больше половины. Практика уже часть дня — но иногда всё равно приходится себя уговаривать сесть. Есть способ сделать так, чтобы уговаривать не пришлось.</p>
+<p>Джеймс Клир называет это <strong>temptation bundling</strong> — связка удовольствия с привычкой. Соедини то, что нужно, с тем, что хочется. Мозг начинает ассоциировать практику не с усилием, а с чем-то приятным.</p>
+<h3>Как это работает</h3>
+<div class="stg"><div class="sl" style="color:#7C3AED">Формула</div><p>Делая [привычка], я одновременно получаю [то, что мне нравится].</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Ароматическая свеча или благовония</div><p>Зажигай свечу только на время медитации. Больше никогда. Через неделю один запах будет переключать тебя в режим тишины. А мозг будет хотеть медитировать, чтобы почувствовать этот аромат.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Любимый чай после практики</div><p>Заваривай особенный чай — который пьёшь только после медитации. Ритуал после ритуала. Двойное удовольствие, которое закрепляет привычку.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Тёплый плед и тишина</div><p>Сделай само пространство медитации настолько уютным, что тебе хочется туда вернуться. Подушка, плед, приглушённый свет — это не декорации. Это награда, которую мозг запоминает.</p></div>
+<p>Суть не в том, чтобы себя обмануть. А в том, чтобы перестать воевать с мозгом и начать с ним договариваться.</p>
+<div class="hbox"><p><strong>Попробуй сегодня:</strong> выбери одну связку — что приятного ты добавишь к своей практике? Запиши и попробуй завтра.</p></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) восьмой выпуск и придумал свою связку',
+  doneSub:'Запиши: во время [практика] я получаю [удовольствие]'
+},
+asc:{
+  headline:'Привяжи удовольствие<br>к привычке',
+  specific:`
+<p>17 дней. Больше половины. Аскеза держится — но иногда вечером накатывает пустота: привычное удовольствие убрано, а чем заполнить? Есть способ.</p>
+<p>Джеймс Клир называет это <strong>temptation bundling</strong> — связка удовольствия с привычкой. Для аскезы это работает в обратную сторону: ты заменяешь старое удовольствие на новое. Осознанно и с кайфом.</p>
+<h3>Как это работает</h3>
+<div class="stg"><div class="sl" style="color:#D97706">Формула</div><p>Вместо [старая привычка] я получаю [новое удовольствие]. И это удовольствие — моё осознанное решение.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Вечерний ритуал</div><p>Убрал скроллинг перед сном? Замени на что-то, чего ты по-настоящему ждёшь: книга + горячий шоколад, ванна с пеной, подкаст в наушниках лёжа. Не просто «убрал» — а «заменил на лучшее».</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Награда за каждый день</div><p>Каждый вечер, когда ты не сорвался — дай себе что-то маленькое и приятное. Любимая еда. 20 минут сериала. Звонок другу. Мозгу нужна немедленная награда — дай ему её.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Копилка впечатлений</div><p>Каждый день без привычки — клади мысленную (или реальную) монетку в копилку. Через 30 дней потрать «накопленное» на что-то, что давно хотел. Визуальная награда работает мощно.</p></div>
+<p>Аскеза — это не про пустоту. Это про замену. Чем осознаннее и приятнее замена — тем легче держаться.</p>
+<div class="hbox"><p><strong>Попробуй сегодня:</strong> придумай одну замену — что приятного ты получишь вместо старой привычки? Запиши и попробуй сегодня вечером.</p></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) восьмой выпуск и придумал свою замену',
+  doneSub:'Запиши: вместо [старое] я получаю [новое и приятное]'
+},
+sport:{
+  headline:'Привяжи удовольствие<br>к привычке',
+  specific:`
+<p>17 дней. Больше половины. Тренировка уже часть дня — но иногда всё равно нужен пинок, чтобы начать. Есть способ сделать так, чтобы пинок не требовался.</p>
+<p>Джеймс Клир называет это <strong>temptation bundling</strong> — связка удовольствия с привычкой. Соедини тренировку с тем, что тебе нравится. Мозг перестанет сопротивляться и начнёт хотеть.</p>
+<h3>Как это работает</h3>
+<div class="stg"><div class="sl" style="color:#059669">Формула</div><p>Делая [тренировка], я одновременно получаю [то, что мне нравится].</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Подкаст или аудиокнига</div><p>Выбери один подкаст, который слушаешь только на тренировке. Новый выпуск вышел — а послушать можно только на пробежке. Через неделю будешь ждать тренировку, чтобы узнать продолжение.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Любимый плейлист</div><p>Собери плейлист, который включаешь только во время спорта. Музыка, которая заряжает — но звучит только в эти 30 минут. Эксклюзивность делает тренировку желанной.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Кофе или смузи после</div><p>Зайди за любимым напитком после тренировки. Каждый раз. Мозг запомнит: тренировка → вкусно → хочу ещё. Простая механика, которая работает безотказно.</p></div>
+<p>Суть не в обмане. А в том, чтобы перестать воевать с мозгом. Он хочет удовольствие — дай ему. Но на твоих условиях.</p>
+<div class="hbox"><p><strong>Попробуй сегодня:</strong> выбери одну связку — что приятного добавить к тренировке? Запиши и попробуй завтра.</p></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) восьмой выпуск и придумал свою связку',
+  doneSub:'Запиши: во время [тренировка] я получаю [удовольствие]'
+}
+};
+
+const I9={
+focus:{
+  headline:'Твой мозг прямо сейчас<br>перестраивается',
+  specific:`
+<p>19 дней. Хочется рассказать тебе кое-что про то, что происходит у тебя в голове — в буквальном смысле.</p>
+<p>Каждый раз, когда ты открываешь список задач и закрываешь одну — в мозге укрепляется нейронная связь. Сигнал между нейронами проходит чуть быстрее, чуть увереннее. Учёные называют это <strong>нейропластичность</strong> — способность мозга физически перестраиваться под повторяющиеся действия.</p>
+<p>Представь тропинку в лесу. В первый день ты продираешься через кусты. На десятый — уже идёшь не глядя. На двадцатый — бежишь. Тропинка стала дорожкой. Кусты расступились.</p>
+<p>Вот что произошло за 19 дней: твой мозг протоптал дорожку «открыть список → выбрать задачу → закрыть». Сначала это требовало усилия, внимания, уговоров. Сейчас — всё меньше. И с каждым днём будет ещё легче.</p>
+<div class="hbox"><p><strong>Важно:</strong> эта перестройка необратима в хорошем смысле. Даже если ты пропустишь день-два — тропинка не зарастёт за ночь. Она уже есть. Ты её протоптал. 19 дней — это серьёзный фундамент.</p></div>
+<div class="sec-head"><div class="sec-num">2</div><div>Вопросы на выходные</div></div>
+<p>Суббота — хорошее время остановиться и заметить, что изменилось.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Что ты больше не уговариваешь себя делать — просто делаешь?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Это и есть нейропластичность в действии. Мозг перестроился — и то, что раньше было решением, стало автоматизмом.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Какую привычку ты заберёшь с собой после челленджа?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Осталось 11 дней. Но то, что ты построил — останется. Подумай, что из этих 19 дней ты хочешь оставить в своей жизни навсегда.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) девятый выпуск и знаю — мой мозг уже другой',
+  doneSub:'19 дней. Тропинка протоптана. Осталось сделать её дорогой'
+},
+mind:{
+  headline:'Твой мозг прямо сейчас<br>перестраивается',
+  specific:`
+<p>19 дней. Хочется рассказать тебе кое-что про то, что происходит у тебя в голове — в буквальном смысле.</p>
+<p>Каждый раз, когда ты садишься и закрываешь глаза — в мозге укрепляется нейронная связь. Исследования показывают, что у людей, которые медитируют регулярно, утолщается префронтальная кора (отвечает за внимание и осознанность) и уменьшается активность амигдалы (центр тревоги). Это <strong>нейропластичность</strong> — мозг физически перестраивается под повторяющиеся действия.</p>
+<p>Представь тропинку в лесу. В первый день ты продираешься через кусты мыслей. На десятый — уже находишь тишину быстрее. На двадцатый — тишина сама тебя находит.</p>
+<p>Вот что произошло за 19 дней: твой мозг протоптал дорожку к внутренней тишине. Сначала это требовало борьбы с мыслями. Сейчас — всё меньше.</p>
+<div class="hbox"><p><strong>Важно:</strong> эта перестройка необратима в хорошем смысле. Даже если пропустишь день — тропинка не зарастёт. Она уже есть. 19 дней медитации — это реальное изменение в структуре мозга. Не метафора.</p></div>
+<div class="sec-head"><div class="sec-num">2</div><div>Вопросы на выходные</div></div>
+<p>Суббота — хорошее время остановиться и заметить, что изменилось.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">В какие моменты вне медитации ты стал замечать больше тишины?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, в очереди. Или в транспорте. Или перед сном. Практика начинает просачиваться в обычную жизнь — это знак, что мозг перестроился.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Какую практику ты заберёшь с собой после челленджа?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Осталось 11 дней. Но то, что ты построил — останется. Подумай, как ты хочешь, чтобы осознанность жила в твоей жизни дальше.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) девятый выпуск и знаю — мой мозг уже другой',
+  doneSub:'19 дней. Тропинка к тишине протоптана'
+},
+asc:{
+  headline:'Твой мозг прямо сейчас<br>перестраивается',
+  specific:`
+<p>19 дней. Хочется рассказать тебе кое-что про то, что происходит у тебя в голове — в буквальном смысле.</p>
+<p>Помнишь дофаминовую петлю из первого выпуска? Вот что с ней произошло за 19 дней: каждый раз, когда ты отказывал мозгу в привычной дозе дофамина — он строил новый маршрут. Учёные называют это <strong>нейропластичность</strong> — способность мозга физически перестраиваться.</p>
+<p>Представь тропинку в лесу. Старая — широкая, накатанная, ведёт к триггеру. Новая — та, которую ты протаптываешь 19 дней. Сначала через кусты. Потом всё легче. Старая тропинка не исчезла — но новая уже становится привычнее.</p>
+<p>Вот почему с каждым днём отказ даётся чуть проще. Желание приходит реже и уходит быстрее. Мозг перестроил маршруты.</p>
+<div class="hbox"><p><strong>Важно:</strong> старая тропинка не зарастёт полностью — поэтому триггеры могут всплывать и через месяц, и через год. Но новая дорожка уже есть, и она с каждым днём всё надёжнее. 19 дней — это серьёзная перестройка.</p></div>
+<div class="sec-head"><div class="sec-num">2</div><div>Вопросы на выходные</div></div>
+<p>Суббота — хорошее время остановиться и заметить, что изменилось.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Когда ты в последний раз вспоминал о привычке, от которой отказался?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Если всё реже — мозг перестраивается. Если всё ещё часто — это нормально, старая тропинка была очень накатанной. Главное, что ты каждый раз выбираешь новую.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Что ты хочешь оставить в своей жизни после челленджа — и от чего отказаться насовсем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Осталось 11 дней. Подумай честно: есть ли что-то, к чему ты хочешь вернуться? А что точно уходит навсегда?</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) девятый выпуск и знаю — мой мозг уже другой',
+  doneSub:'19 дней. Новая тропинка становится основной'
+},
+sport:{
+  headline:'Твой мозг прямо сейчас<br>перестраивается',
+  specific:`
+<p>19 дней. Хочется рассказать тебе кое-что про то, что происходит у тебя в голове и в теле — в буквальном смысле.</p>
+<p>Каждый раз, когда ты встаёшь и двигаешься — в мозге укрепляется нейронная связь «пора двигаться → встал → сделал». Учёные называют это <strong>нейропластичность</strong> — мозг физически перестраивается под повторяющиеся действия. А тело параллельно адаптируется: улучшается кровоснабжение, растёт выносливость митохондрий, укрепляются связки.</p>
+<p>Представь тропинку в лесу. В первый день ты заставлял себя выйти. На десятый — выходил по привычке. На двадцатый — тело само просит движения, если ты его пропускаешь.</p>
+<p>Вот что произошло за 19 дней: мозг и тело синхронизировались. «Двигаться каждый день» перестаёт быть задачей и становится потребностью.</p>
+<div class="hbox"><p><strong>Важно:</strong> эта перестройка работает в обе стороны. Если ты пропустишь пару дней — тело напомнит. Оно уже привыкло двигаться. И это лучший знак из возможных.</p></div>
+<div class="sec-head"><div class="sec-num">2</div><div>Вопросы на выходные</div></div>
+<p>Суббота — хорошее время остановиться и заметить, что изменилось.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Что твоё тело научилось делать за эти 19 дней, чего не умело раньше?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты бежишь дольше. Или поднимаешься на пятый этаж без одышки. Или встаёшь утром бодрее. Тело запоминает — и отвечает результатами.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Какую активность ты заберёшь с собой после челленджа?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Осталось 11 дней. Но тело уже перестроилось. Подумай, как движение останется в твоей жизни после 30-го дня.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) девятый выпуск и знаю — мой мозг и тело уже другие',
+  doneSub:'19 дней. Тропинка протоптана. Тело помнит'
+}
+};
+
+const I10={
+focus:{
+  headline:'Хочется взять ещё 10 привычек?<br>Подожди',
+  specific:`
+<p>22-й день. Всё идёт гладко. Задача закрывается легко, список не пугает, рука сама тянется к планировщику. И тут появляется мысль: «А давай я ещё начну бегать. И медитировать. И читать по 30 страниц. И вставать в 6 утра».</p>
+<p>Знакомо? Это ловушка.</p>
+<p>Джеймс Клир предупреждает: <strong>когда привычка начинает работать, мозг хочет масштабировать успех немедленно</strong>. Это эйфория системы — ощущение, что раз одно получилось, значит получится и десять. Но именно так люди перегружают себя и теряют всё.</p>
+<h3>Что делать вместо этого</h3>
+<div class="stg"><div class="sl" style="color:#2563EB">Углубляй, а не расширяй</div><p>Вместо новой привычки — сделай текущую качественнее. Закрываешь одну задачу? Попробуй закрывать самую сложную. Делаешь это за день? Попробуй за первые два часа утра. Глубина даёт больше, чем ширина.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Запиши, а не начинай</div><p>Хочется новую привычку? Отлично — запиши её. В список «после челленджа». Само желание — хороший знак. Но реализация — после того, как текущая привычка станет полностью автоматической. А это ещё 8 дней.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Правило одного</div><p>Одна привычка — одна точка фокуса. Именно поэтому челлендж построен так: 30 дней, одно действие. Не потому что ты не можешь больше. А потому что одна привычка, доведённая до автоматизма — ценнее пяти, брошенных на полпути.</p></div>
+<p>Тебе осталось 8 дней. Самое сложное позади. Сейчас задача — не добавлять, а закрепить. Дай этой привычке стать частью тебя.</p>
+<div class="sec-head"><div class="sec-num">2</div><div>Два вопроса для самоанализа</div></div>
+<p>Мы приближаемся к финалу. Самое время посмотреть на себя честно.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Что стало возможным в твоей жизни благодаря этой привычке?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Не только задачи. Может, появилось ощущение контроля. Или спокойствие. Или доверие к себе — что ты можешь пообещать себе что-то и сдержать.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#2563EB">Что ты узнал о себе за эти 22 дня, чего не знал раньше?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты понял, что тебе нужно меньше мотивации, чем ты думал. Или что ты сильнее, чем казалось. Или что маленькие шаги — это действительно твоё.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) десятый выпуск и остаюсь в фокусе',
+  doneSub:'8 дней до финиша. Углубляй, а не расширяй'
+},
+mind:{
+  headline:'Хочется взять ещё 10 привычек?<br>Подожди',
+  specific:`
+<p>22-й день. Всё идёт гладко. Ты садишься медитировать без внутреннего сопротивления. Мысли тише. И тут появляется: «А давай я ещё начну вести дневник. И делать йогу. И дышать по Вим Хофу. И холодный душ».</p>
+<p>Знакомо? Это ловушка.</p>
+<p>Джеймс Клир предупреждает: <strong>когда привычка начинает работать, мозг хочет масштабировать успех немедленно</strong>. Это эйфория — ощущение, что раз одно получилось, получится и десять. Но именно так люди перегружают себя и теряют всё.</p>
+<h3>Что делать вместо этого</h3>
+<div class="stg"><div class="sl" style="color:#7C3AED">Углубляй, а не расширяй</div><p>Вместо новой практики — углуби текущую. Медитируешь 5 минут? Попробуй 10. С приложением? Попробуй в тишине. Утром? Добавь вечернюю минуту. Глубина одной практики даёт больше, чем пять поверхностных.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Запиши, а не начинай</div><p>Хочется новую практику? Запиши в список «после челленджа». Желание — хороший знак. Реализация — после того, как текущая станет полностью автоматической.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Правило одного</div><p>Одна привычка, доведённая до автоматизма — ценнее пяти, брошенных на второй неделе. Именно поэтому челлендж устроен так: 30 дней, одно действие.</p></div>
+<p>Осталось 8 дней. Самое сложное позади. Дай этой практике стать частью тебя.</p>
+<div class="sec-head"><div class="sec-num">2</div><div>Два вопроса для самоанализа</div></div>
+<p>Мы приближаемся к финалу. Самое время посмотреть на себя честно.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Что стало возможным в твоей жизни благодаря этой практике?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты стал спокойнее реагировать на стресс. Или начал замечать моменты, которые раньше пролетали мимо. Или просто научился останавливаться.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#7C3AED">Что ты узнал о себе за эти 22 дня, чего не знал раньше?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, что тебе нужно гораздо меньше времени для тишины, чем ты думал. Или что внутри — не так шумно, как казалось. Или что ты умеешь быть с собой.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) десятый выпуск и остаюсь в практике',
+  doneSub:'8 дней до финиша. Углубляй, а не расширяй'
+},
+asc:{
+  headline:'Хочется взять ещё 10 привычек?<br>Подожди',
+  specific:`
+<p>22-й день. Аскеза держится уверенно. Триггеры реже, желание слабее. И тут мысль: «Раз я смог отказаться от этого — давай откажусь ещё от пяти вещей. И начну бегать. И медитировать».</p>
+<p>Знакомо? Это ловушка.</p>
+<p>Джеймс Клир предупреждает: <strong>когда привычка начинает работать, мозг хочет масштабировать успех немедленно</strong>. Для аскезы это особенно опасно: добавить ещё три отказа — значит утроить нагрузку на силу воли. А она конечна.</p>
+<h3>Что делать вместо этого</h3>
+<div class="stg"><div class="sl" style="color:#D97706">Углубляй, а не расширяй</div><p>Вместо новых отказов — разберись глубже с текущим. Почему эта привычка вообще появилась? Что она заменяла? Какую потребность закрывала? Понимание причины — мощнее, чем ещё один запрет.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Запиши, а не начинай</div><p>Хочется отказаться ещё от чего-то? Запиши в список «после челленджа». Энергия для этого появится — но не сейчас. Сейчас — довести текущую аскезу до автоматизма.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Правило одного</div><p>Один отказ, доведённый до конца — меняет отношение к себе сильнее, чем пять, брошенных на середине. Ты доказываешь себе: я могу довести дело до конца.</p></div>
+<p>Осталось 8 дней. Дай себе закончить то, что начал.</p>
+<div class="sec-head"><div class="sec-num">2</div><div>Два вопроса для самоанализа</div></div>
+<p>Приближаемся к финалу. Честно с собой.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Что стало возможным в твоей жизни благодаря этому отказу?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, появилось свободное время. Или ты начал лучше спать. Или заметил, что перестал искать допинг для настроения — оно стало ровнее само по себе.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Что ты узнал о себе за эти 22 дня, чего не знал раньше?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, что ты гораздо сильнее, чем думал. Или что привычка держала тебя крепче, чем казалось. Или что жизнь без неё — спокойнее.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) десятый выпуск и довожу до конца',
+  doneSub:'8 дней. Один отказ. До финиша'
+},
+sport:{
+  headline:'Хочется взять ещё 10 привычек?<br>Подожди',
+  specific:`
+<p>22-й день. Тело привыкло двигаться. Энергии больше, настроение стабильнее. И тут: «А давай я ещё начну медитировать. И вести дневник. И правильно питаться. И вставать в 5 утра».</p>
+<p>Знакомо? Это ловушка.</p>
+<p>Джеймс Клир предупреждает: <strong>когда привычка начинает работать, мозг хочет масштабировать успех немедленно</strong>. Кажется, раз тело справляется — значит, справится с чем угодно. Но энергия не бесконечна, а новые привычки требуют ресурса, которого может не хватить на все сразу.</p>
+<h3>Что делать вместо этого</h3>
+<div class="stg"><div class="sl" style="color:#059669">Углубляй, а не расширяй</div><p>Вместо новой привычки — прокачай текущую. Бегаешь? Добавь интервалы. Ходишь? Увеличь темп на одном участке. Делаешь йогу? Попробуй более сложную последовательность. Рост внутри одной привычки — это и есть прогресс.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Запиши, а не начинай</div><p>Хочется новую привычку? Запиши. Список «после челленджа». Через 8 дней у тебя будет надёжная база — и тогда можно добавлять.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Правило одного</div><p>Одна привычка, доведённая до автоматизма — фундамент. На неё потом можно нанизать что угодно. Но сначала — фундамент.</p></div>
+<p>Осталось 8 дней. Дай телу закрепить то, чему оно научилось.</p>
+<div class="sec-head"><div class="sec-num">2</div><div>Два вопроса для самоанализа</div></div>
+<p>Приближаемся к финалу. Честно с собой.</p>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Что стало возможным в твоей жизни благодаря ежедневному движению?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты стал продуктивнее на работе. Или лучше спишь. Или заметил, что настроение стало ровнее. Движение влияет на всё — не только на тело.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#059669">Что ты узнал о себе за эти 22 дня, чего не знал раньше?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, что тебе не нужен зал, чтобы быть в форме. Или что 20 минут в день — это больше, чем кажется. Или что тело благодарит быстрее, чем ты ожидал.</p></div></div>
+`,
+  reflection:``,
+  done:'Я прочитал(а) десятый выпуск и закрепляю фундамент',
+  doneSub:'8 дней. Одна привычка. До автоматизма'
+}
+};
+
+const I11={
+focus:{
+  headline:'Когда фокус улетает —<br>как вернуться к главному',
+  specific:`
+<p>24-й день. Привычка работает, но жизнь не стоит на месте — прилетают новые задачи, чужие приоритеты, срочные просьбы. И фокус снова размывается. Ты вроде бы всё делаешь, но ощущение, что делаешь не то.</p>
+<p>Это нормально. Фокус — не то, что настраивается один раз. Это то, к чему нужно регулярно возвращаться. Как перенастройка компаса.</p>
+<p>Мы подготовили инструмент, который можно использовать не только сейчас, но и после челленджа. Это промпт для AI-планировщика, который поможет тебе:</p>
+<p>— Оценить, как ты себя чувствуешь в разных сферах жизни прямо сейчас<br>— Увидеть, где перекос, а где всё в порядке<br>— Вернуться к тому, что на самом деле важно<br>— Составить план не из «надо», а из «хочу и важно»</p>
+<p>В промпт встроен <strong>«Колесо баланса»</strong> — проверенный коучинговый инструмент. Ты оцениваешь 8 сфер жизни по шкале от 1 до 10. Это занимает 3 минуты, но даёт ясность, которой не хватает неделями.</p>
+<p>Скопируй промпт, открой ChatGPT или Claude и пройди диалог. К нему можно возвращаться каждую неделю — как к регулярному чекапу.</p>
+<div class="pb" id="prompt-text-11">
+<p>Ты — мой личный планировщик и коуч по фокусу. Твоя задача — помочь мне вернуться к тому, что действительно важно, когда я чувствую, что фокус размывается.</p>
+<p><strong>Правила:</strong><br>— Один шаг за раз. Не переходи к следующему, пока не получишь ответ.<br>— Говори просто, тепло, без канцеляризмов.<br>— Не давай советов, пока не разберёшься в моей ситуации.<br>— Используй мои ответы, чтобы потом дать конкретный план.</p>
+<p>Дисклеймер (в первом сообщении): ты — AI-помощник для рефлексии и планирования. Ты не заменяешь коуча или психолога, но помогаешь разложить мысли и приоритеты.</p>
+<span class="ps">Этап 1 — Колесо баланса:</span>
+<p>Попроси меня оценить от 1 до 10 каждую из 8 сфер (по одной за сообщение или все сразу — как мне удобнее):<br>1. Здоровье и энергия<br>2. Отношения и семья<br>3. Работа и карьера<br>4. Финансы<br>5. Личное развитие и обучение<br>6. Отдых и удовольствие<br>7. Окружение и быт<br>8. Смысл и самореализация</p>
+<p>После оценки — дай визуальное резюме: какие сферы в балансе, а где просадка. Подсвети 1–2 сферы, которые просели сильнее всего.</p>
+<span class="ps">Этап 2 — Фокус:</span>
+<p>Спроси: «Что сейчас занимает больше всего места в твоей голове — и совпадает ли это с тем, что действительно важно?»</p>
+<span class="ps">Этап 3 — Три главных:</span>
+<p>Помоги мне выбрать 3 главных дела на эту неделю. Не 10, не 20. Три. Задавай уточняющие вопросы, если нужно. Проверь: эти дела двигают просевшие сферы или просто «горят»?</p>
+<span class="ps">Этап 4 — План:</span>
+<p>Составь конкретный план на неделю: что, когда, первый шаг. Формат — простой список по дням. Спроси, какой темп мне подходит.</p>
+<span class="ps">Этап 5 — Якорь:</span>
+<p>В конце спроси: «Одно предложение — зачем тебе это всё? Что ты строишь?» Зафиксируй ответ и скажи: «Возвращайся к этой фразе, когда фокус снова улетит».</p>
+<p>Начни диалог.</p>
+<button class="cbtn" onclick="copyP(this,'prompt-text-11')">Скопировать промпт</button>
+</div>
+
+`,
+  reflection:``,
+  done:'Я прочитал(а) одиннадцатый выпуск и прошёл Колесо баланса',
+  doneSub:'Скопируй промпт и пройди диалог — 10 минут, которые вернут ясность'
+}
+};
+
+// Copy to all groups — same content
+I11.mind = {...I11.focus};
+I11.asc = {...I11.focus};
+I11.sport = {...I11.focus};
+
+function build(key){
+const t=T[key];
+let h=`<div class="tc${key==='focus'?' on':''}" id="t-${key}" data-g="${t.g}">`;
+// Preview: только один выпуск — открытый
+h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">1</div><div class="im"><div class="idate">Пример выпуска</div><div class="ititle">${t.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=genBlock(t.intro);
+h+=t.specific;
+h+=reflBlock(3);
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${t.done}<span>${t.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// CTA
+h+=`<div class="ic" style="border:2px dashed var(--focus);background:linear-gradient(135deg,var(--focus-bg),var(--mindful-bg));text-align:center;padding:28px 20px">
+<div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;margin-bottom:8px">Это 1 из 12 выпусков</div>
+<div style="color:var(--text-s);font-size:14px;margin-bottom:16px;line-height:1.5">Полная библиотека — внутри сообщества. Новые материалы выходят каждый вторник, четверг и воскресенье.</div>
+<a href="https://notfrommonday.ru/" target="_top" style="display:inline-block;background:var(--focus);color:#fff;padding:12px 28px;border-radius:100px;font-weight:700;text-decoration:none;font-size:14px">Посмотреть тарифы →</a>
+</div>`;
+h+=`</div>`;
+return h;
+}
+document.getElementById('root').innerHTML=build('focus')+build('mind')+build('asc')+build('sport');
+
+document.querySelectorAll('.tb').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.tc').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.getElementById('t-'+b.dataset.t).classList.add('on');
+  });
+});
+
+function tog(h){const c=h.parentElement;if(!c.classList.contains('lk'))c.classList.toggle('op');}
+
+function toggleDone(el){el.classList.toggle('checked');}
+
+function copyP(btn,id){
+  const el=document.getElementById(id);
+  const t=el.innerText.replace(/Скопировать промпт/g,'').replace(/Скопировано/g,'').trim();
+  navigator.clipboard.writeText(t).then(()=>{
+    btn.textContent='Скопировано';btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent='Скопировать промпт';btn.classList.remove('ok');},2000);
+  });
+}
+function copyPrompt(btn){
+  const el=document.getElementById('prompt-text');
+  const t=el.innerText.replace('Скопировать промпт','').replace('Скопировано','').trim();
+  navigator.clipboard.writeText(t).then(()=>{
+    btn.textContent='Скопировано';btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent='Скопировать промпт';btn.classList.remove('ok');},2000);
+  });
+}
+</script>
+</body>
+</html>
