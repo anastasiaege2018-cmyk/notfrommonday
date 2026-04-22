@@ -692,13 +692,14 @@ t.addEventListener('touchmove',e=>{p=Math.max(0,Math.min(sl+sx-e.touches[0].page
 <div id="lib-popup" class="lib-popup" onclick="if(event.target===this)closeLibrary()">
   <div class="lib-popup-inner">
     <button class="lib-close-btn" onclick="closeLibrary()" aria-label="Закрыть">×</button>
-    <iframe id="lib-iframe" src="" title="Библиотека — превью"></iframe>
+    <iframe id="lib-iframe" data-src="library-preview.html" src="about:blank" title="Библиотека — превью"></iframe>
   </div>
 </div>
 <script>
 function openLibrary(){
   const f=document.getElementById('lib-iframe');
-  if(!f.src) f.src='library-preview.html';
+  const want=f.getAttribute('data-src');
+  if(want && f.getAttribute('src')!==want) f.src=want;
   document.getElementById('lib-popup').classList.add('show');
   document.body.style.overflow='hidden';
   try{ym(108165954,'reachGoal','library_preview_open')}catch(e){}
