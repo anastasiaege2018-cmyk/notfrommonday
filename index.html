@@ -578,7 +578,8 @@ const LINKS = {
 const urlP=new URLSearchParams(location.search);
 const refCode=urlP.get('r');
 const utmCampaign=urlP.get('utm_campaign');
-const refName=refCode?(REF_MAP[refCode]||refCode):(utmCampaign||null);
+const refName=refCode?(REF_MAP[refCode]||refCode):null;
+const trackingRef=refName||utmCampaign||null;
 const mode=refName?'blogger':PRICE_MODE;
 const pr=PRICES[mode], lk=LINKS[mode];
 
@@ -590,7 +591,7 @@ if(refName){
 }
 
 const API='https://api.notfrommonday.ru';
-if(refName){fetch(API+'/api/track-visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:refName})}).catch(()=>{});}
+if(trackingRef){fetch(API+'/api/track-visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:trackingRef})}).catch(()=>{});}
 function showAlert(text){
   const html=String(text).replace(/@([A-Za-z0-9_]+)/g,'<a href="https://t.me/$1" target="_blank" rel="noopener" style="color:var(--warm);text-decoration:underline">@$1</a>');
   const ov=document.createElement('div');
@@ -607,7 +608,7 @@ function showAlert(text){
 async function paySolo(dir,btn){
   const orig=btn.textContent;btn.textContent='Загрузка…';btn.style.pointerEvents='none';
   try{
-    const res=await fetch(API+'/api/create-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({direction:dir,mode:mode,ref:refName})});
+    const res=await fetch(API+'/api/create-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({direction:dir,mode:mode,ref:trackingRef})});
     const j=await res.json();
     if(j.ok&&j.formUrl){window.location=j.formUrl;return;}
     showAlert('Не удалось создать оплату. Попробуйте ещё раз.');
@@ -638,7 +639,7 @@ async function sendPair(){
   try{ym(108165954,'reachGoal','pair_request')}catch(e){};
   // Создаём оплату через наш API (GetPlatinum init-payment-url)
   try{
-    const res=await fetch(API+'/api/create-pair-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nick1:n1,dir1:d1,nick2:n2,dir2:d2,mode:mode,ref:refName})});
+    const res=await fetch(API+'/api/create-pair-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nick1:n1,dir1:d1,nick2:n2,dir2:d2,mode:mode,ref:trackingRef})});
     const j=await res.json();
     if(j.ok&&j.formUrl){window.location=j.formUrl;return;}
     if(res.status===409&&j.message){showAlert(j.message);return;}
