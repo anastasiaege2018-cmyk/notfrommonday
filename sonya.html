@@ -667,8 +667,8 @@ t.addEventListener('touchmove',e=>{p=Math.max(0,Math.min(sl+sx-e.touches[0].page
 
 // Timer - starts April 22 2026, runs 2 days
 (function(){
-  const start=new Date('2026-04-17T00:00:00+03:00').getTime(); // ТЕСТ! Поменять на 2026-04-22 перед запуском
-  const end=new Date('2026-04-25T00:00:00+03:00').getTime();
+  const start=new Date('2026-04-22T00:00:00+03:00').getTime();
+  const end=new Date('2026-04-25T23:59:00+03:00').getTime();
   function tick(){
     const now=Date.now();
     if(now<start||now>end){return;}
