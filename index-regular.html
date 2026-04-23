@@ -175,6 +175,13 @@ footer p{font-size:13px}
 .lib-close-btn:hover{background:rgba(0,0,0,.9);transform:scale(1.05)}
 .lib-peek-badge{position:absolute;top:14px;left:14px;background:linear-gradient(135deg,#FF006E,#E0436C);color:#fff;font-size:13px;font-weight:800;padding:7px 16px;border-radius:100px;letter-spacing:.3px;pointer-events:none;box-shadow:0 4px 16px rgba(255,0,110,.4);animation:libPeek 2s ease-in-out infinite;z-index:3}
 @keyframes libPeek{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+.blog-popup{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.blog-popup.show{display:flex}
+.blog-popup-inner{position:relative;height:min(90vh,1200px);max-width:90vw;aspect-ratio:1282/2630;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);background:#000}
+.blog-popup video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+.blog-close-btn{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:none;background:rgba(0,0,0,.6);color:#fff;font-size:24px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .2s}
+.blog-close-btn:hover{background:rgba(0,0,0,.9);transform:scale(1.05)}
 </style>
 </head>
 <body>
@@ -352,7 +359,8 @@ footer p{font-size:13px}
     <div class="s-title">Как всё устроено</div>
     <div style="margin-bottom:36px"></div>
     <div class="mech-grid">
-      <div class="m-card m-card-img">
+      <div class="m-card m-card-img" onclick="openBlog()" style="cursor:pointer;position:relative">
+<div class="lib-peek-badge">👀 Посмотри, как выглядит</div>
         <div class="m-card-content">
           <div class="m-card-icon">📝</div>
           <h3>Ежедневный отчёт</h3>
@@ -707,6 +715,32 @@ function closeLibrary(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLibrary();});
+</script>
+
+<!-- ═ Блог ежедневных отчётов — video-popup ═ -->
+<div id="blog-popup" class="blog-popup" onclick="if(event.target===this)closeBlog()">
+  <div class="blog-popup-inner">
+    <button class="blog-close-btn" onclick="closeBlog()" aria-label="Закрыть">×</button>
+    <video id="blog-video" preload="none" playsinline controls>
+      <source src="daily-report-preview.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+<script>
+function openBlog(){
+  const v=document.getElementById('blog-video');
+  document.getElementById('blog-popup').classList.add('show');
+  document.body.style.overflow='hidden';
+  try{v.currentTime=0;v.play();}catch(e){}
+  try{ym(108165954,'reachGoal','blog_preview_open')}catch(e){}
+}
+function closeBlog(){
+  const v=document.getElementById('blog-video');
+  try{v.pause();}catch(e){}
+  document.getElementById('blog-popup').classList.remove('show');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBlog();});
 </script>
 </body>
 </html>
