@@ -61,6 +61,16 @@ header .container{display:flex;align-items:center;justify-content:space-between}
 
 .refresh-btn{background:transparent;color:var(--text-sec);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;cursor:pointer;margin:0 auto 24px;display:block}
 .refresh-btn:hover{color:var(--text);border-color:var(--warm)}
+
+.share-box{background:var(--card);border-radius:var(--radius);padding:22px 24px;margin-bottom:28px;box-shadow:var(--shadow)}
+.share-box h3{font-size:16px;font-weight:700;margin-bottom:14px;font-family:'Playfair Display',serif}
+.share-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.share-row:last-child{border:none}
+.share-row .label{font-weight:700;font-size:13px;min-width:150px}
+.share-row input.url{flex:1;min-width:260px;font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--warm-light);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);cursor:text}
+.share-row .copy-btn{background:var(--warm);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s}
+.share-row .copy-btn:hover{background:#a35f30}
+.share-row .copy-btn.copied{background:var(--green)}
 footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
 </style>
 </head>
@@ -87,6 +97,25 @@ footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
   </div>
 
   <button class="refresh-btn" id="refreshBtn">Обновить</button>
+
+  <div class="share-box">
+    <h3>Ссылки для блогеров</h3>
+    <div class="share-row">
+      <span class="label">Дарья · TG</span>
+      <input class="url" readonly value="https://notfrommonday.ru/index-regular.html?utm_campaign=47831" onclick="this.select()">
+      <button class="copy-btn" onclick="copyUrl(this)">копировать</button>
+    </div>
+    <div class="share-row">
+      <span class="label">Дарья · Instagram</span>
+      <input class="url" readonly value="https://notfrommonday.ru/index-regular.html?utm_campaign=76412" onclick="this.select()">
+      <button class="copy-btn" onclick="copyUrl(this)">копировать</button>
+    </div>
+    <div class="share-row">
+      <span class="label">Соня (партнёрка)</span>
+      <input class="url" readonly value="https://notfrommonday.ru/sonya.html" onclick="this.select()">
+      <button class="copy-btn" onclick="copyUrl(this)">копировать</button>
+    </div>
+  </div>
 
   <div class="sources" id="sources"></div>
 
@@ -198,6 +227,22 @@ async function load(){
 
 document.getElementById('refreshBtn').addEventListener('click',load);
 load();
+
+function copyUrl(btn){
+  const inp = btn.parentElement.querySelector('input.url');
+  const txt = inp.value;
+  const done = ()=>{
+    const orig = btn.textContent;
+    btn.textContent = 'скопировано';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied');}, 1800);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>{inp.select();document.execCommand('copy');done();});
+  } else {
+    inp.select();document.execCommand('copy');done();
+  }
+}
 </script>
 </body>
 </html>
