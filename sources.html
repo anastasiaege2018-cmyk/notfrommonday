@@ -96,12 +96,12 @@ footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
   </div>
 
   <div class="info-box">
-    <strong>Метки для рассылок (главный лендинг, early):</strong><br>
+    <strong>Метки для предзаписи (соло 8 880 ₽ / пара 11 110 ₽, лендинг index.html):</strong><br>
     Бот <code>@notfrommonday_bot</code> → <code>?utm_campaign=notfrommonday_bot</code><br>
     Бот <code>@privichnikbot</code> → <code>?utm_campaign=privichnikbot</code><br>
     Сообщество → <code>?utm_campaign=community</code><br>
     <br>
-    <strong>Метки для regular-лендинга (index-regular.html):</strong><br>
+    <strong>Метки для обычных продаж (соло 9 990 ₽ / пара 12 220 ₽, лендинг index-regular.html):</strong><br>
     Каналы 1-го потока → <code>?utm_campaign=1st_cohort_chats</code><br>
     Бот <code>@notfrommonday_bot</code> → <code>?utm_campaign=notfrommonday_bot_regular</code><br>
     Бот <code>@privichnikbot</code> → <code>?utm_campaign=privichnikbot_regular</code><br>
@@ -111,7 +111,7 @@ footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
     Instagram · stories → <code>?utm_campaign=ig_stories</code><br>
     Instagram · carousel → <code>?utm_campaign=ig_carousel</code><br>
     <br>
-    Sonya (партнёрка) считается отдельно: <a href="partner.html?ref=sonya">partner.html?ref=sonya</a>
+    Партнёрка Сони считается отдельно: <a href="partner.html?ref=sonya">partner.html?ref=sonya</a>
   </div>
 </div>
 
@@ -122,17 +122,17 @@ footer{text-align:center;padding:32px 0;color:var(--text-sec);font-size:13px}
 <script>
 const API='https://api.notfrommonday.ru';
 const SOURCES=[
-  {ref:'notfrommonday_bot',          label:'Бот @notfrommonday_bot',       cls:'c1'},
-  {ref:'privichnikbot',              label:'Бот @privichnikbot',           cls:'c2'},
-  {ref:'community',                  label:'Сообщество',                    cls:'c3'},
-  {ref:'1st_cohort_chats',           label:'Каналы 1-го потока',           cls:'c1'},
-  {ref:'notfrommonday_bot_regular',  label:'Бот @notfrommonday_bot (regular)', cls:'c1'},
-  {ref:'privichnikbot_regular',      label:'Бот @privichnikbot (regular)', cls:'c2'},
-  {ref:'tg_channel_post',            label:'TG-канал · пост',              cls:'c3'},
-  {ref:'tg_channel_story',           label:'TG-канал · stories',           cls:'c3'},
-  {ref:'tg_personal_story',          label:'Личный TG · stories',          cls:'c2'},
-  {ref:'ig_stories',                 label:'Instagram · stories',          cls:'c1'},
-  {ref:'ig_carousel',                label:'Instagram · carousel',         cls:'c1'},
+  {ref:'notfrommonday_bot',          label:'Бот @notfrommonday_bot — предзапись',       cls:'c1'},
+  {ref:'privichnikbot',              label:'Бот @privichnikbot — предзапись',           cls:'c2'},
+  {ref:'community',                  label:'Сообщество — предзапись',                    cls:'c3'},
+  {ref:'1st_cohort_chats',           label:'Каналы 1-го потока — 9 990 ₽',           cls:'c1'},
+  {ref:'notfrommonday_bot_regular',  label:'Бот @notfrommonday_bot — 9 990 ₽', cls:'c1'},
+  {ref:'privichnikbot_regular',      label:'Бот @privichnikbot — 9 990 ₽', cls:'c2'},
+  {ref:'tg_channel_post',            label:'TG-канал · пост — 9 990 ₽',              cls:'c3'},
+  {ref:'tg_channel_story',           label:'TG-канал · stories — 9 990 ₽',           cls:'c3'},
+  {ref:'tg_personal_story',          label:'Личный TG · stories — 9 990 ₽',          cls:'c2'},
+  {ref:'ig_stories',                 label:'Instagram · stories — 9 990 ₽',          cls:'c1'},
+  {ref:'ig_carousel',                label:'Instagram · carousel — 9 990 ₽',         cls:'c1'},
 ];
 const REF_TO_LABEL=Object.fromEntries(SOURCES.map(s=>[s.ref,s.label]));
 
