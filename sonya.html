@@ -631,13 +631,19 @@ footer p{font-size:13px}
    'regular' → 9 990₽ (без зачёркнутой)
    ?r=КОД   → блогер = те же цены что early
    ══════════════════════════════════════════ */
-const PRICE_MODE = 'blogger';
+// Авто-переключение цены: до 26 апреля 23:59 МСК — blogger (8 880), после — blogger_late (11 110)
+const HIKE_AT = new Date('2026-04-26T23:59:00+03:00').getTime();
+const HIKED = Date.now() >= HIKE_AT;
+const PRICE_MODE = HIKED ? 'blogger_late' : 'blogger';
 
 const REF_MAP = { 'a3f8b2':'sonya', 'x7k2d9':'blogger2' };
 const PRICES = {
-  early:   { solo:'8 880', pair:'11 110', oldSolo:'11 110', oldPair:'17 770' },
-  regular: { solo:'9 990', pair:'12 220', oldSolo:'14 440', oldPair:'18 880' },
-  blogger: { solo:'8 880', pair:'11 110', oldSolo:'9 990', oldPair:'12 220' }
+  early:        { solo:'8 880',  pair:'11 110', oldSolo:'11 110', oldPair:'17 770' },
+  early_late:   { solo:'11 110', pair:'17 770', oldSolo:'', oldPair:'' },
+  regular:      { solo:'9 990',  pair:'12 220', oldSolo:'14 440', oldPair:'18 880' },
+  regular_late: { solo:'14 440', pair:'18 880', oldSolo:'', oldPair:'' },
+  blogger:      { solo:'8 880',  pair:'11 110', oldSolo:'9 990',  oldPair:'12 220' },
+  blogger_late: { solo:'11 110', pair:'17 770', oldSolo:'', oldPair:'' }
 };
 const GP='https://danilasavchenko.getplatinum.ru/payment/';
 const LINKS = {
