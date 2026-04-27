@@ -11,7 +11,7 @@
 :root{
   --focus:#2563EB;--focus-bg:#EFF6FF;--focus-mid:#DBEAFE;
   --mindful:#7C3AED;--mindful-bg:#F5F3FF;--mindful-mid:#EDE9FE;
-  --new:#0E9488;--new-bg:#F0FDFA;--new-mid:#CCFBF1;
+  --ascetic:#D97706;--ascetic-bg:#FFFBEB;--ascetic-mid:#FEF3C7;
   --sport:#059669;--sport-bg:#ECFDF5;--sport-mid:#D1FAE5;
   --text:#1A1A2E;--text-s:#64748B;--text-m:#94A3B8;
   --bg:#FAFBFF;--white:#fff;--border:#E2E8F0;--border-l:#F1F5F9;
@@ -28,7 +28,7 @@ header{padding:48px 0 0;text-align:center}
 .bk::after{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:rgba(0,0,0,.12);border-radius:2px 0 0 2px}
 .bk:nth-child(1){background:var(--focus);height:40px;animation-delay:.08s}
 .bk:nth-child(2){background:var(--mindful);height:34px;animation-delay:.12s}
-.bk:nth-child(3){background:var(--new);height:38px;animation-delay:.16s}
+.bk:nth-child(3){background:var(--ascetic);height:38px;animation-delay:.16s}
 .bk:nth-child(4){background:var(--sport);height:32px;animation-delay:.2s}
 .bk:nth-child(5){background:#D97706;height:36px;animation-delay:.24s}
 @keyframes bkIn{from{opacity:0;transform:scaleY(0)}to{opacity:1;transform:scaleY(1)}}
@@ -47,12 +47,12 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 .tb .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .tb[data-t="focus"] .dot{background:var(--focus)}
 .tb[data-t="mind"] .dot{background:var(--mindful)}
-.tb[data-t="new"] .dot{background:var(--new)}
+.tb[data-t="asc"] .dot{background:var(--ascetic)}
 .tb[data-t="sport"] .dot{background:var(--sport)}
 .tb:hover{border-color:var(--border)}
 .tb[data-t="focus"].on{background:var(--focus-bg);border-color:var(--focus);color:var(--focus)}
 .tb[data-t="mind"].on{background:var(--mindful-bg);border-color:var(--mindful);color:var(--mindful)}
-.tb[data-t="new"].on{background:var(--new-bg);border-color:var(--new);color:var(--new)}
+.tb[data-t="asc"].on{background:var(--ascetic-bg);border-color:var(--ascetic);color:var(--ascetic)}
 .tb[data-t="sport"].on{background:var(--sport-bg);border-color:var(--sport);color:var(--sport)}
 
 /* === CONTENT === */
@@ -85,8 +85,8 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 [data-g="focus"] .ic:not(.lk) .idate{color:var(--focus)}
 [data-g="mind"] .ic:not(.lk) .inum{background:var(--mindful);color:#fff}
 [data-g="mind"] .ic:not(.lk) .idate{color:var(--mindful)}
-[data-g="new"] .ic:not(.lk) .inum{background:var(--new);color:#fff}
-[data-g="new"] .ic:not(.lk) .idate{color:var(--new)}
+[data-g="asc"] .ic:not(.lk) .inum{background:var(--ascetic);color:#fff}
+[data-g="asc"] .ic:not(.lk) .idate{color:var(--ascetic)}
 [data-g="sport"] .ic:not(.lk) .inum{background:var(--sport);color:#fff}
 [data-g="sport"] .ic:not(.lk) .idate{color:var(--sport)}
 
@@ -96,7 +96,7 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 .hbox{border-left:3px solid;border-radius:0 var(--rs) var(--rs) 0;padding:18px 22px;margin:20px 0}
 [data-g="focus"] .hbox{background:var(--focus-bg);border-color:var(--focus)}
 [data-g="mind"] .hbox{background:var(--mindful-bg);border-color:var(--mindful)}
-[data-g="new"] .hbox{background:var(--new-bg);border-color:var(--new)}
+[data-g="asc"] .hbox{background:var(--ascetic-bg);border-color:var(--ascetic)}
 [data-g="sport"] .hbox{background:var(--sport-bg);border-color:var(--sport)}
 .hbox p{margin-bottom:0}
 .formula{background:var(--white);border:1px solid var(--focus-mid);border-radius:var(--rs);padding:14px 20px;margin:16px 0;font-weight:600;font-size:15px;text-align:center;color:#1D4ED8}
@@ -107,7 +107,7 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 .cta{border-radius:var(--rs);padding:18px 22px;margin:24px 0 8px}
 [data-g="focus"] .cta{background:linear-gradient(135deg,var(--focus-bg),var(--focus-mid))}
 [data-g="mind"] .cta{background:linear-gradient(135deg,var(--mindful-bg),var(--mindful-mid))}
-[data-g="new"] .cta{background:linear-gradient(135deg,var(--new-bg),var(--new-mid))}
+[data-g="asc"] .cta{background:linear-gradient(135deg,var(--ascetic-bg),var(--ascetic-mid))}
 [data-g="sport"] .cta{background:linear-gradient(135deg,var(--sport-bg),var(--sport-mid))}
 .cta p{margin-bottom:0;font-weight:600;font-size:14px}
 .ib a{color:var(--focus);text-decoration:none;font-weight:500;transition:opacity .2s}
@@ -134,7 +134,7 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 .qn{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0}
 [data-g="focus"] .qn{background:var(--focus-bg);color:var(--focus)}
 [data-g="mind"] .qn{background:var(--mindful-bg);color:var(--mindful)}
-[data-g="new"] .qn{background:var(--new-bg);color:var(--new)}
+[data-g="asc"] .qn{background:var(--ascetic-bg);color:var(--ascetic)}
 [data-g="sport"] .qn{background:var(--sport-bg);color:var(--sport)}
 
 /* === DONE CHECKBOX === */
@@ -143,13 +143,13 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 .done-box.checked{border-style:solid}
 [data-g="focus"] .done-box.checked{border-color:var(--focus);background:var(--focus-bg)}
 [data-g="mind"] .done-box.checked{border-color:var(--mindful);background:var(--mindful-bg)}
-[data-g="new"] .done-box.checked{border-color:var(--new);background:var(--new-bg)}
+[data-g="asc"] .done-box.checked{border-color:var(--ascetic);background:var(--ascetic-bg)}
 [data-g="sport"] .done-box.checked{border-color:var(--sport);background:var(--sport-bg)}
 .done-check{width:28px;height:28px;border:2px solid var(--border);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s;margin-top:1px}
 .done-box.checked .done-check{border-color:transparent}
 [data-g="focus"] .done-box.checked .done-check{background:var(--focus);color:#fff}
 [data-g="mind"] .done-box.checked .done-check{background:var(--mindful);color:#fff}
-[data-g="new"] .done-box.checked .done-check{background:var(--new);color:#fff}
+[data-g="asc"] .done-box.checked .done-check{background:var(--ascetic);color:#fff}
 [data-g="sport"] .done-box.checked .done-check{background:var(--sport);color:#fff}
 .done-check svg{opacity:0;transition:opacity .2s}
 .done-box.checked .done-check svg{opacity:1}
@@ -172,12 +172,12 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 .milestone{text-align:left;margin:36px 0 16px;padding:28px 24px;border-radius:var(--r);position:relative;overflow:hidden}
 [data-g="focus"] .milestone{background:linear-gradient(135deg,var(--focus-bg),var(--focus-mid))}
 [data-g="mind"] .milestone{background:linear-gradient(135deg,var(--mindful-bg),var(--mindful-mid))}
-[data-g="new"] .milestone{background:linear-gradient(135deg,var(--new-bg),var(--new-mid))}
+[data-g="asc"] .milestone{background:linear-gradient(135deg,var(--ascetic-bg),var(--ascetic-mid))}
 [data-g="sport"] .milestone{background:linear-gradient(135deg,var(--sport-bg),var(--sport-mid))}
 .milestone .ml-num{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
 [data-g="focus"] .milestone .ml-num{color:var(--focus)}
 [data-g="mind"] .milestone .ml-num{color:var(--mindful)}
-[data-g="new"] .milestone .ml-num{color:var(--new)}
+[data-g="asc"] .milestone .ml-num{color:var(--ascetic)}
 [data-g="sport"] .milestone .ml-num{color:var(--sport)}
 .milestone .ml-text{font-size:14px;line-height:1.7;color:var(--text)}
 
@@ -187,7 +187,7 @@ header h1 i{font-style:italic;color:var(--focus);font-weight:600}
 .sec-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;margin-top:2px}
 [data-g="focus"] .sec-num{background:var(--focus-bg);color:var(--focus)}
 [data-g="mind"] .sec-num{background:var(--mindful-bg);color:var(--mindful)}
-[data-g="new"] .sec-num{background:var(--new-bg);color:var(--new)}
+[data-g="asc"] .sec-num{background:var(--ascetic-bg);color:var(--ascetic)}
 [data-g="sport"] .sec-num{background:var(--sport-bg);color:var(--sport)}
 
 /* FOOTER */
@@ -245,7 +245,7 @@ footer a{color:var(--focus);text-decoration:none;font-weight:600}
 <div class="tabs">
 <button class="tb on" data-t="focus"><span class="dot"></span>Фокус</button>
 <button class="tb" data-t="mind"><span class="dot"></span>Осознанность</button>
-<button class="tb" data-t="new"><span class="dot"></span>Новое</button>
+<button class="tb" data-t="asc"><span class="dot"></span>Аскеза</button>
 <button class="tb" data-t="sport"><span class="dot"></span>Спорт</button>
 </div>
 </div>
@@ -261,7 +261,7 @@ footer a{color:var(--focus);text-decoration:none;font-weight:600}
 const CHV='<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 const CHK='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>';
 
-const QS=['За что ты благодарен прямо сейчас?','Какая мысль занимает тебя больше всего в последнее время?','Что ты откладываешь и почему это тебя тревожит?','Что забирает твою энергию, но ты продолжаешь это делать?','Что ты разрешаешь другим, но не разрешаешь себе?','Что для тебя значит «быть в ресурсе»?'];
+const QS=['За что ты благодарен прямо сейчас?','Какой недавний момент ты хотел бы пережить ещё раз?','Какая мысль занимает тебя больше всего в последнее время?','Что стоит за твоим «не хочу» — усталость, страх или что-то другое?','В какие моменты тебе по-настоящему спокойно?','Что ты откладываешь и почему это тебя тревожит?','Что забирает твою энергию, но ты продолжаешь это делать?','Если бы ты уже был тем, кем хочешь стать — как бы ты поступил сейчас?','Что ты знаешь о себе сейчас, чего не знал год назад?','Что ты разрешаешь другим, но не разрешаешь себе?','Что для тебя значит «быть в ресурсе»?','В какие моменты ты чувствуешь, что живёшь, а не существуешь?','Что ты хочешь чувствовать чаще?','Какая маленькая вещь может улучшить завтрашний день?','Ты чаще говоришь себе «молодец» или «мало стараешься»?'];
 
 const STATS2={
   focus:{url:'focus_challenge_stats_2.html',  title:'Фокус — итоги',       sub:'Дисциплина, практика, результаты каждого участника'},
@@ -290,7 +290,7 @@ function genBlock(intro){return`
 <p>Мозг уже построил нейронную цепочку для старого действия. Ты просто подключаешь новое звено. Не нужна сила воли — нужен триггер.</p>
 <div class="cta"><p>Запиши одну привязку для своей привычки прямо в чат группы. Формат: «После [что] я делаю [что]».</p></div>`;}
 
-function reflBlock(n){return`<div class="sec-head"><div class="sec-num">${n}</div><div>6 вопросов для вечерней саморефлексии</div></div><p>Каждый вечер задай себе один вопрос. По одному в день. Записывай ответ или просто подумай перед сном.</p>${qHTML()}`;}
+function reflBlock(n){return`<div class="sec-head"><div class="sec-num">${n}</div><div>15 вопросов для вечерней саморефлексии</div></div><p>Каждый вечер задай себе один вопрос. По одному в день. Записывай ответ или просто подумай перед сном.</p>${qHTML()}`;}
 
 const T={
 focus:{
@@ -343,22 +343,25 @@ mind:{
   done:'Я прочитал(а) первый выпуск, пойду медитировать',
   doneSub:'Выбери одну практику из списка и попробуй сегодня'
 },
-new:{
-  g:'new',
+asc:{
+  g:'asc',
   headline:'Как вписать привычку<br>в своё расписание',
   intro:'«Откажусь от скроллинга перед сном» — это намерение.<br>«Каждый вечер в 22:00 кладу телефон на зарядку в другой комнате» — это система.',
   specific:`
-<div class="sec-head"><div class="sec-num">2</div><div>Простая логика «одно новое в день»</div></div>
-<p>Не пытайся изобрести колесо каждый день. Выбери одну из 4 категорий и сделай маленький шаг в ней.</p>
-<div class="stg"><div class="sl" style="color:#0E9488">Один урок</div><p>15-минутный туториал на YouTube, эпизод подкаста, статья на Хабре. Тема — то, что давно хотел разобрать, но руки не доходили.</p></div>
-<div class="stg"><div class="sl" style="color:#0E9488">Один пост</div><p>Напиши короткий пост — в свой канал, в личный блог, в общий чат. Делиться тем, что узнал — лучший способ закрепить.</p></div>
-<div class="stg"><div class="sl" style="color:#0E9488">Одно знакомство</div><p>Короткое сообщение в LinkedIn / TG — человеку, чья работа тебе откликается. «Привет, читаю вас. Можно вопрос?»</p></div>
-<div class="stg"><div class="sl" style="color:#0E9488">Один AI-эксперимент</div><p>Попроси ChatGPT, Claude или Midjourney сделать что-то, что раньше делал руками или вообще не делал. Сгенерируй промпт, нарисуй обложку, напиши скрипт.</p></div>
-<p>Главное правило: <strong>маленький шаг важнее идеального</strong>. Один пост в чат лучше, чем «потом напишу большую статью». Один промпт лучше, чем «соберусь и буду осваивать».</p>
-<div class="hbox"><p><strong>Подсказка:</strong> заведи себе заметку «Что нового сегодня?» и каждый вечер 1 строкой записывай. К концу 30 дней — 30 экспериментов и неожиданная карта своих интересов.</p></div>
-`,
-  done:'Я прочитал(а) первый выпуск, пойду пробовать что-то новое',
-  doneSub:'Выбери одну из 4 категорий и сделай маленький шаг в ней'
+<div class="sec-head"><div class="sec-num">2</div><div>Что происходит с мозгом<br>при отказе от привычки</div></div>
+<p>Чтобы было проще пройти 30 дней — давай разберёмся, что происходит внутри. В момент сопротивления знание — это опора.</p>
+<h3>Как работает дофаминовая петля</h3>
+<p>Мозг не различает «полезное» и «вредное». Он различает «даёт дофамин» и «не даёт». Скроллинг, сахар, сигарета, уведомления — быстрые источники. Мозг привыкает и хочет не удовольствия — а повторения.</p>
+<p>Это не слабость характера. Это нейрохимия.</p>
+<h3>Что будет происходить</h3>
+<div class="stg"><div class="sl" style="color:#DC2626">Дни 1–3. Раздражение</div><p>Мозг привык получать дофамин по расписанию — и вдруг ты это убрал. Скука, раздражительность, беспокойство. Это не ты — это нервная система требует привычную дозу. Если хочется бросить — ты именно там, где нужно.</p></div>
+<div class="stg"><div class="sl" style="color:#D97706">Дни 4–7. Торг</div><p>Мозг меняет тактику. Не кричит — уговаривает. «Ну один раз можно», «ты же и так молодец». Самый хитрый этап. Каждый отказ — тренировка новой нейронной связи.</p></div>
+<div class="stg"><div class="sl" style="color:#2563EB">Дни 8–14. Тишина</div><p>Острота уходит. У дня появляется больше пространства. Ты спокойнее, спишь лучше. Мозг адаптируется к более ровному уровню дофамина.</p></div>
+<div class="stg"><div class="sl" style="color:#059669">Дни 15–21. Новая норма</div><p>Всё реже вспоминаешь о том, от чего отказался. Откаты в стрессе возможны — мозг выбирает знакомое. Просто заметь и выбери заново.</p></div>
+<div class="stg"><div class="sl" style="color:#7C3AED">Дни 22–30. Переосмысление</div><p>Ты уже знаешь ответ: «А оно мне вообще нужно?» Большинство удивляются, как мало скучают по тому, что казалось незаменимым.</p></div>
+<div class="hbox"><p><strong>Когда накатывает:</strong> не борись, а наблюдай. Скажи себе: «О, это дофаминовый запрос. Я его вижу. Он пройдёт через 10–15 минут». Острое желание — волна. Она поднимается и опускается. Не действуй на пике.</p></div>`,
+  done:'Я прочитал(а) первый выпуск, пойду наблюдать за своими триггерами',
+  doneSub:'Сегодня просто замечай моменты, когда тянет к привычке. Не борись — наблюдай'
 },
 sport:{
   g:'sport',
@@ -409,7 +412,7 @@ mind:{
   done:'Я прочитал(а) второй выпуск, пойду готовить место для практики',
   doneSub:'Положи подушку, плед и наушники в одно место — пусть ждут тебя'
 },
-new:{
+asc:{
   headline:'Среда решает:<br>убери триггеры из поля зрения',
   specific:`
 <p>Джеймс Клир формулирует так: <strong>«Сделай плохую привычку невидимой, а хорошую — очевидной».</strong> Среда определяет поведение больше, чем намерение.</p>
@@ -477,7 +480,7 @@ mind:{
   done:'Я прочитал(а) третий выпуск и благодарю себя за эти 5 дней',
   doneSub:'Серьёзно. Скажи себе спасибо. Вслух или про себя — но скажи'
 },
-new:{
+asc:{
   headline:'Не на 100%?<br>Это и есть система',
   specific:`
 <h3>Один срыв — не провал</h3>
@@ -570,7 +573,7 @@ mind:{
   done:'Я прочитал(а) четвёртый выпуск и продолжаю',
   doneSub:'Долина разочарования — это часть пути. Ты уже в ней. Значит, всё идёт как надо'
 },
-new:{
+asc:{
   headline:'Долина разочарования:<br>почему кажется, что ничего не работает',
   specific:`
 <p>Ты держишь аскезу уже неделю. И возможно, тебя накрывает: «А что изменилось-то?» Жизнь вроде та же. Энергии больше не стало. А желание вернуться к старому — всё ещё здесь.</p>
@@ -671,7 +674,7 @@ mind:{
   done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
   doneSub:'Не сравнивай себя с другими. Сравни с собой 10 дней назад'
 },
-new:{
+asc:{
   headline:'Мотивация угасает.<br>Удовлетворение — нет',
   specific:`
 <p>10 дней. Начало, конечно, было на мотивации: энергия старта, обещание себе, азарт группы. На этой мотивации мы двигались первые дни.</p>
@@ -754,7 +757,7 @@ mind:{
   done:'Я прочитал(а) шестой выпуск и готов добавить один градус',
   doneSub:'На следующей неделе попробуй одну вещь иначе'
 },
-new:{
+asc:{
   headline:'Стало легко?<br>Значит, пора усложнить на чуть-чуть',
   specific:`
 <p>Если отказ стал привычным — это отличный знак. Но если он стал слишком привычным — мозг может начать скучать. А скука — это момент, когда мы рискуем расслабиться и сорваться «потому что уже и так молодец».</p>
@@ -826,7 +829,7 @@ mind:{
   done:'Я прочитал(а) седьмой выпуск и напишу в чат',
   doneSub:'Одно наблюдение о себе + одно тёплое слово тому, кто вдохновляет'
 },
-new:{
+asc:{
   headline:'Почему вместе<br>получается больше',
   specific:`
 <p>Две недели. Ты здесь не один — и это не случайность.</p>
@@ -895,7 +898,7 @@ mind:{
   done:'Я прочитал(а) восьмой выпуск и придумал свою связку',
   doneSub:'Запиши: во время [практика] я получаю [удовольствие]'
 },
-new:{
+asc:{
   headline:'Привяжи удовольствие<br>к привычке',
   specific:`
 <p>17 дней. Больше половины. Аскеза держится — но иногда вечером накатывает пустота: привычное удовольствие убрано, а чем заполнить? Есть способ.</p>
@@ -966,7 +969,7 @@ mind:{
   done:'Я прочитал(а) девятый выпуск и знаю — мой мозг уже другой',
   doneSub:'19 дней. Тропинка к тишине протоптана'
 },
-new:{
+asc:{
   headline:'Твой мозг прямо сейчас<br>перестраивается',
   specific:`
 <p>19 дней. Хочется рассказать тебе кое-что про то, что происходит у тебя в голове — в буквальном смысле.</p>
@@ -1043,7 +1046,7 @@ mind:{
   done:'Я прочитал(а) десятый выпуск и остаюсь в практике',
   doneSub:'8 дней до финиша. Углубляй, а не расширяй'
 },
-new:{
+asc:{
   headline:'Хочется взять ещё 10 привычек?<br>Подожди',
   specific:`
 <p>22-й день. Аскеза держится уверенно. Триггеры реже, желание слабее. И тут мысль: «Раз я смог отказаться от этого — давай откажусь ещё от пяти вещей. И начну бегать. И медитировать».</p>
@@ -1123,45 +1126,106 @@ focus:{
 
 // Copy to all groups — same content
 I11.mind = {...I11.focus};
-I11.new = {...I11.focus};
+I11.asc = {...I11.focus};
 I11.sport = {...I11.focus};
 
 function build(key){
 const t=T[key];
+const i2=I2[key];
 let h=`<div class="tc${key==='focus'?' on':''}" id="t-${key}" data-g="${t.g}">`;
-
-// Issue 1 — OPEN, full content (Tue 28 апреля)
-h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">1</div><div class="im"><div class="idate">28 апреля — вторник</div><div class="ititle">${t.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+// Issue 1 (collapsed)
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">1</div><div class="im"><div class="idate">24 марта — вторник</div><div class="ititle">${t.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
 h+=`<div class="ib">`;
-h+=`<div class="hbox" style="margin-top:0"><p><strong>Сегодня в 19:00 — coworking-встреча.</strong> Знакомимся, закрываем висящие задачи под руководством <a href="https://t.me/rusjus" target="_blank">@rusjus</a> (Юлия Яковенко). Ссылка на zoom прилетит в чат группы.</p></div>`;
 h+=genBlock(t.intro);
 h+=t.specific;
 h+=reflBlock(3);
 h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${t.done}<span>${t.doneSub}</span></div></div>`;
 h+=`</div></div>`;
-
-// Issues 2-11 — LOCKED shells
-const locked=[
-  {n:2, date:'30 апреля — четверг'},
-  {n:3, date:'2 мая — суббота'},
-  {n:4, date:'5 мая — вторник'},
-  {n:5, date:'7 мая — четверг'},
-  {n:6, date:'9 мая — суббота'},
-  {n:7, date:'12 мая — вторник'},
-  {n:8, date:'14 мая — четверг'},
-  {n:9, date:'16 мая — суббота'},
-  {n:10,date:'19 мая — вторник'},
-  {n:11,date:'21 мая — четверг'}
-];
-locked.forEach(L=>{
-  h+=`<div class="ic lk"><div class="ih"><div class="inum">${L.n}</div><div class="im"><div class="idate">${L.date}</div><div class="ititle">Откроется ${L.date.split(' — ')[0]}</div></div><div class="itoggle"></div></div></div>`;
-});
-
+// Issue 2 (collapsed)
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">2</div><div class="im"><div class="idate">26 марта — четверг</div><div class="ititle">${i2.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i2.specific;
+h+=i2.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i2.done}<span>${i2.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 3 (collapsed)
+const i3=I3[key];
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">3</div><div class="im"><div class="idate">29 марта — суббота</div><div class="ititle">${i3.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i3.specific;
+h+=i3.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i3.done}<span>${i3.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 4 (collapsed)
+const i4=I4[key];
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">4</div><div class="im"><div class="idate">31 марта — вторник</div><div class="ititle">${i4.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i4.specific;
+h+=i4.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i4.done}<span>${i4.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 5 (open)
+const i5=I5[key];
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">5</div><div class="im"><div class="idate">2 апреля — четверг</div><div class="ititle">${i5.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i5.specific;
+h+=i5.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i5.done}<span>${i5.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 6 (open)
+const i6=I6[key];
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">6</div><div class="im"><div class="idate">5 апреля — суббота</div><div class="ititle">${i6.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i6.specific;
+h+=i6.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i6.done}<span>${i6.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 7 (open)
+const i7=I7[key];
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">7</div><div class="im"><div class="idate">7 апреля — вторник</div><div class="ititle">${i7.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i7.specific;
+h+=i7.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i7.done}<span>${i7.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 8 (open)
+const i8=I8[key];
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">8</div><div class="im"><div class="idate">9 апреля — четверг</div><div class="ititle">${i8.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i8.specific;
+h+=i8.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i8.done}<span>${i8.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 9 (open)
+const i9=I9[key];
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">9</div><div class="im"><div class="idate">11 апреля — суббота</div><div class="ititle">${i9.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i9.specific;
+h+=i9.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i9.done}<span>${i9.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 10 (open)
+const i10=I10[key];
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">10</div><div class="im"><div class="idate">14 апреля — вторник</div><div class="ititle">${i10.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i10.specific;
+h+=i10.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i10.done}<span>${i10.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+// Issue 11 (open)
+const i11=I11[key];
+h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">11</div><div class="im"><div class="idate">16 апреля — четверг</div><div class="ititle">${i11.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i11.specific;
+h+=i11.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i11.done}<span>${i11.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+h+=stats2HTML(key);
 h+=`</div>`;
 return h;
 }
 
-document.getElementById('root').innerHTML=build('focus')+build('mind')+build('new')+build('sport');
+document.getElementById('root').innerHTML=build('focus')+build('mind')+build('asc')+build('sport');
 
 document.querySelectorAll('.tb').forEach(b=>{
   b.addEventListener('click',()=>{
