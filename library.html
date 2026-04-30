@@ -1132,21 +1132,29 @@ I11.sport = {...I11.focus};
 
 function build(key){
 const t=T[key];
+const i2=I2[key];
 let h=`<div class="tc${key==='focus'?' on':''}" id="t-${key}" data-g="${t.g}">`;
 
-// Issue 1 — OPEN, full content (Tue 28 апреля)
-h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">1</div><div class="im"><div class="idate">28 апреля — вторник</div><div class="ititle">${t.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+// Issue 1 — collapsed (Tue 28 апреля)
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">1</div><div class="im"><div class="idate">28 апреля — вторник</div><div class="ititle">${t.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
 h+=`<div class="ib">`;
-h+=`<div class="hbox" style="margin-top:0"><p><strong>Сегодня в 19:00 — coworking-встреча.</strong> Знакомимся, закрываем висящие задачи под руководством <a href="https://t.me/rusjus" target="_blank">@rusjus</a> (Юлия Яковенко). Ссылка на zoom прилетит в чат группы.</p></div>`;
+h+=`<div class="hbox" style="margin-top:0"><p><strong>Coworking-встреча была 28 апреля в 19:00.</strong> Знакомились, закрывали висящие задачи под руководством <a href="https://t.me/rusjus" target="_blank">@rusjus</a> (Юлия Яковенко).</p></div>`;
 h+=genBlock(t.intro);
 h+=t.specific;
 h+=reflBlock(3);
 h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${t.done}<span>${t.doneSub}</span></div></div>`;
 h+=`</div></div>`;
 
-// Issues 2-11 — LOCKED shells
+// Issue 2 — OPEN, full content (Thu 30 апреля)
+h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">2</div><div class="im"><div class="idate">30 апреля — четверг</div><div class="ititle">${i2.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i2.specific;
+h+=i2.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i2.done}<span>${i2.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+
+// Issues 3-11 — LOCKED shells
 const locked=[
-  {n:2, date:'30 апреля — четверг'},
   {n:3, date:'2 мая — суббота'},
   {n:4, date:'5 мая — вторник'},
   {n:5, date:'7 мая — четверг'},
