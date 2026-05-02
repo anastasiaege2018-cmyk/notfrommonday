@@ -1133,6 +1133,7 @@ I11.sport = {...I11.focus};
 function build(key){
 const t=T[key];
 const i2=I2[key];
+const i3=I3[key];
 let h=`<div class="tc${key==='focus'?' on':''}" id="t-${key}" data-g="${t.g}">`;
 
 // Issue 1 — collapsed (Tue 28 апреля)
@@ -1145,17 +1146,24 @@ h+=reflBlock(3);
 h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${t.done}<span>${t.doneSub}</span></div></div>`;
 h+=`</div></div>`;
 
-// Issue 2 — OPEN, full content (Thu 30 апреля)
-h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">2</div><div class="im"><div class="idate">30 апреля — четверг</div><div class="ititle">${i2.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+// Issue 2 — collapsed (Thu 30 апреля)
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">2</div><div class="im"><div class="idate">30 апреля — четверг</div><div class="ititle">${i2.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
 h+=`<div class="ib">`;
 h+=i2.specific;
 h+=i2.reflection;
 h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i2.done}<span>${i2.doneSub}</span></div></div>`;
 h+=`</div></div>`;
 
-// Issues 3-11 — LOCKED shells
+// Issue 3 — OPEN, full content (Sat 2 мая)
+h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">3</div><div class="im"><div class="idate">2 мая — суббота</div><div class="ititle">${i3.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i3.specific;
+h+=i3.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i3.done}<span>${i3.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+
+// Issues 4-11 — LOCKED shells
 const locked=[
-  {n:3, date:'2 мая — суббота'},
   {n:4, date:'5 мая — вторник'},
   {n:5, date:'7 мая — четверг'},
   {n:6, date:'9 мая — суббота'},
