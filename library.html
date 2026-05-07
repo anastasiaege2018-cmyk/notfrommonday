@@ -688,9 +688,9 @@ new:{
 </a>
 <p>Но именно то, что вы закладываете сейчас — ежедневное действие, от которого вы получаете удовлетворение — это путь к тому, чтобы быть довольным собой. Это самая долгосрочная стратегия, которую можно вообще выбрать.</p><div class="sec-head"><div class="sec-num">2</div><div>Замечай свои изменения</div></div>
 <p>Три вопроса. Не торопись. Можно записать, можно просто подумать перед сном.</p>
-<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, ты уже не тянешься к триггеру на автомате. Или желание стало тише и проходит быстрее. Заметь это.</p></div></div>
-<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот момент, когда хотелось сорваться — а ты переждал волну. Молча. Без медалей. Но ты знаешь.</p></div></div>
-<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, появилось больше времени. Или ты стал спокойнее реагировать. Или просто чувствуешь себя чище. Это твоё — и сравнивать не с кем.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Что тебе даётся сейчас легче, чем 10 дней назад?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, идеи приходят сами — ты уже не уговариваешь себя пробовать. Или быстрее замечаешь вокруг то, что ещё не видел. Заметь это.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">За что ты можешь поблагодарить себя, что никто кроме тебя не видит?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Тот момент, когда было лень и тянуло к привычному — а ты всё равно открыл новую книгу, маршрут или разговор. Никто не видел. Но ты знаешь.</p></div></div>
+<div class="stg" style="cursor:pointer" onclick="this.querySelector('.sa').style.display=this.querySelector('.sa').style.display==='block'?'none':'block'"><div class="sl" style="color:#D97706">Какое маленькое изменение ты замечаешь в себе — не сравнивая ни с кем?</div><div class="sa" style="display:none;margin-top:8px"><p style="margin:0;font-size:13px;color:#64748B">Может, разговоры стали интереснее. Или появилось чувство насыщенной недели. Или мир вокруг открылся чуть шире — ты замечаешь то, что раньше скользило мимо. Это твоё — и сравнивать не с кем.</p></div></div>
 `,
   reflection:``,
   done:'Я прочитал(а) пятый выпуск и замечаю своё удовлетворение',
@@ -1135,6 +1135,7 @@ const t=T[key];
 const i2=I2[key];
 const i3=I3[key];
 const i4=I4[key];
+const i5=I5[key];
 let h=`<div class="tc${key==='focus'?' on':''}" id="t-${key}" data-g="${t.g}">`;
 
 // Issue 1 — collapsed (Tue 28 апреля)
@@ -1163,17 +1164,24 @@ h+=i3.reflection;
 h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i3.done}<span>${i3.doneSub}</span></div></div>`;
 h+=`</div></div>`;
 
-// Issue 4 — OPEN, full content (Tue 5 мая)
-h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">4</div><div class="im"><div class="idate">5 мая — вторник</div><div class="ititle">${i4.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+// Issue 4 — collapsed (Tue 5 мая)
+h+=`<div class="ic"><div class="ih" onclick="tog(this)"><div class="inum">4</div><div class="im"><div class="idate">5 мая — вторник</div><div class="ititle">${i4.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
 h+=`<div class="ib">`;
 h+=i4.specific;
 h+=i4.reflection;
 h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i4.done}<span>${i4.doneSub}</span></div></div>`;
 h+=`</div></div>`;
 
-// Issues 5-11 — LOCKED shells
+// Issue 5 — OPEN, full content (Thu 7 мая)
+h+=`<div class="ic op"><div class="ih" onclick="tog(this)"><div class="inum">5</div><div class="im"><div class="idate">7 мая — четверг</div><div class="ititle">${i5.headline}</div></div><div class="itoggle">${CHV}</div></div>`;
+h+=`<div class="ib">`;
+h+=i5.specific;
+h+=i5.reflection;
+h+=`<div class="done-box" onclick="toggleDone(this)"><div class="done-check">${CHK}</div><div class="done-text">${i5.done}<span>${i5.doneSub}</span></div></div>`;
+h+=`</div></div>`;
+
+// Issues 6-11 — LOCKED shells
 const locked=[
-  {n:5, date:'7 мая — четверг'},
   {n:6, date:'9 мая — суббота'},
   {n:7, date:'12 мая — вторник'},
   {n:8, date:'14 мая — четверг'},
