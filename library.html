@@ -1175,10 +1175,9 @@ const i9=I9[key];
 const i10=I10[key];
 
 // Auto-unlock by date — issue 9 opens 21 May (Thu) at 00:00 MSK
-// PREVIEW MODE: temporarily forced open for admin review (revert before final push)
 const NOW = Date.now();
 const TS_I9 = new Date('2026-05-21T00:00:00+03:00').getTime();
-const i9Visible = true; // was: NOW >= TS_I9;
+const i9Visible = NOW >= TS_I9;
 
 let h=`<div class="tc${key==='focus'?' on':''}" id="t-${key}" data-g="${t.g}">`;
 
