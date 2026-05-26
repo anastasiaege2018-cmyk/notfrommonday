@@ -12,14 +12,11 @@
 /* === ПАЛИТРА ЛЕТА === */
 :root{
   --cream:#FAF5EC;
-  --sage:#E8EDDE;
-  --sage-deep:#D7E1C8;
+  --peach:#F5E5DD;
+  --peach-deep:#EBD2C5;
   --coral:#E8856B;
   --coral-deep:#D26B52;
-  --sky:#A8C8D8;
-  --sky-deep:#6F9CB1;
   --gold:#E5B85C;
-  --leaf:#7A9B6E;
   --ink:#2A2530;
   --ink-soft:#5A4F60;
   --line:rgba(42,37,48,.10);
@@ -100,12 +97,18 @@ a{color:inherit;text-decoration:none}
 }
 .hero h1{
   font-family:'Playfair Display',serif;
-  font-size:clamp(54px,9vw,128px);
+  font-size:clamp(42px,7.5vw,96px);
   font-weight:700;
   letter-spacing:-.025em;
-  line-height:.92;
+  line-height:.95;
   margin:0 auto 32px;
-  max-width:1100px;
+  max-width:min(1000px,calc(100vw - 48px));
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+  hyphens:none;
+}
+@media (max-width:520px){
+  .hero h1{font-size:44px;line-height:1}
 }
 .hero-sub{
   font-family:'Playfair Display',serif;
@@ -180,7 +183,7 @@ a{color:inherit;text-decoration:none}
 
 /* === ЦИФРЫ === */
 .stats{
-  background:var(--sage);
+  background:var(--peach);
   padding:96px 0;
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
@@ -525,7 +528,7 @@ body{padding-top:36px}
 </section>
 
 <!-- ══════════════ ОБРАЗЕЦ: летний блок ══════════════ -->
-<section class="section" style="background:var(--sage)">
+<section class="section" style="background:var(--peach)">
   <div class="container">
     <span class="section-label">Образец секции</span>
     <h2 class="section-title">Что будет летом</h2>
@@ -555,13 +558,12 @@ body{padding-top:36px}
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:48px 0 64px">
       <div><div style="background:var(--cream);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Cream · #FAF5EC</div></div>
-      <div><div style="background:var(--sage);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Sage · #E8EDDE</div></div>
+      <div><div style="background:var(--peach);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Peach · #F5E5DD</div></div>
+      <div><div style="background:var(--peach-deep);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Peach deep · #EBD2C5</div></div>
       <div><div style="background:var(--coral);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Coral · #E8856B</div></div>
       <div><div style="background:var(--coral-deep);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Coral deep · #D26B52</div></div>
       <div><div style="background:var(--gold);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Gold · #E5B85C</div></div>
-      <div><div style="background:var(--sky);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Sky · #A8C8D8</div></div>
-      <div><div style="background:var(--leaf);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Leaf · #7A9B6E</div></div>
-      <div><div style="background:var(--ink-soft);height:90px;border-radius:14px;margin-bottom:8px;border:1px solid rgba(255,255,255,.15)"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Ink soft · #5A4F60</div></div>
+      <div><div style="background:var(--ink);height:90px;border-radius:14px;margin-bottom:8px;border:1px solid rgba(255,255,255,.15)"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Ink · #2A2530</div></div>
     </div>
 
     <div style="background:var(--cream);color:var(--ink);padding:48px 40px;border-radius:24px">
