@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>Не с понедельника — летний редизайн (preview)</title>
+<title>Лето 2026 · Продление — Не с понедельника</title>
+<meta property="og:title" content="Лето 2026 · Продление — Не с понедельника">
+<meta property="og:description" content="Сообщество для амбициозных. Старт 9 июня. Спец-цена на продление для участников 3-го потока.">
+<meta property="og:image" content="https://notfrommonday.ru/redesign-assets/hero-main.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,7 +32,6 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Manrope',sans-serif;font-weight:400;color:var(--ink);
   background:var(--cream);line-height:1.55;font-size:17px;
-  padding-top:36px;
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -523,6 +524,14 @@ a{color:inherit;text-decoration:none}
 .field-input::placeholder{color:rgba(255,255,255,.4)}
 .field-input:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.12)}
 
+.newp-toggle{margin:18px 0 22px}
+.newp-label{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.72);margin-bottom:10px}
+.newp-options{display:flex;flex-direction:column;gap:8px}
+.newp-opt{display:flex;align-items:center;gap:10px;cursor:pointer;color:rgba(255,255,255,.92);font-size:15px;padding:10px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:12px;transition:all .2s}
+.newp-opt:hover{background:rgba(255,255,255,.10)}
+.newp-opt input{accent-color:var(--coral);width:18px;height:18px;flex-shrink:0}
+.newp-opt:has(input:checked){background:rgba(232,133,107,.15);border-color:rgba(232,133,107,.4)}
+
 .pair-submit{width:100%;justify-content:center;margin-top:6px}
 .pair-note{font-size:13px;color:rgba(255,255,255,.55);margin-top:14px;text-align:center;line-height:1.5}
 .pair-error{
@@ -627,14 +636,6 @@ footer a:hover{opacity:.7}
   .offer{padding:80px 24px}
 }
 
-/* === PREVIEW BANNER === */
-.preview-banner{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:var(--ink);color:#fff;font-size:13px;padding:8px 16px;
-  text-align:center;letter-spacing:.04em;font-weight:500;
-}
-.preview-banner b{color:var(--gold)}
-
 /* === MODAL для скрина отзыва === */
 .modal{
   position:fixed;inset:0;background:rgba(20,15,25,.85);
@@ -704,10 +705,6 @@ footer a:hover{opacity:.7}
 </style>
 </head>
 <body>
-
-<div class="preview-banner">
-  🌅 <b>Preview</b> — летний редизайн. Продакшен сайт не&nbsp;затронут.
-</div>
 
 <!-- ══════════════ 1. HERO ══════════════ -->
 <header class="hero">
@@ -1166,7 +1163,7 @@ footer a:hover{opacity:.7}
           <li>Лекции и&nbsp;активности с&nbsp;экспертами</li>
           <li>Доступ к&nbsp;беговому и&nbsp;книжному клубу</li>
         </ul>
-        <a href="#pair-form" class="btn btn-month">Взять июнь</a>
+        <a href="https://danilasavchenko.getplatinum.ru/payment/09qpFQz" class="btn btn-month" data-pay="solo-month">Взять июнь</a>
       </div>
 
       <div class="tariff-card featured">
@@ -1176,7 +1173,7 @@ footer a:hover{opacity:.7}
         <p class="tariff-sub">Июнь · июль · август&nbsp;— три месяца изменений подряд</p>
         <div class="tariff-row">
           <div class="tariff-price-row">
-            <span class="tariff-price">9&nbsp;990&nbsp;₽</span>
+            <span class="tariff-price">16&nbsp;660&nbsp;₽</span>
             <span class="tariff-price-old">47&nbsp;770&nbsp;₽</span>
           </div>
           <p style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-style:italic">соло · цена за&nbsp;всё лето</p>
@@ -1193,7 +1190,7 @@ footer a:hover{opacity:.7}
           <li>Дыхательные практики и&nbsp;мастер-классы</li>
           <li>Игры, открывающие новое</li>
         </ul>
-        <a href="#pair-form" class="btn btn-primary">Взять всё лето</a>
+        <a href="https://danilasavchenko.getplatinum.ru/payment/klYMqfy" class="btn btn-primary" data-pay="solo-summer">Взять всё лето</a>
       </div>
     </div>
 
@@ -1208,7 +1205,7 @@ footer a:hover{opacity:.7}
         </div>
         <div class="pair-form-body">
           <div class="dur-toggle">
-            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small>16&nbsp;660&nbsp;₽</small></button>
+            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small>9&nbsp;990&nbsp;₽</small></button>
             <button type="button" class="dur-btn" data-dur="summer">Всё лето <small>26&nbsp;660&nbsp;₽</small></button>
           </div>
 
@@ -1225,9 +1222,17 @@ footer a:hover{opacity:.7}
             </div>
           </div>
 
-          <button class="btn btn-primary pair-submit" onclick="sendPair()">Отправить заявку</button>
-          <div class="pair-success" id="pairSuccess">✓ Заявка отправлена! Сейчас открою Telegram&nbsp;— подтверди отправку.</div>
-          <p class="pair-note">Не&nbsp;беспокойся: бот напишет в&nbsp;ЛС, после подтверждения вышлю обоим ссылку на&nbsp;оплату.</p>
+          <div class="newp-toggle">
+            <span class="newp-label">+1 уже был в&nbsp;сообществе?</span>
+            <div class="newp-options">
+              <label class="newp-opt"><input type="radio" name="newperson" value="new" checked> Нет, это новый человек</label>
+              <label class="newp-opt"><input type="radio" name="newperson" value="returning"> Да, уже участвовал</label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary pair-submit" onclick="sendPair()">Перейти к&nbsp;оплате</button>
+          <div class="pair-success" id="pairSuccess">✓ Записал заявку. Сейчас переведу на&nbsp;страницу оплаты&nbsp;— а&nbsp;тебе и&nbsp;другу придут уведомления.</div>
+          <p class="pair-note">После оплаты я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;добавлю в&nbsp;группы.</p>
         </div>
       </div>
     </div>
@@ -1525,31 +1530,68 @@ const statsObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.4 });
 document.querySelectorAll('.stat-num[data-target]').forEach(el => statsObserver.observe(el));
 
-// 1+1 form: submit → отправляет в Telegram админу заранее заполненное сообщение
+// 1+1 form — записывает заявку, открывает страницу оплаты, шлёт уведомление админу
+const PAY_URLS = {
+  'solo-month':   'https://danilasavchenko.getplatinum.ru/payment/09qpFQz',
+  'solo-summer':  'https://danilasavchenko.getplatinum.ru/payment/klYMqfy',
+  'pair-month':   'https://danilasavchenko.getplatinum.ru/payment/tIb9dx6',
+  'pair-summer':  'https://danilasavchenko.getplatinum.ru/payment/r5DHu3g'
+};
+const API_BASE = 'https://api.notfrommonday.ru';
+
 function sendPair(){
-  const n1 = document.getElementById('p1nick').value.trim();
-  const n2 = document.getElementById('p2nick').value.trim();
+  const n1raw = document.getElementById('p1nick').value.trim();
+  const n2raw = document.getElementById('p2nick').value.trim();
   const errBox = document.getElementById('pairError');
   const okBox = document.getElementById('pairSuccess');
   errBox.classList.remove('show');
   okBox.classList.remove('show');
 
-  if(!n1 || !n2){
+  if(!n1raw || !n2raw){
     errBox.classList.add('show');
     return;
   }
 
+  const n1 = n1raw.startsWith('@') ? n1raw : '@'+n1raw;
+  const n2 = n2raw.startsWith('@') ? n2raw : '@'+n2raw;
   const dur = document.querySelector('.dur-btn.active').dataset.dur;
-  const durName = dur === 'month' ? 'на 1 месяц (16 660 ₽)' : 'на всё лето (26 660 ₽)';
-  const n1clean = n1.startsWith('@') ? n1 : '@'+n1;
-  const n2clean = n2.startsWith('@') ? n2 : '@'+n2;
+  const newPerson = document.querySelector('input[name="newperson"]:checked').value === 'new';
+  const payKey = dur === 'month' ? 'pair-month' : 'pair-summer';
+  const payUrl = PAY_URLS[payKey];
 
-  const text = `Привет! Хочу тариф 1+1 ${durName}.\nУчастники: ${n1clean} + ${n2clean}`;
-  const url = `https://t.me/ast_nasty?text=${encodeURIComponent(text)}`;
+  // Записываем заявку в backend (best effort)
+  fetch(API_BASE + '/api/pair-request', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      nick1: n1,
+      nick2: n2,
+      mode: 'prodlenie',
+      duration: dur,
+      new_person: newPerson,
+      source: 'leto-prodlenie'
+    })
+  }).catch(() => {});
+
+  // Также шлём fallback-уведомление через Telegram (на случай если backend не отработал)
+  const flag = newPerson ? '🆕 НОВЫЙ человек' : '🔁 уже был в сообществе';
+  const durName = dur === 'month' ? 'на 1 месяц (9 990 ₽)' : 'на всё лето (26 660 ₽)';
+  const tgText = encodeURIComponent(
+    `🎟 Заявка 1+1 (продление) ${durName}\n${n1} + ${n2}\n+1: ${flag}`
+  );
 
   okBox.classList.add('show');
-  setTimeout(()=>{ window.open(url, '_blank'); }, 400);
+  setTimeout(() => {
+    window.location.href = payUrl;
+  }, 700);
 }
+
+// Tracking visits — best effort
+fetch(API_BASE + '/api/track-visit', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({source: 'leto-prodlenie'})
+}).catch(() => {});
 </script>
 </body>
 </html>
