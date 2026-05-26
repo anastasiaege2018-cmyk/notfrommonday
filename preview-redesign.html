@@ -9,14 +9,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* === ПАЛИТРА ЛЕТА === */
+/* === ПАЛИТРА ЛЕТА (sunburst) === */
 :root{
-  --cream:#FAF5EC;
-  --peach:#F5E5DD;
-  --peach-deep:#EBD2C5;
+  --cream:#FDF8E8;       /* тёплый кремовый с жёлтым подтоном */
+  --butter:#FCE9A8;      /* мягкое сливочное жёлтое */
+  --butter-deep:#F5D274; /* солнечное */
+  --peach:#FBD3B0;       /* спелый персик */
+  --peach-deep:#F4B988;
   --coral:#E8856B;
   --coral-deep:#D26B52;
-  --gold:#E5B85C;
+  --gold:#F4C45E;        /* золото поярче */
+  --leaf:#9CB87A;        /* свежий лист (не sage) */
   --ink:#2A2530;
   --ink-soft:#5A4F60;
   --line:rgba(42,37,48,.10);
@@ -70,7 +73,7 @@ a{color:inherit;text-decoration:none}
 }
 .hero-photo{
   position:absolute;inset:0;
-  background-image:url('redesign-assets/community-lake.jpg');
+  background-image:url('redesign-assets/hero-summer-friends.jpg');
   background-size:cover;background-position:center 40%;
 }
 .hero-photo::after{
@@ -97,18 +100,19 @@ a{color:inherit;text-decoration:none}
 }
 .hero h1{
   font-family:'Playfair Display',serif;
-  font-size:clamp(42px,7.5vw,96px);
+  font-size:clamp(36px,6.5vw,82px);
   font-weight:700;
   letter-spacing:-.025em;
-  line-height:.95;
+  line-height:1;
   margin:0 auto 32px;
-  max-width:min(1000px,calc(100vw - 48px));
-  word-wrap:break-word;
-  overflow-wrap:break-word;
-  hyphens:none;
+  white-space:nowrap;
 }
-@media (max-width:520px){
-  .hero h1{font-size:44px;line-height:1}
+@media (max-width:680px){
+  .hero h1{
+    font-size:38px;
+    white-space:normal;
+    line-height:1;
+  }
 }
 .hero-sub{
   font-family:'Playfair Display',serif;
@@ -146,13 +150,13 @@ a{color:inherit;text-decoration:none}
 .utp::before{
   content:'';position:absolute;
   top:-100px;right:-150px;width:500px;height:500px;
-  background:radial-gradient(circle,rgba(232,133,107,.18) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(244,196,94,.25) 0%,transparent 70%);
   pointer-events:none;
 }
 .utp::after{
   content:'';position:absolute;
   bottom:-200px;left:-150px;width:600px;height:600px;
-  background:radial-gradient(circle,rgba(168,200,216,.22) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(232,133,107,.18) 0%,transparent 70%);
   pointer-events:none;
 }
 .utp-content{position:relative;z-index:1;text-align:center}
@@ -183,7 +187,7 @@ a{color:inherit;text-decoration:none}
 
 /* === ЦИФРЫ === */
 .stats{
-  background:var(--peach);
+  background:var(--butter);
   padding:96px 0;
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
@@ -557,13 +561,14 @@ body{padding-top:36px}
     <h2 class="section-title" style="color:#fff">Палитра и&nbsp;типографика</h2>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:48px 0 64px">
-      <div><div style="background:var(--cream);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Cream · #FAF5EC</div></div>
-      <div><div style="background:var(--peach);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Peach · #F5E5DD</div></div>
-      <div><div style="background:var(--peach-deep);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Peach deep · #EBD2C5</div></div>
+      <div><div style="background:var(--cream);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Cream · #FDF8E8</div></div>
+      <div><div style="background:var(--butter);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Butter · #FCE9A8</div></div>
+      <div><div style="background:var(--butter-deep);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Butter deep · #F5D274</div></div>
+      <div><div style="background:var(--peach);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Peach · #FBD3B0</div></div>
+      <div><div style="background:var(--peach-deep);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Peach deep · #F4B988</div></div>
       <div><div style="background:var(--coral);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Coral · #E8856B</div></div>
-      <div><div style="background:var(--coral-deep);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Coral deep · #D26B52</div></div>
-      <div><div style="background:var(--gold);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Gold · #E5B85C</div></div>
-      <div><div style="background:var(--ink);height:90px;border-radius:14px;margin-bottom:8px;border:1px solid rgba(255,255,255,.15)"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Ink · #2A2530</div></div>
+      <div><div style="background:var(--gold);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Gold · #F4C45E</div></div>
+      <div><div style="background:var(--leaf);height:90px;border-radius:14px;margin-bottom:8px"></div><div style="font-size:13px;color:rgba(255,255,255,.7)">Leaf · #9CB87A</div></div>
     </div>
 
     <div style="background:var(--cream);color:var(--ink);padding:48px 40px;border-radius:24px">
