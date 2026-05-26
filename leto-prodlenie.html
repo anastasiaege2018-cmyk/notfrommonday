@@ -760,9 +760,9 @@ footer a:hover{opacity:.7}
 
 <!-- ══════════════ MOOD STRIP (после Цифр) ══════════════ -->
 <div class="mood-strip">
-  <div style="background-image:url('redesign-assets/mood/book-cafe.png');background-position:center 35%"></div>
-  <div style="background-image:url('redesign-assets/mood/river-selfie.jpg')"></div>
-  <div style="background-image:url('redesign-assets/mood/cafe-mural.webp');background-position:center 35%"></div>
+  <div style="background-image:url('redesign-assets/mood/book-cafe.png');background-position:center 30%"></div>
+  <div style="background-image:url('redesign-assets/mood/river-selfie.jpg');background-position:center 25%"></div>
+  <div style="background-image:url('redesign-assets/mood/cafe-mural.webp');background-position:center 15%"></div>
 </div>
 
 
@@ -995,7 +995,7 @@ footer a:hover{opacity:.7}
 <section class="section how">
   <div class="container">
     <h2 class="section-title">Как всё устроено</h2>
-    <p class="section-sub">Программа на&nbsp;месяц&nbsp;— и&nbsp;то, что мы создаём вокруг неё вместе.</p>
+    <p class="section-sub">Программа на&nbsp;месяц или на&nbsp;всё лето&nbsp;— выбирай свой вариант.</p>
 
     <div class="how-block-label">Основное</div>
     <div class="how-grid">
@@ -1222,14 +1222,6 @@ footer a:hover{opacity:.7}
             </div>
           </div>
 
-          <div class="newp-toggle">
-            <span class="newp-label">+1 уже был в&nbsp;сообществе?</span>
-            <div class="newp-options">
-              <label class="newp-opt"><input type="radio" name="newperson" value="new" checked> Нет, это новый человек</label>
-              <label class="newp-opt"><input type="radio" name="newperson" value="returning"> Да, уже участвовал</label>
-            </div>
-          </div>
-
           <button class="btn btn-primary pair-submit" onclick="sendPair()">Перейти к&nbsp;оплате</button>
           <div class="pair-success" id="pairSuccess">✓ Записал заявку. Сейчас переведу на&nbsp;страницу оплаты&nbsp;— а&nbsp;тебе и&nbsp;другу придут уведомления.</div>
           <p class="pair-note">После оплаты я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;добавлю в&nbsp;группы.</p>
@@ -1283,25 +1275,6 @@ footer a:hover{opacity:.7}
               <li>Ввёл ритуал чтения с&nbsp;дочерью перед сном</li>
             </ul></div>
             <button class="case-review-btn" onclick="openReview('grigory.jpg','Григорий Лазарев')">📷 Посмотреть отзыв</button>
-          </div>
-        </div>
-
-        <div class="case-card">
-          <div class="case-header">
-            <div class="case-photo"><img src="redesign-assets/cases/toomas.jpg" alt=""></div>
-            <div class="case-head">
-              <div class="case-name">Тоомас</div>
-              <div class="case-meta">Tech-предприниматель (малая авиация) · 32 года</div>
-            </div>
-          </div>
-          <div class="case-body">
-            <div class="case-q"><b>Запрос</b>Внедрить AI-инструменты в&nbsp;работу, пробовать новое каждый день</div>
-            <div class="case-r"><b>Результаты</b><ul>
-              <li>Впервые углублённо поработал с&nbsp;<strong>Claude, Cursor и&nbsp;Obsidian</strong></li>
-              <li>Протестировал новые модули связи из&nbsp;Китая</li>
-              <li>Ежедневная практика «первый раз»&nbsp;— от&nbsp;рабочих инструментов до&nbsp;фермерского хлеба</li>
-            </ul></div>
-            <button class="case-review-btn" onclick="openReview('toomas1.jpg','Тоомас')">📷 Посмотреть отзыв</button>
           </div>
         </div>
 
@@ -1418,6 +1391,25 @@ footer a:hover{opacity:.7}
               <li>В&nbsp;3-м потоке: <strong>+950 подписчиков в&nbsp;Instagram, +600 в&nbsp;Telegram</strong></li>
             </ul></div>
             <button class="case-review-btn" onclick="openReview('darya.jpg','Дарья Емельянович')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/toomas.jpg" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Тоомас Карулаас</div>
+              <div class="case-meta">Tech-предприниматель (малая авиация) · 32 года</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Внедрить AI-инструменты в&nbsp;работу, пробовать новое каждый день</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li>Впервые углублённо поработал с&nbsp;<strong>Claude, Cursor и&nbsp;Obsidian</strong></li>
+              <li>Протестировал новые модули связи из&nbsp;Китая</li>
+              <li>Ежедневная практика «первый раз»&nbsp;— от&nbsp;рабочих инструментов до&nbsp;фермерского хлеба</li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('toomas1.jpg','Тоомас Карулаас')">📷 Посмотреть отзыв</button>
           </div>
         </div>
 
@@ -1555,7 +1547,8 @@ function sendPair(){
   const n1 = n1raw.startsWith('@') ? n1raw : '@'+n1raw;
   const n2 = n2raw.startsWith('@') ? n2raw : '@'+n2raw;
   const dur = document.querySelector('.dur-btn.active').dataset.dur;
-  const newPerson = document.querySelector('input[name="newperson"]:checked').value === 'new';
+  // +1 всегда новый по правилам тарифа
+  const newPerson = true;
   const payKey = dur === 'month' ? 'pair-month' : 'pair-summer';
   const payUrl = PAY_URLS[payKey];
 
