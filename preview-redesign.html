@@ -9,13 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* === ПАЛИТРА ЛЕТА (sunburst) === */
+/* === ПАЛИТРА === */
 :root{
   --cream:#FDF8E8;
   --butter:#FCE9A8;
   --butter-deep:#F5D274;
   --peach:#FBD3B0;
-  --peach-deep:#F4B988;
   --coral:#E8856B;
   --coral-deep:#D26B52;
   --gold:#F4C45E;
@@ -37,8 +36,9 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .serif{font-family:'Playfair Display',serif}
 .container{max-width:1180px;margin:0 auto;padding:0 32px}
+.container-wide{max-width:1320px;margin:0 auto;padding:0 32px}
 
-/* === КНОПКИ === */
+/* === BTN === */
 .btn{
   display:inline-flex;align-items:center;gap:10px;
   padding:18px 36px;border-radius:100px;
@@ -52,10 +52,6 @@ a{color:inherit;text-decoration:none}
 
 /* === SECTION ATOMS === */
 .section{padding:120px 0}
-.section-label{
-  display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
-  color:var(--coral);margin-bottom:18px;
-}
 .section-title{
   font-family:'Playfair Display',serif;
   font-size:clamp(34px,4vw,56px);font-weight:700;
@@ -66,16 +62,12 @@ a{color:inherit;text-decoration:none}
 }
 
 /* === HERO === */
-.hero{
-  position:relative;min-height:100vh;background:var(--ink);color:#fff;
-  overflow:hidden;display:flex;align-items:center;text-align:center;
-}
+.hero{position:relative;min-height:100vh;background:var(--ink);color:#fff;overflow:hidden;display:flex;align-items:center;text-align:center}
 .hero-photo{
   position:absolute;inset:0;
   background-image:url('redesign-assets/hero-sunset-run.jpg');
   background-size:cover;background-position:center 30%;
-  image-rendering:-webkit-optimize-contrast;
-  filter:contrast(1.06) saturate(1.08);
+  image-rendering:-webkit-optimize-contrast;filter:contrast(1.06) saturate(1.08);
 }
 .hero-photo::after{
   content:'';position:absolute;inset:0;
@@ -101,29 +93,45 @@ a{color:inherit;text-decoration:none}
   max-width:620px;line-height:1.45;color:rgba(255,255,255,.92);margin:0 auto 44px;
 }
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
-@media (max-width:680px){
-  .hero h1{font-size:38px;white-space:normal;line-height:1}
+@media (max-width:680px){.hero h1{font-size:38px;white-space:normal;line-height:1}}
+
+/* === MOOD STRIP — фото-полоска между секциями === */
+.mood-strip{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:6px;
+  height:280px;background:var(--cream);
+}
+.mood-strip > div{background-size:cover;background-position:center}
+.mood-strip.tall{height:360px}
+@media (max-width:768px){
+  .mood-strip{grid-template-columns:1fr;height:auto}
+  .mood-strip > div{height:200px}
 }
 
-/* === УТП === */
+/* === УТП — split с фото === */
 .utp{background:var(--cream);padding:120px 0 100px;position:relative;overflow:hidden}
 .utp::before{
   content:'';position:absolute;top:-100px;right:-150px;width:500px;height:500px;
-  background:radial-gradient(circle,rgba(244,196,94,.25) 0%,transparent 70%);pointer-events:none;
+  background:radial-gradient(circle,rgba(244,196,94,.30) 0%,transparent 70%);pointer-events:none;
 }
-.utp::after{
-  content:'';position:absolute;bottom:-200px;left:-150px;width:600px;height:600px;
-  background:radial-gradient(circle,rgba(232,133,107,.18) 0%,transparent 70%);pointer-events:none;
-}
-.utp-content{position:relative;z-index:1;text-align:center}
+.utp-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;position:relative;z-index:1}
 .utp-name{
   font-family:'Playfair Display',serif;font-size:clamp(40px,5.5vw,72px);font-weight:700;
   letter-spacing:-.015em;line-height:1;margin-bottom:32px;
 }
-.utp-pitch{font-size:clamp(20px,2vw,24px);line-height:1.55;max-width:680px;margin:0 auto 32px;font-weight:400}
+.utp-pitch{font-size:clamp(18px,1.6vw,21px);line-height:1.6;margin-bottom:32px;font-weight:400;color:var(--ink)}
 .utp-tagline{
   font-family:'Playfair Display',serif;font-style:italic;
-  font-size:clamp(24px,2.4vw,30px);color:var(--coral);margin-bottom:48px;font-weight:500;
+  font-size:clamp(22px,2vw,28px);color:var(--coral-deep);margin-bottom:36px;font-weight:500;
+}
+.utp-photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 60px rgba(42,37,48,.18)}
+.utp-photo img{width:100%;height:100%;object-fit:cover}
+.utp-photo-sub{
+  position:absolute;left:-24px;bottom:24px;background:var(--gold);color:var(--ink);
+  padding:10px 18px;border-radius:100px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+}
+@media (max-width:920px){
+  .utp-grid{grid-template-columns:1fr;gap:48px}
+  .utp-photo{aspect-ratio:5/4;max-width:520px;margin:0 auto}
 }
 
 /* === ЦИФРЫ === */
@@ -152,26 +160,34 @@ a{color:inherit;text-decoration:none}
 .why-text strong{font-weight:700}
 
 /* === КТО ВНУТРИ === */
-.who{background:var(--peach)}
-.who-spheres{
-  margin-top:-16px;margin-bottom:64px;
-  background:var(--white);border-radius:20px;padding:24px 30px;
-  font-size:15px;line-height:1.85;color:var(--ink-soft);
+.who{background:var(--cream)}
+.who-spheres{margin-bottom:64px}
+.who-spheres-head{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  color:var(--ink-soft);margin-bottom:14px;
 }
-.who-spheres strong{color:var(--ink);font-weight:700;display:block;margin-bottom:6px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
-.who-category{margin-bottom:64px}
+.spheres-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  background:var(--white);border:1px solid var(--line);
+  border-radius:100px;padding:9px 18px;
+  font-size:14px;color:var(--ink);font-weight:500;
+  transition:all .2s ease;
+}
+.chip:hover{background:var(--peach);border-color:var(--peach);transform:translateY(-2px)}
+
+.who-category{margin-bottom:64px;padding-top:36px;border-top:1px solid var(--line)}
 .who-cat-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px;flex-wrap:wrap}
-.who-cat-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;letter-spacing:-.01em}
-.who-cat-tag{font-size:13px;color:var(--coral);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.who-cat-name{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;letter-spacing:-.01em}
+.who-cat-tag{font-size:14px;color:var(--ink-soft);font-style:italic}
 .who-cat-desc{font-size:16px;color:var(--ink-soft);margin-bottom:20px;max-width:580px;line-height:1.5}
 .click-hint{
   display:inline-flex;align-items:center;gap:8px;
   font-family:'Playfair Display',serif;font-style:italic;
-  font-size:15px;color:var(--coral-deep);margin-bottom:14px;
+  font-size:15px;color:var(--ink-soft);margin-bottom:16px;
 }
 .click-hint::before{
   content:'↓';font-style:normal;font-weight:700;display:inline-block;
-  animation:bounceDown 1.6s ease-in-out infinite;font-size:18px;
+  animation:bounceDown 1.6s ease-in-out infinite;font-size:18px;color:var(--coral);
 }
 @keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 .who-avatars{display:flex;flex-wrap:wrap;gap:18px}
@@ -185,7 +201,7 @@ a{color:inherit;text-decoration:none}
   position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);
   background:var(--ink);color:#fff;padding:14px 18px;border-radius:14px;
   width:280px;font-size:13px;line-height:1.5;
-  opacity:0;pointer-events:none;transition:opacity .2s ease,transform .25s ease;
+  opacity:0;pointer-events:none;transition:opacity .2s,transform .25s;
   box-shadow:0 16px 40px rgba(0,0,0,.3);z-index:20;
 }
 .who-tooltip::after{
@@ -198,88 +214,44 @@ a{color:inherit;text-decoration:none}
   opacity:1;transform:translateX(-50%) translateY(-4px);pointer-events:auto;
 }
 
-/* === ЗАПРОСЫ И РЕЗУЛЬТАТЫ === */
-.cases{background:var(--cream)}
-.cases-wrap{position:relative;margin:0 -32px;padding:0 32px}
-.cases-track{
-  display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;
-  padding-bottom:24px;scrollbar-width:thin;-webkit-overflow-scrolling:touch;
-}
-.cases-track::-webkit-scrollbar{height:8px}
-.cases-track::-webkit-scrollbar-track{background:transparent}
-.cases-track::-webkit-scrollbar-thumb{background:rgba(42,37,48,.15);border-radius:100px}
-.case-card{
-  background:var(--white);border-radius:24px;padding:32px;
-  flex:0 0 min(520px,calc(100vw - 96px));scroll-snap-align:start;
-  display:grid;grid-template-columns:auto 1fr;gap:24px 22px;
-  box-shadow:0 6px 20px rgba(42,37,48,.06);
-}
-.case-photo img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--peach)}
-.case-head{align-self:end}
-.case-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.15;margin-bottom:4px}
-.case-meta{font-size:13px;color:var(--ink-soft);line-height:1.4}
-.case-body{grid-column:1/-1;display:grid;gap:14px;font-size:14.5px}
-.case-q{
-  background:var(--peach);border-radius:14px;padding:14px 16px;line-height:1.5;
-}
-.case-q b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:4px;font-weight:700}
-.case-r{
-  background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:14px 16px;line-height:1.55;
-}
-.case-r b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:8px;font-weight:700}
-.case-r ul{list-style:none;padding:0;margin:0}
-.case-r li{padding:4px 0 4px 18px;position:relative;font-size:14px;line-height:1.5}
-.case-r li::before{content:'+';color:var(--coral);font-weight:700;position:absolute;left:0;top:3px}
-.case-review-btn{
-  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
-  background:transparent;border:1px solid var(--line);border-radius:100px;
-  padding:8px 16px;font-size:13px;font-weight:600;color:var(--ink);
-  font-family:'Manrope',sans-serif;transition:all .2s ease;align-self:start;
-}
-.case-review-btn:hover{background:var(--coral);color:#fff;border-color:var(--coral)}
-.cases-arrows{display:flex;gap:10px;margin-top:24px}
-.case-arrow{
-  width:46px;height:46px;border-radius:50%;background:var(--white);border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  font-size:18px;color:var(--ink);transition:all .2s;
-}
-.case-arrow:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-
 /* === КАК ВСЁ УСТРОЕНО === */
 .how{background:var(--ink);color:#fff}
-.how .section-label{color:var(--gold)}
 .how .section-title{color:#fff}
 .how .section-sub{color:rgba(255,255,255,.7)}
 .how-block-label{
   font-family:'Playfair Display',serif;font-style:italic;
-  font-size:22px;color:var(--gold);margin:48px 0 24px;
+  font-size:24px;color:var(--gold);margin:48px 0 24px;
 }
-.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 .how-card{
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);
-  border-radius:20px;padding:28px 26px;
+  border-radius:20px;overflow:hidden;
   transition:transform .25s,background .25s;
 }
 .how-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.08)}
+.how-card-img{height:180px;background-size:cover;background-position:center}
+.how-card-body{padding:24px 26px 28px}
 .how-card-name{
   font-family:'Playfair Display',serif;font-size:20px;font-weight:700;
-  margin-bottom:10px;line-height:1.2;color:#fff;
+  margin-bottom:10px;line-height:1.25;color:#fff;
 }
 .how-card-desc{font-size:14.5px;color:rgba(255,255,255,.75);line-height:1.55}
 
 /* === ЛЕТОМ === */
-.summer{background:var(--peach)}
-.summer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.summer{background:var(--cream)}
+.summer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .summer-card{
-  background:var(--white);border-radius:20px;padding:32px 24px;
-  text-align:center;border:1px solid var(--line);
+  border-radius:20px;overflow:hidden;background:var(--white);
+  border:1px solid var(--line);
   transition:transform .25s,box-shadow .25s;
 }
 .summer-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(42,37,48,.10)}
-.summer-emoji{font-size:38px;margin-bottom:14px;line-height:1}
+.summer-photo{aspect-ratio:4/5;background-size:cover;background-position:center}
 .summer-name{
+  padding:18px 22px 24px;
   font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
   letter-spacing:.02em;text-transform:uppercase;
+  text-align:center;
 }
 
 /* === ТАРИФЫ === */
@@ -288,7 +260,7 @@ a{color:inherit;text-decoration:none}
 .tariff-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .tariff-card{
   background:var(--white);border:1px solid var(--line);border-radius:28px;padding:48px 40px;
-  position:relative;transition:transform .3s ease,box-shadow .3s ease;
+  position:relative;transition:transform .3s,box-shadow .3s;
 }
 .tariff-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(42,37,48,.10)}
 .tariff-card.featured{background:linear-gradient(160deg,var(--coral) 0%,var(--coral-deep) 100%);color:#fff;border-color:transparent}
@@ -319,25 +291,110 @@ a{color:inherit;text-decoration:none}
 .tariff-card.featured .btn-primary{background:#fff;color:var(--coral-deep)}
 .tariff-card.featured .btn-primary:hover{background:var(--cream);color:var(--coral-deep)}
 
-/* === ОТЗЫВЫ === */
-.reviews{background:var(--butter)}
-.reviews-track{
-  display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;
-  padding-bottom:24px;scrollbar-width:thin;
+/* === 1+1 ФОРМА === */
+.pair-form-wrap{margin-top:64px}
+.pair-form{
+  background:var(--ink);color:#fff;border-radius:28px;
+  padding:48px 44px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;
+  position:relative;overflow:hidden;
 }
-.reviews-track::-webkit-scrollbar{height:8px}
-.reviews-track::-webkit-scrollbar-track{background:transparent}
-.reviews-track::-webkit-scrollbar-thumb{background:rgba(42,37,48,.18);border-radius:100px}
-.review-card{
-  flex:0 0 min(380px,calc(100vw - 96px));scroll-snap-align:start;
-  background:var(--white);border-radius:20px;padding:18px;
+.pair-form::before{
+  content:'';position:absolute;top:-40%;right:-20%;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(244,196,94,.18) 0%,transparent 70%);pointer-events:none;
+}
+.pair-form-intro{position:relative;z-index:1}
+.pair-form-tag{
+  display:inline-block;background:var(--gold);color:var(--ink);
+  padding:6px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;
+}
+.pair-form-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1.1;margin-bottom:14px}
+.pair-form-desc{font-size:15px;color:rgba(255,255,255,.72);line-height:1.55}
+
+.pair-form-body{position:relative;z-index:1}
+.dur-toggle{display:flex;gap:8px;background:rgba(255,255,255,.06);padding:6px;border-radius:100px;margin-bottom:24px;flex-wrap:wrap}
+.dur-btn{
+  flex:1 1 auto;background:transparent;border:none;color:rgba(255,255,255,.7);
+  padding:12px 16px;border-radius:100px;font-family:inherit;font-weight:600;font-size:14px;
+  cursor:pointer;transition:all .2s;
+}
+.dur-btn:hover{color:#fff}
+.dur-btn.active{background:var(--coral);color:#fff;box-shadow:0 6px 18px rgba(232,133,107,.4)}
+.dur-btn small{display:block;font-size:11px;font-weight:400;opacity:.85;letter-spacing:.04em;margin-top:2px}
+
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.field-label{
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.7);margin-bottom:6px;display:block;
+}
+.field-input{
+  width:100%;padding:14px 16px;border-radius:14px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  color:#fff;font-size:15px;font-family:inherit;
+  transition:border-color .2s,background .2s;
+}
+.field-input::placeholder{color:rgba(255,255,255,.4)}
+.field-input:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.12)}
+
+.pair-submit{width:100%;justify-content:center;margin-top:6px}
+.pair-note{font-size:13px;color:rgba(255,255,255,.55);margin-top:14px;text-align:center;line-height:1.5}
+.pair-error{
+  background:rgba(232,133,107,.18);border:1px solid var(--coral);color:#fff;
+  padding:12px 16px;border-radius:12px;font-size:14px;margin-bottom:16px;display:none;
+}
+.pair-error.show{display:block}
+.pair-success{
+  background:rgba(156,184,122,.18);border:1px solid var(--leaf);color:#fff;
+  padding:14px 18px;border-radius:14px;font-size:15px;text-align:center;display:none;
+}
+.pair-success.show{display:block}
+
+@media (max-width:820px){
+  .pair-form{grid-template-columns:1fr;padding:36px 28px;gap:32px}
+  .field-row{grid-template-columns:1fr}
+}
+
+/* === ЗАПРОСЫ И РЕЗУЛЬТАТЫ === */
+.cases{background:var(--peach)}
+.cases-wrap{position:relative;margin:0 -32px;padding:0 32px}
+.cases-track{
+  display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:24px;scrollbar-width:thin;-webkit-overflow-scrolling:touch;
+}
+.cases-track::-webkit-scrollbar{height:8px}
+.cases-track::-webkit-scrollbar-track{background:transparent}
+.cases-track::-webkit-scrollbar-thumb{background:rgba(42,37,48,.20);border-radius:100px}
+.case-card{
+  background:var(--white);border-radius:24px;padding:32px;
+  flex:0 0 min(520px,calc(100vw - 96px));scroll-snap-align:start;
+  display:grid;grid-template-columns:auto 1fr;gap:24px 22px;
   box-shadow:0 6px 20px rgba(42,37,48,.06);
 }
-.review-card img{width:100%;border-radius:12px;display:block}
-.review-name{
-  font-family:'Playfair Display',serif;font-size:16px;font-weight:700;
-  margin-top:14px;text-align:center;color:var(--ink);
+.case-photo img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--peach)}
+.case-head{align-self:end}
+.case-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.15;margin-bottom:4px}
+.case-meta{font-size:13px;color:var(--ink-soft);line-height:1.4}
+.case-body{grid-column:1/-1;display:grid;gap:14px;font-size:14.5px}
+.case-q{background:var(--butter);border-radius:14px;padding:14px 16px;line-height:1.5}
+.case-q b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;font-weight:700}
+.case-r{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:14px 16px;line-height:1.55}
+.case-r b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;font-weight:700}
+.case-r ul{list-style:none;padding:0;margin:0}
+.case-r li{padding:4px 0 4px 18px;position:relative;font-size:14px;line-height:1.5}
+.case-r li::before{content:'+';color:var(--coral);font-weight:700;position:absolute;left:0;top:3px}
+.case-review-btn{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  background:transparent;border:1px solid var(--line);border-radius:100px;
+  padding:8px 16px;font-size:13px;font-weight:600;color:var(--ink);
+  font-family:'Manrope',sans-serif;transition:all .2s;align-self:start;
 }
+.case-review-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cases-arrows{display:flex;gap:10px;margin-top:24px}
+.case-arrow{
+  width:46px;height:46px;border-radius:50%;background:var(--white);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  font-size:18px;color:var(--ink);transition:all .2s;
+}
+.case-arrow:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 
 /* === FOOTER === */
 footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text-align:center}
@@ -373,7 +430,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text
 }
 
 @media (max-width:768px){
-  .container{padding:0 22px}
+  .container,.container-wide{padding:0 22px}
   .section{padding:80px 0}
   .utp{padding:80px 0}
   .stats{padding:64px 0}
@@ -407,13 +464,21 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text
   </div>
 </header>
 
-<!-- ══════════════ 2. УТП ══════════════ -->
+<!-- ══════════════ 2. УТП — split с фото ══════════════ -->
 <section class="utp">
-  <div class="container utp-content">
-    <h2 class="utp-name">НЕ&nbsp;С&nbsp;ПОНЕДЕЛЬНИКА</h2>
-    <p class="utp-pitch">Сообщество для амбициозных людей, которые живут насыщенной жизнью и&nbsp;хотят чего-то нового: новых людей, привычек, энергии, проектов.</p>
-    <p class="utp-tagline">Место, где начинают не&nbsp;с&nbsp;понедельника</p>
-    <a href="#tariffs" class="btn btn-primary">Войти в&nbsp;лето →</a>
+  <div class="container">
+    <div class="utp-grid">
+      <div>
+        <h2 class="utp-name">НЕ&nbsp;С&nbsp;ПОНЕДЕЛЬНИКА</h2>
+        <p class="utp-pitch">Сообщество для амбициозных людей, которые живут насыщенной жизнью и&nbsp;хотят чего-то нового: новых людей, привычек, энергии, проектов.</p>
+        <p class="utp-tagline">Место, где начинают не&nbsp;с&nbsp;понедельника</p>
+        <a href="#tariffs" class="btn btn-primary">Войти в&nbsp;лето →</a>
+      </div>
+      <div class="utp-photo">
+        <img src="redesign-assets/mood/community-lake.jpg" alt="">
+        <div class="utp-photo-sub">Лето&nbsp;2026</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -431,10 +496,16 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text
   </div>
 </section>
 
-<!-- ══════════════ 4. ЗАЧЕМ НУЖНО СООБЩЕСТВО ══════════════ -->
+<!-- ══════════════ MOOD STRIP ══════════════ -->
+<div class="mood-strip">
+  <div style="background-image:url('redesign-assets/mood/bikes.jpg')"></div>
+  <div style="background-image:url('redesign-assets/mood/sup.jpg')"></div>
+  <div style="background-image:url('redesign-assets/mood/forest-group.jpg')"></div>
+</div>
+
+<!-- ══════════════ 4. ЗАЧЕМ ══════════════ -->
 <section class="section why">
   <div class="container">
-    <span class="section-label">Сообщество</span>
     <h2 class="section-title">Зачем нужно сообщество</h2>
     <div class="why-grid" style="margin-top:48px">
       <div class="why-card">
@@ -460,13 +531,32 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text
 <!-- ══════════════ 5. КТО ВНУТРИ ══════════════ -->
 <section class="section who">
   <div class="container">
-    <span class="section-label">Кто внутри</span>
-    <h2 class="section-title">Кому подходит сообщество «Не с&nbsp;понедельника»</h2>
+    <h2 class="section-title">Кому подходит сообщество «Не&nbsp;с&nbsp;понедельника»</h2>
     <p class="section-sub">Предприниматели, руководители, творцы, эксперты&nbsp;— те, кто уже многого добился и&nbsp;хочет нового: в&nbsp;жизни, работе, хобби.</p>
 
     <div class="who-spheres">
-      <strong>Сферы деятельности</strong>
-      IT и&nbsp;стартапы · Консалтинг · Финансы и&nbsp;инвестиции · Fashion · E-commerce · Маркетинг · HR · GR · Виноделие · Авиация · Яхтинг · Дизайн интерьера · UX/UI · Фотография · Психология · Образование · Девелопмент · Ивенты · AI
+      <div class="who-spheres-head">Сферы деятельности</div>
+      <div class="spheres-chips">
+        <span class="chip">IT и&nbsp;стартапы</span>
+        <span class="chip">Консалтинг</span>
+        <span class="chip">Финансы и&nbsp;инвестиции</span>
+        <span class="chip">Fashion</span>
+        <span class="chip">E-commerce</span>
+        <span class="chip">Маркетинг</span>
+        <span class="chip">HR</span>
+        <span class="chip">GR</span>
+        <span class="chip">Виноделие</span>
+        <span class="chip">Авиация</span>
+        <span class="chip">Яхтинг</span>
+        <span class="chip">Дизайн интерьера</span>
+        <span class="chip">UX/UI</span>
+        <span class="chip">Фотография</span>
+        <span class="chip">Психология</span>
+        <span class="chip">Образование</span>
+        <span class="chip">Девелопмент</span>
+        <span class="chip">Ивенты</span>
+        <span class="chip">AI</span>
+      </div>
     </div>
 
     <!-- Фаундеры -->
@@ -538,16 +628,220 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text
       </div>
       <div class="who-avatars">
         <div class="who-avatar"><img src="redesign-assets/participants/seekers/zoya-bilgin.jpg" alt=""><div class="who-tooltip"><strong>Зоя Бильгин</strong>Социальный психолог и&nbsp;педагог, работала с&nbsp;детьми 10+ лет, имела своё пространство. Сейчас пересобирает себя заново.</div></div>
-        <div class="who-avatar"><img src="redesign-assets/participants/seekers/elena-bogomolova.jpg" alt=""><div class="who-tooltip"><strong>Елена Богомолова, 33</strong>Финансист. Помогала стартапам собирать цифры в&nbsp;понятные смыслы. Сейчас в&nbsp;переходной точке — решает, что дальше.</div></div>
+        <div class="who-avatar"><img src="redesign-assets/participants/seekers/elena-bogomolova.jpg" alt=""><div class="who-tooltip"><strong>Елена Богомолова, 33</strong>Финансист. Помогала стартапам собирать цифры в&nbsp;понятные смыслы. Сейчас в&nbsp;переходной точке.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ 6. ЗАПРОСЫ И РЕЗУЛЬТАТЫ ══════════════ -->
+<!-- ══════════════ MOOD STRIP ══════════════ -->
+<div class="mood-strip tall">
+  <div style="background-image:url('redesign-assets/mood/creative-tables.jpg')"></div>
+  <div style="background-image:url('redesign-assets/mood/run-crowd.jpg')"></div>
+  <div style="background-image:url('redesign-assets/mood/gallery.jpg')"></div>
+</div>
+
+<!-- ══════════════ 6. КАК ВСЁ УСТРОЕНО ══════════════ -->
+<section class="section how">
+  <div class="container">
+    <h2 class="section-title">Как всё устроено</h2>
+    <p class="section-sub">Программа на&nbsp;месяц&nbsp;— и&nbsp;то, что мы создаём вокруг неё вместе.</p>
+
+    <div class="how-block-label">Основное</div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/mood/river-selfie.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Одна группа и&nbsp;разные направления</div>
+          <p class="how-card-desc">Каждый месяц ты выбираешь, что хочешь изменить, докрутить, добавить в&nbsp;жизнь&nbsp;— и&nbsp;выбираешь под свой запрос группу.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/offline.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">3 онлайн-встречи с&nbsp;разборами</div>
+          <p class="how-card-desc">Разбор целей, поддержка и&nbsp;вдохновение трижды за&nbsp;месяц&nbsp;— перестаёшь буксовать и&nbsp;обесценивать свои действия.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/coworking.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Coworking-встречи</div>
+          <p class="how-card-desc">Задачи, которые откладывал неделями, закрываешь на&nbsp;одной встрече. Когда все в&nbsp;фокусе&nbsp;— сложно слиться.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/library.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Библиотека материалов</div>
+          <p class="how-card-desc">Раз в&nbsp;три дня&nbsp;— разбор простого инструмента для внедрения привычки, который можно применить сразу. Плюс рефлексия.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/lectures/l1.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Лекции и&nbsp;активности с&nbsp;экспертами</div>
+          <p class="how-card-desc">Медитации, тренировки, блог, питание, нутрициология, AI, финансы&nbsp;— каждый месяц новые темы от&nbsp;топовых спикеров.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-block-label">От&nbsp;сообщества — для сообщества</div>
+    <div class="how-grid" style="grid-template-columns:1fr 1fr">
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/run-club/run-1.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Беговой клуб</div>
+          <p class="how-card-desc">Вместе бегаем в&nbsp;самых красивых местах по&nbsp;всему миру.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/book-club.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Книжный клуб</div>
+          <p class="how-card-desc">Вместе читаем и&nbsp;обсуждаем книги&nbsp;— онлайн и&nbsp;оффлайн.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 7. ЧТО БУДЕТ ЛЕТОМ ══════════════ -->
+<section class="section summer">
+  <div class="container">
+    <h2 class="section-title">Что будет летом</h2>
+    <p class="section-sub">Активности, которые мы создаём вместе&nbsp;— и&nbsp;ради которых хочется выйти из&nbsp;дома.</p>
+    <div class="summer-grid">
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/trekking.jpg')"></div>
+        <div class="summer-name">Трекинги и&nbsp;пикники</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/gallery.jpg')"></div>
+        <div class="summer-name">Музеи и&nbsp;экскурсии</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/creative-tables.jpg')"></div>
+        <div class="summer-name">Игры, открывающие новое</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/activities/run-club/run-2.jpg')"></div>
+        <div class="summer-name">Совместные тренировки</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/bikes.jpg')"></div>
+        <div class="summer-name">Велопрогулки</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 8. ТАРИФЫ ══════════════ -->
+<section class="tariff" id="tariffs">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;margin:0 auto 16px">Выбери своё лето</h2>
+    <p class="tariff-meta">Для тех, кто уже в&nbsp;сообществе. Спец-цена на&nbsp;продление&nbsp;— только для участников 3-го потока.</p>
+
+    <div class="tariff-grid">
+      <div class="tariff-card">
+        <div class="tariff-label">На месяц</div>
+        <div class="tariff-name">Июнь</div>
+        <p class="tariff-sub">Месяц лета в&nbsp;сообществе без длинного коммита</p>
+        <div class="tariff-row">
+          <div class="tariff-mode">Соло</div>
+          <div class="tariff-price-row">
+            <span class="tariff-price">6&nbsp;660&nbsp;₽</span>
+            <span class="tariff-price-old">27&nbsp;770&nbsp;₽</span>
+          </div>
+        </div>
+        <div class="tariff-row">
+          <div class="tariff-mode">1+1</div>
+          <div class="tariff-price-row">
+            <span class="tariff-price">16&nbsp;660&nbsp;₽</span>
+            <span class="tariff-price-old">69&nbsp;990&nbsp;₽</span>
+          </div>
+        </div>
+        <ul class="tariff-bullets">
+          <li>Группа по&nbsp;твоему направлению на&nbsp;месяц</li>
+          <li>3 онлайн-встречи с&nbsp;разборами</li>
+          <li>Coworking-встречи</li>
+          <li>Библиотека материалов</li>
+          <li>Лекции и&nbsp;активности с&nbsp;экспертами</li>
+          <li>Беговой и&nbsp;книжный клубы</li>
+        </ul>
+        <a href="#pair-form" class="btn btn-ghost">Взять июнь</a>
+      </div>
+
+      <div class="tariff-card featured">
+        <span class="tariff-badge">Выгоднее в&nbsp;1.5 раза</span>
+        <div class="tariff-label">На 3 месяца</div>
+        <div class="tariff-name">Всё лето</div>
+        <p class="tariff-sub">Июнь · июль · август&nbsp;— три месяца изменений подряд</p>
+        <div class="tariff-row">
+          <div class="tariff-mode">Соло</div>
+          <div class="tariff-price-row">
+            <span class="tariff-price">9&nbsp;990&nbsp;₽</span>
+            <span class="tariff-price-old">47&nbsp;770&nbsp;₽</span>
+          </div>
+        </div>
+        <div class="tariff-row">
+          <div class="tariff-mode">1+1</div>
+          <div class="tariff-price-row">
+            <span class="tariff-price">26&nbsp;660&nbsp;₽</span>
+            <span class="tariff-price-old">119&nbsp;990&nbsp;₽</span>
+          </div>
+        </div>
+        <ul class="tariff-bullets">
+          <li>Всё из&nbsp;месячного тарифа&nbsp;× 3</li>
+          <li>Летние трекинги и&nbsp;пикники</li>
+          <li>Музеи, экскурсии, велопрогулки</li>
+          <li>Совместные тренировки</li>
+          <li>Игры, открывающие новое</li>
+          <li>Поддержка коуча всё лето</li>
+        </ul>
+        <a href="#pair-form" class="btn btn-primary">Взять всё лето →</a>
+      </div>
+    </div>
+
+    <!-- 1+1 ФОРМА -->
+    <div class="pair-form-wrap" id="pair-form">
+      <div class="pair-form">
+        <div class="pair-form-intro">
+          <span class="pair-form-tag">Тариф 1+1</span>
+          <h3 class="pair-form-title">Идём вдвоём</h3>
+          <p class="pair-form-desc">Особая цена, когда заходишь с&nbsp;другом, партнёром или коллегой. Заполни форму&nbsp;— я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;подтвержу участие.</p>
+        </div>
+        <div class="pair-form-body">
+          <div class="dur-toggle">
+            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small>16&nbsp;660&nbsp;₽</small></button>
+            <button type="button" class="dur-btn" data-dur="summer">Всё лето <small>26&nbsp;660&nbsp;₽</small></button>
+          </div>
+
+          <div class="pair-error" id="pairError">Укажи оба ника в&nbsp;Telegram, чтобы я&nbsp;могла связаться.</div>
+
+          <div class="field-row">
+            <div>
+              <label class="field-label">Твой ник</label>
+              <input type="text" class="field-input" id="p1nick" placeholder="@username" autocomplete="off">
+            </div>
+            <div>
+              <label class="field-label">Ник друга / партнёра</label>
+              <input type="text" class="field-input" id="p2nick" placeholder="@username" autocomplete="off">
+            </div>
+          </div>
+
+          <button class="btn btn-primary pair-submit" onclick="sendPair()">Отправить заявку →</button>
+          <div class="pair-success" id="pairSuccess">✓ Заявка отправлена! Сейчас открою Telegram&nbsp;— подтверди отправку.</div>
+          <p class="pair-note">Не&nbsp;беспокойся: бот напишет в&nbsp;ЛС, после подтверждения вышлю обоим ссылку на&nbsp;оплату.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 9. ЗАПРОСЫ И РЕЗУЛЬТАТЫ (после тарифов) ══════════════ -->
 <section class="section cases">
   <div class="container">
-    <span class="section-label">Реальные истории</span>
     <h2 class="section-title">Запросы и&nbsp;результаты</h2>
     <p class="section-sub">С&nbsp;чем приходят и&nbsp;что забирают&nbsp;— живые кейсы участников. Полистай вправо.</p>
 
@@ -643,7 +937,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text
           <div class="case-photo"><img src="redesign-assets/cases/yulia-zalesskaya.png" alt=""></div>
           <div class="case-head">
             <div class="case-name">Юлия Залесская</div>
-            <div class="case-meta">Психолог (частная практика) + CHO в&nbsp;российско-новозеландской компании</div>
+            <div class="case-meta">Психолог + CHO в&nbsp;российско-новозеландской компании</div>
           </div>
           <div class="case-body">
             <div class="case-q"><b>Запрос</b>Настроить Claude AI для практики, вести соцсети, закрывать «висяки»</div>
@@ -718,162 +1012,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text
   </div>
 </section>
 
-<!-- ══════════════ 7. КАК ВСЁ УСТРОЕНО ══════════════ -->
-<section class="section how">
-  <div class="container">
-    <span class="section-label">Программа</span>
-    <h2 class="section-title">Как всё устроено</h2>
-
-    <div class="how-block-label">Основное</div>
-    <div class="how-grid">
-      <div class="how-card">
-        <div class="how-card-name">Одна группа и&nbsp;разные направления</div>
-        <p class="how-card-desc">Каждый месяц ты выбираешь, что хочешь изменить, докрутить, добавить в&nbsp;жизнь&nbsp;— и&nbsp;выбираешь под свой запрос группу.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-card-name">3 онлайн-встречи с&nbsp;разборами</div>
-        <p class="how-card-desc">Разбор целей, поддержка и&nbsp;вдохновение трижды за&nbsp;месяц&nbsp;— перестаёшь буксовать и&nbsp;обесценивать свои действия.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-card-name">Coworking-встречи</div>
-        <p class="how-card-desc">Задачи, которые откладывал неделями, закрываешь на&nbsp;одной встрече. Когда все в&nbsp;фокусе&nbsp;— сложно слиться.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-card-name">Библиотека материалов</div>
-        <p class="how-card-desc">Раз в&nbsp;три дня&nbsp;— разбор простого инструмента для внедрения привычки, который можно применить сразу. Плюс рефлексия.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-card-name">Лекции и&nbsp;активности с&nbsp;экспертами</div>
-        <p class="how-card-desc">Медитации, тренировки, блог, питание, нутрициология, AI, финансы&nbsp;— каждый месяц новые темы и&nbsp;активности от&nbsp;топовых спикеров.</p>
-      </div>
-    </div>
-
-    <div class="how-block-label">От&nbsp;сообщества — для сообщества</div>
-    <div class="how-grid" style="grid-template-columns:1fr 1fr;gap:20px">
-      <div class="how-card">
-        <div class="how-card-name">Беговой клуб</div>
-        <p class="how-card-desc">Вместе бегаем в&nbsp;самых красивых местах по&nbsp;всему миру.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-card-name">Книжный клуб</div>
-        <p class="how-card-desc">Вместе читаем и&nbsp;обсуждаем книги&nbsp;— онлайн и&nbsp;оффлайн.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ 8. ЧТО БУДЕТ ЛЕТОМ ══════════════ -->
-<section class="section summer">
-  <div class="container">
-    <span class="section-label">Лето&nbsp;2026</span>
-    <h2 class="section-title">Что будет летом</h2>
-    <p class="section-sub">Активности, которые мы создаём вместе&nbsp;— и&nbsp;ради которых хочется выйти из&nbsp;дома.</p>
-    <div class="summer-grid">
-      <div class="summer-card"><div class="summer-emoji">🥾</div><div class="summer-name">Трекинги и&nbsp;пикники</div></div>
-      <div class="summer-card"><div class="summer-emoji">🎨</div><div class="summer-name">Музеи и&nbsp;экскурсии</div></div>
-      <div class="summer-card"><div class="summer-emoji">🎲</div><div class="summer-name">Игры,<br>открывающие новое</div></div>
-      <div class="summer-card"><div class="summer-emoji">🏃</div><div class="summer-name">Совместные тренировки</div></div>
-      <div class="summer-card"><div class="summer-emoji">🚴</div><div class="summer-name">Велопрогулки</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ 9. ТАРИФЫ ══════════════ -->
-<section class="tariff" id="tariffs">
-  <div class="container">
-    <span class="section-label" style="text-align:center;display:block">Тарифы продления</span>
-    <h2 class="section-title" style="text-align:center;margin:0 auto 16px">Выбери своё лето</h2>
-    <p class="tariff-meta">Для тех, кто уже в&nbsp;сообществе. Спец-цена на&nbsp;продление&nbsp;— только для участников 3-го потока.</p>
-
-    <div class="tariff-grid">
-      <div class="tariff-card">
-        <div class="tariff-label">На месяц</div>
-        <div class="tariff-name">Июнь</div>
-        <p class="tariff-sub">Месяц лета в&nbsp;сообществе без длинного коммита</p>
-
-        <div class="tariff-row">
-          <div class="tariff-mode">Соло</div>
-          <div class="tariff-price-row">
-            <span class="tariff-price">6&nbsp;660&nbsp;₽</span>
-            <span class="tariff-price-old">27&nbsp;770&nbsp;₽</span>
-          </div>
-        </div>
-        <div class="tariff-row">
-          <div class="tariff-mode">1+1</div>
-          <div class="tariff-price-row">
-            <span class="tariff-price">16&nbsp;660&nbsp;₽</span>
-            <span class="tariff-price-old">69&nbsp;990&nbsp;₽</span>
-          </div>
-        </div>
-
-        <ul class="tariff-bullets">
-          <li>Группа по&nbsp;твоему направлению на&nbsp;месяц</li>
-          <li>3 онлайн-встречи с&nbsp;разборами</li>
-          <li>Coworking-встречи</li>
-          <li>Библиотека материалов</li>
-          <li>Лекции и&nbsp;активности с&nbsp;экспертами</li>
-          <li>Беговой и&nbsp;книжный клубы</li>
-        </ul>
-        <a href="#" class="btn btn-ghost">Взять июнь</a>
-      </div>
-
-      <div class="tariff-card featured">
-        <span class="tariff-badge">Выгоднее в&nbsp;1.5 раза</span>
-        <div class="tariff-label">На 3 месяца</div>
-        <div class="tariff-name">Всё лето</div>
-        <p class="tariff-sub">Июнь · июль · август&nbsp;— три месяца изменений подряд</p>
-
-        <div class="tariff-row">
-          <div class="tariff-mode">Соло</div>
-          <div class="tariff-price-row">
-            <span class="tariff-price">9&nbsp;990&nbsp;₽</span>
-            <span class="tariff-price-old">47&nbsp;770&nbsp;₽</span>
-          </div>
-        </div>
-        <div class="tariff-row">
-          <div class="tariff-mode">1+1</div>
-          <div class="tariff-price-row">
-            <span class="tariff-price">26&nbsp;660&nbsp;₽</span>
-            <span class="tariff-price-old">119&nbsp;990&nbsp;₽</span>
-          </div>
-        </div>
-
-        <ul class="tariff-bullets">
-          <li>Всё из&nbsp;месячного тарифа&nbsp;× 3</li>
-          <li>Летние трекинги и&nbsp;пикники</li>
-          <li>Музеи, экскурсии, велопрогулки</li>
-          <li>Совместные тренировки</li>
-          <li>Игры, открывающие новое</li>
-          <li>Поддержка коуча всё лето</li>
-        </ul>
-        <a href="#" class="btn btn-primary">Взять всё лето →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ 10. ОТЗЫВЫ ══════════════ -->
-<section class="section reviews">
-  <div class="container">
-    <span class="section-label">Отзывы</span>
-    <h2 class="section-title">Что говорят участники</h2>
-    <p class="section-sub">Скрины из&nbsp;чатов и&nbsp;ЛС&nbsp;— без редактуры. Полистай.</p>
-    <div class="reviews-track">
-      <div class="review-card"><img src="redesign-assets/reviews/grigory.jpg" alt=""><div class="review-name">Григорий Лазарев</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/lika.jpg" alt=""><div class="review-name">Лика Артэн</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/toomas1.jpg" alt=""><div class="review-name">Тоомас · 1</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/toomas2.jpg" alt=""><div class="review-name">Тоомас · 2</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/nikolay-zalyapin.jpg" alt=""><div class="review-name">Николай Заляпин</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/nikita.jpg" alt=""><div class="review-name">Никита Гудков</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/yulia-zalesskaya.jpg" alt=""><div class="review-name">Юлия Залесская</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/yulia-yakovenko.jpg" alt=""><div class="review-name">Юлия Яковенко</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/natalia.jpg" alt=""><div class="review-name">Наталья Дьякова</div></div>
-      <div class="review-card"><img src="redesign-assets/reviews/darya.jpg" alt=""><div class="review-name">Дарья Емельянович</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ 11. FOOTER ══════════════ -->
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="container">
     <div class="footer-logo">Не с&nbsp;понедельника</div>
@@ -895,7 +1034,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 48px;text
 </div>
 
 <script>
-// === participant tooltips: clickable ===
+// participant tooltips: clickable
 document.querySelectorAll('.who-avatar').forEach(av=>{
   av.addEventListener('click',e=>{
     e.stopPropagation();
@@ -907,7 +1046,7 @@ document.addEventListener('click',()=>{
   document.querySelectorAll('.who-avatar.active').forEach(o=>o.classList.remove('active'));
 });
 
-// === cases slider arrows ===
+// cases slider arrows
 function scrollCases(dir){
   const track = document.getElementById('casesTrack');
   const card = track.querySelector('.case-card');
@@ -915,7 +1054,7 @@ function scrollCases(dir){
   track.scrollBy({left:step*dir,behavior:'smooth'});
 }
 
-// === review modal ===
+// review modal
 function openReview(file,name){
   const modal = document.getElementById('modal');
   const img = document.getElementById('modalImg');
@@ -923,15 +1062,45 @@ function openReview(file,name){
   img.alt = 'Отзыв: ' + name;
   modal.classList.add('open');
 }
-function closeReview(){
-  document.getElementById('modal').classList.remove('open');
-}
+function closeReview(){ document.getElementById('modal').classList.remove('open'); }
 document.getElementById('modal').addEventListener('click',e=>{
   if(e.target.id === 'modal') closeReview();
 });
-document.addEventListener('keydown',e=>{
-  if(e.key === 'Escape') closeReview();
+document.addEventListener('keydown',e=>{ if(e.key === 'Escape') closeReview(); });
+
+// 1+1 form: duration toggle
+document.querySelectorAll('.dur-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.dur-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
 });
+
+// 1+1 form: submit → отправляет в Telegram админу заранее заполненное сообщение
+function sendPair(){
+  const n1 = document.getElementById('p1nick').value.trim();
+  const n2 = document.getElementById('p2nick').value.trim();
+  const errBox = document.getElementById('pairError');
+  const okBox = document.getElementById('pairSuccess');
+  errBox.classList.remove('show');
+  okBox.classList.remove('show');
+
+  if(!n1 || !n2){
+    errBox.classList.add('show');
+    return;
+  }
+
+  const dur = document.querySelector('.dur-btn.active').dataset.dur;
+  const durName = dur === 'month' ? 'на 1 месяц (16 660 ₽)' : 'на всё лето (26 660 ₽)';
+  const n1clean = n1.startsWith('@') ? n1 : '@'+n1;
+  const n2clean = n2.startsWith('@') ? n2 : '@'+n2;
+
+  const text = `Привет! Хочу тариф 1+1 ${durName}.\nУчастники: ${n1clean} + ${n2clean}`;
+  const url = `https://t.me/ast_nasty?text=${encodeURIComponent(text)}`;
+
+  okBox.classList.add('show');
+  setTimeout(()=>{ window.open(url, '_blank'); }, 400);
+}
 </script>
 </body>
 </html>
