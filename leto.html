@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Не с понедельника · Лето 2026</title>
+<meta property="og:title" content="Не с понедельника · Лето 2026">
+<meta property="og:description" content="Сообщество для амбициозных. Старт 9 июня. Проведи это лето с нами.">
+<meta property="og:image" content="https://notfrommonday.ru/redesign-assets/hero-main.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* === ПАЛИТРА === */
+:root{
+  --cream:#FDF8E8;
+  --butter:#FCE9A8;
+  --butter-deep:#F5D274;
+  --peach:#FBD3B0;
+  --coral:#E8856B;
+  --coral-deep:#D26B52;
+  --gold:#F4C45E;
+  --leaf:#9CB87A;
+  --ink:#2A2530;
+  --ink-soft:#5A4F60;
+  --line:rgba(42,37,48,.10);
+  --white:#FFFFFF;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',sans-serif;font-weight:400;color:var(--ink);
+  background:var(--cream);line-height:1.55;font-size:17px;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Playfair Display',serif}
+.container{max-width:1320px;margin:0 auto;padding:0 40px}
+.container-wide{max-width:1480px;margin:0 auto;padding:0 40px}
+@media (max-width:1440px){
+  .container{padding:0 32px}
+}
+
+/* === BTN === */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:18px 36px;border-radius:100px;
+  font-weight:600;font-size:16px;letter-spacing:.01em;
+  border:none;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+.btn-primary{background:var(--coral);color:#fff;box-shadow:0 8px 24px rgba(232,133,107,.32)}
+.btn-primary:hover{background:var(--coral-deep);transform:translateY(-2px);box-shadow:0 14px 32px rgba(210,107,82,.42)}
+
+/* особая hero-кнопка — крупная, кремовая, hand-crafted */
+.btn-hero{
+  display:inline-flex;align-items:center;gap:14px;
+  background:var(--cream);
+  color:var(--ink);
+  padding:26px 56px;
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  border:none;border-radius:100px;
+  cursor:pointer;text-decoration:none;
+  box-shadow:
+    0 14px 40px rgba(0,0,0,.35),
+    inset 0 -4px 0 rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.6);
+  transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s ease,background .2s ease;
+  position:relative;
+}
+.btn-hero svg{flex-shrink:0;display:block}
+.btn-hero:hover{
+  transform:translateY(-3px) rotate(-1.5deg);
+  background:var(--gold);
+  box-shadow:
+    0 22px 52px rgba(244,196,94,.55),
+    inset 0 -4px 0 rgba(180,130,40,.18),
+    inset 0 1px 0 rgba(255,255,255,.55);
+}
+.btn-hero:hover svg circle{fill:var(--ink)}
+.btn-hero:hover svg path{stroke:var(--ink)}
+@media (max-width:680px){
+  .btn-hero{padding:22px 44px;font-size:20px;gap:12px}
+}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);padding:16.5px 34px}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-month{background:var(--ink);color:#fff;box-shadow:0 8px 22px rgba(42,37,48,.20)}
+.btn-month:hover{background:var(--coral-deep);transform:translateY(-2px);box-shadow:0 14px 28px rgba(210,107,82,.35)}
+
+/* === SECTION ATOMS === */
+.section{padding:120px 0}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4vw,56px);font-weight:700;
+  letter-spacing:-.015em;line-height:1.08;margin-bottom:24px;max-width:780px;
+}
+.section-sub{
+  font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:640px;margin-bottom:56px;
+}
+@media (max-width:1024px){
+  .section{padding:96px 0}
+}
+@media (max-width:768px){
+  .section{padding:72px 0}
+  .section-sub{font-size:16px;margin-bottom:40px}
+}
+
+/* === HERO === */
+.hero{position:relative;min-height:100vh;background:var(--ink);color:#fff;overflow:hidden;display:flex;align-items:center;text-align:center}
+.hero-photo{
+  position:absolute;inset:0;
+  background-image:url('redesign-assets/hero-main.jpg');
+  background-size:cover;background-position:center 40%;
+  image-rendering:-webkit-optimize-contrast;filter:contrast(1.04) saturate(1.05);
+}
+.hero-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,15,25,.30) 0%,rgba(20,15,25,.40) 45%,rgba(20,15,25,.78) 100%);
+}
+.hero-content{position:relative;z-index:2;padding:120px 0 88px;width:100%}
+.hero-eyebrow{
+  display:inline-block;font-size:14px;font-weight:500;letter-spacing:.24em;text-transform:lowercase;
+  color:rgba(255,255,255,.85);margin-bottom:24px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';display:inline-block;width:36px;height:1px;
+  background:rgba(255,255,255,.5);vertical-align:middle;margin:0 16px 4px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,7vw,82px);font-weight:700;
+  letter-spacing:-.025em;line-height:1;margin:0 auto 32px;white-space:nowrap;
+}
+.hero-sub{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(18px,2vw,26px);font-weight:500;
+  max-width:620px;line-height:1.45;color:rgba(255,255,255,.92);margin:0 auto 44px;
+}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
+@media (max-width:880px){
+  .hero h1{font-size:clamp(38px,8vw,64px);white-space:normal;line-height:1.02}
+  .hero-sub{font-size:18px;padding:0 12px}
+  .hero-content{padding:96px 0 72px}
+}
+@media (max-width:480px){
+  .hero h1{font-size:42px}
+  .hero-eyebrow{font-size:12px;letter-spacing:.2em}
+  .hero-eyebrow::before,.hero-eyebrow::after{width:24px;margin:0 12px 4px}
+}
+
+/* === MOOD STRIP — фото-полоска между секциями === */
+.mood-strip{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:6px;
+  height:320px;background:var(--cream);
+}
+.mood-strip > div{background-size:cover;background-position:center}
+.mood-strip.tall{height:380px}
+@media (max-width:1024px){
+  .mood-strip{height:260px}
+  .mood-strip.tall{height:300px}
+}
+@media (max-width:768px){
+  .mood-strip{grid-template-columns:1fr;height:auto;gap:4px}
+  .mood-strip > div{height:240px}
+}
+
+/* === УТП — split с фото === */
+.utp{background:var(--cream);padding:120px 0 100px;position:relative;overflow:hidden}
+.utp::before{
+  content:'';position:absolute;top:-100px;right:-150px;width:500px;height:500px;
+  background:radial-gradient(circle,rgba(244,196,94,.30) 0%,transparent 70%);pointer-events:none;
+}
+.utp-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;position:relative;z-index:1}
+.utp-name{
+  font-family:'Playfair Display',serif;font-size:clamp(40px,5.5vw,72px);font-weight:700;
+  letter-spacing:-.015em;line-height:1;margin-bottom:32px;
+}
+.utp-pitch{font-size:clamp(18px,1.6vw,21px);line-height:1.6;margin-bottom:32px;font-weight:400;color:var(--ink)}
+.utp-tagline{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(22px,2vw,28px);color:var(--coral-deep);margin-bottom:36px;font-weight:500;
+}
+.utp-photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 60px rgba(42,37,48,.18)}
+.utp-photo img{width:100%;height:100%;object-fit:cover}
+.utp-photo-sub{display:none}
+@media (max-width:920px){
+  .utp-grid{grid-template-columns:1fr;gap:48px}
+  .utp-photo{aspect-ratio:5/4;max-width:520px;margin:0 auto}
+}
+
+/* === ЦИФРЫ === */
+.stats{background:var(--ink);color:#fff;padding:96px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:48px 32px}
+.stat{text-align:center}
+.stat-num{
+  font-family:'Playfair Display',serif;font-size:clamp(48px,5vw,68px);font-weight:700;
+  color:var(--gold);letter-spacing:-.02em;line-height:1;margin-bottom:10px;
+}
+.stat-label{font-size:14px;color:rgba(255,255,255,.6);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+
+/* === ЗАЧЕМ === */
+.why{background:var(--cream)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.why-card{
+  border-radius:24px;padding:42px 36px;
+  border:1px solid transparent;
+  transition:transform .25s ease,box-shadow .25s ease;
+  position:relative;overflow:hidden;
+}
+.why-card:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(42,37,48,.14)}
+.why-num{
+  font-family:'Playfair Display',serif;font-size:56px;font-weight:700;
+  line-height:1;margin-bottom:22px;letter-spacing:-.025em;opacity:.95;
+}
+.why-text{font-size:17.5px;line-height:1.55}
+.why-text strong{font-weight:700}
+
+.why-card:nth-child(1){background:linear-gradient(150deg,#FFE0CC 0%,#FAD2B5 100%)}
+.why-card:nth-child(1) .why-num{color:var(--coral-deep)}
+.why-card:nth-child(2){background:linear-gradient(150deg,#FCE9A8 0%,#F5D274 100%)}
+.why-card:nth-child(2) .why-num{color:var(--ink)}
+.why-card:nth-child(3){background:linear-gradient(150deg,#E8DCC0 0%,#D9C89C 100%)}
+.why-card:nth-child(3) .why-num{color:var(--coral-deep)}
+.why-card:nth-child(4){background:var(--ink);color:#fff}
+.why-card:nth-child(4) .why-num{color:var(--gold)}
+.why-card:nth-child(4) .why-text strong{color:var(--gold)}
+
+/* === КТО ВНУТРИ === */
+.who{background:var(--cream)}
+.who-spheres{margin-bottom:64px}
+.who-spheres-head{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  color:var(--ink-soft);margin-bottom:14px;
+}
+.spheres-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  background:var(--white);border:1px solid var(--line);
+  border-radius:100px;padding:9px 18px;
+  font-size:14px;color:var(--ink);font-weight:500;
+  transition:all .2s ease;
+}
+.chip:hover{background:var(--peach);border-color:var(--peach);transform:translateY(-2px)}
+
+.who-category{margin-bottom:72px}
+.who-cat-head{display:flex;align-items:baseline;gap:18px;margin-bottom:24px;flex-wrap:wrap;padding-top:36px;border-top:1px solid var(--line)}
+.who-cat-name{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;letter-spacing:-.01em}
+.who-cat-tag{font-size:18px;color:var(--ink-soft);font-style:italic;font-family:'Playfair Display',serif}
+
+.members-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:18px;
+}
+.member-card{
+  position:relative;aspect-ratio:4/5;
+  border-radius:18px;overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(42,37,48,.10);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.member-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(42,37,48,.18)}
+.member-card img{width:100%;height:100%;object-fit:cover;display:block}
+.member-info{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:22px 18px 18px;
+  background:linear-gradient(0deg,rgba(20,15,25,.92) 0%,rgba(20,15,25,.55) 60%,rgba(20,15,25,0) 100%);
+  color:#fff;
+}
+.member-name{
+  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+  line-height:1.15;margin-bottom:3px;letter-spacing:-.005em;
+}
+.member-role{
+  font-size:12.5px;color:rgba(255,255,255,.82);
+  line-height:1.35;
+}
+.member-bio{
+  position:absolute;inset:0;
+  background:linear-gradient(165deg,var(--coral) 0%,var(--coral-deep) 100%);
+  color:#fff;padding:24px 22px;
+  display:flex;flex-direction:column;justify-content:center;
+  font-size:14px;line-height:1.55;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s ease;
+}
+.member-bio strong{
+  display:block;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+  margin-bottom:8px;color:#fff;letter-spacing:-.005em;
+}
+.member-card:hover .member-bio,
+.member-card.active .member-bio{opacity:1;pointer-events:auto}
+
+@media (max-width:1024px){
+  .members-grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+}
+@media (max-width:680px){
+  .members-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .member-name{font-size:16px}
+  .member-role{font-size:12px}
+  .member-info{padding:18px 14px 14px}
+  .member-bio{padding:18px 16px;font-size:13px}
+  .member-bio strong{font-size:16px}
+}
+
+/* === КАК ВСЁ УСТРОЕНО === */
+.how{background:var(--ink);color:#fff}
+.how .section-title{color:#fff}
+.how .section-sub{color:rgba(255,255,255,.7)}
+.how-block-label{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(28px,2.4vw,38px);color:var(--gold);margin:64px 0 28px;
+  letter-spacing:-.005em;
+}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.how-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);
+  border-radius:22px;overflow:hidden;
+  transition:transform .25s,background .25s;
+}
+.how-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.08)}
+.how-card-img{height:220px;background-size:cover;background-position:center}
+.how-card-body{padding:28px 30px 32px}
+.how-card-name{
+  font-family:'Playfair Display',serif;font-size:24px;font-weight:700;
+  margin-bottom:14px;line-height:1.2;color:#fff;letter-spacing:-.01em;
+}
+.how-card-desc{font-size:16.5px;color:rgba(255,255,255,.78);line-height:1.55}
+@media (max-width:768px){
+  .how-card-img{height:200px}
+  .how-card-name{font-size:21px}
+  .how-card-desc{font-size:15px}
+}
+
+/* === ЛЕТОМ === */
+.summer{background:var(--cream)}
+.summer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.summer-card{
+  border-radius:20px;overflow:hidden;background:var(--white);
+  border:1px solid var(--line);
+  transition:transform .25s,box-shadow .25s;
+}
+.summer-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(42,37,48,.10)}
+.summer-photo{aspect-ratio:4/5;background-size:cover;background-position:center}
+.summer-name{
+  padding:22px 22px 26px;
+  font-family:'Manrope',sans-serif;font-size:18px;font-weight:600;
+  letter-spacing:-.005em;text-transform:none;
+  text-align:center;line-height:1.25;color:var(--ink);
+}
+
+/* === НАПРАВЛЕНИЯ === */
+.directions{background:var(--cream);padding:120px 0 100px}
+.dirs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.dir-card{
+  background:var(--white);border:1px solid var(--line);
+  border-radius:24px;padding:38px 34px;
+  transition:transform .25s,box-shadow .25s;
+}
+.dir-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(42,37,48,.10)}
+.dir-icon{font-size:48px;margin-bottom:20px;line-height:1}
+.dir-name{
+  font-family:'Playfair Display',serif;
+  font-size:30px;font-weight:700;letter-spacing:-.01em;
+  margin-bottom:14px;line-height:1.1;
+}
+.dir-desc{font-size:17px;line-height:1.55;color:var(--ink-soft)}
+.dir-featured{
+  grid-column:1/-1;
+  background:var(--ink);
+  color:#fff;border-color:transparent;
+  padding:48px 44px;
+  display:grid;grid-template-columns:auto 1fr;gap:32px 36px;align-items:start;
+  position:relative;overflow:hidden;
+}
+.dir-featured::before{
+  content:'';position:absolute;top:-30%;right:-15%;width:480px;height:480px;
+  background:radial-gradient(circle,rgba(244,196,94,.18) 0%,transparent 65%);pointer-events:none;
+}
+.dir-featured::after{
+  content:'';position:absolute;bottom:-40%;left:-10%;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(232,133,107,.14) 0%,transparent 70%);pointer-events:none;
+}
+.dir-featured .dir-icon{font-size:80px;margin:0;line-height:1;position:relative;z-index:1}
+.dir-featured .dir-name{color:var(--gold);font-size:38px;margin-bottom:10px;position:relative;z-index:1;font-style:italic}
+.dir-featured .dir-desc{color:rgba(255,255,255,.85);font-size:18px;position:relative;z-index:1}
+.dir-featured-content{position:relative;z-index:1}
+.dir-badge{
+  display:inline-block;background:var(--gold);color:var(--ink);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  padding:6px 14px;border-radius:100px;margin-bottom:18px;
+}
+.dir-bonus{
+  margin-top:24px;padding:26px 28px;
+  background:rgba(244,196,94,.10);border-radius:18px;
+  font-size:17px;line-height:1.65;color:rgba(255,255,255,.92);
+  border:1px solid rgba(244,196,94,.32);
+}
+.dir-bonus strong{
+  display:block;font-family:'Playfair Display',serif;
+  font-size:24px;color:#fff;font-weight:700;margin-bottom:12px;letter-spacing:-.005em;
+}
+.dir-bonus em{
+  background:var(--gold);color:var(--ink);
+  padding:2px 10px;border-radius:6px;
+  font-style:normal;font-weight:700;
+  letter-spacing:.02em;
+}
+@media (max-width:880px){
+  .dirs-grid{grid-template-columns:1fr 1fr;gap:18px}
+  .dir-featured{grid-template-columns:1fr;gap:20px;padding:36px 30px}
+  .dir-featured .dir-icon{font-size:64px}
+  .dir-featured .dir-name{font-size:32px}
+}
+@media (max-width:560px){
+  .dirs-grid{grid-template-columns:1fr}
+}
+
+/* === ТАРИФЫ === */
+.tariff{background:var(--cream);padding:120px 0}
+.tariff-meta{text-align:center;font-size:16px;font-style:italic;color:var(--ink-soft);margin-bottom:40px}
+.tariff-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.tariff-card{
+  background:var(--white);border:1px solid var(--line);border-radius:28px;padding:52px 44px;
+  position:relative;transition:transform .3s,box-shadow .3s;
+}
+.tariff-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(42,37,48,.10)}
+.tariff-card.featured{background:linear-gradient(160deg,var(--coral) 0%,var(--coral-deep) 100%);color:#fff;border-color:transparent}
+.tariff-card.featured .tariff-label,
+.tariff-card.featured .tariff-name,
+.tariff-card.featured .tariff-sub,
+.tariff-card.featured .tariff-bullets li,
+.tariff-card.featured .tariff-mode{color:#fff}
+.tariff-card.featured .tariff-price-old{color:rgba(255,255,255,.65)}
+.tariff-badge{
+  position:absolute;top:-14px;right:32px;background:var(--gold);color:var(--ink);
+  padding:8px 16px;border-radius:100px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+}
+.tariff-label{font-size:14px;color:var(--coral);font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.tariff-name{font-family:'Playfair Display',serif;font-size:clamp(40px,3.5vw,52px);font-weight:700;line-height:1;margin-bottom:12px;letter-spacing:-.015em}
+.tariff-sub{font-size:17px;color:var(--ink-soft);margin-bottom:32px;line-height:1.5}
+.tariff-row{margin-bottom:18px}
+.tariff-mode{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-deep);font-weight:700;margin-bottom:6px}
+.tariff-price-row{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.tariff-price{font-family:'Playfair Display',serif;font-size:clamp(48px,4vw,60px);font-weight:700;line-height:1;letter-spacing:-.02em}
+.tariff-price-old{font-size:19px;text-decoration:line-through;color:var(--ink-soft)}
+.tariff-bullets{list-style:none;margin:32px 0 0}
+.tariff-bullets:last-child{margin-bottom:36px}
+.tariff-bullets li{padding:12px 0;border-bottom:1px solid rgba(42,37,48,.08);font-size:16.5px;display:flex;gap:12px;align-items:flex-start;line-height:1.45}
+.tariff-card.featured .tariff-bullets li{border-bottom-color:rgba(255,255,255,.20)}
+.tariff-bullets li::before{content:'+';color:var(--coral);font-weight:700;flex-shrink:0;font-size:20px;line-height:1.3}
+.tariff-card.featured .tariff-bullets li::before{color:var(--gold)}
+
+.bonus-label{
+  margin:24px 0 8px;
+  display:inline-block;
+  background:var(--gold);color:var(--ink);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 14px;border-radius:100px;
+}
+.tariff-bullets-bonus li{border-bottom-color:rgba(255,255,255,.32)}
+.tariff-bullets-bonus li::before{content:'★';color:var(--gold);font-size:16px}
+.tariff-card .btn{width:100%;justify-content:center;font-size:17px;padding:20px 36px}
+.tariff-card.featured .btn-primary{background:#fff;color:var(--coral-deep)}
+.tariff-card.featured .btn-primary:hover{background:var(--cream);color:var(--coral-deep)}
+@media (max-width:768px){
+  .tariff-card{padding:38px 28px}
+  .tariff-name{font-size:36px}
+  .tariff-price{font-size:42px}
+}
+
+/* === 1+1 ФОРМА === */
+.pair-form-wrap{margin-top:64px}
+.pair-form{
+  background:var(--ink);color:#fff;border-radius:28px;
+  padding:48px 44px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;
+  position:relative;overflow:hidden;
+}
+.pair-form::before{
+  content:'';position:absolute;top:-40%;right:-20%;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(244,196,94,.18) 0%,transparent 70%);pointer-events:none;
+}
+.pair-form-intro{position:relative;z-index:1}
+.pair-form-tag{
+  display:inline-block;background:var(--gold);color:var(--ink);
+  padding:6px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;
+}
+.pair-form-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1.1;margin-bottom:14px}
+.pair-form-desc{font-size:15px;color:rgba(255,255,255,.72);line-height:1.55}
+
+.pair-form-body{position:relative;z-index:1}
+.dur-toggle{display:flex;gap:8px;background:rgba(255,255,255,.08);padding:8px;border-radius:100px;margin-bottom:28px;flex-wrap:wrap}
+.dur-btn{
+  flex:1 1 auto;background:transparent;border:none;color:rgba(255,255,255,.78);
+  padding:18px 24px;border-radius:100px;font-family:inherit;font-weight:700;font-size:17px;
+  cursor:pointer;transition:all .2s;letter-spacing:-.005em;
+}
+.dur-btn:hover{color:#fff}
+.dur-btn.active{background:var(--coral);color:#fff;box-shadow:0 8px 22px rgba(232,133,107,.45)}
+.dur-btn small{display:block;font-size:18px;font-weight:700;opacity:1;letter-spacing:-.005em;margin-top:6px;font-family:'Manrope',sans-serif;font-style:normal}
+
+.pair-warning{
+  margin-top:24px;padding:14px 18px;
+  background:rgba(244,196,94,.16);
+  border:1px solid rgba(244,196,94,.4);
+  border-radius:12px;
+  font-size:14.5px;line-height:1.5;color:#fff;
+}
+.pair-warning strong{color:var(--gold);font-weight:700}
+
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.field-label{
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.7);margin-bottom:6px;display:block;
+}
+.field-input{
+  width:100%;padding:14px 16px;border-radius:14px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  color:#fff;font-size:15px;font-family:inherit;
+  transition:border-color .2s,background .2s;
+}
+.field-input::placeholder{color:rgba(255,255,255,.4)}
+.field-input:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.12)}
+
+.newp-toggle{margin:18px 0 22px}
+.newp-label{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.72);margin-bottom:10px}
+.newp-options{display:flex;flex-direction:column;gap:8px}
+.newp-opt{display:flex;align-items:center;gap:10px;cursor:pointer;color:rgba(255,255,255,.92);font-size:15px;padding:10px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:12px;transition:all .2s}
+.newp-opt:hover{background:rgba(255,255,255,.10)}
+.newp-opt input{accent-color:var(--coral);width:18px;height:18px;flex-shrink:0}
+.newp-opt:has(input:checked){background:rgba(232,133,107,.15);border-color:rgba(232,133,107,.4)}
+
+.pair-submit{width:100%;justify-content:center;margin-top:6px}
+.pair-note{font-size:13px;color:rgba(255,255,255,.55);margin-top:14px;text-align:center;line-height:1.5}
+.pair-error{
+  background:rgba(232,133,107,.18);border:1px solid var(--coral);color:#fff;
+  padding:12px 16px;border-radius:12px;font-size:14px;margin-bottom:16px;display:none;
+}
+.pair-error.show{display:block}
+.pair-success{
+  background:rgba(156,184,122,.18);border:1px solid var(--leaf);color:#fff;
+  padding:14px 18px;border-radius:14px;font-size:15px;text-align:center;display:none;
+}
+.pair-success.show{display:block}
+
+@media (max-width:820px){
+  .pair-form{grid-template-columns:1fr;padding:36px 28px;gap:32px}
+  .field-row{grid-template-columns:1fr}
+}
+
+/* === ЗАПРОСЫ И РЕЗУЛЬТАТЫ === */
+.cases{background:var(--peach)}
+.cases-wrap{position:relative;margin:0 -32px;padding:0 32px}
+.cases-track{
+  display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:24px;scrollbar-width:thin;-webkit-overflow-scrolling:touch;
+}
+.cases-track::-webkit-scrollbar{height:8px}
+.cases-track::-webkit-scrollbar-track{background:transparent}
+.cases-track::-webkit-scrollbar-thumb{background:rgba(42,37,48,.20);border-radius:100px}
+.case-card{
+  background:var(--white);border-radius:24px;padding:30px 30px 32px;
+  flex:0 0 min(520px,calc(100vw - 96px));scroll-snap-align:start;
+  display:flex;flex-direction:column;gap:20px;
+  box-shadow:0 6px 20px rgba(42,37,48,.06);
+}
+.case-header{display:flex;align-items:center;gap:18px}
+.case-photo img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--butter)}
+.case-head{flex:1;min-width:0}
+.case-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1.15;margin-bottom:4px;letter-spacing:-.01em}
+.case-meta{font-size:14px;color:var(--ink-soft);line-height:1.4}
+.case-body{display:grid;gap:14px;font-size:14.5px}
+.case-q{background:var(--butter);border-radius:14px;padding:14px 16px;line-height:1.5}
+.case-q b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;font-weight:700}
+.case-r{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:14px 16px;line-height:1.55}
+.case-r b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;font-weight:700}
+.case-r ul{list-style:none;padding:0;margin:0}
+.case-r li{padding:4px 0 4px 18px;position:relative;font-size:14px;line-height:1.5}
+.case-r li::before{content:'+';color:var(--coral);font-weight:700;position:absolute;left:0;top:3px}
+.case-review-btn{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  background:transparent;border:1px solid var(--line);border-radius:100px;
+  padding:8px 16px;font-size:13px;font-weight:600;color:var(--ink);
+  font-family:'Manrope',sans-serif;transition:all .2s;align-self:start;
+}
+.case-review-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cases-arrows{display:flex;gap:10px;margin-top:24px}
+.case-arrow{
+  width:46px;height:46px;border-radius:50%;background:var(--white);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  font-size:18px;color:var(--ink);transition:all .2s;
+}
+.case-arrow:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* === OFFER (Клир + CTA) === */
+.offer{
+  background:var(--ink);color:#fff;
+  padding:72px 28px 80px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.offer::before{
+  content:'';position:absolute;
+  bottom:-150px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(232,133,107,.15) 0%,transparent 60%);
+  pointer-events:none;
+}
+.offer-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(17px,1.7vw,22px);font-style:italic;
+  color:rgba(255,255,255,.90);
+  max-width:560px;margin:0 auto 10px;line-height:1.55;
+  position:relative;z-index:1;
+}
+.offer-author{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:36px;position:relative;z-index:1}
+.offer-date{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:18px;color:var(--gold);margin-bottom:24px;font-weight:500;
+  position:relative;z-index:1;
+}
+.offer .btn{position:relative;z-index:1}
+.btn-question{
+  background:transparent;border:1.5px solid var(--coral);color:var(--coral);
+  padding:14px 28px;font-size:15px;
+}
+.btn-question:hover{background:var(--coral);color:#fff}
+
+/* === FOOTER === */
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:48px 0;text-align:center;border-top:1px solid rgba(255,255,255,.08)}
+footer p{margin:0 0 8px}
+footer a{transition:opacity .2s}
+footer a:hover{opacity:.7}
+@media (max-width:768px){
+  .offer{padding:80px 24px}
+}
+
+/* === MODAL для скрина отзыва === */
+.modal{
+  position:fixed;inset:0;background:rgba(20,15,25,.85);
+  display:none;align-items:center;justify-content:center;
+  z-index:200;padding:24px;backdrop-filter:blur(6px);
+}
+.modal.open{display:flex}
+.modal-inner{
+  background:#fff;border-radius:18px;max-width:560px;width:100%;
+  max-height:90vh;overflow:auto;padding:24px;position:relative;
+}
+.modal-inner img{width:100%;border-radius:12px}
+.modal-close{
+  position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;
+  background:#fff;border:1px solid var(--line);cursor:pointer;font-size:18px;
+}
+
+@media (max-width:1024px){
+  .container,.container-wide{padding:0 28px}
+  .utp{padding:96px 0 80px}
+  .utp-grid{gap:48px}
+  .directions{padding:96px 0 80px}
+  .tariff{padding:96px 0}
+}
+@media (max-width:768px){
+  .container,.container-wide{padding:0 22px}
+  .utp{padding:72px 0 64px}
+  .utp-grid{gap:40px}
+  .stats{padding:72px 0}
+  .stats-grid{gap:32px 20px}
+  .why-grid{gap:16px}
+  .tariff-grid{grid-template-columns:1fr;gap:20px}
+  .tariff{padding:72px 0}
+  .case-card{grid-template-columns:1fr;text-align:left;padding:28px 24px}
+  .case-photo img{width:80px;height:80px}
+  .case-name{font-size:20px}
+  .directions{padding:72px 0 64px}
+  .summer-grid{gap:14px}
+}
+@media (max-width:480px){
+  .container,.container-wide{padding:0 18px}
+  .section{padding:64px 0}
+  .why-card{padding:28px 24px}
+  .why-num{font-size:36px;margin-bottom:14px}
+  .why-text{font-size:16px}
+  .dir-card{padding:30px 26px}
+  .dir-name{font-size:26px}
+  .dir-desc{font-size:15.5px}
+  .dir-icon{font-size:40px;margin-bottom:14px}
+  .dir-featured{padding:30px 24px}
+  .dir-featured .dir-name{font-size:28px}
+  .dir-bonus{padding:18px 18px;font-size:15px}
+  .dir-bonus strong{font-size:18px}
+  .tariff-card{padding:34px 24px}
+  .tariff-name{font-size:32px}
+  .tariff-price{font-size:38px}
+  .tariff-bullets li{font-size:15.5px;padding:10px 0}
+  .stat-num{font-size:42px}
+  .stat-label{font-size:13px}
+  .stats-grid{gap:28px 16px}
+  .summer-name{font-size:15px;padding:14px 16px 18px}
+  .case-card{padding:24px 20px;gap:18px 16px}
+  .case-name{font-size:19px}
+  .case-meta{font-size:12px}
+  .case-q,.case-r{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ 1. HERO ══════════════ -->
+<header class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-content">
+    <div class="container">
+      <span class="hero-eyebrow">сообщество</span>
+      <h1>НЕ&nbsp;С&nbsp;ПОНЕДЕЛЬНИКА</h1>
+      <p class="hero-sub">Старт&nbsp;9&nbsp;июня. Проведи это лето с&nbsp;нами.</p>
+      <div class="hero-cta">
+        <a href="#tariffs" class="btn-hero">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="4.5" fill="#E8856B"/>
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="#E8856B" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Войти в&nbsp;лето
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ 2. УТП — split с фото ══════════════ -->
+<section class="utp">
+  <div class="container">
+    <div class="utp-grid">
+      <div>
+        <h2 class="utp-name">НЕ&nbsp;С&nbsp;ПОНЕДЕЛЬНИКА</h2>
+        <p class="utp-pitch">Сообщество для амбициозных людей, которые живут насыщенной жизнью и&nbsp;хотят чего-то нового: новых людей, привычек, энергии, проектов.</p>
+        <p class="utp-tagline">Место, где начинают не&nbsp;с&nbsp;понедельника</p>
+        <a href="#tariffs" class="btn btn-primary">Войти в&nbsp;лето</a>
+      </div>
+      <div class="utp-photo">
+        <img src="redesign-assets/mood/river-selfie.jpg" alt="">
+        <div class="utp-photo-sub">Лето&nbsp;2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 3. ЦИФРЫ ══════════════ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num" data-target="70" data-suffix="+">0</div><div class="stat-label">прошли</div></div>
+      <div class="stat"><div class="stat-num" data-target="5000">0</div><div class="stat-label">отчётов</div></div>
+      <div class="stat"><div class="stat-num" data-target="500">0</div><div class="stat-label">медитаций</div></div>
+      <div class="stat"><div class="stat-num" data-target="2100">0</div><div class="stat-label">закрытых задач</div></div>
+      <div class="stat"><div class="stat-num" data-target="8400">0</div><div class="stat-label">км пройдено</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ MOOD STRIP (после Цифр) ══════════════ -->
+<div class="mood-strip">
+  <div style="background-image:url('redesign-assets/mood/book-cafe.png');background-position:center 30%"></div>
+  <div style="background-image:url('redesign-assets/mood/river-selfie.jpg');background-position:center 25%"></div>
+  <div style="background-image:url('redesign-assets/mood/cafe-mural.webp');background-position:center 65%"></div>
+</div>
+
+
+<!-- ══════════════ 4. ЗАЧЕМ ══════════════ -->
+<section class="section why">
+  <div class="container">
+    <h2 class="section-title">Зачем нужно сообщество</h2>
+    <div class="why-grid" style="margin-top:48px">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <p class="why-text"><strong>Обмануть мозг:</strong> новое окружение запускает новые привычки</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <p class="why-text"><strong>Видеть рост других</strong> и&nbsp;заряжаться от&nbsp;людей вокруг</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <p class="why-text"><strong>Коммиты перед группой</strong>&nbsp;— дисциплина без насилия над собой</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <p class="why-text"><strong>Пробовать новое</strong> и&nbsp;создавать своё&nbsp;— не&nbsp;в&nbsp;одиночку</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 5. КТО ВНУТРИ ══════════════ -->
+<section class="section who">
+  <div class="container">
+    <h2 class="section-title">Кому подходит сообщество «Не&nbsp;с&nbsp;понедельника»</h2>
+    <p class="section-sub">Предприниматели, руководители, творцы, эксперты&nbsp;— те, кто уже многого добился и&nbsp;хочет нового: в&nbsp;жизни, работе, хобби.</p>
+
+    <div class="who-spheres">
+      <div class="who-spheres-head">Сферы деятельности</div>
+      <div class="spheres-chips">
+        <span class="chip">IT и&nbsp;стартапы</span>
+        <span class="chip">Консалтинг</span>
+        <span class="chip">Финансы и&nbsp;инвестиции</span>
+        <span class="chip">Fashion</span>
+        <span class="chip">E-commerce</span>
+        <span class="chip">Маркетинг</span>
+        <span class="chip">HR</span>
+        <span class="chip">GR</span>
+        <span class="chip">Виноделие</span>
+        <span class="chip">Авиация</span>
+        <span class="chip">Яхтинг</span>
+        <span class="chip">Дизайн интерьера</span>
+        <span class="chip">UX/UI</span>
+        <span class="chip">Фотография</span>
+        <span class="chip">Психология</span>
+        <span class="chip">Образование</span>
+        <span class="chip">Девелопмент</span>
+        <span class="chip">Ивенты</span>
+        <span class="chip">AI</span>
+      </div>
+    </div>
+
+    <!-- Фаундеры -->
+    <div class="who-category">
+      <div class="who-cat-head">
+        <span class="who-cat-name">Фаундеры</span>
+        <span class="who-cat-tag">— люди, которые строят своё</span>
+      </div>
+      <div class="members-grid">
+        <div class="member-card">
+          <img src="redesign-assets/participants/founders/grigory-lazarev.jpg" alt="">
+          <div class="member-info"><div class="member-name">Григорий Лазарев</div><div class="member-role">CEO бренда GRI</div></div>
+          <div class="member-bio"><strong>Григорий Лазарев</strong>Сооснователь и&nbsp;CEO бренда спортивной одежды GRI.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/founders/maxim-starov.png" alt="">
+          <div class="member-info"><div class="member-name">Максим Старов</div><div class="member-role">IT-предприниматель</div></div>
+          <div class="member-bio"><strong>Максим Старов</strong>IT-предприниматель из&nbsp;Костромы, строил франшизный бизнес с&nbsp;IKEA в&nbsp;России и&nbsp;СНГ.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/founders/kristina-vlasova.jpg" alt="">
+          <div class="member-info"><div class="member-name">Кристина Власова</div><div class="member-role">Школа яхтинга</div></div>
+          <div class="member-bio"><strong>Кристина Власова</strong>Соосновательница школы яхтинга и&nbsp;чартерной компании.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/founders/evgenia-monakhova.jpg" alt="">
+          <div class="member-info"><div class="member-name">Женя Монахова</div><div class="member-role">Бренд одежды</div></div>
+          <div class="member-bio"><strong>Женя Монахова</strong>Сооснователь бренда одежды.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/founders/nixon-sivale.jpg" alt="">
+          <div class="member-info"><div class="member-name">Никсон Сивале</div><div class="member-role">CEO Focus Group</div></div>
+          <div class="member-bio"><strong>Никсон Сивале</strong>Основатель и&nbsp;CEO маркетингового агентства Focus Group.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/founders/darya-emelyanovich.jpg" alt="">
+          <div class="member-info"><div class="member-name">Дарья Емельянович</div><div class="member-role">Блогер, модель</div></div>
+          <div class="member-bio"><strong>Дарья Емельянович</strong>Предприниматель, блогер, модель. Жила в&nbsp;Нью-Йорке, переехала в&nbsp;Москву.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Специалисты -->
+    <div class="who-category">
+      <div class="who-cat-head">
+        <span class="who-cat-name">Специалисты</span>
+        <span class="who-cat-tag">— глубокая экспертиза и&nbsp;нестандартный путь</span>
+      </div>
+      <div class="members-grid">
+        <div class="member-card">
+          <img src="redesign-assets/participants/specialists/max-golubkov.jpg" alt="">
+          <div class="member-info"><div class="member-name">Макс Голубков</div><div class="member-role">Инвестор, fractional CFO</div></div>
+          <div class="member-bio"><strong>Макс Голубков</strong>Инвестор, советник по&nbsp;финансам (M&A, fundraising, fractional CFO).</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/specialists/artem-batukaev.jpg" alt="">
+          <div class="member-info"><div class="member-name">Артем Батукаев</div><div class="member-role">Консалтинг в&nbsp;ОАЭ</div></div>
+          <div class="member-bio"><strong>Артем Батукаев</strong>Консалтинг для девелоперов и&nbsp;инвесторов в&nbsp;ОАЭ&nbsp;— bina.ae.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/specialists/anna-ostrovskaya.jpg" alt="">
+          <div class="member-info"><div class="member-name">Анна Островская</div><div class="member-role">HR, Executive search</div></div>
+          <div class="member-bio"><strong>Анна Островская</strong>HR в&nbsp;группе компаний, Client Director в&nbsp;закрытом membership-клубе, Executive search.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/specialists/veronika-muravitskaya.jpg" alt="">
+          <div class="member-info"><div class="member-name">Вероника Муравицкая</div><div class="member-role">Преподаватель, ex-Yandex</div></div>
+          <div class="member-bio"><strong>Вероника Муравицкая</strong>Работала в&nbsp;Yandex, Microsoft, SAP, Skyeng. Преподаёт авторскую дисциплину «Развитие карьеры».</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/specialists/yulia-zalesskaya.png" alt="">
+          <div class="member-info"><div class="member-name">Юлия Залесская</div><div class="member-role">Психолог, коуч</div></div>
+          <div class="member-bio"><strong>Юлия Залесская</strong>Психолог, коуч. Работает с&nbsp;топ-менеджерами крупных компаний.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/specialists/nikolay-zalyapin.jpg" alt="">
+          <div class="member-info"><div class="member-name">Николай Заляпин</div><div class="member-role">Системный аналитик в&nbsp;Сбере</div></div>
+          <div class="member-bio"><strong>Николай Заляпин</strong>Системный аналитик (ex Product Owner) в&nbsp;Сбере. Команда отвечает за&nbsp;вклады и&nbsp;счета в&nbsp;приложении Сбера.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Руководители -->
+    <div class="who-category">
+      <div class="who-cat-head">
+        <span class="who-cat-name">Руководители</span>
+        <span class="who-cat-tag">— те, кто управляет системами и&nbsp;командами</span>
+      </div>
+      <div class="members-grid">
+        <div class="member-card">
+          <img src="redesign-assets/participants/leaders/lyudmila-morozova.jpg" alt="">
+          <div class="member-info"><div class="member-name">Людмила Морозова</div><div class="member-role">Предприниматель, ментор</div></div>
+          <div class="member-bio"><strong>Людмила Морозова</strong>Год назад&nbsp;— генеральный директор крупной корпорации. Сейчас&nbsp;— предприниматель и&nbsp;ментор.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/leaders/elena-razumova.jpg" alt="">
+          <div class="member-info"><div class="member-name">Елена Разумова</div><div class="member-role">IT-проекты</div></div>
+          <div class="member-bio"><strong>Елена Разумова</strong>Руководит IT-проектами в&nbsp;крупных организациях.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/leaders/yulia-yakovenko.jpg" alt="">
+          <div class="member-info"><div class="member-name">Юлия Яковенко</div><div class="member-role">Молодёжная политика, ex-EY</div></div>
+          <div class="member-bio"><strong>Юлия Яковенко</strong>Молодёжная политика (Росмолодёжь), ex-EY, Startech.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/leaders/anastasia-popova.jpg" alt="">
+          <div class="member-info"><div class="member-name">Анастасия Попова</div><div class="member-role">Стартап VeeSh</div></div>
+          <div class="member-bio"><strong>Анастасия Попова</strong>Руководит и&nbsp;развивает стартап VeeSh.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Творческие -->
+    <div class="who-category">
+      <div class="who-cat-head">
+        <span class="who-cat-name">Творческие</span>
+        <span class="who-cat-tag">— люди с&nbsp;необычными историями и&nbsp;несколькими жизнями в&nbsp;одной</span>
+      </div>
+      <div class="members-grid">
+        <div class="member-card">
+          <img src="redesign-assets/participants/creators/ruben-lokk.png" alt="">
+          <div class="member-info"><div class="member-name">Рубен Локк</div><div class="member-role">Винодел, Ереван</div></div>
+          <div class="member-bio"><strong>Рубен Локк</strong>Ереван. Производит вино SHOROR из&nbsp;армянских эндемических сортов винограда.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/creators/sofia-strizhko.jpg" alt="">
+          <div class="member-info"><div class="member-name">Софья Стрижко</div><div class="member-role">Бизнес-коуч</div></div>
+          <div class="member-bio"><strong>Софья Стрижко</strong>Ушла из&nbsp;международного юридического консалтинга в&nbsp;психоаналитический бизнес-коучинг.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/creators/evgenia-tebieva.jpg" alt="">
+          <div class="member-info"><div class="member-name">Евгения Тебиева</div><div class="member-role">UX/UI-дизайнер, 56</div></div>
+          <div class="member-bio"><strong>Евгения Тебиева, 56</strong>UX/UI-дизайнер. В&nbsp;прошлом&nbsp;— инженер-металлург, веб-мастер, оценщик бизнеса, галерист.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/creators/natalia-dyakova.jpg" alt="">
+          <div class="member-info"><div class="member-name">Наталья Дьякова</div><div class="member-role">Художник по&nbsp;стеклу</div></div>
+          <div class="member-bio"><strong>Наталья Дьякова</strong>Основательница студии художественного витража и&nbsp;мозаики «Ар&nbsp;Деко». Создаёт авторские проекты из&nbsp;стекла для премиального интерьера.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Те, кто ищет себя -->
+    <div class="who-category" style="margin-bottom:0">
+      <div class="who-cat-head">
+        <span class="who-cat-name">Те, кто ищет себя</span>
+        <span class="who-cat-tag">— люди в&nbsp;точке перехода</span>
+      </div>
+      <div class="members-grid">
+        <div class="member-card">
+          <img src="redesign-assets/participants/seekers/zoya-bilgin.jpg" alt="">
+          <div class="member-info"><div class="member-name">Зоя Бильгин</div><div class="member-role">Психолог, педагог</div></div>
+          <div class="member-bio"><strong>Зоя Бильгин</strong>Социальный психолог и&nbsp;педагог, работала с&nbsp;детьми 10+ лет. Сейчас пересобирает себя заново.</div>
+        </div>
+        <div class="member-card">
+          <img src="redesign-assets/participants/seekers/elena-bogomolova.jpg" alt="">
+          <div class="member-info"><div class="member-name">Елена Богомолова</div><div class="member-role">Финансист, 33</div></div>
+          <div class="member-bio"><strong>Елена Богомолова, 33</strong>Финансист. Помогала стартапам собирать цифры в&nbsp;понятные смыслы. Сейчас в&nbsp;переходной точке.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ MOOD STRIP ══════════════ -->
+<div class="mood-strip tall">
+  <div style="background-image:url('redesign-assets/mood/creative-tables.jpg')"></div>
+  <div style="background-image:url('redesign-assets/mood/run-crowd.jpg')"></div>
+  <div style="background-image:url('redesign-assets/mood/gallery.jpg')"></div>
+</div>
+
+<!-- ══════════════ 6. КАК ВСЁ УСТРОЕНО ══════════════ -->
+<section class="section how">
+  <div class="container">
+    <h2 class="section-title">Как всё устроено</h2>
+    <p class="section-sub">Программа на&nbsp;месяц или на&nbsp;всё лето&nbsp;— выбирай свой вариант.</p>
+
+    <div class="how-block-label">Основное</div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/mood/river-selfie.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Одна группа и&nbsp;разные направления</div>
+          <p class="how-card-desc">Каждый месяц ты выбираешь, что хочешь изменить, докрутить, добавить в&nbsp;жизнь&nbsp;— и&nbsp;выбираешь под свой запрос группу.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/online-meet.png')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">3 онлайн-встречи с&nbsp;разборами</div>
+          <p class="how-card-desc">Разбор целей, поддержка и&nbsp;вдохновение трижды за&nbsp;месяц&nbsp;— перестаёшь буксовать и&nbsp;обесценивать свои действия.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/coworking-clean.png')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Coworking-встречи</div>
+          <p class="how-card-desc">Задачи, которые откладывал неделями, закрываешь на&nbsp;одной встрече. Когда все в&nbsp;фокусе&nbsp;— сложно слиться.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/library.jpg')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Библиотека материалов</div>
+          <p class="how-card-desc">Раз в&nbsp;три дня&nbsp;— разбор простого инструмента для внедрения привычки, который можно применить сразу. Плюс рефлексия.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/lectures-experts.png')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Лекции и&nbsp;активности с&nbsp;экспертами</div>
+          <p class="how-card-desc">Медитации, тренировки, блог, питание, нутрициология, AI, финансы&nbsp;— каждый месяц новые темы от&nbsp;топовых спикеров.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-block-label">От&nbsp;участников сообщества&nbsp;— участникам сообщества</div>
+    <div class="how-grid" style="grid-template-columns:1fr 1fr">
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/run-club-clean.png')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Беговой клуб</div>
+          <p class="how-card-desc">Вместе бегаем в&nbsp;самых красивых местах по&nbsp;всему миру.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-img" style="background-image:url('redesign-assets/activities/book-club-clean.png')"></div>
+        <div class="how-card-body">
+          <div class="how-card-name">Книжный клуб</div>
+          <p class="how-card-desc">Вместе читаем и&nbsp;обсуждаем книги&nbsp;— онлайн и&nbsp;оффлайн.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 7. ЧТО БУДЕТ ЛЕТОМ ══════════════ -->
+<section class="section summer">
+  <div class="container">
+    <h2 class="section-title">Что будет летом</h2>
+    <p class="section-sub">Активности, которые мы создаём вместе&nbsp;— и&nbsp;ради которых хочется выйти из&nbsp;дома.</p>
+    <div class="summer-grid">
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/trekking.jpg')"></div>
+        <div class="summer-name">Трекинги и&nbsp;пикники</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/gallery.jpg')"></div>
+        <div class="summer-name">Музеи и&nbsp;экскурсии</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/creative-tables.jpg')"></div>
+        <div class="summer-name">Игры, открывающие новое</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/training.jpg')"></div>
+        <div class="summer-name">Совместные тренировки</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/bikes.jpg')"></div>
+        <div class="summer-name">Велопрогулки</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/breathwork.jpg')"></div>
+        <div class="summer-name">Дыхательные практики</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/masterclass.jpg')"></div>
+        <div class="summer-name">Открытые мастер-классы</div>
+      </div>
+      <div class="summer-card">
+        <div class="summer-photo" style="background-image:url('redesign-assets/mood/lectures.jpg')"></div>
+        <div class="summer-name">Лекции от&nbsp;новых спикеров</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 8. НАПРАВЛЕНИЯ НА ЛЕТО ══════════════ -->
+<section class="directions">
+  <div class="container">
+    <h2 class="section-title">Направления на&nbsp;лето</h2>
+    <p class="section-sub">Каждый месяц ты выбираешь одно&nbsp;— то, что хочется изменить, докрутить, добавить в&nbsp;жизнь.</p>
+
+    <div class="dirs-grid">
+      <div class="dir-card">
+        <div class="dir-icon">🎯</div>
+        <h3 class="dir-name">Фокус</h3>
+        <p class="dir-desc">Висящие задачи, до&nbsp;которых не&nbsp;доходят руки. Каждый понедельник&nbsp;— составляешь список. Всю неделю&nbsp;— закрываешь по&nbsp;одной.</p>
+      </div>
+      <div class="dir-card">
+        <div class="dir-icon">🧘</div>
+        <h3 class="dir-name">Осознанность</h3>
+        <p class="dir-desc">Ежедневная медитация, которая помогает найти стабильность внутри, когда всё нестабильно вокруг.</p>
+      </div>
+      <div class="dir-card">
+        <div class="dir-icon">🏃</div>
+        <h3 class="dir-name">Спорт</h3>
+        <p class="dir-desc">Любая активность: бег, зал, коврик, 10&nbsp;000 шагов. Фиксируешь на&nbsp;старте&nbsp;— делаешь каждый день.</p>
+      </div>
+
+      <div class="dir-card dir-featured">
+        <div class="dir-icon">✨</div>
+        <div class="dir-featured-content">
+          <span class="dir-badge">Особое этим летом</span>
+          <h3 class="dir-name">Новое</h3>
+          <p class="dir-desc">30&nbsp;дней&nbsp;— каждый день пробуешь что-то новое. Маршрут, разговор, формат, привычка, ремесло, событие. Учишь мозг замечать возможности и&nbsp;брать их&nbsp;на&nbsp;себя.</p>
+          <div class="dir-bonus">
+            <strong>Летом — особый фокус на&nbsp;<em>AI</em></strong>
+            Каждую неделю — задания по&nbsp;знакомству и&nbsp;встраиванию AI-инструментов в&nbsp;работу и&nbsp;жизнь. Приглашённые эксперты покажут, где AI уже даёт скачок, как с&nbsp;ним договариваться и&nbsp;что точно стоит автоматизировать.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 9. ТАРИФЫ ══════════════ -->
+<section class="tariff" id="tariffs">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;margin:0 auto 16px">Выбери своё лето</h2>
+    <p class="tariff-meta">Старт 9&nbsp;июня. Лето&nbsp;2026.</p>
+
+    <div class="tariff-grid">
+      <div class="tariff-card">
+        <div class="tariff-label">На месяц</div>
+        <div class="tariff-name">Июнь</div>
+        <p class="tariff-sub">Месяц лета в&nbsp;сообществе без длинного коммита</p>
+        <div class="tariff-row">
+          <div class="tariff-price-row">
+            <span class="tariff-price">27&nbsp;770&nbsp;₽</span>
+          </div>
+          <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;font-style:italic">соло · цена за&nbsp;месяц участия</p>
+        </div>
+        <ul class="tariff-bullets">
+          <li>Группа по&nbsp;твоему направлению</li>
+          <li>3&nbsp;онлайн-встречи и&nbsp;1&nbsp;оффлайн</li>
+          <li>Coworking-встречи</li>
+          <li>12&nbsp;выпусков библиотеки материалов</li>
+          <li>Лекции и&nbsp;активности с&nbsp;экспертами</li>
+          <li>Доступ к&nbsp;беговому и&nbsp;книжному клубу</li>
+        </ul>
+        <a href="#" class="btn btn-month" data-pay="solo-month">Взять июнь</a>
+      </div>
+
+      <div class="tariff-card featured">
+        <span class="tariff-badge">Выгоднее в&nbsp;1.7 раза</span>
+        <div class="tariff-label">На 3 месяца</div>
+        <div class="tariff-name">Всё лето</div>
+        <p class="tariff-sub">Июнь · июль · август&nbsp;— три месяца изменений подряд</p>
+        <div class="tariff-row">
+          <div class="tariff-price-row">
+            <span class="tariff-price">47&nbsp;770&nbsp;₽</span>
+          </div>
+          <p style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-style:italic">соло · цена за&nbsp;всё лето</p>
+        </div>
+        <ul class="tariff-bullets">
+          <li>Всё из&nbsp;месячного тарифа&nbsp;× 3</li>
+        </ul>
+        <div class="bonus-label">+ только на&nbsp;летнем тарифе</div>
+        <ul class="tariff-bullets tariff-bullets-bonus">
+          <li>Доступ ко&nbsp;всем <strong>AI-заданиям и&nbsp;лекциям</strong></li>
+          <li>Летние трекинги и&nbsp;пикники</li>
+          <li>Музеи, экскурсии, велопрогулки</li>
+          <li>Совместные тренировки</li>
+          <li>Дыхательные практики и&nbsp;мастер-классы</li>
+          <li>Игры, открывающие новое</li>
+        </ul>
+        <a href="#" class="btn btn-primary" data-pay="solo-summer">Взять всё лето</a>
+      </div>
+    </div>
+
+    <!-- 1+1 ФОРМА -->
+    <div class="pair-form-wrap" id="pair-form">
+      <div class="pair-form">
+        <div class="pair-form-intro">
+          <span class="pair-form-tag">Тариф 1+1</span>
+          <h3 class="pair-form-title">Идём вдвоём</h3>
+          <p class="pair-form-desc">Особая цена, когда заходишь с&nbsp;другом, партнёром или коллегой. Заполни форму&nbsp;— я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;подтвержу участие.</p>
+        </div>
+        <div class="pair-form-body">
+          <div class="dur-toggle">
+            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small>69&nbsp;990&nbsp;₽</small></button>
+            <button type="button" class="dur-btn" data-dur="summer">Всё лето <small>119&nbsp;990&nbsp;₽</small></button>
+          </div>
+
+          <div class="pair-error" id="pairError">Укажи оба ника в&nbsp;Telegram, чтобы я&nbsp;могла связаться.</div>
+
+          <div class="field-row">
+            <div>
+              <label class="field-label">Твой ник</label>
+              <input type="text" class="field-input" id="p1nick" placeholder="@username" autocomplete="off">
+            </div>
+            <div>
+              <label class="field-label">Ник друга / партнёра</label>
+              <input type="text" class="field-input" id="p2nick" placeholder="@username" autocomplete="off">
+            </div>
+          </div>
+
+          <button class="btn btn-primary pair-submit" onclick="sendPair()">Перейти к&nbsp;оплате</button>
+          <div class="pair-success" id="pairSuccess">✓ Записал заявку. Сейчас переведу на&nbsp;страницу оплаты&nbsp;— а&nbsp;тебе и&nbsp;другу придут уведомления.</div>
+          <p class="pair-note">После оплаты я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;добавлю в&nbsp;группы.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 9. ЗАПРОСЫ И РЕЗУЛЬТАТЫ (после тарифов) ══════════════ -->
+<section class="section cases">
+  <div class="container">
+    <h2 class="section-title">Запросы и&nbsp;результаты</h2>
+    <p class="section-sub">С&nbsp;чем приходят и&nbsp;что забирают&nbsp;— живые кейсы участников. Полистай вправо.</p>
+
+    <div class="cases-wrap">
+      <div class="cases-track" id="casesTrack">
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/lika.png" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Лика Артэн</div>
+              <div class="case-meta">Дизайнер интерьера · 47 лет · Москва</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Перезапустить дизайн-бюро Lika Arten Interiors после года в&nbsp;творческом отпуске</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li><strong>Прошла все 3&nbsp;потока без пропусков</strong> (хотя считала себя недисциплинированной)</li>
+              <li><strong>50% проекта</strong> собрала за&nbsp;2&nbsp;потока</li>
+              <li>В&nbsp;3-м потоке вышла на&nbsp;<strong>упаковку бренда</strong> и&nbsp;кристаллизовала авторский почерк после 15+ лет опыта</li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('lika.jpg','Лика Артэн')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/grigory.jpg" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Григорий Лазарев</div>
+              <div class="case-meta">CEO бренда GRI · 38 лет · Москва</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Убрать залипание в&nbsp;телефон, наладить режим</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li>Заменил телефон на&nbsp;книги утром и&nbsp;вечером — <strong>250 страниц за&nbsp;2 дня</strong></li>
+              <li>Качество сна выросло до&nbsp;<strong>96&nbsp;баллов</strong></li>
+              <li>Ввёл ритуал чтения с&nbsp;дочерью перед сном</li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('grigory.jpg','Григорий Лазарев')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/nikolay-zalyapin.jpg" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Николай Заляпин</div>
+              <div class="case-meta">Системный аналитик (ex&nbsp;PO) в&nbsp;Сбере</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Жёсткий прокрастинатор. Нужно внедрить AI и&nbsp;помочь жене запустить проект</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li><strong>Внедрил AI-инструменты</strong> в&nbsp;повседневную работу</li>
+              <li>Настроил планировщик задач, распределил по&nbsp;приоритетам</li>
+              <li>Помогает жене с&nbsp;запуском проекта</li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('nikolay-zalyapin.jpg','Николай Заляпин')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/nikita-gudkov.png" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Никита Гудков</div>
+              <div class="case-meta">IT-проекты в&nbsp;Ростелекоме · 35&nbsp;лет · Москва</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Работает с&nbsp;привычками. Мечтает пробежать полумарафон к&nbsp;концу года</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li><strong>3&nbsp;потока подряд</strong>&nbsp;— не&nbsp;бросает</li>
+              <li>Привязал шаги к&nbsp;бытовым делам (ходит 1–2&nbsp;станции метро пешком)</li>
+              <li>Системно идёт к&nbsp;<strong>полумарафону</strong></li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('nikita.jpg','Никита Гудков')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/yulia-zalesskaya.png" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Юлия Залесская</div>
+              <div class="case-meta">Психолог + CHO в&nbsp;российско-новозеландской компании</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Настроить Claude AI для практики, вести соцсети, закрывать «висяки»</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li>Настроила <strong>Claude Cowork</strong> для работы</li>
+              <li>Начала рассказывать о&nbsp;себе в&nbsp;соцсетях (маленькими шагами, но&nbsp;гордится)</li>
+              <li>Вывела спикера в&nbsp;<strong>прайм-тайм Бизнес&nbsp;FM</strong></li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('yulia-zalesskaya.jpg','Юлия Залесская')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/yulia-yakovenko.jpg" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Юлия Яковенко</div>
+              <div class="case-meta">Ex-EY, Сколково, Росмолодёжь · 42 года · Переделкино</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Ушла из&nbsp;корпораций, запускает два своих проекта</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li><strong>Получила первые деньги за&nbsp;свой проект</strong>&nbsp;— впервые не&nbsp;в&nbsp;найме</li>
+              <li>Организовала комьюнити-встречу на&nbsp;<strong>21&nbsp;участника</strong></li>
+              <li>Запустила проект «7&nbsp;незнакомцев»</li>
+              <li>Стала амбассадором приюта для собак</li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('yulia-yakovenko.jpg','Юлия Яковенко')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/natalia.jpg" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Наталья Дьякова</div>
+              <div class="case-meta">Художник по&nbsp;стеклу · Чебоксары</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>В&nbsp;самом начале пути к&nbsp;своей Мечте&nbsp;— выставочный центр со&nbsp;скульптурным парком</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li>Отправила <strong>заявки в&nbsp;арт-центры</strong></li>
+              <li>Подготовила презентацию для open&nbsp;call</li>
+              <li>Спонтанно презентовала Мечту&nbsp;— получила восторженный отклик</li>
+              <li>Начала <strong>бегать и&nbsp;вести блог</strong></li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('natalia.jpg','Наталья Дьякова')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/darya.jpg" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Дарья Емельянович</div>
+              <div class="case-meta">Модель, предприниматель, бренд TRY&nbsp;AGAIN</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Саботировала процесс ВНЖ 3&nbsp;месяца. Нужно сдвинуть дела с&nbsp;мёртвой точки</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li><strong>Сдвинула процесс ВНЖ</strong>&nbsp;— встретилась с&nbsp;миграционным адвокатом</li>
+              <li>Закрыла мини-задачи, которые месяцами держала в&nbsp;голове</li>
+              <li>В&nbsp;3-м потоке: <strong>+950 подписчиков в&nbsp;Instagram, +600 в&nbsp;Telegram</strong></li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('darya.jpg','Дарья Емельянович')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-photo"><img src="redesign-assets/cases/toomas.jpg" alt=""></div>
+            <div class="case-head">
+              <div class="case-name">Тоомас Карулаас</div>
+              <div class="case-meta">Tech-предприниматель (малая авиация) · 32 года</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-q"><b>Запрос</b>Внедрить AI-инструменты в&nbsp;работу, пробовать новое каждый день</div>
+            <div class="case-r"><b>Результаты</b><ul>
+              <li>Впервые углублённо поработал с&nbsp;<strong>Claude, Cursor и&nbsp;Obsidian</strong></li>
+              <li>Протестировал новые модули связи из&nbsp;Китая</li>
+              <li>Ежедневная практика «первый раз»&nbsp;— от&nbsp;рабочих инструментов до&nbsp;фермерского хлеба</li>
+            </ul></div>
+            <button class="case-review-btn" onclick="openReview('toomas1.jpg','Тоомас Карулаас')">📷 Посмотреть отзыв</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="cases-arrows">
+        <button class="case-arrow" onclick="scrollCases(-1)">←</button>
+        <button class="case-arrow" onclick="scrollCases(1)">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ OFFER (как в прошлом сайте) ══════════════ -->
+<section class="offer">
+  <div class="container">
+    <div class="offer-quote">«Вам не&nbsp;нужно стать другим человеком. Нужно стать лучшей версией себя с&nbsp;помощью маленьких ежедневных шагов»</div>
+    <div class="offer-author">Джеймс Клир, «Атомные привычки»</div>
+    <div class="offer-date">Старт 9&nbsp;июня</div>
+    <a href="#tariffs" class="btn btn-primary">Войти в&nbsp;лето</a>
+    <div style="margin-top:18px"><a href="https://t.me/ast_nasty" target="_blank" class="btn btn-question">Есть вопрос?</a></div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER (как в прошлом сайте) ══════════════ -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:14px;font-size:15px">Не с&nbsp;понедельника · 2026</p>
+    <p style="margin-bottom:10px;font-size:13px;color:rgba(255,255,255,.55)">ИП Савченко Данила Павлович · ИНН 500111708956 · ОГРНИП 325774600156222</p>
+    <p style="margin-bottom:0;font-size:13px"><a href="#privacy" onclick="document.getElementById('privacy-modal').style.display='flex';return false" style="color:var(--gold);text-decoration:underline;margin-right:18px">Политика конфиденциальности</a><a href="#consent" onclick="document.getElementById('consent-modal').style.display='flex';return false" style="color:var(--gold);text-decoration:underline">Согласие на&nbsp;обработку персональных данных</a></p>
+  </div>
+</footer>
+
+<!-- модалка для отзыва -->
+<div class="modal" id="modal">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeReview()">×</button>
+    <img id="modalImg" src="" alt="">
+  </div>
+</div>
+
+<script>
+// participant cards: tap toggles overlay (для мобайла)
+document.querySelectorAll('.member-card').forEach(card=>{
+  card.addEventListener('click',e=>{
+    e.stopPropagation();
+    document.querySelectorAll('.member-card.active').forEach(o=>{if(o!==card)o.classList.remove('active')});
+    card.classList.toggle('active');
+  });
+});
+document.addEventListener('click',()=>{
+  document.querySelectorAll('.member-card.active').forEach(o=>o.classList.remove('active'));
+});
+
+// cases slider arrows
+function scrollCases(dir){
+  const track = document.getElementById('casesTrack');
+  const card = track.querySelector('.case-card');
+  const step = card.offsetWidth + 24;
+  track.scrollBy({left:step*dir,behavior:'smooth'});
+}
+
+// review modal
+function openReview(file,name){
+  const modal = document.getElementById('modal');
+  const img = document.getElementById('modalImg');
+  img.src = 'redesign-assets/reviews/' + file;
+  img.alt = 'Отзыв: ' + name;
+  modal.classList.add('open');
+}
+function closeReview(){ document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click',e=>{
+  if(e.target.id === 'modal') closeReview();
+});
+document.addEventListener('keydown',e=>{ if(e.key === 'Escape') closeReview(); });
+
+// 1+1 form: duration toggle
+document.querySelectorAll('.dur-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.dur-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// Stats: счётчики бегут от 0 до цели при появлении в viewport
+function formatNum(n){
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+}
+function animateCounter(el){
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+  function tick(now){
+    const t = Math.min(1, (now - start) / duration);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const value = Math.floor(target * ease);
+    el.textContent = formatNum(value) + suffix;
+    if(t < 1) requestAnimationFrame(tick);
+    else el.textContent = formatNum(target) + suffix;
+  }
+  requestAnimationFrame(tick);
+}
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      animateCounter(entry.target);
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => statsObserver.observe(el));
+
+// 1+1 form — записывает заявку, открывает страницу оплаты, шлёт уведомление админу
+// TODO: подставить реальные slug'и GetPlatinum когда чеки будут готовы
+const PAY_URLS = {
+  'solo-month':   '#TBD_SOLO_MONTH',
+  'solo-summer':  '#TBD_SOLO_SUMMER',
+  'pair-month':   '#TBD_PAIR_MONTH',
+  'pair-summer':  '#TBD_PAIR_SUMMER'
+};
+const API_BASE = 'https://api.notfrommonday.ru';
+
+function sendPair(){
+  const n1raw = document.getElementById('p1nick').value.trim();
+  const n2raw = document.getElementById('p2nick').value.trim();
+  const errBox = document.getElementById('pairError');
+  const okBox = document.getElementById('pairSuccess');
+  errBox.classList.remove('show');
+  okBox.classList.remove('show');
+
+  if(!n1raw || !n2raw){
+    errBox.classList.add('show');
+    return;
+  }
+
+  const n1 = n1raw.startsWith('@') ? n1raw : '@'+n1raw;
+  const n2 = n2raw.startsWith('@') ? n2raw : '@'+n2raw;
+  const dur = document.querySelector('.dur-btn.active').dataset.dur;
+  const payKey = dur === 'month' ? 'pair-month' : 'pair-summer';
+  const payUrl = PAY_URLS[payKey];
+
+  // Записываем заявку в backend (best effort)
+  fetch(API_BASE + '/api/pair-request', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      nick1: n1,
+      nick2: n2,
+      mode: 'leto',
+      duration: dur,
+      source: 'leto'
+    })
+  }).catch(() => {});
+
+  okBox.classList.add('show');
+  setTimeout(() => {
+    window.location.href = payUrl;
+  }, 700);
+}
+
+// Tracking visits — best effort
+fetch(API_BASE + '/api/track-visit', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({source: 'leto'})
+}).catch(() => {});
+</script>
+</body>
+</html>
