@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Челлендж «Не с понедельника» — Новое #3</title>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f7f4;
+  --card: #ffffff;
+  --border: #e4e2dd;
+  --text: #1a1a1f;
+  --text2: #6b6b78;
+  --accent: #7c3aed;
+  --accent2: #9333ea;
+  --green: #1a9d55;
+  --blue: #2b7fd4;
+  --purple: #7c3aed;
+  --pink: #e0436c;
+  --yellow: #c9920a;
+  --teal: #0e8a7d;
+  --orange: #ea580c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  min-height: 100vh;
+}
+.noise {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 100;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.header { text-align: center; margin-bottom: 56px; position: relative; }
+.header::before {
+  content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 20px;
+}
+h1 { font-family: 'Dela Gothic One', sans-serif; font-size: clamp(28px, 5vw, 48px); line-height: 1.15; letter-spacing: -1px; margin-bottom: 12px; }
+h1 span { color: var(--accent); }
+.subtitle { color: var(--text2); font-size: 15px; font-weight: 500; }
+
+.big-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
+.big-stat {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 28px 24px; position: relative; overflow: hidden;
+  transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.big-stat:hover { transform: translateY(-2px); border-color: var(--accent); }
+.big-stat .icon { font-size: 28px; margin-bottom: 12px; }
+.big-stat .value { font-family: 'Dela Gothic One', sans-serif; font-size: 32px; line-height: 1.1; margin-bottom: 4px; }
+.big-stat .label { color: var(--text2); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.big-stat .glow { position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; opacity: 0.12; pointer-events: none; }
+
+.section { margin-bottom: 40px; }
+.section-title {
+  font-family: 'Dela Gothic One', sans-serif; font-size: 20px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.leaderboard {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.progress-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.progress-row:last-child { border: none; }
+.progress-name { width: 220px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.progress-bar-bg { flex: 1; height: 24px; background: rgba(0,0,0,0.04); border-radius: 6px; overflow: hidden; }
+.progress-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 11px; font-weight: 700; color: #fff; min-width: fit-content; }
+.progress-count { width: 50px; text-align: right; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.cat-pill {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.cat-pill .cat-icon { font-size: 24px; margin-bottom: 6px; }
+.cat-pill .cat-num { font-family: 'Dela Gothic One', sans-serif; font-size: 22px; margin-bottom: 2px; }
+.cat-pill .cat-label { color: var(--text2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+
+.participants { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.participant {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: border-color 0.2s;
+}
+.participant:hover { border-color: var(--accent); }
+.participant .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.participant .name { font-weight: 800; font-size: 15px; }
+.participant .streak { color: var(--accent); font-size: 12px; font-weight: 700; flex-shrink: 0; }
+.participant .desc { color: var(--text2); font-size: 13px; line-height: 1.55; margin-bottom: 10px; }
+.participant .big-task {
+  background: rgba(124,58,237,0.07); border-radius: 8px; padding: 8px 12px;
+  font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.4;
+}
+
+.trophies { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.trophy {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 18px; position: relative;
+}
+.trophy .t-who { font-weight: 800; font-size: 13px; color: var(--accent); margin-bottom: 6px; }
+.trophy .t-what { font-size: 13px; line-height: 1.5; color: var(--text); }
+.trophy .t-what strong { color: var(--text); font-weight: 700; }
+.trophy .t-tag {
+  display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 700;
+  background: rgba(124,58,237,0.10); color: var(--accent); padding: 3px 10px; border-radius: 100px;
+}
+
+/* Star moments + telegram-like bubble */
+.stars { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.star {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px; position: relative; overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.2s, border-color 0.2s;
+}
+.star:hover { transform: translateY(-2px); border-color: var(--yellow); }
+.star::before {
+  content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(201,146,10,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.tg-msg {
+  background: #fff;
+  border: 1px solid #e9e8e3;
+  border-radius: 12px;
+  padding: 12px 14px 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  position: relative; z-index: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.tg-head { display: flex; gap: 10px; align-items: center; margin-bottom: 6px; }
+.tg-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 13px; letter-spacing: -.02em;
+  flex-shrink: 0;
+}
+.tg-meta { flex: 1; min-width: 0; }
+.tg-name { font-weight: 600; font-size: 13.5px; line-height: 1.15; margin-bottom: 1px; }
+.tg-time { font-size: 11px; color: #8e8e93; font-weight: 400; }
+.tg-text {
+  font-size: 14px; line-height: 1.45; color: #1a1a1f;
+  padding-left: 46px; margin-top: -2px;
+  white-space: pre-line;
+}
+.tg-reactions {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  margin-top: 8px; padding-left: 46px;
+}
+.tg-react {
+  background: rgba(124,58,237,0.10);
+  border-radius: 100px;
+  padding: 2px 8px 3px;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  display: inline-flex; align-items: center; gap: 3px;
+  line-height: 1.3;
+}
+.star .s-why {
+  font-size: 12.5px; color: var(--text2); line-height: 1.55;
+  position: relative; z-index: 1;
+}
+
+.insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.insight {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.insight .emoji { font-size: 32px; margin-bottom: 10px; }
+.insight .hl-title { font-weight: 800; font-size: 15px; margin-bottom: 6px; }
+.insight .hl-desc { color: var(--text2); font-size: 13px; line-height: 1.6; }
+.insight .hl-desc strong { color: var(--text); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.big-stat, .participant, .insight, .trophy, .progress-row, .cat-pill, .star { animation: fadeUp 0.5s ease both; }
+
+footer {
+  text-align: center; padding: 30px 0 0; color: var(--text2); font-size: 12px;
+  border-top: 1px solid var(--border); margin-top: 50px;
+}
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="container">
+
+<div class="header">
+  <div class="badge">Итоги 3-го потока</div>
+  <h1>Новое ✨ <span>«Не с понедельника»</span></h1>
+  <div class="subtitle">Группа «Что-то новенькое» · 28 апреля — 27 мая 2026 · 11 участников · 30 дней<br>Цель: каждый день попробовать что-то новое</div>
+</div>
+
+<!-- Big stats -->
+<div class="big-stats">
+  <div class="big-stat">
+    <div class="icon">✨</div>
+    <div class="value" style="color:var(--accent)">449+</div>
+    <div class="label">Нового попробовано</div>
+    <div class="glow" style="background:var(--accent)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">📝</div>
+    <div class="value" style="color:var(--teal)">302</div>
+    <div class="label">Отчётов сдано</div>
+    <div class="glow" style="background:var(--teal)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">👥</div>
+    <div class="value" style="color:var(--orange)">11</div>
+    <div class="label">Участников</div>
+    <div class="glow" style="background:var(--orange)"></div>
+  </div>
+  <div class="big-stat">
+    <div class="icon">🗺️</div>
+    <div class="value" style="color:var(--green)">228</div>
+    <div class="label">Упоминаний «впервые»</div>
+    <div class="glow" style="background:var(--green)"></div>
+  </div>
+</div>
+
+<!-- Category breakdown -->
+<div class="section">
+  <div class="section-title">🗂 Что пробовали нового</div>
+  <div class="cat-grid">
+    <div class="cat-pill"><div class="cat-icon">🏃</div><div class="cat-num" style="color:var(--green)">76</div><div class="cat-label">Тело / спорт</div></div>
+    <div class="cat-pill"><div class="cat-icon">🍽️</div><div class="cat-num" style="color:var(--orange)">71</div><div class="cat-label">Еда / рецепты</div></div>
+    <div class="cat-pill"><div class="cat-icon">📍</div><div class="cat-num" style="color:var(--blue)">66</div><div class="cat-label">Места / поездки</div></div>
+    <div class="cat-pill"><div class="cat-icon">📚</div><div class="cat-num" style="color:var(--accent)">53</div><div class="cat-label">Книги / подкасты</div></div>
+    <div class="cat-pill"><div class="cat-icon">🤖</div><div class="cat-num" style="color:var(--teal)">48</div><div class="cat-label">AI / инструменты</div></div>
+    <div class="cat-pill"><div class="cat-icon">🤝</div><div class="cat-num" style="color:var(--pink)">48</div><div class="cat-label">Знакомства / люди</div></div>
+    <div class="cat-pill"><div class="cat-icon">🎨</div><div class="cat-num" style="color:var(--yellow)">40</div><div class="cat-label">Творчество</div></div>
+    <div class="cat-pill"><div class="cat-icon">🪞</div><div class="cat-num" style="color:var(--text2)">26</div><div class="cat-label">Самопознание</div></div>
+  </div>
+</div>
+
+<!-- Leaderboard -->
+<div class="section">
+  <div class="section-title">🔥 Дисциплина: ежедневные отчёты</div>
+  <div class="leaderboard">
+    <div class="progress-row"><div class="progress-name">Дарья</div><div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))">30 / 30</div></div><div class="progress-count">💯</div></div>
+    <div class="progress-row"><div class="progress-name">Анна Eвсеева</div><div class="progress-bar-bg"><div class="progress-bar" style="width:97%;background:linear-gradient(90deg,var(--accent),var(--accent2))">29 / 30</div></div><div class="progress-count">97%</div></div>
+    <div class="progress-row"><div class="progress-name">Женя Монахова</div><div class="progress-bar-bg"><div class="progress-bar" style="width:90%;background:var(--green)">27 / 30</div></div><div class="progress-count">90%</div></div>
+    <div class="progress-row"><div class="progress-name">Николай Заляпин</div><div class="progress-bar-bg"><div class="progress-bar" style="width:87%;background:var(--green)">26 / 30</div></div><div class="progress-count">87%</div></div>
+    <div class="progress-row"><div class="progress-name">Olya Kharitonova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:87%;background:var(--green)">26 / 30</div></div><div class="progress-count">87%</div></div>
+    <div class="progress-row"><div class="progress-name">T K</div><div class="progress-bar-bg"><div class="progress-bar" style="width:80%;background:var(--green)">24 / 30</div></div><div class="progress-count">80%</div></div>
+    <div class="progress-row"><div class="progress-name">Anastasia Popova</div><div class="progress-bar-bg"><div class="progress-bar" style="width:80%;background:var(--green)">24 / 30</div></div><div class="progress-count">80%</div></div>
+    <div class="progress-row"><div class="progress-name">Алёна По 🌿</div><div class="progress-bar-bg"><div class="progress-bar" style="width:80%;background:var(--green)">24 / 30</div></div><div class="progress-count">80%</div></div>
+    <div class="progress-row"><div class="progress-name">Vicky Tsoy</div><div class="progress-bar-bg"><div class="progress-bar" style="width:77%;background:var(--green)">23 / 30</div></div><div class="progress-count">77%</div></div>
+    <div class="progress-row"><div class="progress-name">Yulia Yakovenko</div><div class="progress-bar-bg"><div class="progress-bar" style="width:73%;background:var(--teal)">22 / 30</div></div><div class="progress-count">73%</div></div>
+    <div class="progress-row"><div class="progress-name">Данила Савченко</div><div class="progress-bar-bg"><div class="progress-bar" style="width:60%;background:var(--teal)">18 / 30</div></div><div class="progress-count">60%</div></div>
+  </div>
+</div>
+
+<!-- Participant profiles -->
+<div class="section">
+  <div class="section-title">👤 Каждый участник и его «новое»</div>
+  <div class="participants">
+
+    <div class="participant">
+      <div class="top"><div class="name">🏆 Дарья</div><div class="streak">30 отчётов</div></div>
+      <div class="desc">Живёт между Лондоном и Москвой — сам ритм жизни постоянный источник нового. Главные темы: верховая езда (новая лошадь, видео тренировок в AI), Telegram-бот с Claude, Большой театр и опера впервые. Исчерпала дневной лимит MaxPlan.</div>
+      <div class="big-task">🎯 Впервые в Большом театре + на опере. Купила лошадь. Настроила Telegram-бота с Claude</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">🏆 Анна Eвсеева</div><div class="streak">29 отчётов</div></div>
+      <div class="desc">Цепочка намеренно личных «первых»: одна в кино, первый ДР в Петербурге, первый раз сказала «это для меня неприемлемо». Много новых знакомств, культурный поиск (гонг-медитация, спектакли, «Magritte»).</div>
+      <div class="big-task">🎯 Отпраздновала ДР в «Англетере» + впервые сказала «это для меня неприемлемо» без страха</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">🏆 Женя Монахова</div><div class="streak">27 отчётов</div></div>
+      <div class="desc">Непрерывный поток рабочих решений и путешествий. Наняла первого продакт-менеджера, взяла кредит («6 созвонов доказывала»), сделала рубрику «понедельник хороших новостей» для команды. Казань, Самарканд, Узбекистан.</div>
+      <div class="big-task">🎯 Наняла первого продакт-менеджера + «когда вырастет, хочет стать мной» — ассистентка</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">🏆 Николай Заляпин</div><div class="streak">26 отчётов</div></div>
+      <div class="desc">Месяц под знаком движения и отцовства: первое путешествие с сыном, fly yoga (с юмором), пробежка 6 км в компании 60 человек. Рилсы в Инсте, первое предложение о сотрудничестве. Написал «30 вещей, на которые больше не согласен» — планировал 5.</div>
+      <div class="big-task">🎯 Первое путешествие с сыном + fly yoga + «30 вещей на которые больше не согласен»</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">🏆 Olya Kharitonova</div><div class="streak">26 отчётов</div></div>
+      <div class="desc">Контрастный месяц: сочинское море с семьёй, Роза-пик, танцы подружки — и болезнь дома, вторая авария подряд. Разговорный клуб с носителями языка. Книги в ушах как постоянный фон. Последовательна в отчётах даже в тяжёлые дни.</div>
+      <div class="big-task">🎯 Сочи с дочкой, Роза-пик + разговорный клуб с американцем и британцем на одной встрече</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">T K</div><div class="streak">24 отчёта</div></div>
+      <div class="desc">Инженер по духу: новые модули связи, база знаний в Obsidian и Cursor, IP-камеры, скважины на даче. И неожиданная широта: субботняя служба в незнакомой церкви («человек не верующий»), первый дюрюм, первый веломарафон, сюрприз на концерт YE в Турции.</div>
+      <div class="big-task">🎯 Первый веломарафон + зарегистрировался на него + база знаний в Obsidian</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Anastasia Popova</div><div class="streak">24 отчёта</div></div>
+      <div class="desc">Самый «сюжетный» профиль: Марокко (голубиный помёт в Фесе, камень с желанием в Атласских горах, готовила на 9 человек). По возвращении — прошлая глава жизни закрыта, квартира переставлена. Первый книжный клуб, менторство в Дубай.</div>
+      <div class="big-task">🎯 Путешествие по Марокко + «прошлая глава закрыта» + первый книжный клуб сама провела</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Алёна По 🌿</div><div class="streak">24 отчёта</div></div>
+      <div class="desc">Самый «тихий» исследователь: масло лемонграсса, зелёная гречка с пармезаном, качели в гамаке. Использует Gemini для идей мини-экспериментов, Claude в Datadog — для работы. Провела мини-челлендж с подругами. Новый гардероб со стилистом за один день.</div>
+      <div class="big-task">🎯 Первый дашборд в Datadog с AI + новый гардероб со стилистом за один день</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Vicky Tsoy</div><div class="streak">23 отчёта</div></div>
+      <div class="desc">Три режима: учит испанский (разговор с соседом на площадке), следит за здоровьем (впервые быстро сдала кровь на симптомы — «обычно терплю до последнего»), отпуск в Турции/Греции — первая поездка за 20 лет дружбы мужа. Честна с собой: штраф за пропуск назначила сама.</div>
+      <div class="big-task">🎯 Отпуск в Турции/Греции + испанский с соседом на площадке</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Yulia Yakovenko</div><div class="streak">22 отчёта</div></div>
+      <div class="desc">Апогей потока — первые деньги за собственный проект, не в найме, на 3-й день. Запустила формат «7 незнакомцев» (дегустации, конверты с вопросами). Рейки, кинезиолог, гормоны (откладывала 2 года). Наняла помощника разбудить дочь — та написала «ты мама-легенда».</div>
+      <div class="big-task">🎯 Первые деньги за собственный проект (не найм) — на день 3 потока</div>
+    </div>
+
+    <div class="participant">
+      <div class="top"><div class="name">Данила Савченко</div><div class="streak">18 отчётов</div></div>
+      <div class="desc">Месяц в двух частях: Непал (6500 м, «самый опасный аэропорт в мире», палатка на 5800, пение под гитару в Катманду) и AI-работа в Москве (аналитик для CRM, лимит $100 в Claude дважды за день). Одним из организаторов живых пробежек группы.</div>
+      <div class="big-task">🎯 Восхождение на 6500 м в Непале + спал в палатке на 5800 + вайб-кодинг проект</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Star moments -->
+<div class="section">
+  <div class="section-title">⭐ Звёздные моменты</div>
+  <div class="stars">
+
+    <div class="star">
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#ea580c">А</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#ea580c">Anastasia Popova</div>
+            <div class="tg-time">5 мая · 11:07</div>
+          </div>
+        </div>
+        <div class="tg-text">#отчет
+
+Сегодня, когда я зашла в свою квартиру в 7 утра, уставшая после аэропорта, с чемоданом и стаканом кофе я почувствовала, что я до конца восстановилась от развода.
+
+Убралась, выкинула всё то, что «дорого сердцу», поставила картины — и поняла, что прошлая глава закрыта. Что я больше не боюсь близости и знакомств.
+
+Именно этот чат дал мне возможность фокусироваться на этих изменениях. Каждый день задавать себе вопрос: «сделала ли я шаг в сторону нового или делаю шаги от старого?»</div>
+        <div class="tg-reactions">
+          <span class="tg-react">👋 2</span>
+          <span class="tg-react">🤗 1</span>
+        </div>
+      </div>
+      <div class="s-why">Отчёт-манифест: 30 дней пробовать новое — и «прошлая глава» закрылась не понарошку.</div>
+    </div>
+
+    <div class="star">
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#0e8a7d">Ю</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#0e8a7d">Yulia Yakovenko</div>
+            <div class="tg-time">30 апреля · 14:17</div>
+          </div>
+        </div>
+        <div class="tg-text">Первый раз в жизни я получила деньги за свой собственный проект, не в найме, радость! #отчет
+
+И все благодаря вам! Второй месяц в фокусе и вуаля!</div>
+        <div class="tg-reactions">
+          <span class="tg-react">❤️‍🔥 3</span>
+          <span class="tg-react">🔥 1</span>
+        </div>
+      </div>
+      <div class="s-why">День 3 потока. «Первый раз в жизни» — и группа вместе радовалась.</div>
+    </div>
+
+    <div class="star">
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#e0436c">А</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#e0436c">Анна Eвсеева</div>
+            <div class="tg-time">5 мая · 22:08</div>
+          </div>
+        </div>
+        <div class="tg-text">#отчет
+Я сегодня первый раз в жизни покупала водку 🤣🤣🤣
+Готовлю стол a la Russe с икрой и блинами на свой ДР)))
+Дуальность, то кроссовки, то водка 🤣</div>
+        <div class="tg-reactions">
+          <span class="tg-react">🤣 1</span>
+          <span class="tg-react">😁 2</span>
+          <span class="tg-react">🙈 1</span>
+          <span class="tg-react">👋 1</span>
+        </div>
+      </div>
+      <div class="s-why">«Дуальность, то кроссовки, то водка» — самоирония месяца в одной фразе.</div>
+    </div>
+
+    <div class="star">
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#1e3a6e">Д</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#1e3a6e">Данила Савченко</div>
+            <div class="tg-time">9 мая · 06:12</div>
+          </div>
+        </div>
+        <div class="tg-text">Я снова с вами!
+
+Отчитываюсь!
+
+1) взял новую вершину: поднялся на 6500
+2) сделал стрижку в новой стране
+3) летал из самого опасного аэропорта в мире в непале
+4) пел под гитару в Катманду
+5) опробовал непальские автобусы
+6) спал в палатке на 5800
+
+#отчет</div>
+        <div class="tg-reactions">
+          <span class="tg-react">🔥 3</span>
+          <span class="tg-react">👋 1</span>
+          <span class="tg-react">❤️ 1</span>
+        </div>
+      </div>
+      <div class="s-why">Молчал неделю — появился с 6500 м над уровнем моря.</div>
+    </div>
+
+    <div class="star">
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#1a9d55">Д</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#1a9d55">Дарья</div>
+            <div class="tg-time">20 мая · 22:38</div>
+          </div>
+        </div>
+        <div class="tg-text">Из нового сегодня:
+
+Пробежка в новом костюме
+Завтрак из новой посуды
+Впервые снималась для обложки свадебного журнала
+Впервые была в Большом театре
+И впервые — на опере
+
+Вау! Утром подумала, что именно благодаря чату так внимательно отмечаю, что нового происходит в каждом дне. Для меня этот чат про то, чтобы замечать жизнь и видеть уникальность в каждом дне.
+
+#отчет</div>
+        <div class="tg-reactions">
+          <span class="tg-react">❤️‍🔥 1</span>
+          <span class="tg-react">❤️ 2</span>
+          <span class="tg-react">👋 1</span>
+        </div>
+      </div>
+      <div class="s-why">Опера, обложка журнала и новая посуда — в одном дне. И формулировка про суть всего челленджа.</div>
+    </div>
+
+    <div class="star">
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#c9920a">Д</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#c9920a">Дарья</div>
+            <div class="tg-time">17 мая · 05:54</div>
+          </div>
+        </div>
+        <div class="tg-text">Впервые мой самолет не посадили в Москве из-за закрытого неба, а развернули самолет обратно в Стамбул….
+
+Вот вам и че-то новенькое 🫠
+#отчет</div>
+        <div class="tg-reactions">
+          <span class="tg-react">💔 2</span>
+          <span class="tg-react">❤️ 1</span>
+          <span class="tg-react">😱 1</span>
+        </div>
+      </div>
+      <div class="s-why">«Новое» случается и без записи в ежедневник.</div>
+    </div>
+
+    <div class="star">
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#7c3aed">Ж</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#7c3aed">Женя Монахова</div>
+            <div class="tg-time">11 мая · 21:39</div>
+          </div>
+        </div>
+        <div class="tg-text">Сегодня поймала себя на мысли, что не работала несколько дней, сказала команде, что я не работаю, и впервые не чувствовала угрызений совести из-за этого)) а ассистентка мне сказала, что когда вырастет, хочет стать мной
+#отчет</div>
+        <div class="tg-reactions">
+          <span class="tg-react">❤️ 2</span>
+          <span class="tg-react">👋 2</span>
+        </div>
+      </div>
+      <div class="s-why">Один из тех «первых», которые не планируешь: отдохнула без вины.</div>
+    </div>
+
+    <div class="star">
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#e0436c">А</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#e0436c">Анна Eвсеева</div>
+            <div class="tg-time">29 апреля · 21:45</div>
+          </div>
+        </div>
+        <div class="tg-text">Я сегодня сделала смелый личный поступок, на который так долго решалась. Отдала вещи человеку и впервые сказала о том, что для меня неприемлемо без страха и сомнений #отчет</div>
+        <div class="tg-reactions">
+          <span class="tg-react">❤️ 1</span>
+          <span class="tg-react">🔥 1</span>
+          <span class="tg-react">👏 1</span>
+          <span class="tg-react">🤗 1</span>
+          <span class="tg-react">👋 1</span>
+        </div>
+      </div>
+      <div class="s-why">День 2 потока. Самое разнообразное созвездие реакций за месяц — пять разных эмодзи.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Trophy wall -->
+<div class="section">
+  <div class="section-title">🏆 Стена побед: самые яркие «первые разы»</div>
+  <div class="trophies">
+    <div class="trophy">
+      <div class="t-who">Yulia Yakovenko</div>
+      <div class="t-what">«Первый раз в жизни получила деньги за свой собственный проект, не в найме». <strong>День 3 потока.</strong></div>
+      <div class="t-tag">первые деньги не в найме</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Данила Савченко</div>
+      <div class="t-what">Поднялся на <strong>6500 м</strong>, спал в палатке на 5800, летал из «самого опасного аэропорта в мире» в Непале, пел под гитару в Катманду.</div>
+      <div class="t-tag">6500 м</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Дарья</div>
+      <div class="t-what">Купила <strong>лошадь</strong>. Впервые в Большом театре — и на опере. Настроила Telegram-бота с Claude на своём сервере.</div>
+      <div class="t-tag">лошадь + опера</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Anastasia Popova</div>
+      <div class="t-what">Готовила завтрак и ужин на <strong>9 человек</strong> в Марокко на местных продуктах («страшно было капец»). Провела первый онлайн книжный клуб.</div>
+      <div class="t-tag">на 9 человек в Марокко</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Николай Заляпин</div>
+      <div class="t-what">Fly yoga — «как меня только не назвали друзья из детства». Первое путешествие с сыном. Первая <strong>пробежка в компании 60 человек</strong>.</div>
+      <div class="t-tag">fly yoga</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Женя Монахова</div>
+      <div class="t-what">Взяла первый кредит: <strong>6 созвонов доказывала</strong>, что «если я девушка не замужем и ИП, мне надёжно дать деньги». Победила.</div>
+      <div class="t-tag">6 созвонов с банком</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Анна Eвсеева</div>
+      <div class="t-what">Первый раз одна в кино. Первый ДР в «Англетере» в Петербурге. Первый раз сказала человеку <strong>«это для меня неприемлемо»</strong> без страха.</div>
+      <div class="t-tag">три «первых» подряд</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Алёна По 🌿</div>
+      <div class="t-what">Первый дашборд в Datadog с помощью встроенного AI. Обновила <strong>весь гардероб со стилистом за один день</strong>.</div>
+      <div class="t-tag">гардероб за один день</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">T K</div>
+      <div class="t-what">Зарегистрировался на <strong>первый веломарафон</strong>. Организовал сюрприз на концерт YE в Турции. Субботняя служба в незнакомой церкви — «человек не верующий, но уважительно».</div>
+      <div class="t-tag">веломарафон</div>
+    </div>
+    <div class="trophy">
+      <div class="t-who">Olya Kharitonova</div>
+      <div class="t-what">Разговорный клуб по фильму с двумя носителями — <strong>британцем и американцем</strong> одновременно. Роза-пик с дочкой. Не пропустила отчёты даже после аварии.</div>
+      <div class="t-tag">двое носителей</div>
+    </div>
+  </div>
+</div>
+
+<!-- Insights -->
+<div class="section">
+  <div class="section-title">✨ Главные наблюдения</div>
+  <div class="insights">
+    <div class="insight">
+      <div class="emoji">🤖</div>
+      <div class="hl-title">AI снизил порог входа в новое</div>
+      <div class="hl-desc">Самая технически ориентированная группа из всех трёх потоков. <strong>Алёна По</strong> просит Gemini предложить мини-эксперименты на день (пританцовывать в лифте, рисовать в переговорке). <strong>Дарья</strong> настраивает Telegram-бот с Claude и исчерпывает лимит MaxPlan. <strong>T K</strong> строит базу знаний в Obsidian и Cursor. <strong>Женя</strong> нанимает отдельного ассистента для AI-интеграций. Паттерн: не надо придумывать «что нового» — можно спросить у ИИ.</div>
+    </div>
+    <div class="insight">
+      <div class="emoji">💊</div>
+      <div class="hl-title">«Первый раз» оказался терапевтическим</div>
+      <div class="hl-desc">Несколько явных эмоциональных прорывов были напрямую связаны с форматом. <strong>Anastasia Popova</strong> написала манифест о конце прошлой главы после развода — именно в рамках отчёта. <strong>Анна Евсеева</strong> впервые сказала «это неприемлемо» и расценила это как смелый поступок. <strong>Николай</strong> написал список «30 вещей, на которые больше не согласен» — думал, будет 5. <strong>Формат «один отчёт в день» создал паузу для наблюдения за собой.</strong></div>
+    </div>
+    <div class="insight">
+      <div class="emoji">✈️</div>
+      <div class="hl-title">Половина группы была в дороге весь месяц</div>
+      <div class="hl-desc"><strong>Anastasia Popova</strong> — Марокко. <strong>Дарья</strong> — Лондон/Москва. <strong>Данила</strong> — Непал. <strong>Женя</strong> — Казань, Самарканд, Узбекистан. <strong>Николай</strong> — море с сыном. <strong>Vicky</strong> — Турция/Греция. <strong>Olya</strong> — Сочи, Петербург. Оставшиеся компенсировали отсутствие географии исследованием города: Алёна По — парки и велофестиваль, T K — пешком по районам. <strong>«Новое» получалось и из больших приключений, и из смены маршрута на 200 метров.</strong></div>
+    </div>
+    <div class="insight">
+      <div class="emoji">🪞</div>
+      <div class="hl-title">«Если бы не чат» — буквально</div>
+      <div class="hl-desc">Эта фраза встречается в отчётах прямо. <strong>Дарья:</strong> «именно благодаря чату так внимательно отмечаю, что нового происходит в каждом дне». <strong>Anastasia:</strong> «именно этот чат дал мне возможность фокусироваться на этих изменениях». <strong>Yulia:</strong> «благодаря вам!» — после первого дохода от своего проекта. Группа использовала чат как зеркало и якорь, а не только площадку для отчётности.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Не с понедельника · 3-й поток · Что-то новенькое · 28 апреля — 27 мая 2026</p>
+</footer>
+
+</div>
+</body>
+</html>
