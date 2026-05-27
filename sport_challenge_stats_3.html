@@ -121,27 +121,64 @@ h1 span { color: var(--accent); }
   background: rgba(212,101,43,0.10); color: var(--orange); padding: 3px 10px; border-radius: 100px;
 }
 
-/* Star moments */
+/* Star moments + telegram-like bubble */
 .stars { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
 .star {
   background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-  padding: 20px; position: relative; overflow: hidden;
+  padding: 18px; position: relative; overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.2s, border-color 0.2s;
 }
 .star:hover { transform: translateY(-2px); border-color: var(--yellow); }
 .star::before {
   content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px;
-  background: radial-gradient(circle, rgba(201,146,10,0.14) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(201,146,10,0.12) 0%, transparent 65%);
   pointer-events: none;
 }
-.star .s-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; position: relative; }
-.star .s-who { font-weight: 800; font-size: 14px; }
-.star .s-react { font-size: 12px; color: var(--text2); font-weight: 600; }
-.star .s-quote {
-  font-size: 13.5px; line-height: 1.55; color: var(--text); margin-bottom: 10px;
-  border-left: 3px solid var(--yellow); padding-left: 12px; font-style: italic;
+
+/* "Скриншот" — telegram-style сообщение */
+.tg-msg {
+  background: #fff;
+  border: 1px solid #e9e8e3;
+  border-radius: 12px;
+  padding: 12px 14px 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  position: relative; z-index: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-.star .s-why { font-size: 12.5px; color: var(--text2); line-height: 1.5; }
+.tg-head { display: flex; gap: 10px; align-items: center; margin-bottom: 6px; }
+.tg-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 13px; letter-spacing: -.02em;
+  flex-shrink: 0;
+}
+.tg-meta { flex: 1; min-width: 0; }
+.tg-name { font-weight: 600; font-size: 13.5px; line-height: 1.15; margin-bottom: 1px; }
+.tg-time { font-size: 11px; color: #8e8e93; font-weight: 400; }
+.tg-text {
+  font-size: 14px; line-height: 1.45; color: #1a1a1f;
+  padding-left: 46px; margin-top: -2px;
+}
+.tg-reactions {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  margin-top: 8px; padding-left: 46px;
+}
+.tg-react {
+  background: rgba(43,127,212,0.10);
+  border-radius: 100px;
+  padding: 2px 8px 3px;
+  font-size: 12px;
+  color: #2b7fd4;
+  font-weight: 600;
+  display: inline-flex; align-items: center; gap: 3px;
+  line-height: 1.3;
+}
+.star .s-why {
+  font-size: 12.5px; color: var(--text2); line-height: 1.55;
+  position: relative; z-index: 1;
+}
 
 .insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
 .insight {
@@ -327,50 +364,153 @@ footer {
   <div class="stars">
 
     <div class="star">
-      <div class="s-meta"><div class="s-who">Anastasia Popova · 19 мая</div><div class="s-react">❤×3 · 👍×3</div></div>
-      <div class="s-quote">«#отчет где-то 4 км вышло»</div>
-      <div class="s-why">Самый поддержанный отчёт потока — 6 реакций. Короткое сообщение, за которым месяц регулярных пробежек на разных континентах.</div>
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#7c4dff">А</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#7c4dff">Anastasia Popova</div>
+            <div class="tg-time">19 мая · 09:12</div>
+          </div>
+        </div>
+        <div class="tg-text">#отчет где-то 4&nbsp;км вышло</div>
+        <div class="tg-reactions">
+          <span class="tg-react">❤️ 3</span>
+          <span class="tg-react">👍 3</span>
+        </div>
+      </div>
+      <div class="s-why">Самый поддержанный отчёт потока — 6&nbsp;реакций. За коротким сообщением — месяц регулярных пробежек в путешествии.</div>
     </div>
 
     <div class="star">
-      <div class="s-meta"><div class="s-who">Дарья · 3 мая</div><div class="s-react">эмоциональный пик</div></div>
-      <div class="s-quote">«11 км ✅ А за неделю итого — 43 км! Вау! Так регулярно и так много я никогда не бегала. Абсолютно точно позитивное влияние нашего сообщества и Дани!»</div>
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#e0436c">Д</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#e0436c">Дарья</div>
+            <div class="tg-time">3 мая · 18:34</div>
+          </div>
+        </div>
+        <div class="tg-text">11 км ✅ А за неделю итого — 43 км! Вау! Так регулярно и так много я никогда не бегала. Абсолютно точно позитивное влияние нашего сообщества и Дани!</div>
+        <div class="tg-reactions">
+          <span class="tg-react">🔥 4</span>
+          <span class="tg-react">❤️ 2</span>
+        </div>
+      </div>
       <div class="s-why">Поворотный момент потока: стала регулярно бегать.</div>
     </div>
 
     <div class="star">
-      <div class="s-meta"><div class="s-who">Yulia Yakovenko · 24 мая</div><div class="s-react">❤×2 · 🔥 · 😁</div></div>
-      <div class="s-quote">«#отчет сегодня такой спорт) 3 часа среди зрителей, 5 партий и победа! Влада слева) передала мне привет 🥹»</div>
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#0e8a7d">Ю</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#0e8a7d">Yulia Yakovenko</div>
+            <div class="tg-time">24 мая · 21:08</div>
+          </div>
+        </div>
+        <div class="tg-text">#отчет сегодня такой спорт) 3 часа среди зрителей, 5 партий и победа! Влада слева) передала мне привет 🥹</div>
+        <div class="tg-reactions">
+          <span class="tg-react">❤️ 2</span>
+          <span class="tg-react">🔥 1</span>
+          <span class="tg-react">😁 1</span>
+          <span class="tg-react">👍 1</span>
+        </div>
+      </div>
       <div class="s-why">Засчитала шахматный турнир за спорт — и группа поддержала.</div>
     </div>
 
     <div class="star">
-      <div class="s-meta"><div class="s-who">Alina Ushakova · 13 мая</div><div class="s-react">❤×3 · 👍 · 🔥</div></div>
-      <div class="s-quote">«#отчет Ну что тут комментировать… Было и было.»</div>
-      <div class="s-why">Привычка стала автоматизмом — отчёт стал «просто отчётом», без подвига.</div>
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#d4652b">А</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#d4652b">Alina Ushakova</div>
+            <div class="tg-time">13 мая · 22:51</div>
+          </div>
+        </div>
+        <div class="tg-text">#отчет Ну что тут комментировать… Было и было.</div>
+        <div class="tg-reactions">
+          <span class="tg-react">❤️ 3</span>
+          <span class="tg-react">🔥 1</span>
+          <span class="tg-react">👍 1</span>
+        </div>
+      </div>
+      <div class="s-why">Привычка стала автоматизмом — отчёт стал просто отчётом, без подвига.</div>
     </div>
 
     <div class="star">
-      <div class="s-meta"><div class="s-who">Дарья · 2 мая</div><div class="s-react">4 реакции</div></div>
-      <div class="s-quote">«#бежимнеспонедельника Прибежала в парк сделать 5 км, и случайно попала на забег 😂 пробежала его!»</div>
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#e0436c">Д</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#e0436c">Дарья</div>
+            <div class="tg-time">2 мая · 11:47</div>
+          </div>
+        </div>
+        <div class="tg-text">#бежимнеспонедельника Прибежала в парк сделать 5&nbsp;км, и случайно попала на забег 😂 пробежала его!</div>
+        <div class="tg-reactions">
+          <span class="tg-react">🔥 2</span>
+          <span class="tg-react">❤️ 1</span>
+          <span class="tg-react">😁 1</span>
+        </div>
+      </div>
       <div class="s-why">Вышла на 5&nbsp;км — случайно попала на забег и пробежала его.</div>
     </div>
 
     <div class="star">
-      <div class="s-meta"><div class="s-who">Max Golubkov · 30 апреля</div><div class="s-react">🔥×2 · ❤ · 😱</div></div>
-      <div class="s-quote">«#отчет Побегал по горочкам на районе, в процессе сделал 5 остановок — 20 выпадов на каждой ✅»</div>
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#2b7fd4">М</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#2b7fd4">Max Golubkov</div>
+            <div class="tg-time">30 апреля · 08:24</div>
+          </div>
+        </div>
+        <div class="tg-text">#отчет Побегал по горочкам на районе, в процессе сделал 5&nbsp;остановок — 20&nbsp;выпадов на каждой ✅</div>
+        <div class="tg-reactions">
+          <span class="tg-react">🔥 2</span>
+          <span class="tg-react">❤️ 1</span>
+          <span class="tg-react">😱 1</span>
+        </div>
+      </div>
       <div class="s-why">Подготовка к ультрамарафону выглядит вот так.</div>
     </div>
 
     <div class="star">
-      <div class="s-meta"><div class="s-who">Данила Савченко · 3 мая</div><div class="s-react">4 реакции</div></div>
-      <div class="s-quote">«5-часовой акклиматизационный поход на 5200 м #отчет»</div>
-      <div class="s-why">Самая высокая точка потока — буквально. Непал, 5200 метров.</div>
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#1a9d55">Д</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#1a9d55">Данила Савченко</div>
+            <div class="tg-time">3 мая · 16:55</div>
+          </div>
+        </div>
+        <div class="tg-text">5-часовой акклиматизационный поход на 5200&nbsp;м #отчет</div>
+        <div class="tg-reactions">
+          <span class="tg-react">🔥 2</span>
+          <span class="tg-react">😱 1</span>
+          <span class="tg-react">❤️ 1</span>
+        </div>
+      </div>
+      <div class="s-why">Самая высокая точка потока — буквально. Непал, 5200&nbsp;метров.</div>
     </div>
 
     <div class="star">
-      <div class="s-meta"><div class="s-who">Катя Миронова · 17 мая</div><div class="s-react">4 реакции</div></div>
-      <div class="s-quote">«#отчет Сегодня открыла сезон роликов»</div>
+      <div class="tg-msg">
+        <div class="tg-head">
+          <div class="tg-avatar" style="background:#c9920a">К</div>
+          <div class="tg-meta">
+            <div class="tg-name" style="color:#c9920a">Катя Миронова</div>
+            <div class="tg-time">17 мая · 19:12</div>
+          </div>
+        </div>
+        <div class="tg-text">#отчет Сегодня открыла сезон роликов</div>
+        <div class="tg-reactions">
+          <span class="tg-react">❤️ 2</span>
+          <span class="tg-react">🔥 1</span>
+          <span class="tg-react">👍 1</span>
+        </div>
+      </div>
       <div class="s-why">Сразу же спросила в чате, кто составит компанию кататься.</div>
     </div>
 
