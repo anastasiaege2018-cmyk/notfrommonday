@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Не с понедельника · Лето 2026</title>
-<meta property="og:title" content="Не с понедельника · Лето 2026">
-<meta property="og:description" content="Сообщество для амбициозных. Старт 9 июня. Проведи это лето с нами.">
+<title>Не с понедельника · Первая смена</title>
+<meta property="og:title" content="Не с понедельника · спец-цена для участников «Первой смены»">
+<meta property="og:description" content="Сообщество для амбициозных. Старт 9 июня. Специальная цена для участников лагеря «Первая смена».">
 <meta property="og:image" content="https://notfrommonday.ru/redesign-assets/hero-main.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -702,9 +702,26 @@ footer a:hover{opacity:.7}
   .case-meta{font-size:12px}
   .case-q,.case-r{font-size:14px}
 }
+
+/* === Sticky banner для лагеря === */
+.camp-banner{
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(90deg,#E8856B 0%,#D4665A 100%);
+  color:#fff;text-align:center;
+  padding:10px 16px;
+  font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;letter-spacing:.01em;
+  box-shadow:0 2px 12px rgba(42,37,48,.12);
+  line-height:1.4;
+}
+.camp-banner strong{font-weight:800}
+@media (max-width:600px){
+  .camp-banner{font-size:12.5px;padding:8px 14px}
+}
 </style>
 </head>
 <body>
+
+<div class="camp-banner">🌞 <strong>Специальная цена</strong> для участников лагеря «Первая смена» — действует до старта потока</div>
 
 <!-- ══════════════ 1. HERO ══════════════ -->
 <header class="hero">
@@ -1141,7 +1158,7 @@ footer a:hover{opacity:.7}
 <section class="tariff" id="tariffs">
   <div class="container">
     <h2 class="section-title" style="text-align:center;margin:0 auto 16px">Выбери своё лето</h2>
-    <p class="tariff-meta">Старт 9&nbsp;июня. Лето&nbsp;2026.</p>
+    <p class="tariff-meta">Специальная цена для участников лагеря «Первая смена». Старт 9&nbsp;июня.</p>
 
     <div class="tariff-grid">
       <div class="tariff-card">
@@ -1150,7 +1167,8 @@ footer a:hover{opacity:.7}
         <p class="tariff-sub">Месяц лета в&nbsp;сообществе без длинного коммита</p>
         <div class="tariff-row">
           <div class="tariff-price-row">
-            <span class="tariff-price">27&nbsp;770&nbsp;₽</span>
+            <span class="tariff-price">17&nbsp;770&nbsp;₽</span>
+            <span class="tariff-price-old">27&nbsp;770&nbsp;₽</span>
           </div>
           <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;font-style:italic">цена за&nbsp;месяц участия</p>
         </div>
@@ -1172,7 +1190,8 @@ footer a:hover{opacity:.7}
         <p class="tariff-sub">Июнь · июль · август&nbsp;— три месяца изменений подряд</p>
         <div class="tariff-row">
           <div class="tariff-price-row">
-            <span class="tariff-price">47&nbsp;770&nbsp;₽</span>
+            <span class="tariff-price">44&nbsp;440&nbsp;₽</span>
+            <span class="tariff-price-old" style="color:rgba(255,255,255,.6)">47&nbsp;770&nbsp;₽</span>
           </div>
           <p style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-style:italic">цена за&nbsp;всё лето</p>
         </div>
@@ -1202,8 +1221,8 @@ footer a:hover{opacity:.7}
         </div>
         <div class="pair-form-body">
           <div class="dur-toggle">
-            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small>69&nbsp;990&nbsp;₽</small></button>
-            <button type="button" class="dur-btn" data-dur="summer">Всё лето <small>119&nbsp;990&nbsp;₽</small></button>
+            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small>27&nbsp;770&nbsp;₽</small></button>
+            <button type="button" class="dur-btn" data-dur="summer">Всё лето <small>69&nbsp;990&nbsp;₽</small></button>
           </div>
 
           <div class="pair-error" id="pairError">Укажи оба ника в&nbsp;Telegram, чтобы я&nbsp;могла связаться.</div>
@@ -1555,9 +1574,9 @@ function sendPair(){
     body: JSON.stringify({
       nick1: n1,
       nick2: n2,
-      mode: 'leto',
+      mode: 'pervaya-smena',
       duration: dur,
-      source: 'leto'
+      source: 'pervaya-smena'
     })
   }).catch(() => {});
 
@@ -1571,7 +1590,7 @@ function sendPair(){
 fetch(API_BASE + '/api/track-visit', {
   method: 'POST',
   headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify({source: 'leto'})
+  body: JSON.stringify({source: 'pervaya-smena'})
 }).catch(() => {});
 </script>
 </body>
