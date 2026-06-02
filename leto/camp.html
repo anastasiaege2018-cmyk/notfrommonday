@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>День 2 · Лагерь «Первая смена» — Не с понедельника</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%BA%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="День 2 · Лагерь «Первая смена»">
+<meta property="og:description" content="Как сделать так, чтобы привычка прижилась. Habit stacking — простая система, чтобы новое действие не отвалилось на третий день.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* лагерная палитра — костёр, трава, песок */
+  --paper:#FBF7EC;      /* кремовый фон */
+  --ink:#2B2418;        /* почти чёрный, тёплый */
+  --ink-soft:#6B5F4D;   /* приглушённый */
+  --ember:#E8856B;      /* костёр */
+  --ember-deep:#C25A3D;
+  --pine:#5A7A4E;       /* трава */
+  --pine-deep:#3F5938;
+  --sun:#E8B23C;        /* солнце */
+  --sand:#E8DCC2;       /* песок */
+  --card:#FFFCF3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:720px;margin:0 auto;padding:0 24px}
+
+/* ── HERO ── */
+.hero{
+  background:
+    radial-gradient(60% 100% at 20% 0%, rgba(232,178,60,.18), transparent 70%),
+    radial-gradient(70% 100% at 90% 30%, rgba(232,133,107,.15), transparent 70%),
+    linear-gradient(180deg, var(--sand) 0%, var(--paper) 100%);
+  padding:48px 0 56px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';
+  position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(43,36,24,.12),transparent);
+}
+.crumb{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;
+  color:var(--ember-deep);
+  letter-spacing:.02em;
+  margin-bottom:18px;
+}
+.crumb-dot{width:4px;height:4px;border-radius:50%;background:var(--ember);opacity:.6}
+.day-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ember);color:#fff;
+  padding:8px 16px;border-radius:100px;
+  font-weight:700;font-size:13px;
+  letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:22px;
+  box-shadow:0 4px 16px rgba(194,90,61,.22);
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(28px,5vw,42px);
+  line-height:1.15;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  margin-bottom:16px;
+}
+h1 em{font-style:italic;color:var(--ember-deep);font-weight:600}
+.hero-sub{
+  font-size:17px;color:var(--ink-soft);
+  font-weight:500;
+  max-width:560px;
+}
+
+/* ── ARTICLE ── */
+article{padding:48px 0 64px}
+article h2{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(22px,3.6vw,28px);
+  line-height:1.25;
+  color:var(--ink);
+  margin:48px 0 18px;
+  position:relative;
+  padding-left:18px;
+}
+article h2::before{
+  content:'';position:absolute;left:0;top:.15em;
+  width:5px;height:1em;border-radius:3px;
+  background:linear-gradient(180deg,var(--ember) 0%,var(--sun) 100%);
+}
+article h2:first-child{margin-top:0}
+article p{margin-bottom:18px;color:var(--ink)}
+article p + p{margin-top:-4px}
+article a{color:var(--ember-deep);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+article a:hover{color:var(--ember)}
+article strong{font-weight:700;color:var(--ink)}
+
+/* блоки-карточки внутри статьи */
+.formula{
+  background:var(--card);
+  border:1.5px solid var(--ember);
+  border-radius:14px;
+  padding:18px 22px;
+  font-family:'Playfair Display',serif;
+  font-size:19px;
+  font-weight:600;
+  text-align:center;
+  color:var(--ember-deep);
+  margin:22px 0 26px;
+  box-shadow:0 4px 16px rgba(194,90,61,.08);
+}
+.formula em{color:var(--ink);font-style:normal;background:rgba(232,178,60,.22);padding:1px 8px;border-radius:6px}
+.example-list{
+  background:rgba(232,220,194,.4);
+  border-left:3px solid var(--sun);
+  border-radius:0 10px 10px 0;
+  padding:18px 22px;
+  margin:0 0 26px;
+}
+.example-list ul{list-style:none;padding:0;margin:0}
+.example-list li{padding:6px 0;font-size:16px;color:var(--ink)}
+.example-list li::before{content:'→';color:var(--ember);font-weight:700;margin-right:10px}
+
+/* типы привычек */
+.types{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  margin:24px 0 26px;
+}
+.type{
+  background:var(--card);
+  border:1px solid var(--sand);
+  border-radius:14px;
+  padding:16px 20px;
+  box-shadow:0 1px 4px rgba(43,36,24,.04);
+}
+.type-name{
+  display:inline-block;
+  font-family:'Playfair Display',serif;
+  font-weight:700;font-size:15px;
+  color:var(--pine-deep);
+  margin-bottom:8px;
+  padding:3px 10px;
+  background:rgba(90,122,78,.12);
+  border-radius:100px;
+}
+.type p{margin:6px 0;font-size:15.5px;line-height:1.6}
+.type .label{font-weight:700;color:var(--ink-soft);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+
+/* три правила */
+.rules{
+  counter-reset:rules;
+  margin:24px 0 26px;
+  display:grid;gap:14px;
+}
+.rule{
+  background:var(--card);
+  border-radius:14px;padding:18px 22px 18px 60px;
+  position:relative;
+  border:1px solid var(--sand);
+  counter-increment:rules;
+}
+.rule::before{
+  content:counter(rules);
+  position:absolute;left:18px;top:18px;
+  width:30px;height:30px;border-radius:50%;
+  background:var(--ember);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:14px;
+  font-family:'Manrope',sans-serif;
+}
+.rule b{font-weight:700;display:block;margin-bottom:4px;font-size:15.5px;color:var(--ink)}
+.rule p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.55}
+
+/* финальный CTA блок */
+.action{
+  background:linear-gradient(135deg,var(--pine) 0%,var(--pine-deep) 100%);
+  color:#fff;border-radius:18px;
+  padding:28px 28px 30px;
+  margin:36px 0 0;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 32px rgba(63,89,56,.2);
+}
+.action::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,178,60,.35) 0%,transparent 70%);
+}
+.action-tag{
+  display:inline-block;
+  background:rgba(255,255,255,.18);
+  padding:5px 12px;border-radius:100px;
+  font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:14px;
+  position:relative;z-index:1;
+}
+.action h3{
+  font-family:'Playfair Display',serif;
+  font-size:22px;line-height:1.25;
+  margin-bottom:10px;font-weight:700;
+  position:relative;z-index:1;
+}
+.action p{margin-bottom:14px;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.action p:last-child{margin-bottom:0}
+
+/* footer-CTA — кнопка к боту */
+.bot-cta{
+  background:var(--card);
+  border:1.5px solid var(--ember);
+  border-radius:18px;padding:24px;
+  margin-top:28px;text-align:center;
+  box-shadow:0 4px 16px rgba(194,90,61,.08);
+}
+.bot-cta p{margin-bottom:14px;color:var(--ink-soft);font-size:15px}
+.bot-cta a{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--ember);color:#fff;
+  padding:13px 26px;border-radius:100px;
+  font-weight:700;text-decoration:none;font-size:15px;
+  transition:transform .15s ease,box-shadow .15s ease;
+  box-shadow:0 6px 18px rgba(232,133,107,.32);
+}
+.bot-cta a:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(232,133,107,.42)}
+
+/* footer */
+footer{
+  padding:36px 0 48px;text-align:center;
+  color:var(--ink-soft);font-size:13px;
+  border-top:1px solid rgba(43,36,24,.08);
+  margin-top:48px;
+}
+footer a{color:var(--ember-deep);text-decoration:none;font-weight:600}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .container{padding:0 18px}
+  .hero{padding:36px 0 40px}
+  article{padding:36px 0 40px}
+  .formula{font-size:17px;padding:16px 18px}
+  .action{padding:24px 22px 26px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="crumb">
+      <span>🏕</span>
+      <span>Лагерь «Первая смена»</span>
+    </div>
+    <span class="day-tag">День 2</span>
+    <h1>Вы нашли своё действие.<br>Теперь сделайте так, чтобы <em>оно прижилось</em>.</h1>
+    <p class="hero-sub">Найти действие — половина дела. Вторая половина — не бросить на третий день.</p>
+  </div>
+</header>
+
+<article>
+<div class="container">
+
+<p>Если вы прошли <a href="https://t.me/privichnikbot" target="_blank">Привычника</a> — у вас уже есть одно конкретное действие на лето. Если ещё нет — самое время.</p>
+
+<p>Но найти действие — половина дела. Вторая половина — <strong>не бросить на третий день</strong>. Проблема не в лени. Проблема в том, что у привычки не было адреса — она висела в воздухе, «когда-нибудь в течение дня». А «когда-нибудь» — это синоним «никогда».</p>
+
+<h2>Намерение vs. система</h2>
+
+<p>«Буду закрывать задачи каждый день» — намерение. «Открою список задач сразу после того, как налью кофе» — система. Разница — одна деталь: <strong>когда именно</strong>.</p>
+
+<p>Вот как это выглядит для разных типов привычек:</p>
+
+<div class="types">
+
+  <div class="type">
+    <div class="type-name">Фокус</div>
+    <p><span class="label">Намерение:</span> «Буду продуктивнее.»</p>
+    <p><span class="label">Система:</span> «Сразу после утреннего кофе открываю список задач и выбираю одну — самую важную.»</p>
+  </div>
+
+  <div class="type">
+    <div class="type-name">Осознанность</div>
+    <p><span class="label">Намерение:</span> «Буду медитировать.»</p>
+    <p><span class="label">Система:</span> «Включил чайник — сел на коврик. Чайник закипит через 3 минуты. Этого достаточно.»</p>
+  </div>
+
+  <div class="type">
+    <div class="type-name">Отказ от чего-то</div>
+    <p><span class="label">Намерение:</span> «Перестану скроллить перед сном.»</p>
+    <p><span class="label">Система:</span> «В 22:00 кладу телефон на зарядку в другой комнате. Не рядом с кроватью — в другой комнате.»</p>
+  </div>
+
+  <div class="type">
+    <div class="type-name">Спорт</div>
+    <p><span class="label">Намерение:</span> «Буду тренироваться.»</p>
+    <p><span class="label">Система:</span> «После утреннего кофе надеваю кроссовки. Не "иду на тренировку" — просто надеваю кроссовки. Дальше тело разберётся.»</p>
+  </div>
+
+</div>
+
+<p>Джеймс Клир называет это <strong>habit stacking</strong>: цепляешь новое действие к тому, что уже делаешь на автомате. Мозг не создаёт привычку с нуля — подключает новое звено к работающей цепи. Люди с такой привязкой выполняют новое действие на <strong>40–60% чаще</strong>. Не потому что волевые — потому что не нужно каждый раз решать «буду или не буду».</p>
+
+<h2>Формула</h2>
+
+<div class="formula">После <em>[текущая привычка]</em> я делаю <em>[новая привычка]</em></div>
+
+<p>Примеры:</p>
+
+<div class="example-list">
+<ul>
+  <li>После кофе → открываю список задач и выбираю одну</li>
+  <li>Включил чайник → сел на коврик (3 минуты — этого достаточно)</li>
+  <li>Закрыл ноутбук → телефон на зарядку в другую комнату</li>
+  <li>После утреннего кофе → надеваю кроссовки (дальше тело разберётся)</li>
+</ul>
+</div>
+
+<h2>Три правила</h2>
+
+<div class="rules">
+  <div class="rule">
+    <b>Триггер — ежедневный.</b>
+    <p>«После аэропорта» — плохо, вы летаете раз в месяц. «После ужина» — хорошо.</p>
+  </div>
+  <div class="rule">
+    <b>Действие — маленькое.</b>
+    <p>Не «пробежать 5 км», а «надеть кроссовки». Мозг не сопротивляется маленькому.</p>
+  </div>
+  <div class="rule">
+    <b>Не менять привязку минимум две недели.</b>
+    <p>Мозгу нужно время, чтобы связка стала автоматической.</p>
+  </div>
+</div>
+
+<h2>Что делать сейчас</h2>
+
+<div class="action">
+  <div class="action-tag">💬 Шаг дня</div>
+  <h3>Соберите свою привязку и поделитесь с лагерем</h3>
+  <p>Возьмите действие, которое дал вам Привычник. Найдите для него триггер. Запишите привязку в чат лагеря:</p>
+  <p><strong>«После [что] я делаю [что].»</strong></p>
+  <p>Привычник будет напоминать следующие четыре дня. А окружение в лагере сделает остальное — когда рядом люди, которые тоже начинают, бросить сложнее.</p>
+</div>
+
+<div class="bot-cta">
+  <p>Ещё не познакомились с Привычником?</p>
+  <a href="https://t.me/privichnikbot" target="_blank">🏕 Открыть Привычника</a>
+</div>
+
+</div>
+</article>
+
+<footer>
+  <div class="container">
+    🌞 Лагерь «Первая смена» · <a href="https://notfrommonday.ru/pervaya-smena">Не с понедельника</a>
+  </div>
+</footer>
+
+</body>
+</html>
