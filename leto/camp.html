@@ -6,23 +6,24 @@
 <title>День 2 · Лагерь «Первая смена» — Не с понедельника</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%BA%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="День 2 · Лагерь «Первая смена»">
-<meta property="og:description" content="Как сделать так, чтобы привычка прижилась. Habit stacking — простая система, чтобы новое действие не отвалилось на третий день.">
+<meta property="og:description" content="Как сделать так, чтобы привычка прижилась. Простая система, чтобы новое действие не отвалилось на третий день.">
+<meta property="og:image" content="https://notfrommonday.ru/leto/assets/camp-hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* лагерная палитра — костёр, трава, песок */
-  --paper:#FBF7EC;      /* кремовый фон */
-  --ink:#2B2418;        /* почти чёрный, тёплый */
-  --ink-soft:#6B5F4D;   /* приглушённый */
-  --ember:#E8856B;      /* костёр */
-  --ember-deep:#C25A3D;
-  --pine:#5A7A4E;       /* трава */
-  --pine-deep:#3F5938;
-  --sun:#E8B23C;        /* солнце */
-  --sand:#E8DCC2;       /* песок */
-  --card:#FFFCF3;
+  /* советский лагерь — выгоревшие плакатные цвета */
+  --paper:#F5EFE0;        /* светло-кремовый, как бумага плаката */
+  --paper-dim:#EDE4CF;
+  --ink:#1F1B14;          /* почти чёрный, тёплый */
+  --ink-soft:#5A5040;
+  --red:#C8341F;          /* красный галстук */
+  --red-deep:#A52A18;
+  --teal:#2D6B6B;         /* выцветшая морская синь */
+  --olive:#7A8442;        /* оливково-зелёный, как кипарисы */
+  --sand:#D4B97A;         /* охра, песок */
+  --cream:#FFFCF2;        /* мягкий кремовый для карточек */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -30,254 +31,344 @@ body{
   font-family:'Manrope',sans-serif;
   background:var(--paper);
   color:var(--ink);
-  line-height:1.7;
-  font-size:17px;
+  line-height:1.75;
+  font-size:18px;
   -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
-.container{max-width:720px;margin:0 auto;padding:0 24px}
+/* лёгкая текстура бумаги через шум */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .12 0 0 0 0 .10 0 0 0 0 .08 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.35;
+}
+.container{max-width:640px;margin:0 auto;padding:0 22px}
 
-/* ── HERO ── */
-.hero{
-  background:
-    radial-gradient(60% 100% at 20% 0%, rgba(232,178,60,.18), transparent 70%),
-    radial-gradient(70% 100% at 90% 30%, rgba(232,133,107,.15), transparent 70%),
-    linear-gradient(180deg, var(--sand) 0%, var(--paper) 100%);
-  padding:48px 0 56px;
-  position:relative;
-  overflow:hidden;
+/* ── HERO PHOTO ── */
+.photo-wrap{
+  width:100%;max-width:780px;margin:0 auto;
+  padding:14px 22px 0;
 }
-.hero::after{
-  content:'';
-  position:absolute;left:0;right:0;bottom:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(43,36,24,.12),transparent);
+.photo{
+  position:relative;border-radius:6px;overflow:hidden;
+  aspect-ratio:3/2;
+  box-shadow:0 12px 40px rgba(31,27,20,.18), 0 0 0 1px rgba(31,27,20,.06);
 }
-.crumb{
-  display:flex;align-items:center;gap:8px;
-  font-size:13px;font-weight:600;
-  color:var(--ember-deep);
-  letter-spacing:.02em;
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(31,27,20,.18) 100%);
+  pointer-events:none;
+}
+
+/* ── HEADER ── */
+.head{
+  text-align:center;
+  padding:30px 22px 14px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Manrope',sans-serif;
+  font-size:12px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:14px;
+}
+.eyebrow::before, .eyebrow::after{
+  content:'';display:inline-block;width:28px;height:1.5px;background:var(--red);opacity:.55;
+}
+.lager{
+  font-family:'Unbounded',sans-serif;
+  font-weight:900;
+  font-size:clamp(64px, 18vw, 130px);
+  line-height:.88;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  text-transform:uppercase;
+  margin:0 auto 4px;
+  display:block;
+}
+.smena{
+  font-family:'Unbounded',sans-serif;
+  font-weight:600;
+  font-style:italic;
+  font-size:clamp(20px,4.5vw,30px);
+  color:var(--red);
+  letter-spacing:.005em;
   margin-bottom:18px;
 }
-.crumb-dot{width:4px;height:4px;border-radius:50%;background:var(--ember);opacity:.6}
 .day-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--ember);color:#fff;
-  padding:8px 16px;border-radius:100px;
-  font-weight:700;font-size:13px;
-  letter-spacing:.05em;text-transform:uppercase;
-  margin-bottom:22px;
-  box-shadow:0 4px 16px rgba(194,90,61,.22);
-}
-h1{
-  font-family:'Playfair Display',serif;
-  font-weight:700;
-  font-size:clamp(28px,5vw,42px);
-  line-height:1.15;
-  letter-spacing:-.01em;
-  color:var(--ink);
-  margin-bottom:16px;
-}
-h1 em{font-style:italic;color:var(--ember-deep);font-weight:600}
-.hero-sub{
-  font-size:17px;color:var(--ink-soft);
-  font-weight:500;
-  max-width:560px;
+  display:inline-block;
+  background:var(--ink);color:var(--paper);
+  padding:7px 18px;border-radius:0;
+  font-family:'Manrope',sans-serif;
+  font-weight:700;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
 }
 
-/* ── ARTICLE ── */
-article{padding:48px 0 64px}
-article h2{
-  font-family:'Playfair Display',serif;
-  font-weight:700;
-  font-size:clamp(22px,3.6vw,28px);
-  line-height:1.25;
-  color:var(--ink);
-  margin:48px 0 18px;
+/* ── ARTICLE TITLE ── */
+.title-block{
+  text-align:center;
+  padding:40px 22px 20px;
   position:relative;
-  padding-left:18px;
 }
-article h2::before{
-  content:'';position:absolute;left:0;top:.15em;
-  width:5px;height:1em;border-radius:3px;
-  background:linear-gradient(180deg,var(--ember) 0%,var(--sun) 100%);
+.title-block::before, .title-block::after{
+  content:'';display:block;width:42px;height:3px;
+  background:var(--red);margin:0 auto 24px;
 }
-article h2:first-child{margin-top:0}
-article p{margin-bottom:18px;color:var(--ink)}
-article p + p{margin-top:-4px}
-article a{color:var(--ember-deep);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
-article a:hover{color:var(--ember)}
+.title-block::after{margin:24px auto 0}
+h1{
+  font-family:'Unbounded',sans-serif;
+  font-weight:700;
+  font-size:clamp(26px,5.2vw,40px);
+  line-height:1.18;
+  color:var(--ink);
+  max-width:560px;margin:0 auto;
+  letter-spacing:-.01em;
+}
+h1 em{font-style:italic;color:var(--red);font-weight:700}
+.lede{
+  font-family:'Manrope',sans-serif;
+  font-size:17px;font-weight:500;
+  color:var(--ink-soft);
+  max-width:520px;margin:18px auto 0;
+  line-height:1.65;
+}
+
+/* ── ARTICLE BODY ── */
+article{padding:24px 0 56px}
+article h2{
+  font-family:'Unbounded',sans-serif;
+  font-weight:700;
+  font-size:clamp(22px,3.8vw,30px);
+  line-height:1.2;
+  color:var(--ink);
+  margin:52px 0 22px;
+  text-align:center;
+  letter-spacing:-.005em;
+}
+article h2 .num{
+  display:block;
+  font-family:'Manrope',sans-serif;
+  font-weight:700;
+  font-size:13px;
+  color:var(--red);
+  letter-spacing:.3em;
+  margin-bottom:10px;
+}
+article p{margin-bottom:18px;color:var(--ink);font-size:18px;line-height:1.7}
+article a{color:var(--red);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;font-weight:600}
+article a:hover{color:var(--red-deep)}
 article strong{font-weight:700;color:var(--ink)}
 
-/* блоки-карточки внутри статьи */
+/* формула */
 .formula{
-  background:var(--card);
-  border:1.5px solid var(--ember);
-  border-radius:14px;
-  padding:18px 22px;
-  font-family:'Playfair Display',serif;
-  font-size:19px;
+  background:var(--cream);
+  border:2px solid var(--ink);
+  padding:24px 22px;
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(16px,3.2vw,20px);
   font-weight:600;
   text-align:center;
-  color:var(--ember-deep);
-  margin:22px 0 26px;
-  box-shadow:0 4px 16px rgba(194,90,61,.08);
+  color:var(--ink);
+  margin:28px 0 30px;
+  letter-spacing:-.005em;
+  line-height:1.5;
 }
-.formula em{color:var(--ink);font-style:normal;background:rgba(232,178,60,.22);padding:1px 8px;border-radius:6px}
-.example-list{
-  background:rgba(232,220,194,.4);
-  border-left:3px solid var(--sun);
-  border-radius:0 10px 10px 0;
-  padding:18px 22px;
-  margin:0 0 26px;
+.formula em{
+  font-style:normal;
+  background:var(--red);color:var(--paper);
+  padding:2px 12px;
+  font-weight:700;
 }
-.example-list ul{list-style:none;padding:0;margin:0}
-.example-list li{padding:6px 0;font-size:16px;color:var(--ink)}
-.example-list li::before{content:'→';color:var(--ember);font-weight:700;margin-right:10px}
+
+/* примеры */
+.examples{
+  background:var(--paper-dim);
+  border-left:4px solid var(--red);
+  padding:22px 24px;
+  margin:0 0 30px;
+}
+.examples ul{list-style:none;padding:0;margin:0}
+.examples li{
+  padding:8px 0;
+  font-size:17px;
+  color:var(--ink);
+  line-height:1.55;
+  position:relative;
+  padding-left:24px;
+}
+.examples li::before{
+  content:'→';
+  position:absolute;left:0;top:8px;
+  color:var(--red);font-weight:800;
+}
 
 /* типы привычек */
 .types{
   display:grid;
   grid-template-columns:1fr;
-  gap:14px;
-  margin:24px 0 26px;
+  gap:16px;
+  margin:28px 0 30px;
 }
 .type{
-  background:var(--card);
-  border:1px solid var(--sand);
-  border-radius:14px;
-  padding:16px 20px;
-  box-shadow:0 1px 4px rgba(43,36,24,.04);
+  background:var(--cream);
+  border:1px solid rgba(31,27,20,.12);
+  padding:20px 22px;
 }
 .type-name{
   display:inline-block;
-  font-family:'Playfair Display',serif;
-  font-weight:700;font-size:15px;
-  color:var(--pine-deep);
-  margin-bottom:8px;
-  padding:3px 10px;
-  background:rgba(90,122,78,.12);
-  border-radius:100px;
+  font-family:'Unbounded',sans-serif;
+  font-weight:700;font-size:13px;
+  color:var(--paper);
+  background:var(--olive);
+  margin-bottom:12px;
+  padding:5px 14px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
 }
-.type p{margin:6px 0;font-size:15.5px;line-height:1.6}
-.type .label{font-weight:700;color:var(--ink-soft);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.type p{margin:6px 0;font-size:16.5px;line-height:1.6}
+.type .label{
+  font-weight:800;color:var(--red);font-size:12px;
+  text-transform:uppercase;letter-spacing:.12em;
+  display:inline-block;margin-right:6px;
+}
 
 /* три правила */
 .rules{
-  counter-reset:rules;
-  margin:24px 0 26px;
-  display:grid;gap:14px;
+  margin:28px 0 30px;
+  display:grid;gap:16px;
+  counter-reset:r;
 }
 .rule{
-  background:var(--card);
-  border-radius:14px;padding:18px 22px 18px 60px;
+  background:var(--cream);
+  padding:22px 24px 22px 78px;
   position:relative;
-  border:1px solid var(--sand);
-  counter-increment:rules;
+  border:1px solid rgba(31,27,20,.12);
+  counter-increment:r;
 }
 .rule::before{
-  content:counter(rules);
-  position:absolute;left:18px;top:18px;
-  width:30px;height:30px;border-radius:50%;
-  background:var(--ember);color:#fff;
+  content:counter(r);
+  position:absolute;left:0;top:0;bottom:0;
+  width:58px;
+  background:var(--red);color:var(--paper);
   display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:14px;
-  font-family:'Manrope',sans-serif;
+  font-family:'Unbounded',sans-serif;
+  font-weight:800;font-size:32px;
 }
-.rule b{font-weight:700;display:block;margin-bottom:4px;font-size:15.5px;color:var(--ink)}
-.rule p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.55}
+.rule b{font-weight:800;display:block;margin-bottom:6px;font-size:17px;color:var(--ink)}
+.rule p{margin:0;font-size:16px;color:var(--ink-soft);line-height:1.55}
 
-/* финальный CTA блок */
+/* финальный блок */
 .action{
-  background:linear-gradient(135deg,var(--pine) 0%,var(--pine-deep) 100%);
-  color:#fff;border-radius:18px;
-  padding:28px 28px 30px;
-  margin:36px 0 0;
-  position:relative;overflow:hidden;
-  box-shadow:0 12px 32px rgba(63,89,56,.2);
+  background:var(--ink);
+  color:var(--paper);
+  padding:32px 28px;
+  margin:40px 0 0;
+  text-align:center;
+  position:relative;
 }
 .action::before{
-  content:'';position:absolute;top:-30px;right:-30px;
-  width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,rgba(232,178,60,.35) 0%,transparent 70%);
+  content:'★';
+  position:absolute;top:18px;left:50%;transform:translateX(-50%);
+  color:var(--red);font-size:20px;
 }
 .action-tag{
   display:inline-block;
-  background:rgba(255,255,255,.18);
-  padding:5px 12px;border-radius:100px;
-  font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  margin-bottom:14px;
-  position:relative;z-index:1;
+  font-family:'Manrope',sans-serif;
+  font-size:12px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--sand);
+  margin:8px 0 12px;
 }
 .action h3{
-  font-family:'Playfair Display',serif;
-  font-size:22px;line-height:1.25;
-  margin-bottom:10px;font-weight:700;
-  position:relative;z-index:1;
+  font-family:'Unbounded',sans-serif;
+  font-size:22px;line-height:1.3;
+  margin-bottom:14px;font-weight:700;
+  color:var(--paper);
 }
-.action p{margin-bottom:14px;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.action p{margin-bottom:14px;color:rgba(245,239,224,.92);font-size:16.5px;line-height:1.6}
 .action p:last-child{margin-bottom:0}
+.action strong{color:var(--paper);font-weight:800}
 
-/* footer-CTA — кнопка к боту */
+/* CTA к боту */
 .bot-cta{
-  background:var(--card);
-  border:1.5px solid var(--ember);
-  border-radius:18px;padding:24px;
-  margin-top:28px;text-align:center;
-  box-shadow:0 4px 16px rgba(194,90,61,.08);
+  background:var(--cream);
+  border:2px solid var(--red);
+  padding:28px 24px;
+  margin-top:24px;text-align:center;
 }
-.bot-cta p{margin-bottom:14px;color:var(--ink-soft);font-size:15px}
+.bot-cta p{margin-bottom:18px;color:var(--ink);font-size:16px;font-weight:500}
 .bot-cta a{
   display:inline-flex;align-items:center;gap:10px;
-  background:var(--ember);color:#fff;
-  padding:13px 26px;border-radius:100px;
+  background:var(--red);color:var(--paper);
+  padding:14px 28px;
+  font-family:'Manrope',sans-serif;
   font-weight:700;text-decoration:none;font-size:15px;
-  transition:transform .15s ease,box-shadow .15s ease;
-  box-shadow:0 6px 18px rgba(232,133,107,.32);
+  letter-spacing:.04em;text-transform:uppercase;
+  transition:background .15s ease,transform .15s ease;
+  box-shadow:0 4px 0 var(--red-deep);
 }
-.bot-cta a:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(232,133,107,.42)}
+.bot-cta a:hover{background:var(--red-deep);transform:translateY(2px);box-shadow:0 2px 0 var(--red-deep)}
 
 /* footer */
 footer{
-  padding:36px 0 48px;text-align:center;
+  padding:36px 22px 44px;text-align:center;
   color:var(--ink-soft);font-size:13px;
-  border-top:1px solid rgba(43,36,24,.08);
+  border-top:1px solid rgba(31,27,20,.12);
   margin-top:48px;
+  font-weight:500;
+  letter-spacing:.04em;
 }
-footer a{color:var(--ember-deep);text-decoration:none;font-weight:600}
+footer a{color:var(--red);text-decoration:none;font-weight:700}
 
 @media (max-width:600px){
-  body{font-size:16px}
-  .container{padding:0 18px}
-  .hero{padding:36px 0 40px}
-  article{padding:36px 0 40px}
-  .formula{font-size:17px;padding:16px 18px}
-  .action{padding:24px 22px 26px}
+  body{font-size:17px;line-height:1.7}
+  .container{padding:0 20px}
+  article p{font-size:17px}
+  .formula{padding:20px 18px;font-size:16px}
+  .examples{padding:18px 20px}
+  .examples li{font-size:16px}
+  .type{padding:18px 20px}
+  .rule{padding:18px 20px 18px 70px}
+  .rule::before{width:52px;font-size:28px}
+  .action{padding:28px 22px}
+  .action h3{font-size:20px}
+  .bot-cta{padding:24px 20px}
+  .head{padding:24px 22px 10px}
 }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="container">
-    <div class="crumb">
-      <span>🏕</span>
-      <span>Лагерь «Первая смена»</span>
-    </div>
-    <span class="day-tag">День 2</span>
-    <h1>Вы нашли своё действие.<br>Теперь сделайте так, чтобы <em>оно прижилось</em>.</h1>
-    <p class="hero-sub">Найти действие — половина дела. Вторая половина — не бросить на третий день.</p>
+<div class="photo-wrap">
+  <div class="photo">
+    <img src="assets/camp-hero.jpg" alt="Дети с обручами бегут по аллее лагеря">
   </div>
+</div>
+
+<header class="head">
+  <div class="eyebrow">не с понедельника</div>
+  <div class="lager">Лагерь</div>
+  <div class="smena">Первая смена</div>
+  <span class="day-tag">День 2</span>
 </header>
+
+<div class="title-block">
+  <div class="container">
+    <h1>Вы нашли своё действие.<br>Теперь сделайте так, чтобы&nbsp;<em>оно прижилось</em></h1>
+    <p class="lede">Найти действие — половина дела.<br>Вторая половина — не бросить на&nbsp;третий день.</p>
+  </div>
+</div>
 
 <article>
 <div class="container">
 
-<p>Если вы прошли <a href="https://t.me/privichnikbot" target="_blank">Привычника</a> — у вас уже есть одно конкретное действие на лето. Если ещё нет — самое время.</p>
+<p>Если вы прошли <a href="https://t.me/privichnikbot" target="_blank">Привычника</a> — у&nbsp;вас уже есть одно конкретное действие на&nbsp;лето. Если ещё нет&nbsp;— самое время.</p>
 
 <p>Но найти действие — половина дела. Вторая половина — <strong>не бросить на третий день</strong>. Проблема не в лени. Проблема в том, что у привычки не было адреса — она висела в воздухе, «когда-нибудь в течение дня». А «когда-нибудь» — это синоним «никогда».</p>
 
-<h2>Намерение vs. система</h2>
+<h2><span class="num">— 01 —</span>Намерение vs. система</h2>
 
 <p>«Буду закрывать задачи каждый день» — намерение. «Открою список задач сразу после того, как налью кофе» — система. Разница — одна деталь: <strong>когда именно</strong>.</p>
 
@@ -287,57 +378,57 @@ footer a{color:var(--ember-deep);text-decoration:none;font-weight:600}
 
   <div class="type">
     <div class="type-name">Фокус</div>
-    <p><span class="label">Намерение:</span> «Буду продуктивнее.»</p>
-    <p><span class="label">Система:</span> «Сразу после утреннего кофе открываю список задач и выбираю одну — самую важную.»</p>
+    <p><span class="label">Намерение</span> «Буду продуктивнее.»</p>
+    <p><span class="label">Система</span> «Сразу после утреннего кофе открываю список задач и&nbsp;выбираю одну&nbsp;— самую важную.»</p>
   </div>
 
   <div class="type">
     <div class="type-name">Осознанность</div>
-    <p><span class="label">Намерение:</span> «Буду медитировать.»</p>
-    <p><span class="label">Система:</span> «Включил чайник — сел на коврик. Чайник закипит через 3 минуты. Этого достаточно.»</p>
+    <p><span class="label">Намерение</span> «Буду медитировать.»</p>
+    <p><span class="label">Система</span> «Включил чайник — сел на коврик. Чайник закипит через 3&nbsp;минуты. Этого достаточно.»</p>
   </div>
 
   <div class="type">
     <div class="type-name">Отказ от чего-то</div>
-    <p><span class="label">Намерение:</span> «Перестану скроллить перед сном.»</p>
-    <p><span class="label">Система:</span> «В 22:00 кладу телефон на зарядку в другой комнате. Не рядом с кроватью — в другой комнате.»</p>
+    <p><span class="label">Намерение</span> «Перестану скроллить перед сном.»</p>
+    <p><span class="label">Система</span> «В&nbsp;22:00 кладу телефон на&nbsp;зарядку в&nbsp;другой комнате. Не&nbsp;рядом с&nbsp;кроватью — в&nbsp;другой комнате.»</p>
   </div>
 
   <div class="type">
     <div class="type-name">Спорт</div>
-    <p><span class="label">Намерение:</span> «Буду тренироваться.»</p>
-    <p><span class="label">Система:</span> «После утреннего кофе надеваю кроссовки. Не "иду на тренировку" — просто надеваю кроссовки. Дальше тело разберётся.»</p>
+    <p><span class="label">Намерение</span> «Буду тренироваться.»</p>
+    <p><span class="label">Система</span> «После утреннего кофе надеваю кроссовки. Не "иду на&nbsp;тренировку"&nbsp;— просто надеваю кроссовки. Дальше тело разберётся.»</p>
   </div>
 
 </div>
 
-<p>Джеймс Клир называет это <strong>habit stacking</strong>: цепляешь новое действие к тому, что уже делаешь на автомате. Мозг не создаёт привычку с нуля — подключает новое звено к работающей цепи. Люди с такой привязкой выполняют новое действие на <strong>40–60% чаще</strong>. Не потому что волевые — потому что не нужно каждый раз решать «буду или не буду».</p>
+<p>Джеймс Клир называет это <strong>habit stacking</strong>: цепляешь новое действие к&nbsp;тому, что уже делаешь на&nbsp;автомате. Мозг не&nbsp;создаёт привычку с&nbsp;нуля — подключает новое звено к&nbsp;работающей цепи. Люди с&nbsp;такой привязкой выполняют новое действие на&nbsp;<strong>40–60% чаще</strong>. Не&nbsp;потому что волевые — потому что не&nbsp;нужно каждый раз решать «буду или не&nbsp;буду».</p>
 
-<h2>Формула</h2>
+<h2><span class="num">— 02 —</span>Формула</h2>
 
-<div class="formula">После <em>[текущая привычка]</em> я делаю <em>[новая привычка]</em></div>
+<div class="formula">После <em>[текущая привычка]</em><br>я&nbsp;делаю <em>[новая привычка]</em></div>
 
 <p>Примеры:</p>
 
-<div class="example-list">
+<div class="examples">
 <ul>
-  <li>После кофе → открываю список задач и выбираю одну</li>
-  <li>Включил чайник → сел на коврик (3 минуты — этого достаточно)</li>
-  <li>Закрыл ноутбук → телефон на зарядку в другую комнату</li>
+  <li>После кофе → открываю список задач и&nbsp;выбираю одну</li>
+  <li>Включил чайник → сел на&nbsp;коврик (3&nbsp;минуты — этого достаточно)</li>
+  <li>Закрыл ноутбук → телефон на&nbsp;зарядку в&nbsp;другую комнату</li>
   <li>После утреннего кофе → надеваю кроссовки (дальше тело разберётся)</li>
 </ul>
 </div>
 
-<h2>Три правила</h2>
+<h2><span class="num">— 03 —</span>Три правила</h2>
 
 <div class="rules">
   <div class="rule">
     <b>Триггер — ежедневный.</b>
-    <p>«После аэропорта» — плохо, вы летаете раз в месяц. «После ужина» — хорошо.</p>
+    <p>«После аэропорта» — плохо, вы летаете раз в&nbsp;месяц. «После ужина» — хорошо.</p>
   </div>
   <div class="rule">
     <b>Действие — маленькое.</b>
-    <p>Не «пробежать 5 км», а «надеть кроссовки». Мозг не сопротивляется маленькому.</p>
+    <p>Не «пробежать 5&nbsp;км», а «надеть кроссовки». Мозг не&nbsp;сопротивляется маленькому.</p>
   </div>
   <div class="rule">
     <b>Не менять привязку минимум две недели.</b>
@@ -345,28 +436,26 @@ footer a{color:var(--ember-deep);text-decoration:none;font-weight:600}
   </div>
 </div>
 
-<h2>Что делать сейчас</h2>
+<h2><span class="num">— 04 —</span>Что делать сейчас</h2>
 
 <div class="action">
-  <div class="action-tag">💬 Шаг дня</div>
-  <h3>Соберите свою привязку и поделитесь с лагерем</h3>
-  <p>Возьмите действие, которое дал вам Привычник. Найдите для него триггер. Запишите привязку в чат лагеря:</p>
-  <p><strong>«После [что] я делаю [что].»</strong></p>
-  <p>Привычник будет напоминать следующие четыре дня. А окружение в лагере сделает остальное — когда рядом люди, которые тоже начинают, бросить сложнее.</p>
+  <div class="action-tag">★ Шаг дня</div>
+  <h3>Соберите привязку и&nbsp;поделитесь&nbsp;с&nbsp;лагерем</h3>
+  <p>Возьмите действие, которое дал вам Привычник. Найдите для него триггер. Запишите привязку в&nbsp;чат лагеря:</p>
+  <p><strong>«После [что] я&nbsp;делаю [что].»</strong></p>
+  <p>Привычник будет напоминать следующие четыре дня. А&nbsp;окружение в&nbsp;лагере сделает остальное&nbsp;— когда рядом люди, которые тоже начинают, бросить сложнее.</p>
 </div>
 
 <div class="bot-cta">
   <p>Ещё не познакомились с Привычником?</p>
-  <a href="https://t.me/privichnikbot" target="_blank">🏕 Открыть Привычника</a>
+  <a href="https://t.me/privichnikbot" target="_blank">⛺ Открыть Привычника</a>
 </div>
 
 </div>
 </article>
 
 <footer>
-  <div class="container">
-    🌞 Лагерь «Первая смена» · <a href="https://notfrommonday.ru/pervaya-smena">Не с понедельника</a>
-  </div>
+  ЛАГЕРЬ «ПЕРВАЯ СМЕНА» · <a href="https://notfrommonday.ru/pervaya-smena">Не с понедельника</a>
 </footer>
 
 </body>
