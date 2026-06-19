@@ -310,6 +310,24 @@ a{color:inherit;text-decoration:none}
   .collab-modal-title{font-size:24px}
   .collab-modal-body{padding:20px 22px 24px}
 }
+@supports (height:100dvh){
+  @media (max-width:600px){
+    .collab-modal-inner{max-height:100dvh;height:100dvh}
+  }
+}
+@media (max-width:380px){
+  .collabs{padding:64px 0}
+  .collab-card{border-radius:18px}
+  .collab-title{font-size:20px;line-height:1.22}
+  .collab-tag{font-size:11px}
+  .collab-desc{font-size:14px}
+  .collab-body{padding:18px 18px 20px;gap:6px}
+  .soon-badge{font-size:10.5px;padding:5px 10px;top:10px;left:10px}
+  .collab-modal-close{top:10px;right:10px;width:34px;height:34px}
+  .collab-album-thumbs img{width:60px;height:46px}
+  .collab-modal-title{font-size:22px;margin:4px 0 10px}
+  .collab-modal-desc{font-size:14.5px}
+}
 
 /* === УТП — split с фото === */
 .utp{background:var(--cream);padding:120px 0 100px;position:relative;overflow:hidden}
@@ -928,7 +946,7 @@ footer a:hover{opacity:.7}
 
       <!-- 1. Спортивный клуб «Лужники» -->
       <button class="collab-card" data-collab="luzhniki">
-        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/luzhniki/cover.jpg')"></div>
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/luzhniki/cover.jpg?v=2');background-position:center 35%"></div>
         <div class="collab-body">
           <div class="collab-tag">×&nbsp;Спортивный клуб «Лужники»</div>
           <h3 class="collab-title">Гибридная тренировка</h3>
@@ -938,7 +956,7 @@ footer a:hover{opacity:.7}
 
       <!-- 2. Воркшоп со сторителлингом -->
       <button class="collab-card coming-soon" data-collab="sokolov">
-        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/sokolov/cover.jpg')">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/sokolov/cover.jpg?v=2');background-position:center 30%;background-color:#e9e6e0">
           <span class="soon-badge">Скоро · 24.06</span>
         </div>
         <div class="collab-body">
@@ -950,7 +968,7 @@ footer a:hover{opacity:.7}
 
       <!-- 3. Cardio Rave x Reminder -->
       <button class="collab-card coming-soon" data-collab="cardiorave">
-        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/cardiorave/cover.jpg')">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/cardiorave/cover.jpg?v=2');background-position:center 40%">
           <span class="soon-badge">Скоро · 28.06</span>
         </div>
         <div class="collab-body">
@@ -962,7 +980,7 @@ footer a:hover{opacity:.7}
 
       <!-- 4. Ужин в Noodome -->
       <button class="collab-card coming-soon" data-collab="noodome">
-        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/noodome/cover.jpg')">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/noodome/cover.jpg?v=2');background-position:center 60%">
           <span class="soon-badge">Скоро · 01.07</span>
         </div>
         <div class="collab-body">
