@@ -183,7 +183,8 @@ a{color:inherit;text-decoration:none}
   font-weight:600;padding:0 4px;
 }
 .collab-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:28px;
+  max-width:920px;margin:0 auto;
 }
 .collab-card{
   background:var(--white);border:1px solid var(--line);border-radius:22px;
@@ -223,14 +224,29 @@ a{color:inherit;text-decoration:none}
   font-size:14.5px;color:var(--ink-soft);line-height:1.55;margin-top:2px;
 }
 @media (max-width:1024px){
-  .collab-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .collab-grid{gap:22px}
 }
 @media (max-width:680px){
   .collabs{padding:80px 0}
-  .collab-grid{grid-template-columns:1fr;gap:18px}
+  .collab-grid{grid-template-columns:1fr;gap:18px;max-width:480px}
   .collab-title{font-size:22px}
   .collab-body{padding:20px 20px 22px}
 }
+
+/* Coming-soon бейдж + приглушённое фото */
+.collab-card.coming-soon .collab-photo{
+  filter:saturate(.85) brightness(.94);
+}
+.soon-badge{
+  position:absolute;top:14px;left:14px;z-index:2;
+  background:rgba(20,17,24,.78);color:#fff;
+  font-family:'Manrope',sans-serif;
+  font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;
+  backdrop-filter:blur(6px);
+  box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
+.collab-card.coming-soon .collab-tag{color:var(--ink-soft);opacity:.85}
 
 /* === МОДАЛКА КОЛЛАБА === */
 .collab-modal{
@@ -910,63 +926,49 @@ footer a:hover{opacity:.7}
 
     <div class="collab-grid">
 
-      <!-- 1. Привычник -->
-      <button class="collab-card" data-collab="privichnik">
-        <div class="collab-photo" style="background-image:url('redesign-assets/mood/book-cafe.png')"></div>
+      <!-- 1. Спортивный клуб «Лужники» -->
+      <button class="collab-card" data-collab="luzhniki">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/luzhniki/cover.jpg')"></div>
         <div class="collab-body">
-          <div class="collab-tag">×&nbsp;Привычник</div>
-          <h3 class="collab-title">Лагерь «Первая смена»</h3>
-          <p class="collab-desc">5&nbsp;дней с&nbsp;ботом-Привычником, который помогает выбрать одно действие на&nbsp;лето.</p>
+          <div class="collab-tag">×&nbsp;Спортивный клуб «Лужники»</div>
+          <h3 class="collab-title">Гибридная тренировка</h3>
+          <p class="collab-desc">Провели гибридную тренировку в&nbsp;новеньком клубе.</p>
         </div>
       </button>
 
-      <!-- 2. Беговой клуб -->
-      <button class="collab-card" data-collab="run">
-        <div class="collab-photo" style="background-image:url('redesign-assets/mood/run-crowd.jpg')"></div>
+      <!-- 2. Воркшоп со сторителлингом -->
+      <button class="collab-card coming-soon" data-collab="sokolov">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/sokolov/cover.jpg')">
+          <span class="soon-badge">Скоро · 24.06</span>
+        </div>
         <div class="collab-body">
-          <div class="collab-tag">×&nbsp;Беговой клуб</div>
-          <h3 class="collab-title">Совместные пробежки</h3>
-          <p class="collab-desc">Каждую неделю&nbsp;— парк, маршрут, темп под&nbsp;всех. От&nbsp;первого километра до&nbsp;полумарафона.</p>
+          <div class="collab-tag">×&nbsp;Андрей Соколов</div>
+          <h3 class="collab-title">Воркшоп по&nbsp;сторителлингу</h3>
+          <p class="collab-desc">«Как нас слышат и&nbsp;воспринимают окружающие»</p>
         </div>
       </button>
 
-      <!-- 3. Книжный клуб -->
-      <button class="collab-card" data-collab="books">
-        <div class="collab-photo" style="background-image:url('redesign-assets/mood/cafe-mural.webp');background-position:center 65%"></div>
+      <!-- 3. Cardio Rave x Reminder -->
+      <button class="collab-card coming-soon" data-collab="cardiorave">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/cardiorave/cover.jpg')">
+          <span class="soon-badge">Скоро · 28.06</span>
+        </div>
         <div class="collab-body">
-          <div class="collab-tag">×&nbsp;Книжный клуб</div>
-          <h3 class="collab-title">Читаем вместе</h3>
-          <p class="collab-desc">Одна книга в&nbsp;месяц + встреча-обсуждение. С&nbsp;вином, без&nbsp;экзамена.</p>
+          <div class="collab-tag">×&nbsp;Cardio Rave &amp; Reminder</div>
+          <h3 class="collab-title">Cardio Rave</h3>
+          <p class="collab-desc">Кардио-вечеринка вместе с&nbsp;Reminder.</p>
         </div>
       </button>
 
-      <!-- 4. Платформа НФП -->
-      <button class="collab-card" data-collab="platform">
-        <div class="collab-photo" style="background-image:url('redesign-assets/mood/lectures.jpg')"></div>
-        <div class="collab-body">
-          <div class="collab-tag">×&nbsp;Видео-библиотека</div>
-          <h3 class="collab-title">Лекции с&nbsp;экспертами</h3>
-          <p class="collab-desc">Доступ к&nbsp;записям прошлых эфиров и&nbsp;мастер-классов от&nbsp;ребят сообщества.</p>
+      <!-- 4. Ужин в Noodome -->
+      <button class="collab-card coming-soon" data-collab="noodome">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/noodome/cover.jpg')">
+          <span class="soon-badge">Скоро · 01.07</span>
         </div>
-      </button>
-
-      <!-- 5. Coworking -->
-      <button class="collab-card" data-collab="cowork">
-        <div class="collab-photo" style="background-image:url('redesign-assets/mood/creative-tables.jpg')"></div>
         <div class="collab-body">
-          <div class="collab-tag">×&nbsp;Coworking</div>
-          <h3 class="collab-title">Тихие воркшопы</h3>
-          <p class="collab-desc">Раз в&nbsp;две недели&nbsp;— общий стол, тишина, фокус. Москва, Кипр, Лондон, Дубай.</p>
-        </div>
-      </button>
-
-      <!-- 6. Trekking / летние выезды -->
-      <button class="collab-card" data-collab="trek">
-        <div class="collab-photo" style="background-image:url('redesign-assets/mood/trekking.jpg')"></div>
-        <div class="collab-body">
-          <div class="collab-tag">×&nbsp;Outdoor</div>
-          <h3 class="collab-title">Летние трекинги</h3>
-          <p class="collab-desc">Походы выходного дня, восхождения, пикники. Готовим маршруты вместе с&nbsp;сообществом.</p>
+          <div class="collab-tag">×&nbsp;Noodome</div>
+          <h3 class="collab-title">Ужин в&nbsp;Noodome</h3>
+          <p class="collab-desc">Общий ужин в&nbsp;клубе Noodome.</p>
         </div>
       </button>
 
@@ -1597,68 +1599,42 @@ footer a:hover{opacity:.7}
 <script>
 // === КОЛЛАБОРАЦИИ: модалка с альбомом ===
 const COLLAB_DATA = {
-  privichnik: {
-    tag: '× Привычник',
-    title: 'Лагерь «Первая смена»',
-    desc: '5 дней с ботом-Привычником, который помогает выбрать одно действие на лето и довести его до автоматизма. В&nbsp;конце&nbsp;— приглашение в сообщество со спец-ценой.',
+  luzhniki: {
+    tag: '× Спортивный клуб «Лужники»',
+    title: 'Гибридная тренировка',
+    desc: 'Провели гибридную тренировку в&nbsp;новеньком клубе. Кардио + силовая + растяжка — всё в одном зале, без пауз между блоками.',
     images: [
-      'redesign-assets/mood/book-cafe.png',
-      'redesign-assets/mood/forest-group.jpg',
-      'redesign-assets/mood/breathwork.jpg',
-      'redesign-assets/mood/masterclass.jpg',
+      'redesign-assets/collabs/luzhniki/1.jpg',
+      'redesign-assets/collabs/luzhniki/2.jpg',
+      'redesign-assets/collabs/luzhniki/3.jpg',
     ],
   },
-  run: {
-    tag: '× Беговой клуб',
-    title: 'Совместные пробежки',
-    desc: 'Каждую неделю — парк, маршрут, темп под всех. От первого километра до полумарафона. Никто не остаётся в хвосте.',
+  sokolov: {
+    tag: '× Андрей Соколов',
+    title: 'Воркшоп по сторителлингу',
+    desc: '<b>«Как нас слышат и&nbsp;воспринимают окружающие»</b><br><br>Встреча с&nbsp;Андреем Соколовым&nbsp;— 24&nbsp;июня. Подробности и&nbsp;запись&nbsp;— скоро.',
     images: [
-      'redesign-assets/mood/run-crowd.jpg',
-      'redesign-assets/mood/park-run.jpg',
-      'redesign-assets/mood/training.jpg',
+      'redesign-assets/collabs/sokolov/cover.jpg',
     ],
+    comingSoon: '24 июня',
   },
-  books: {
-    tag: '× Книжный клуб',
-    title: 'Читаем вместе',
-    desc: 'Одна книга в месяц + встреча-обсуждение. С вином, без экзамена. Можно прийти, не дочитав&nbsp;— все так делают.',
+  cardiorave: {
+    tag: '× Cardio Rave &amp; Reminder',
+    title: 'Cardio Rave',
+    desc: '<b>Кардио-вечеринка вместе с&nbsp;Reminder.</b><br><br>28&nbsp;июня. Танцуем, потеем, заряжаемся. Запись&nbsp;— скоро.',
     images: [
-      'redesign-assets/mood/cafe-mural.webp',
-      'redesign-assets/mood/book-cafe.png',
-      'redesign-assets/mood/gallery.jpg',
+      'redesign-assets/collabs/cardiorave/cover.jpg',
     ],
+    comingSoon: '28 июня',
   },
-  platform: {
-    tag: '× Видео-библиотека',
-    title: 'Лекции с экспертами',
-    desc: 'Доступ к записям прошлых эфиров, мастер-классов и встреч от ребят сообщества. На любую тему&nbsp;— от&nbsp;медитации до запуска бизнеса.',
+  noodome: {
+    tag: '× Noodome',
+    title: 'Ужин в Noodome',
+    desc: '<b>Общий ужин в&nbsp;клубе Noodome.</b><br><br>1&nbsp;июля. Знакомимся, едим, говорим вживую. Запись&nbsp;— скоро.',
     images: [
-      'redesign-assets/mood/lectures.jpg',
-      'redesign-assets/mood/masterclass.jpg',
-      'redesign-assets/mood/creative-tables.jpg',
+      'redesign-assets/collabs/noodome/cover.jpg',
     ],
-  },
-  cowork: {
-    tag: '× Coworking',
-    title: 'Тихие воркшопы',
-    desc: 'Раз в две недели — общий стол, тишина, фокус. Москва, Кипр, Лондон, Дубай. Приходишь со своими задачами&nbsp;— уходишь со списком закрытых.',
-    images: [
-      'redesign-assets/mood/creative-tables.jpg',
-      'redesign-assets/mood/cafe-mural.webp',
-      'redesign-assets/mood/lectures.jpg',
-    ],
-  },
-  trek: {
-    tag: '× Outdoor',
-    title: 'Летние трекинги',
-    desc: 'Походы выходного дня, восхождения, пикники у воды. Готовим маршруты вместе с сообществом&nbsp;— от&nbsp;лёгкой прогулки до Эльбруса.',
-    images: [
-      'redesign-assets/mood/trekking.jpg',
-      'redesign-assets/mood/forest-group.jpg',
-      'redesign-assets/mood/community-lake.jpg',
-      'redesign-assets/mood/sup.jpg',
-      'redesign-assets/mood/bikes.jpg',
-    ],
+    comingSoon: '1 июля',
   },
 };
 
