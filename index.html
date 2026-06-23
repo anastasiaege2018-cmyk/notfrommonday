@@ -923,6 +923,24 @@ footer a:hover{opacity:.7}
   .dir-card,.dir-featured{padding:28px 22px!important}
   .why-card{padding:24px 20px!important}
 }
+
+/* UTP / общая защита от overflow на мобильном */
+@media (max-width:600px){
+  .utp-name{font-size:30px!important;line-height:1.05!important;letter-spacing:-.02em;margin-bottom:20px!important;overflow-wrap:break-word;word-break:break-word}
+  .utp-pitch{font-size:16.5px!important;line-height:1.55!important;margin-bottom:24px!important;overflow-wrap:break-word}
+  .utp-tagline{font-size:19px!important;line-height:1.3!important;margin-bottom:28px!important;overflow-wrap:break-word}
+  .utp{padding:64px 0!important}
+  .utp-grid{gap:32px!important;grid-template-columns:1fr!important}
+  /* перестраховка: всё текстовое не разрезается длинными словами/url */
+  h1,h2,h3,h4,p,a,li,span,div,button{overflow-wrap:break-word;max-width:100%}
+  /* контейнеры — точно не шире viewport */
+  section,header,footer,.container,.container-wide{max-width:100vw;box-sizing:border-box}
+}
+@media (max-width:400px){
+  .utp-name{font-size:26px!important}
+  .utp-pitch{font-size:15.5px!important}
+  .utp-tagline{font-size:17px!important}
+}
 </style>
 </head>
 <body>
@@ -953,9 +971,9 @@ footer a:hover{opacity:.7}
   <div class="container">
     <div class="utp-grid">
       <div>
-        <h2 class="utp-name">НЕ&nbsp;С&nbsp;ПОНЕДЕЛЬНИКА</h2>
-        <p class="utp-pitch">Сообщество для амбициозных людей, которые живут насыщенной жизнью и&nbsp;хотят чего-то нового: новых людей, привычек, энергии, проектов.</p>
-        <p class="utp-tagline">Место, где начинают не&nbsp;с&nbsp;понедельника</p>
+        <h2 class="utp-name">НЕ С ПОНЕДЕЛЬНИКА</h2>
+        <p class="utp-pitch">Сообщество для амбициозных людей, которые живут насыщенной жизнью и хотят чего-то нового: новых людей, привычек, энергии, проектов.</p>
+        <p class="utp-tagline">Место, где начинают не с понедельника</p>
         <a href="#tariffs" class="btn btn-primary">Войти в&nbsp;лето</a>
       </div>
       <div class="utp-photo">
