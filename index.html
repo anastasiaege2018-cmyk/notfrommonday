@@ -39,13 +39,9 @@ body{
   font-family:'Manrope',sans-serif;font-weight:400;color:var(--ink);
   background:var(--cream);line-height:1.55;font-size:17px;
   overflow-x:hidden;
-  width:100%;
-  max-width:100vw;
-  word-wrap:break-word;
-  overflow-wrap:break-word;
+  position:relative;
 }
-img{max-width:100%;display:block}
-*{min-width:0}
+img,video{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 .serif{font-family:'Playfair Display',serif}
 .container{max-width:1320px;margin:0 auto;padding:0 40px}
@@ -483,6 +479,8 @@ a{color:inherit;text-decoration:none}
   letter-spacing:-.005em;
 }
 .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.how-grid-2col{grid-template-columns:1fr 1fr}
+@media (max-width:680px){.how-grid-2col{grid-template-columns:1fr}}
 .how-card{
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);
   border-radius:22px;overflow:hidden;
@@ -885,6 +883,45 @@ footer a:hover{opacity:.7}
   .tariff-price-old{font-size:15.5px}
   .tariff-card .btn{font-size:14px;padding:14px 20px}
   .tariff-bullets li{font-size:14.5px}
+}
+
+/* ════════════════════════════════════════════════════
+   ФИНАЛЬНЫЙ MOBILE OVERFLOW FIX — переопределения для
+   узких экранов. Стоит ПОСЛЕДНИМ чтобы перекрывать всё.
+   ════════════════════════════════════════════════════ */
+@media (max-width:768px){
+  /* декоративные блобы — ужимаем до safe-уровня */
+  .utp::before{width:300px!important;height:300px!important;top:-50px!important;right:-80px!important}
+  .dir-featured::before{width:260px!important;height:260px!important}
+  .dir-featured::after{width:200px!important;height:200px!important}
+  .pair-form::before{width:240px!important;height:240px!important;right:-30%!important}
+  .cases::before,.offer::before{width:400px!important;height:400px!important}
+  /* grid'ы — все в 1 колонку на 768- */
+  .dirs-grid{grid-template-columns:1fr!important;gap:16px}
+  .field-row{grid-template-columns:1fr!important;gap:12px}
+  .summer-grid{grid-template-columns:1fr 1fr!important}
+}
+@media (max-width:600px){
+  /* container — мягкие отступы */
+  .container,.container-wide{padding-left:16px!important;padding-right:16px!important}
+  /* кейсы — карточки шире экрана не уезжают */
+  .cases-wrap{margin:0!important;padding:0!important}
+  .cases-track{padding:0 16px!important;gap:14px!important}
+  .case-card{flex:0 0 calc(100vw - 48px)!important;min-width:0}
+  /* members-grid — 2 колонки уже OK на 600 */
+  .members-grid{grid-template-columns:1fr 1fr!important;gap:12px}
+  .summer-grid{grid-template-columns:1fr!important}
+  /* hero h1 — обязательно разрешаем перенос */
+  .hero h1{white-space:normal!important;font-size:clamp(34px,8.5vw,52px)!important;line-height:1.05!important}
+  .hero{padding:96px 0 80px!important;min-height:auto!important}
+}
+@media (max-width:400px){
+  .hero h1{font-size:32px!important}
+  .hero-sub{font-size:16px!important}
+  h2.section-title{font-size:clamp(26px,7vw,34px)!important;line-height:1.15!important}
+  .members-grid{grid-template-columns:1fr!important;max-width:280px;margin:0 auto}
+  .dir-card,.dir-featured{padding:28px 22px!important}
+  .why-card{padding:24px 20px!important}
 }
 </style>
 </head>
@@ -1289,7 +1326,7 @@ footer a:hover{opacity:.7}
     </div>
 
     <div class="how-block-label">От&nbsp;участников сообщества&nbsp;— участникам сообщества</div>
-    <div class="how-grid" style="grid-template-columns:1fr 1fr">
+    <div class="how-grid how-grid-2col">
       <div class="how-card">
         <div class="how-card-img" style="background-image:url('redesign-assets/activities/run-club-clean.png')"></div>
         <div class="how-card-body">
