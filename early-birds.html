@@ -170,11 +170,14 @@ a{color:inherit;text-decoration:none}
   letter-spacing:-0.005em;
 }
 .hero-v3-stats{
-  display:flex;align-items:center;justify-content:center;
-  flex-wrap:wrap;
-  gap:10px 24px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:16px;
   margin-bottom:clamp(28px, 4vh, 40px);
   max-width:900px;
+}
+.hvs-row{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:10px 28px;
 }
 .hvs{display:flex;align-items:baseline;gap:10px;font-family:'Manrope',sans-serif}
 .hvs b{font-size:clamp(26px, 2.4vw, 32px);font-weight:800;color:#fff;letter-spacing:-0.01em;line-height:1}
@@ -245,30 +248,11 @@ a{color:inherit;text-decoration:none}
 .aud-card{
   background:#fff;color:var(--ink);
   border-radius:24px;
-  padding:40px 32px 36px;
+  padding:40px 32px 32px;
   display:flex;flex-direction:column;
   box-shadow:0 4px 20px rgba(10,31,61,.06);
   border:1px solid rgba(10,31,61,.06);
-}
-.aud-pct{
-  display:flex;align-items:baseline;gap:12px;
-  margin-bottom:14px;
-}
-.aud-pct b{
-  font-family:'Manrope',sans-serif;
-  font-size:clamp(54px, 5vw, 72px);
-  font-weight:800;color:#0A1F3D;
-  line-height:1;letter-spacing:-0.03em;
-}
-.aud-pct span{
-  font-size:15px;color:#5a6178;font-weight:600;
-  text-transform:lowercase;letter-spacing:0;
-}
-.aud-emoji{
-  font-size:24px;
-  letter-spacing:-2px;
-  margin-bottom:18px;
-  line-height:1;
+  min-height:380px;
 }
 .aud-name{
   font-family:'Manrope',sans-serif;
@@ -285,6 +269,33 @@ a{color:inherit;text-decoration:none}
   line-height:1.6;
   color:#3a3f55;
   font-weight:400;
+  margin-bottom:auto;
+}
+.aud-foot{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:16px;
+  margin-top:32px;
+  padding-top:24px;
+  border-top:1px solid #eef0f6;
+}
+.aud-emoji{
+  font-size:26px;
+  letter-spacing:-2px;
+  line-height:1;
+}
+.aud-pct{
+  display:flex;flex-direction:column;align-items:flex-end;
+  text-align:right;flex-shrink:0;
+}
+.aud-pct b{
+  font-family:'Manrope',sans-serif;
+  font-size:clamp(36px, 3.4vw, 48px);
+  font-weight:800;color:#0A1F3D;
+  line-height:1;letter-spacing:-0.025em;
+}
+.aud-pct span{
+  font-size:13px;color:#5a6178;font-weight:600;
+  margin-top:4px;
 }
 
 @media (max-width:920px){
@@ -1057,13 +1068,16 @@ footer a:hover{opacity:.7}
     <p class="hero-v3-sub">Сообщество для амбициозных людей, которые ведут насыщенную жизнь и&nbsp;хотят чего-то нового: знакомств, привычек, энергии, проектов</p>
 
     <div class="hero-v3-stats">
-      <div class="hvs"><b data-target="120">0</b><span>участников</span></div>
-      <div class="hvs-dot">·</div>
-      <div class="hvs"><b data-target="92" data-suffix="%">0</b><span>доходят до&nbsp;конца</span></div>
-      <div class="hvs-dot">·</div>
-      <div class="hvs"><b data-target="73" data-suffix="%">0</b><span>продолжают привычку</span></div>
-      <div class="hvs-dot">·</div>
-      <div class="hvs"><b data-target="34">0</b><span>встречи</span></div>
+      <div class="hvs-row">
+        <div class="hvs"><b data-target="120">0</b><span>участников</span></div>
+        <div class="hvs-dot">·</div>
+        <div class="hvs"><b data-target="92" data-suffix="%">0</b><span>доходят до&nbsp;конца</span></div>
+      </div>
+      <div class="hvs-row">
+        <div class="hvs"><b data-target="73" data-suffix="%">0</b><span>продолжают привычку</span></div>
+        <div class="hvs-dot">·</div>
+        <div class="hvs"><b data-target="34">0</b><span>встречи</span></div>
+      </div>
     </div>
 
     <div class="hero-v3-cta">
@@ -1092,24 +1106,30 @@ footer a:hover{opacity:.7}
     <div class="audience-grid">
 
       <div class="aud-card">
-        <div class="aud-pct"><b>42%</b><span>участников</span></div>
-        <div class="aud-emoji" aria-hidden="true">🏃‍♀️ 🏃 🏃‍♀️ 🏃</div>
         <h3 class="aud-name">Предпринимателям</h3>
         <p class="aud-desc">Находят коллаборации и&nbsp;нужные контакты, осваивают AI для&nbsp;своих проектов и&nbsp;учатся вести за&nbsp;собой, не&nbsp;выгорая,&nbsp;— и&nbsp;дожимают то, что давно откладывали: новые партнёрства, запуск проектов, новые сотрудники.</p>
+        <div class="aud-foot">
+          <div class="aud-emoji" aria-hidden="true">🏃‍♀️ 🏃 🏃‍♀️ 🏃</div>
+          <div class="aud-pct"><b>42%</b><span>участников</span></div>
+        </div>
       </div>
 
       <div class="aud-card">
-        <div class="aud-pct"><b>34%</b><span>участников</span></div>
-        <div class="aud-emoji" aria-hidden="true">🏃‍♀️ 🏃 🏃‍♀️</div>
         <h3 class="aud-name">Руководителям и&nbsp;специалистам</h3>
         <p class="aud-desc">Возвращают фокус на&nbsp;себя и&nbsp;ровную энергию вместо многозадачности&nbsp;— и&nbsp;на&nbsp;этой ясности получают: новые проекты, офферы вплоть до&nbsp;CPO, продлённые контракты, выход на&nbsp;рекрутеров мечты.</p>
+        <div class="aud-foot">
+          <div class="aud-emoji" aria-hidden="true">🏃‍♀️ 🏃 🏃‍♀️</div>
+          <div class="aud-pct"><b>34%</b><span>участников</span></div>
+        </div>
       </div>
 
       <div class="aud-card">
-        <div class="aud-pct"><b>24%</b><span>участников</span></div>
-        <div class="aud-emoji" aria-hidden="true">🏃‍♀️ 🏃</div>
         <h3 class="aud-name">Экспертам и&nbsp;творцам</h3>
         <p class="aud-desc">Доводят до&nbsp;результата то, что годами откладывали&nbsp;— книгу, спектакль, новую профессию,&nbsp;— и&nbsp;впервые встраивают спорт и&nbsp;творчество в&nbsp;жизнь, заряжаясь друг от&nbsp;друга.</p>
+        <div class="aud-foot">
+          <div class="aud-emoji" aria-hidden="true">🏃‍♀️ 🏃</div>
+          <div class="aud-pct"><b>24%</b><span>участников</span></div>
+        </div>
       </div>
 
     </div>
