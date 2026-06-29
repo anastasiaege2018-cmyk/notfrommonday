@@ -8,8 +8,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
-<title>Не с понедельника · Первая смена</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%BA%3C/text%3E%3C/svg%3E">
+<title>early birds · Не с понедельника</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%A4%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="Не с понедельника · спец-цена для участников «Первой смены»">
 <meta property="og:description" content="Сообщество для амбициозных. Старт 9 июня. Специальная цена для участников лагеря «Первая смена».">
 <meta property="og:image" content="https://notfrommonday.ru/redesign-assets/hero-main.jpg">
@@ -159,12 +159,13 @@ a{color:inherit;text-decoration:none}
 }
 .hero-v3-sub{
   font-family:'Manrope',sans-serif;
-  font-size:clamp(16px, 1.35vw, 19px);
-  line-height:1.55;
-  color:rgba(255,255,255,0.78);
-  max-width:600px;
-  margin:0 auto clamp(28px, 4vh, 40px);
-  font-weight:400;
+  font-size:clamp(20px, 2.1vw, 30px);
+  line-height:1.4;
+  color:rgba(255,255,255,0.86);
+  max-width:880px;
+  margin:0 auto clamp(32px, 4.5vh, 48px);
+  font-weight:500;
+  letter-spacing:-0.005em;
 }
 .hero-v3-stats{
   display:flex;align-items:center;justify-content:center;
@@ -180,11 +181,11 @@ a{color:inherit;text-decoration:none}
 .hero-v3-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .cta-orange,.cta-ghost{
   font-family:'Manrope',sans-serif;font-weight:700;
-  font-size:clamp(15px, 1.15vw, 17px);letter-spacing:0.01em;
-  padding:16px 28px;border-radius:100px;
+  font-size:clamp(17px, 1.4vw, 20px);letter-spacing:0.01em;
+  padding:20px 40px;border-radius:100px;
   text-decoration:none;
   display:inline-flex;align-items:center;justify-content:center;
-  min-width:168px;
+  min-width:200px;
   transition:transform .15s ease,box-shadow .15s ease,background .15s ease,border-color .15s ease;
 }
 .cta-orange{background:#E8856B;color:#fff;box-shadow:0 10px 28px rgba(232,133,107,.36)}
@@ -317,10 +318,12 @@ a{color:inherit;text-decoration:none}
   width:clamp(120px, 16vw, 200px);
   aspect-ratio:5/7;
   border-radius:50% 50% 16px 16px / 28% 28% 5% 5%;
-  background-size:cover;background-position:center;
+  background-size:cover;background-position:center 30%;
   background-color:#1a2d52;
   box-shadow:0 14px 30px rgba(0,0,0,.18);
 }
+.event-arch[data-pos="top"]{background-position:center 18%}
+.event-arch[data-pos="lift"]{background-position:center 22%}
 .event-arch:nth-child(2){transform:translateY(-12px)}
 .event-arch:nth-child(4){transform:translateY(-6px)}
 @media (max-width:680px){
@@ -1055,16 +1058,16 @@ footer a:hover{opacity:.7}
       </span>
     </h1>
 
-    <p class="hero-v3-sub">Сообщество для амбициозных людей, которые живут насыщенной жизнью и&nbsp;хотят чего-то нового: знакомств, привычек, энергии, проектов.</p>
+    <p class="hero-v3-sub">Сообщество для амбициозных людей, которые живут насыщенной жизнью и&nbsp;хотят чего-то нового: знакомств, привычек, энергии, проектов</p>
 
     <div class="hero-v3-stats">
-      <div class="hvs"><b>120</b><span>участников</span></div>
+      <div class="hvs"><b data-target="120">0</b><span>участников</span></div>
       <div class="hvs-dot">·</div>
-      <div class="hvs"><b>92%</b><span>доходят до&nbsp;конца</span></div>
+      <div class="hvs"><b data-target="92" data-suffix="%">0</b><span>доходят до&nbsp;конца</span></div>
       <div class="hvs-dot">·</div>
-      <div class="hvs"><b>73%</b><span>продолжают привычку</span></div>
+      <div class="hvs"><b data-target="73" data-suffix="%">0</b><span>продолжают привычку</span></div>
       <div class="hvs-dot">·</div>
-      <div class="hvs"><b>34</b><span>встречи</span></div>
+      <div class="hvs"><b data-target="34">0</b><span>встречи</span></div>
     </div>
 
     <div class="hero-v3-cta">
@@ -1079,7 +1082,7 @@ footer a:hover{opacity:.7}
 <section class="events-row">
   <div class="events-arches">
     <div class="event-arch" style="background-image:url('redesign-assets/events/3.jpg')"></div>
-    <div class="event-arch" style="background-image:url('redesign-assets/events/1.jpg')"></div>
+    <div class="event-arch" data-pos="lift" style="background-image:url('redesign-assets/events/1.jpg')"></div>
     <div class="event-arch" style="background-image:url('redesign-assets/events/2.jpg')"></div>
     <div class="event-arch" style="background-image:url('redesign-assets/events/4.jpg')"></div>
     <div class="event-arch" style="background-image:url('redesign-assets/events/5.jpg')"></div>
@@ -1860,7 +1863,7 @@ const statsObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.4 });
-document.querySelectorAll('.stat-num[data-target]').forEach(el => statsObserver.observe(el));
+document.querySelectorAll('.stat-num[data-target], .hvs b[data-target]').forEach(el => statsObserver.observe(el));
 
 // 1+1 form — записывает заявку, открывает страницу оплаты, шлёт уведомление админу
 // TODO: подставить реальные slug'и GetPlatinum когда чеки будут готовы
