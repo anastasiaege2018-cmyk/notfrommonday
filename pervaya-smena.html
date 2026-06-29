@@ -1085,20 +1085,45 @@ footer a:hover{opacity:.7}
 .inside-card-text{background:#fff}
 .inside-card-bot{background:linear-gradient(160deg,#fff 0%,#FFF8EC 100%)}
 .inside-card-dirs{background:linear-gradient(160deg,#fff 0%,#F0F4FF 100%)}
-.inside-photo-square{aspect-ratio:1/1;max-width:140px;align-self:flex-start;border-radius:18px}
 .inside-tag-coral{background:#E8856B}
-.dirs-row{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:10px;margin-top:6px;
+.inside-list-clean li{padding:12px 0}
+.inside-list-clean .li-sub{color:#5a6178;font-weight:400}
+
+/* пара карточек "мостиком" — соединены, без gap */
+.inside-pair{
+  grid-column:span 2;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(10,31,61,.06);
+  border:1px solid rgba(10,31,61,.06);
+  position:relative;
 }
-.dir-mini{
-  background:#fff;border:1px solid rgba(10,31,61,.08);
-  border-radius:14px;padding:14px 14px 12px;
-  display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+.inside-pair .inside-card{
+  border:none;box-shadow:none;border-radius:0;
+  min-height:auto;
 }
-.dir-mini-emo{font-size:22px;line-height:1;margin-bottom:6px}
-.dir-mini-name{font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#0A1F3D}
-.dir-mini-sub{font-size:12.5px;color:#5a6178;line-height:1.3}
+.inside-pair .inside-card-left{
+  background:#fff;
+  position:relative;
+}
+.inside-pair .inside-card-left::after{
+  content:'';position:absolute;
+  right:-1px;top:24%;bottom:24%;
+  width:2px;
+  background:linear-gradient(180deg,transparent 0%,rgba(10,31,61,.10) 50%,transparent 100%);
+}
+.inside-pair .inside-card-right{
+  background:linear-gradient(135deg,#fff 0%,#F0F4FF 100%);
+}
+@media (max-width:920px){
+  .inside-pair{grid-column:span 1;grid-template-columns:1fr;gap:0}
+  .inside-pair .inside-card-left::after{
+    right:24%;left:24%;top:auto;bottom:-1px;
+    width:auto;height:2px;
+    background:linear-gradient(90deg,transparent 0%,rgba(10,31,61,.10) 50%,transparent 100%);
+  }
+}
 .inside-photo{
   width:100%;aspect-ratio:5/3;
   border-radius:16px;
@@ -1543,42 +1568,20 @@ footer a:hover{opacity:.7}
     <h2 class="section-title">Что внутри сообщества</h2>
     <div class="inside-grid">
 
-      <div class="inside-card inside-card-text">
-        <span class="inside-tag">4 направления</span>
-        <h3 class="inside-name">Направления для&nbsp;внедрения привычек</h3>
-        <p class="inside-desc">Каждый месяц ты выбираешь одно направление и&nbsp;попадаешь в&nbsp;группу с&nbsp;теми, кто идёт туда же.</p>
-        <ul class="inside-list">
-          <li><span class="inside-emo">🎯</span> <b>Фокус</b> — закрываешь то, что давно откладывал</li>
-          <li><span class="inside-emo">🏃‍♀️</span> <b>Спорт</b> — возвращаешь движение в&nbsp;жизнь</li>
-          <li><span class="inside-emo">🧘</span> <b>Осознанность</b> — медитация, тишина, дыхание</li>
-          <li><span class="inside-emo">✨</span> <b>Что-то новое</b> — каждый день пробуешь</li>
-        </ul>
-      </div>
-
-      <div class="inside-card inside-card-dirs">
-        <span class="inside-tag inside-tag-coral">Все 4 направления</span>
-        <h3 class="inside-name">В&nbsp;каждом потоке&nbsp;— выбор твой</h3>
-        <div class="dirs-row">
-          <div class="dir-mini">
-            <div class="dir-mini-emo">🎯</div>
-            <div class="dir-mini-name">Фокус</div>
-            <div class="dir-mini-sub">Висяки и&nbsp;дела</div>
-          </div>
-          <div class="dir-mini">
-            <div class="dir-mini-emo">🏃‍♀️</div>
-            <div class="dir-mini-name">Спорт</div>
-            <div class="dir-mini-sub">Движение</div>
-          </div>
-          <div class="dir-mini">
-            <div class="dir-mini-emo">🧘</div>
-            <div class="dir-mini-name">Осознанность</div>
-            <div class="dir-mini-sub">Тишина</div>
-          </div>
-          <div class="dir-mini">
-            <div class="dir-mini-emo">✨</div>
-            <div class="dir-mini-name">Новое</div>
-            <div class="dir-mini-sub">Каждый день</div>
-          </div>
+      <div class="inside-pair">
+        <div class="inside-card inside-card-text inside-card-left">
+          <span class="inside-tag">4 направления</span>
+          <h3 class="inside-name">Направления для&nbsp;внедрения привычек</h3>
+          <p class="inside-desc">Каждый месяц ты выбираешь одно направление и&nbsp;попадаешь в&nbsp;группу с&nbsp;теми, кто идёт туда же.</p>
+        </div>
+        <div class="inside-card inside-card-dirs inside-card-right">
+          <span class="inside-tag inside-tag-coral">Все 4 направления</span>
+          <ul class="inside-list inside-list-clean">
+            <li><span class="inside-emo">🎯</span> <b>Фокус</b> <span class="li-sub">— висяки и&nbsp;дела</span></li>
+            <li><span class="inside-emo">🏃‍♀️</span> <b>Спорт</b> <span class="li-sub">— движение в&nbsp;жизнь</span></li>
+            <li><span class="inside-emo">🧘</span> <b>Осознанность</b> <span class="li-sub">— тишина и&nbsp;дыхание</span></li>
+            <li><span class="inside-emo">✨</span> <b>Что-то новое</b> <span class="li-sub">— каждый день</span></li>
+          </ul>
         </div>
       </div>
 
@@ -1590,21 +1593,21 @@ footer a:hover{opacity:.7}
       </div>
 
       <div class="inside-card">
-        <div class="inside-photo" style="background-image:url('redesign-assets/inside/offline.png')"></div>
+        <div class="inside-photo" style="background-image:url('redesign-assets/inside/offline.png');background-position:center 20%"></div>
         <h3 class="inside-name">Оффлайн-встречи</h3>
         <p class="inside-desc">Совместные пробежки, гибридные тренировки, игра в&nbsp;Го, встречи в&nbsp;Noodome, экскурсии в&nbsp;музей, мастер-классы, походы.</p>
         <div class="inside-freq">4–6 раз в&nbsp;месяц</div>
       </div>
 
-      <div class="inside-card inside-card-bot">
-        <div class="inside-icon">🌅</div>
+      <div class="inside-card">
+        <div class="inside-photo" style="background-image:url('redesign-assets/inside/rassvet.jpg');background-position:center"></div>
         <h3 class="inside-name">Бот «Рассвет»</h3>
         <p class="inside-desc">Знает твой запрос на&nbsp;месяц. Мягко напомнит о&nbsp;шаге дня, примет отчёт, поддержит. Без давления&nbsp;— в&nbsp;твоём ритме.</p>
         <div class="inside-freq">Каждый день</div>
       </div>
 
-      <div class="inside-card inside-card-bot">
-        <div class="inside-photo inside-photo-square" style="background-image:url('redesign-assets/inside/naparnik.png')"></div>
+      <div class="inside-card">
+        <div class="inside-photo" style="background-image:url('redesign-assets/inside/naparnik.png');background-position:center 30%"></div>
         <h3 class="inside-name">Напарник</h3>
         <p class="inside-desc">Бот для&nbsp;метчей. Подбирает участников под твой запрос: партнёр по&nbsp;проекту, спортивная пара или просто человек для&nbsp;встречи за&nbsp;кофе.</p>
         <div class="inside-freq">24/7</div>
