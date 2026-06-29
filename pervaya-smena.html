@@ -1359,6 +1359,25 @@ footer a:hover{opacity:.7}
 .collabs .collab-title{color:var(--ink)}
 .tariff{background:var(--cream)!important}     /* кремовый */
 
+
+/* центрированный заголовок и крупнее текст в "Что будет в июле" */
+.july-title{text-align:center;font-size:clamp(40px,5vw,72px)!important;line-height:1.05;letter-spacing:-.02em;margin-bottom:18px}
+.july-sub{text-align:center;max-width:640px;margin:0 auto 56px;font-size:18px;line-height:1.55}
+
+/* убираем выделение клеток календаря (но оставляем правило на случай возврата) */
+.cal-d.cal-mark{background:#f4f1ea;color:#0A1F3D}
+.cal-d.cal-mark::after{display:none}
+
+/* крупнее текст в 1+1 «Идём вдвоём» */
+.pair-form-tag{font-size:13px!important;padding:8px 16px!important;letter-spacing:.16em!important}
+.pair-form-title{font-size:clamp(36px,3.5vw,52px)!important;line-height:1.05!important;letter-spacing:-.02em;margin-bottom:18px!important}
+.pair-form-desc{font-size:18px!important;line-height:1.55!important;color:rgba(255,255,255,.84)!important}
+.dur-btn{font-size:16px!important}
+.dur-btn small{font-size:22px!important}
+.field-label{font-size:14px!important}
+.field-input{font-size:17px!important;padding:14px 18px!important}
+.pair-submit{font-size:17px!important;padding:18px 32px!important}
+
 </style>
 </head>
 <body>
@@ -1705,8 +1724,8 @@ footer a:hover{opacity:.7}
 <!-- ══════════════ ЧТО БУДЕТ В ИЮЛЕ ══════════════ -->
 <section class="july" id="july">
   <div class="container">
-    <h2 class="section-title">Что будет в&nbsp;июле</h2>
-    <p class="section-sub">Программа лета строится живая&nbsp;— часть событий уже запланирована.</p>
+    <h2 class="section-title july-title">Что будет в&nbsp;июле</h2>
+    <p class="section-sub july-sub">Программа на&nbsp;каждый месяц&nbsp;— живая, мы&nbsp;дополняем её в&nbsp;процессе. Что планируем во&nbsp;второй месяц лета.</p>
 
     <div class="july-grid">
       <div class="july-cal" aria-hidden="true">
@@ -1715,10 +1734,10 @@ footer a:hover{opacity:.7}
         </div>
         <div class="cal-body">
           <span class="cal-d cal-empty"></span><span class="cal-d cal-empty"></span><span class="cal-d">1</span><span class="cal-d">2</span><span class="cal-d">3</span><span class="cal-d cal-w">4</span><span class="cal-d cal-w">5</span>
-          <span class="cal-d">6</span><span class="cal-d">7</span><span class="cal-d cal-mark">8</span><span class="cal-d">9</span><span class="cal-d">10</span><span class="cal-d cal-w">11</span><span class="cal-d cal-w">12</span>
-          <span class="cal-d cal-mark">13</span><span class="cal-d">14</span><span class="cal-d">15</span><span class="cal-d cal-mark">16</span><span class="cal-d">17</span><span class="cal-d cal-w">18</span><span class="cal-d cal-w">19</span>
-          <span class="cal-d">20</span><span class="cal-d">21</span><span class="cal-d cal-mark">22</span><span class="cal-d">23</span><span class="cal-d">24</span><span class="cal-d cal-w cal-mark">25</span><span class="cal-d cal-w">26</span>
-          <span class="cal-d">27</span><span class="cal-d">28</span><span class="cal-d cal-mark">29</span><span class="cal-d">30</span><span class="cal-d">31</span><span class="cal-d cal-w cal-empty"></span><span class="cal-d cal-w cal-empty"></span>
+          <span class="cal-d">6</span><span class="cal-d">7</span><span class="cal-d">8</span><span class="cal-d">9</span><span class="cal-d">10</span><span class="cal-d cal-w">11</span><span class="cal-d cal-w">12</span>
+          <span class="cal-d">13</span><span class="cal-d">14</span><span class="cal-d">15</span><span class="cal-d">16</span><span class="cal-d">17</span><span class="cal-d cal-w">18</span><span class="cal-d cal-w">19</span>
+          <span class="cal-d">20</span><span class="cal-d">21</span><span class="cal-d">22</span><span class="cal-d">23</span><span class="cal-d">24</span><span class="cal-d cal-w">25</span><span class="cal-d cal-w">26</span>
+          <span class="cal-d">27</span><span class="cal-d">28</span><span class="cal-d">29</span><span class="cal-d">30</span><span class="cal-d">31</span><span class="cal-d cal-w cal-empty"></span><span class="cal-d cal-w cal-empty"></span>
         </div>
       </div>
 
@@ -1839,11 +1858,11 @@ footer a:hover{opacity:.7}
           <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;font-style:italic">цена за&nbsp;месяц участия</p>
         </div>
         <ul class="tariff-bullets">
-          <li>Группа по&nbsp;твоему направлению</li>
-          <li>Онлайн-встречи и&nbsp;coworking</li>
-          <li>Оффлайн-встречи 4–6 раз в&nbsp;месяц</li>
-          <li>Бот «Рассвет» и&nbsp;«Напарник»</li>
-          <li>Доступ к&nbsp;беговому и&nbsp;книжному клубу</li>
+          <li>Новые знакомства в&nbsp;твоей нише и&nbsp;смежных</li>
+          <li>Доступ к&nbsp;закрытым оффлайн-мероприятиям</li>
+          <li>Бот «Напарник»&nbsp;— подбирает людей под твой запрос</li>
+          <li>Библиотека материалов и&nbsp;эфиров за&nbsp;4&nbsp;месяца</li>
+          <li>Группа единомышленников по&nbsp;твоему направлению</li>
         </ul>
         <a href="https://danilasavchenko.getplatinum.ru/payment/kjuW7vN" class="btn btn-month" data-pay="solo-month">Войти на&nbsp;месяц</a>
       </div>
@@ -1861,14 +1880,15 @@ footer a:hover{opacity:.7}
           <p style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-style:italic">цена за&nbsp;два месяца</p>
         </div>
         <ul class="tariff-bullets">
-          <li>Всё из&nbsp;месячного тарифа&nbsp;× 2</li>
+          <li>Всё из&nbsp;месячного тарифа</li>
+          <li>Два месяца, чтобы привычка прижилась</li>
         </ul>
         <div class="bonus-label">+ только на&nbsp;двухмесячном</div>
         <ul class="tariff-bullets tariff-bullets-bonus">
-          <li>Доступ ко&nbsp;всем <strong>мастер-классам</strong></li>
-          <li>Летние трекинги и&nbsp;экскурсии</li>
-          <li>Совместные тренировки и&nbsp;забеги</li>
-          <li>Эфиры с&nbsp;приглашёнными экспертами</li>
+          <li>Все <strong>мастер-классы и&nbsp;эфиры</strong> двух месяцев</li>
+          <li>Летние трекинги, забеги, экскурсии</li>
+          <li>Совместные тренировки в&nbsp;спортивных клубах</li>
+          <li>Расширенный доступ в&nbsp;библиотеку материалов</li>
         </ul>
         <a href="https://danilasavchenko.getplatinum.ru/payment/0Y3NC3I" class="btn btn-primary" data-pay="solo-summer">Взять 2&nbsp;месяца</a>
       </div>
