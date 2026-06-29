@@ -220,32 +220,47 @@ a{color:inherit;text-decoration:none}
 
 /* ═════ КОМУ МЫ ПОЛЕЗНЫ ═════ */
 .audience{
-  background:#0A1F3D;
-  color:#fff;
-  padding:48px 0 96px;
+  background:var(--cream);
+  color:var(--ink);
+  padding:96px 0 96px;
 }
 .audience-title{
   font-family:'Manrope',sans-serif;
   font-weight:800;
-  font-size:clamp(32px, 4.5vw, 56px);
+  font-size:clamp(36px, 5vw, 64px);
   letter-spacing:-0.025em;
   line-height:1;
   text-align:center;
-  margin:0 auto 48px;
-  color:#fff;
+  margin:0 auto 56px;
+  color:#0A1F3D;
 }
 .audience-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:20px;
+  max-width:1200px;margin:0 auto;
 }
 .aud-card{
-  background:#fff;color:#1a1a2e;
+  background:#fff;color:var(--ink);
   border-radius:24px;
-  padding:36px 32px 32px;
+  padding:40px 32px 36px;
   display:flex;flex-direction:column;
-  box-shadow:0 8px 28px rgba(0,0,0,.18);
-  min-height:340px;
+  box-shadow:0 4px 20px rgba(10,31,61,.06);
+  border:1px solid rgba(10,31,61,.06);
+}
+.aud-pct{
+  display:flex;align-items:baseline;gap:10px;
+  margin-bottom:24px;
+}
+.aud-pct b{
+  font-family:'Manrope',sans-serif;
+  font-size:clamp(54px, 5vw, 72px);
+  font-weight:800;color:#0A1F3D;
+  line-height:1;letter-spacing:-0.03em;
+}
+.aud-pct span{
+  font-size:13px;color:#7a7f95;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.06em;
 }
 .aud-name{
   font-family:'Manrope',sans-serif;
@@ -258,51 +273,24 @@ a{color:inherit;text-decoration:none}
 }
 .aud-desc{
   font-family:'Manrope',sans-serif;
-  font-size:15.5px;
+  font-size:16px;
   line-height:1.6;
   color:#3a3f55;
-  margin-bottom:auto;
   font-weight:400;
-}
-.aud-foot{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  gap:16px;
-  margin-top:32px;
-  padding-top:24px;
-  border-top:1px solid #eef0f6;
-}
-.aud-drops{
-  display:flex;align-items:flex-end;gap:-4px;
-}
-.aud-drops svg{
-  width:34px;height:auto;
-  margin-right:-6px;
-  flex-shrink:0;
-}
-.aud-pct{
-  display:flex;flex-direction:column;align-items:flex-end;
-  text-align:right;
-}
-.aud-pct b{
-  font-family:'Manrope',sans-serif;
-  font-size:32px;font-weight:800;color:#2563EB;
-  line-height:1;letter-spacing:-0.02em;
-}
-.aud-pct span{
-  font-size:12px;color:#7a7f95;font-weight:500;
-  margin-top:4px;text-transform:uppercase;letter-spacing:0.04em;
 }
 
 @media (max-width:920px){
-  .audience-grid{grid-template-columns:1fr;gap:14px;max-width:540px;margin:0 auto}
-  .aud-card{min-height:auto;padding:28px 24px 24px}
-  .aud-foot{margin-top:24px;padding-top:20px}
+  .audience{padding:72px 0}
+  .audience-grid{grid-template-columns:1fr;gap:14px;max-width:560px}
+  .aud-card{padding:32px 26px 28px}
 }
 @media (max-width:480px){
-  .audience{padding:32px 0 64px}
-  .audience-title{font-size:32px;margin-bottom:28px}
+  .audience{padding:56px 0 72px}
+  .audience-title{font-size:34px;margin-bottom:32px}
   .aud-name{font-size:22px}
-  .aud-desc{font-size:14.5px}
+  .aud-desc{font-size:15px}
+  .aud-pct b{font-size:54px}
+  .aud-pct{margin-bottom:20px}
 }
 .events-arches{
   display:flex;justify-content:center;align-items:flex-start;
@@ -1096,42 +1084,21 @@ footer a:hover{opacity:.7}
     <div class="audience-grid">
 
       <div class="aud-card">
+        <div class="aud-pct"><b data-target="42" data-suffix="%">0</b><span>участников</span></div>
         <h3 class="aud-name">Предпринимателям</h3>
         <p class="aud-desc">Находят коллаборации и&nbsp;нужные контакты, осваивают AI для&nbsp;своих проектов и&nbsp;учатся вести за&nbsp;собой, не&nbsp;выгорая,&nbsp;— и&nbsp;дожимают то, что давно откладывали: новые партнёрства, запуск проектов, новые сотрудники.</p>
-        <div class="aud-foot">
-          <div class="aud-drops" aria-hidden="true">
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-          </div>
-          <div class="aud-pct"><b>42%</b><span>участников</span></div>
-        </div>
       </div>
 
       <div class="aud-card">
+        <div class="aud-pct"><b data-target="34" data-suffix="%">0</b><span>участников</span></div>
         <h3 class="aud-name">Руководителям и&nbsp;специалистам</h3>
         <p class="aud-desc">Возвращают фокус на&nbsp;себя и&nbsp;ровную энергию вместо многозадачности&nbsp;— и&nbsp;на&nbsp;этой ясности получают: новые проекты, офферы вплоть до&nbsp;CPO, продлённые контракты, выход на&nbsp;рекрутеров мечты.</p>
-        <div class="aud-foot">
-          <div class="aud-drops" aria-hidden="true">
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-          </div>
-          <div class="aud-pct"><b>34%</b><span>участников</span></div>
-        </div>
       </div>
 
       <div class="aud-card">
+        <div class="aud-pct"><b data-target="24" data-suffix="%">0</b><span>участников</span></div>
         <h3 class="aud-name">Экспертам и&nbsp;творцам</h3>
         <p class="aud-desc">Доводят до&nbsp;результата то, что годами откладывали&nbsp;— книгу, спектакль, новую профессию,&nbsp;— и&nbsp;впервые встраивают спорт и&nbsp;творчество в&nbsp;жизнь, заряжаясь друг от&nbsp;друга.</p>
-        <div class="aud-foot">
-          <div class="aud-drops" aria-hidden="true">
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-            <svg viewBox="0 0 50 64"><path d="M25 4 C 8 28, 8 50, 25 60 C 42 50, 42 28, 25 4" fill="#2563EB"/><circle cx="19" cy="40" r="1.7" fill="#0A1F3D"/><circle cx="31" cy="40" r="1.7" fill="#0A1F3D"/><path d="M19 47 Q 25 50 31 47" stroke="#0A1F3D" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-          </div>
-          <div class="aud-pct"><b>24%</b><span>участников</span></div>
-        </div>
       </div>
 
     </div>
@@ -1863,7 +1830,7 @@ const statsObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.4 });
-document.querySelectorAll('.stat-num[data-target], .hvs b[data-target]').forEach(el => statsObserver.observe(el));
+document.querySelectorAll('[data-target]').forEach(el => statsObserver.observe(el));
 
 // 1+1 form — записывает заявку, открывает страницу оплаты, шлёт уведомление админу
 // TODO: подставить реальные slug'и GetPlatinum когда чеки будут готовы
