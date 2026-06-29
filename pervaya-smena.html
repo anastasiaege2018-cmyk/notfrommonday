@@ -460,25 +460,42 @@ a{color:inherit;text-decoration:none}
 .why-card:nth-child(4) .why-text strong{color:var(--gold)}
 
 /* === КТО ВНУТРИ === */
-.who{background:var(--cream)}
-.who-spheres{margin-bottom:64px}
-.who-spheres-head{
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
-  color:var(--ink-soft);margin-bottom:14px;
-}
-.spheres-chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{
-  background:var(--white);border:1px solid var(--line);
-  border-radius:100px;padding:9px 18px;
-  font-size:14px;color:var(--ink);font-weight:500;
-  transition:all .2s ease;
-}
-.chip:hover{background:var(--peach);border-color:var(--peach);transform:translateY(-2px)}
+.who{background:var(--cream);padding-top:64px;padding-bottom:64px}
+.who .section-title{margin-bottom:36px;text-align:center}
 
-.who-category{margin-bottom:72px}
-.who-cat-head{display:flex;align-items:baseline;gap:18px;margin-bottom:24px;flex-wrap:wrap;padding-top:36px;border-top:1px solid var(--line)}
-.who-cat-name{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;letter-spacing:-.01em}
-.who-cat-tag{font-size:18px;color:var(--ink-soft);font-style:italic;font-family:'Playfair Display',serif}
+/* бегущая лента отраслей */
+.spheres-marquee{
+  overflow:hidden;margin:0 0 56px;padding:8px 0;
+  mask-image:linear-gradient(to right,transparent 0,#000 5%,#000 95%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 5%,#000 95%,transparent 100%);
+}
+.spheres-track{
+  display:flex;gap:10px;width:max-content;
+  animation:spheres-scroll 60s linear infinite;
+}
+.spheres-marquee:hover .spheres-track{animation-play-state:paused}
+@keyframes spheres-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.chip{
+  background:#2563EB;color:#fff;
+  border:none;border-radius:100px;
+  padding:13px 26px;
+  font-family:'Manrope',sans-serif;
+  font-size:16px;font-weight:700;
+  letter-spacing:0.005em;
+  white-space:nowrap;flex-shrink:0;
+  text-transform:uppercase;
+}
+.chip:nth-child(2n){background:#E8856B}
+.chip:nth-child(3n){background:#0A1F3D}
+.chip:nth-child(5n){background:#FFC857;color:#0A1F3D}
+
+.who-category{margin-bottom:48px}
+.who-cat-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line)}
+.who-cat-name{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;letter-spacing:-.01em}
+.who-cat-tag{font-size:15.5px;color:var(--ink-soft);font-style:italic;font-family:'Playfair Display',serif}
 
 .members-grid{
   display:grid;
@@ -1162,15 +1179,56 @@ footer a:hover{opacity:.7}
   </div>
 </section>
 
-<!-- ══════════════ 5. КТО ВНУТРИ ══════════════ -->
+<!-- ══════════════ УЧАСТНИКИ СООБЩЕСТВА ══════════════ -->
 <section class="section who" id="who">
   <div class="container">
-    <h2 class="section-title">Кому подходит сообщество «Не&nbsp;с&nbsp;понедельника»</h2>
-    <p class="section-sub">Предприниматели, руководители, творцы, эксперты&nbsp;— те, кто уже многого добился и&nbsp;хочет нового: в&nbsp;жизни, работе, хобби.</p>
+    <h2 class="section-title">Участники сообщества</h2>
+  </div>
 
-    <div class="who-spheres">
-      <div class="who-spheres-head">Сферы деятельности</div>
-      <div class="spheres-chips">
+  <div class="spheres-marquee">
+    <div class="spheres-track">
+      <span class="chip">IT и стартапы</span>
+      <span class="chip">Консалтинг</span>
+      <span class="chip">Финансы и инвестиции</span>
+      <span class="chip">Fashion</span>
+      <span class="chip">E-commerce</span>
+      <span class="chip">Маркетинг</span>
+      <span class="chip">HR</span>
+      <span class="chip">GR</span>
+      <span class="chip">Виноделие</span>
+      <span class="chip">Авиация</span>
+      <span class="chip">Яхтинг</span>
+      <span class="chip">Дизайн интерьера</span>
+      <span class="chip">UX/UI</span>
+      <span class="chip">Фотография</span>
+      <span class="chip">Психология</span>
+      <span class="chip">Образование</span>
+      <span class="chip">Девелопмент</span>
+      <span class="chip">Ивенты</span>
+      <span class="chip">AI</span>
+      <span class="chip" aria-hidden="true">IT и стартапы</span>
+      <span class="chip" aria-hidden="true">Консалтинг</span>
+      <span class="chip" aria-hidden="true">Финансы и инвестиции</span>
+      <span class="chip" aria-hidden="true">Fashion</span>
+      <span class="chip" aria-hidden="true">E-commerce</span>
+      <span class="chip" aria-hidden="true">Маркетинг</span>
+      <span class="chip" aria-hidden="true">HR</span>
+      <span class="chip" aria-hidden="true">GR</span>
+      <span class="chip" aria-hidden="true">Виноделие</span>
+      <span class="chip" aria-hidden="true">Авиация</span>
+      <span class="chip" aria-hidden="true">Яхтинг</span>
+      <span class="chip" aria-hidden="true">Дизайн интерьера</span>
+      <span class="chip" aria-hidden="true">UX/UI</span>
+      <span class="chip" aria-hidden="true">Фотография</span>
+      <span class="chip" aria-hidden="true">Психология</span>
+      <span class="chip" aria-hidden="true">Образование</span>
+      <span class="chip" aria-hidden="true">Девелопмент</span>
+      <span class="chip" aria-hidden="true">Ивенты</span>
+      <span class="chip" aria-hidden="true">AI</span>
+    </div>
+  </div>
+
+  <div class="container">
         <span class="chip">IT и&nbsp;стартапы</span>
         <span class="chip">Консалтинг</span>
         <span class="chip">Финансы и&nbsp;инвестиции</span>
@@ -1189,10 +1247,6 @@ footer a:hover{opacity:.7}
         <span class="chip">Образование</span>
         <span class="chip">Девелопмент</span>
         <span class="chip">Ивенты</span>
-        <span class="chip">AI</span>
-      </div>
-    </div>
-
     <!-- Фаундеры -->
     <div class="who-category">
       <div class="who-cat-head">
@@ -1333,25 +1387,6 @@ footer a:hover{opacity:.7}
       </div>
     </div>
 
-    <!-- Те, кто ищет себя -->
-    <div class="who-category" style="margin-bottom:0">
-      <div class="who-cat-head">
-        <span class="who-cat-name">Те, кто ищет себя</span>
-        <span class="who-cat-tag">— люди в&nbsp;точке перехода</span>
-      </div>
-      <div class="members-grid">
-        <div class="member-card">
-          <img src="redesign-assets/participants/seekers/zoya-bilgin.jpg" alt="">
-          <div class="member-info"><div class="member-name">Зоя Бильгин</div><div class="member-role">Психолог, педагог</div></div>
-          <div class="member-bio"><strong>Зоя Бильгин</strong>Социальный психолог и&nbsp;педагог, работала с&nbsp;детьми 10+ лет. Сейчас пересобирает себя заново.</div>
-        </div>
-        <div class="member-card">
-          <img src="redesign-assets/participants/seekers/elena-bogomolova.jpg" alt="">
-          <div class="member-info"><div class="member-name">Елена Богомолова</div><div class="member-role">Финансист, 33</div></div>
-          <div class="member-bio"><strong>Елена Богомолова, 33</strong>Финансист. Помогала стартапам собирать цифры в&nbsp;понятные смыслы. Сейчас в&nbsp;переходной точке.</div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
