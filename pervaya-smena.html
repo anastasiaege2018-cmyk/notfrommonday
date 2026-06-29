@@ -1084,6 +1084,21 @@ footer a:hover{opacity:.7}
 }
 .inside-card-text{background:#fff}
 .inside-card-bot{background:linear-gradient(160deg,#fff 0%,#FFF8EC 100%)}
+.inside-card-dirs{background:linear-gradient(160deg,#fff 0%,#F0F4FF 100%)}
+.inside-photo-square{aspect-ratio:1/1;max-width:140px;align-self:flex-start;border-radius:18px}
+.inside-tag-coral{background:#E8856B}
+.dirs-row{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-top:6px;
+}
+.dir-mini{
+  background:#fff;border:1px solid rgba(10,31,61,.08);
+  border-radius:14px;padding:14px 14px 12px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+}
+.dir-mini-emo{font-size:22px;line-height:1;margin-bottom:6px}
+.dir-mini-name{font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#0A1F3D}
+.dir-mini-sub{font-size:12.5px;color:#5a6178;line-height:1.3}
 .inside-photo{
   width:100%;aspect-ratio:5/3;
   border-radius:16px;
@@ -1447,17 +1462,44 @@ footer a:hover{opacity:.7}
         </ul>
       </div>
 
+      <div class="inside-card inside-card-dirs">
+        <span class="inside-tag inside-tag-coral">Все 4 направления</span>
+        <h3 class="inside-name">В&nbsp;каждом потоке&nbsp;— выбор твой</h3>
+        <div class="dirs-row">
+          <div class="dir-mini">
+            <div class="dir-mini-emo">🎯</div>
+            <div class="dir-mini-name">Фокус</div>
+            <div class="dir-mini-sub">Висяки и&nbsp;дела</div>
+          </div>
+          <div class="dir-mini">
+            <div class="dir-mini-emo">🏃‍♀️</div>
+            <div class="dir-mini-name">Спорт</div>
+            <div class="dir-mini-sub">Движение</div>
+          </div>
+          <div class="dir-mini">
+            <div class="dir-mini-emo">🧘</div>
+            <div class="dir-mini-name">Осознанность</div>
+            <div class="dir-mini-sub">Тишина</div>
+          </div>
+          <div class="dir-mini">
+            <div class="dir-mini-emo">✨</div>
+            <div class="dir-mini-name">Новое</div>
+            <div class="dir-mini-sub">Каждый день</div>
+          </div>
+        </div>
+      </div>
+
       <div class="inside-card">
-        <div class="inside-photo" style="background-image:url('redesign-assets/activities/coworking.jpg')"></div>
+        <div class="inside-photo" style="background-image:url('redesign-assets/inside/online.png')"></div>
         <h3 class="inside-name">Онлайн-встречи</h3>
-        <p class="inside-desc">Co-working со&nbsp;звуком клавиатур и&nbsp;общим фокусом, эфиры с&nbsp;приглашёнными экспертами, воркшопы по&nbsp;AI и&nbsp;сторителлингу. Подключайся из&nbsp;дома, дороги или другой страны.</p>
+        <p class="inside-desc">Co-working с&nbsp;общим фокусом, эфиры с&nbsp;приглашёнными экспертами, воркшопы по&nbsp;AI и&nbsp;сторителлингу. Подключайся из&nbsp;дома, дороги или другой страны.</p>
         <div class="inside-freq">2–3 раза в&nbsp;неделю</div>
       </div>
 
       <div class="inside-card">
-        <div class="inside-photo" style="background-image:url('redesign-assets/mood/run-crowd.jpg')"></div>
+        <div class="inside-photo" style="background-image:url('redesign-assets/inside/offline.png')"></div>
         <h3 class="inside-name">Оффлайн-встречи</h3>
-        <p class="inside-desc">Совместные пробежки, гибридные тренировки в&nbsp;новых клубах, игра в&nbsp;Го за&nbsp;бокалом вина. Москва, Питер, Кипр, Лондон, Дубай&nbsp;— где ты, там и&nbsp;встреча.</p>
+        <p class="inside-desc">Совместные пробежки, гибридные тренировки, игра в&nbsp;Го, встречи в&nbsp;Noodome, экскурсии в&nbsp;музей, мастер-классы, походы.</p>
         <div class="inside-freq">4–6 раз в&nbsp;месяц</div>
       </div>
 
@@ -1469,7 +1511,7 @@ footer a:hover{opacity:.7}
       </div>
 
       <div class="inside-card inside-card-bot">
-        <div class="inside-icon">🤝</div>
+        <div class="inside-photo inside-photo-square" style="background-image:url('redesign-assets/inside/naparnik.png')"></div>
         <h3 class="inside-name">Напарник</h3>
         <p class="inside-desc">Бот для&nbsp;метчей. Подбирает участников под твой запрос: партнёр по&nbsp;проекту, спортивная пара или просто человек для&nbsp;встречи за&nbsp;кофе.</p>
         <div class="inside-freq">24/7</div>
