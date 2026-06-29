@@ -1346,6 +1346,19 @@ footer a:hover{opacity:.7}
 .inside-list-bigger b{font-size:17px}
 .inside-list-bigger .li-sub{font-size:16px}
 
+
+/* ═════ Цветовое разнообразие секций ═════ */
+.audience{background:#EEF2FB!important}        /* светло-голубой */
+.who{background:var(--cream)!important}        /* кремовый — Участники */
+.inside{background:#FFF8EC!important}          /* персиково-кремовый — Направления и привычки */
+.july{background:#FAF5EA!important}            /* мягкий бежевый */
+.collabs{background:#0A1F3D!important;color:#fff!important}  /* тёмно-синий */
+.collabs .section-title{color:#fff!important}
+.collabs .section-sub{color:rgba(255,255,255,.72)!important}
+.collabs .collab-card{background:#fff;color:var(--ink)}
+.collabs .collab-title{color:var(--ink)}
+.tariff{background:var(--cream)!important}     /* кремовый */
+
 </style>
 </head>
 <body>
@@ -1813,60 +1826,86 @@ footer a:hover{opacity:.7}
     <h2 class="section-title" style="text-align:center;margin:0 auto 16px">Пакеты с&nbsp;ранней ценой</h2>
     <p class="tariff-meta">Для тех, кто быстро принимает решения и&nbsp;скорее хочет попасть в&nbsp;сообщество. <strong>Старт потока&nbsp;— 14&nbsp;июля.</strong></p>
 
-    <div class="tariff-grid tariff-grid-2x2">
-
+    <div class="tariff-grid">
       <div class="tariff-card">
         <div class="tariff-label">Соло</div>
         <div class="tariff-name">Месяц</div>
-        <p class="tariff-sub">Один месяц лета в&nbsp;сообществе</p>
+        <p class="tariff-sub">Один месяц лета в&nbsp;сообществе без длинного коммита</p>
         <div class="tariff-row">
           <div class="tariff-price-row">
             <span class="tariff-price">14&nbsp;440&nbsp;₽</span>
             <span class="tariff-price-old">17&nbsp;770&nbsp;₽</span>
           </div>
+          <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;font-style:italic">цена за&nbsp;месяц участия</p>
         </div>
+        <ul class="tariff-bullets">
+          <li>Группа по&nbsp;твоему направлению</li>
+          <li>Онлайн-встречи и&nbsp;coworking</li>
+          <li>Оффлайн-встречи 4–6 раз в&nbsp;месяц</li>
+          <li>Бот «Рассвет» и&nbsp;«Напарник»</li>
+          <li>Доступ к&nbsp;беговому и&nbsp;книжному клубу</li>
+        </ul>
         <a href="https://danilasavchenko.getplatinum.ru/payment/kjuW7vN" class="btn btn-month" data-pay="solo-month">Войти на&nbsp;месяц</a>
       </div>
 
-      <div class="tariff-card tariff-card-featured">
+      <div class="tariff-card featured">
+        <span class="tariff-badge">Выгоднее на&nbsp;15%</span>
         <div class="tariff-label">Соло</div>
         <div class="tariff-name">2 месяца</div>
-        <p class="tariff-sub">Июль + август&nbsp;— два месяца подряд</p>
+        <p class="tariff-sub">Июль + август&nbsp;— два месяца изменений подряд</p>
         <div class="tariff-row">
           <div class="tariff-price-row">
             <span class="tariff-price">24&nbsp;440&nbsp;₽</span>
             <span class="tariff-price-old">28&nbsp;880&nbsp;₽</span>
           </div>
+          <p style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-style:italic">цена за&nbsp;два месяца</p>
         </div>
+        <ul class="tariff-bullets">
+          <li>Всё из&nbsp;месячного тарифа&nbsp;× 2</li>
+        </ul>
+        <div class="bonus-label">+ только на&nbsp;двухмесячном</div>
+        <ul class="tariff-bullets tariff-bullets-bonus">
+          <li>Доступ ко&nbsp;всем <strong>мастер-классам</strong></li>
+          <li>Летние трекинги и&nbsp;экскурсии</li>
+          <li>Совместные тренировки и&nbsp;забеги</li>
+          <li>Эфиры с&nbsp;приглашёнными экспертами</li>
+        </ul>
         <a href="https://danilasavchenko.getplatinum.ru/payment/0Y3NC3I" class="btn btn-primary" data-pay="solo-summer">Взять 2&nbsp;месяца</a>
       </div>
+    </div>
 
-      <div class="tariff-card">
-        <div class="tariff-label">1+1</div>
-        <div class="tariff-name">Месяц вдвоём</div>
-        <p class="tariff-sub">Заходишь с&nbsp;другом, партнёром или коллегой</p>
-        <div class="tariff-row">
-          <div class="tariff-price-row">
-            <span class="tariff-price">22&nbsp;220&nbsp;₽</span>
-            <span class="tariff-price-old">29&nbsp;990&nbsp;₽</span>
-          </div>
+    <!-- 1+1 ФОРМА -->
+    <div class="pair-form-wrap" id="pair-form">
+      <div class="pair-form">
+        <div class="pair-form-intro">
+          <span class="pair-form-tag">Тариф 1+1</span>
+          <h3 class="pair-form-title">Идём вдвоём</h3>
+          <p class="pair-form-desc">Особая цена, когда заходишь с&nbsp;другом, партнёром или коллегой. Заполни форму&nbsp;— я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;подтвержу участие.</p>
         </div>
-        <a href="https://danilasavchenko.getplatinum.ru/payment/BkJPhFu" class="btn btn-month" data-pay="pair-month">Войти вдвоём</a>
-      </div>
-
-      <div class="tariff-card tariff-card-featured">
-        <div class="tariff-label">1+1</div>
-        <div class="tariff-name">2 месяца вдвоём</div>
-        <p class="tariff-sub">Июль + август вдвоём&nbsp;— самая выгодная цена</p>
-        <div class="tariff-row">
-          <div class="tariff-price-row">
-            <span class="tariff-price">42&nbsp;220&nbsp;₽</span>
-            <span class="tariff-price-old">48&nbsp;880&nbsp;₽</span>
+        <div class="pair-form-body">
+          <div class="dur-toggle">
+            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small>22&nbsp;220&nbsp;₽</small></button>
+            <button type="button" class="dur-btn" data-dur="summer">2&nbsp;месяца <small>42&nbsp;220&nbsp;₽</small></button>
           </div>
-        </div>
-        <a href="https://danilasavchenko.getplatinum.ru/payment/qaTMQhU" class="btn btn-primary" data-pay="pair-summer">Взять 2&nbsp;месяца вдвоём</a>
-      </div>
 
+          <div class="pair-error" id="pairError">Укажи оба ника в&nbsp;Telegram, чтобы я&nbsp;могла связаться.</div>
+
+          <div class="field-row">
+            <div>
+              <label class="field-label">Твой ник</label>
+              <input type="text" class="field-input" id="p1nick" placeholder="@username" autocomplete="off">
+            </div>
+            <div>
+              <label class="field-label">Ник друга / партнёра</label>
+              <input type="text" class="field-input" id="p2nick" placeholder="@username" autocomplete="off">
+            </div>
+          </div>
+
+          <button class="btn btn-primary pair-submit" onclick="sendPair()">Перейти к&nbsp;оплате</button>
+          <div class="pair-success" id="pairSuccess">✓ Записал заявку. Сейчас переведу на&nbsp;страницу оплаты&nbsp;— а&nbsp;тебе и&nbsp;другу придут уведомления.</div>
+          <p class="pair-note">После оплаты я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;добавлю в&nbsp;группы.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2217,10 +2256,10 @@ document.querySelectorAll('[data-target]').forEach(el => statsObserver.observe(e
 // 1+1 form — записывает заявку, открывает страницу оплаты, шлёт уведомление админу
 // TODO: подставить реальные slug'и GetPlatinum когда чеки будут готовы
 const PAY_URLS = {
-  'solo-month':   'https://danilasavchenko.getplatinum.ru/payment/vHiwu38',
-  'solo-summer':  'https://danilasavchenko.getplatinum.ru/payment/8VcqSms',
-  'pair-month':   'https://danilasavchenko.getplatinum.ru/payment/6MFhkDg',
-  'pair-summer':  'https://danilasavchenko.getplatinum.ru/payment/m2TI2mo'
+  'solo-month':   'https://danilasavchenko.getplatinum.ru/payment/kjuW7vN',
+  'solo-summer':  'https://danilasavchenko.getplatinum.ru/payment/0Y3NC3I',
+  'pair-month':   'https://danilasavchenko.getplatinum.ru/payment/BkJPhFu',
+  'pair-summer':  'https://danilasavchenko.getplatinum.ru/payment/qaTMQhU'
 };
 const API_BASE = 'https://api.notfrommonday.ru';
 
