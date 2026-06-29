@@ -1162,6 +1162,99 @@ footer a:hover{opacity:.7}
   .inside-grid{grid-template-columns:1fr;max-width:520px}
 }
 
+
+/* ═════ КОЛЛАБОРАЦИИ (× друзья) + tariff 2x2 ═════ */
+.collabs{background:var(--cream);padding:96px 0}
+.collabs .ampersand{
+  font-family:'Playfair Display',serif;
+  font-style:italic;color:#E8856B;
+  font-weight:600;padding:0 4px;
+}
+.collab-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+  max-width:920px;margin:0 auto;
+}
+.collab-card{
+  background:#fff;border:1px solid rgba(10,31,61,.08);border-radius:22px;
+  padding:0;overflow:hidden;cursor:pointer;text-align:left;
+  font-family:inherit;color:inherit;
+  display:flex;flex-direction:column;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  box-shadow:0 2px 6px rgba(42,37,48,.04);
+}
+.collab-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 44px rgba(42,37,48,.10);
+  border-color:#E8856B;
+}
+.collab-card:focus-visible{outline:3px solid #E8856B;outline-offset:3px}
+.collab-photo{
+  width:100%;aspect-ratio:4/3;
+  background-size:cover;background-position:center;
+  position:relative;
+}
+.collab-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(42,37,48,.18) 100%);
+}
+.collab-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
+.collab-tag{
+  font-family:'Manrope',sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:.06em;
+  color:#C25A3D;text-transform:uppercase;
+}
+.collab-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;line-height:1.2;font-weight:700;
+  color:#0A1F3D;letter-spacing:-.01em;
+}
+.collab-desc{
+  font-size:14.5px;color:#5a6178;line-height:1.55;margin-top:2px;
+}
+@media (max-width:680px){
+  .collabs{padding:72px 0}
+  .collab-grid{grid-template-columns:1fr;gap:18px;max-width:480px}
+  .collab-title{font-size:20px}
+  .collab-body{padding:18px 20px 22px}
+}
+.collab-card.coming-soon .collab-photo{filter:saturate(.85) brightness(.94)}
+.soon-badge{
+  position:absolute;top:14px;left:14px;z-index:2;
+  background:rgba(20,17,24,.78);color:#fff;
+  font-family:'Manrope',sans-serif;
+  font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;
+}
+.collab-card.coming-soon .collab-tag{opacity:.85}
+
+/* модалка */
+.collab-modal{
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+}
+.collab-modal[hidden]{display:none}
+.collab-modal-bg{position:absolute;inset:0;background:rgba(20,17,24,.72);cursor:pointer;backdrop-filter:blur(4px)}
+.collab-modal-inner{position:relative;background:#fff;border-radius:24px;width:100%;max-width:780px;max-height:92vh;overflow:auto;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.collab-modal-close{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #e3e6ed;font-size:22px;line-height:1;cursor:pointer;color:#0A1F3D;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.collab-album{width:100%;background:#000}
+.collab-album-main{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#222}
+.collab-album-thumbs{display:flex;gap:6px;padding:8px;background:#1a1517;overflow-x:auto}
+.collab-album-thumbs img{width:72px;height:54px;object-fit:cover;border-radius:6px;cursor:pointer;opacity:.6;flex-shrink:0}
+.collab-album-thumbs img.active{opacity:1;outline:2px solid #E8856B}
+.collab-modal-body{padding:24px 28px 28px}
+.collab-modal-title{font-family:'Playfair Display',serif;font-size:26px;line-height:1.2;font-weight:700;color:#0A1F3D;margin:6px 0 12px}
+.collab-modal-desc{font-size:15px;line-height:1.65;color:#5a6178}
+@media (max-width:600px){
+  .collab-modal{padding:0}
+  .collab-modal-inner{border-radius:0;max-height:100vh;height:100vh}
+}
+
+/* tariff 2x2 для пакетов */
+.tariff-grid-2x2{grid-template-columns:1fr 1fr;max-width:880px;margin:0 auto;gap:20px!important}
+.tariff-card-featured{border-color:#0A1F3D!important;background:linear-gradient(160deg,#fff 0%,#FFF8EC 100%)!important}
+@media (max-width:680px){.tariff-grid-2x2{grid-template-columns:1fr!important}}
+
 </style>
 </head>
 <body>
@@ -1658,30 +1751,146 @@ footer a:hover{opacity:.7}
         <p class="dir-desc">Любая активность: бег, зал, коврик, 10&nbsp;000 шагов. Фиксируешь на&nbsp;старте&nbsp;— делаешь каждый день.</p>
       </div>
 
-      <div class="dir-card dir-featured">
+      <div class="dir-card">
         <div class="dir-icon">✨</div>
-        <div class="dir-featured-content">
-          <span class="dir-badge">Особое этим летом</span>
-          <h3 class="dir-name">Новое</h3>
-          <p class="dir-desc">30&nbsp;дней&nbsp;— каждый день пробуешь что-то новое. Маршрут, разговор, формат, привычка, ремесло, событие. Учишь мозг замечать возможности и&nbsp;брать их&nbsp;на&nbsp;себя.</p>
-          <div class="dir-bonus">
-            <strong>Летом — особый фокус на&nbsp;<em>AI</em></strong>
-            Каждую неделю — задания по&nbsp;знакомству и&nbsp;встраиванию AI-инструментов в&nbsp;работу и&nbsp;жизнь. Приглашённые эксперты покажут, где AI уже даёт скачок, как с&nbsp;ним договариваться и&nbsp;что точно стоит автоматизировать.
-          </div>
-        </div>
+        <h3 class="dir-name">Новое</h3>
+        <p class="dir-desc">30&nbsp;дней&nbsp;— каждый день пробуешь что-то новое. Маршрут, разговор, формат, привычка, ремесло, событие. Учишь мозг замечать возможности и&nbsp;брать их&nbsp;на&nbsp;себя.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ══════════════ КОЛЛАБОРАЦИИ ══════════════ -->
+<section class="section collabs" id="collabs">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;margin:0 auto 12px">Не&nbsp;с&nbsp;понедельника <span class="ampersand">×</span> друзья</h2>
+    <p class="section-sub" style="text-align:center;max-width:560px;margin:0 auto 56px">Сообщество живёт не&nbsp;в&nbsp;вакууме. Вот с&nbsp;кем мы делаем лето лучше&nbsp;— клик по&nbsp;карточке открывает альбом.</p>
+
+    <div class="collab-grid">
+
+      <button class="collab-card" data-collab="luzhniki">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/luzhniki/cover.jpg?v=2');background-position:center 35%"></div>
+        <div class="collab-body">
+          <div class="collab-tag">×&nbsp;Спортивный клуб «Лужники»</div>
+          <h3 class="collab-title">Гибридная тренировка</h3>
+          <p class="collab-desc">Разминка, 3&nbsp;км в&nbsp;парке, техника бега, силовой комплекс&nbsp;— и&nbsp;спортивные напитки в&nbsp;баре.</p>
+        </div>
+      </button>
+
+      <button class="collab-card coming-soon" data-collab="sokolov">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/sokolov/cover.jpg?v=3');background-position:center 18%;background-color:#e9e6e0">
+          <span class="soon-badge">Скоро · 24.06</span>
+        </div>
+        <div class="collab-body">
+          <div class="collab-tag">×&nbsp;Андрей Соколов</div>
+          <h3 class="collab-title">Воркшоп по&nbsp;сторителлингу</h3>
+          <p class="collab-desc">«Как нас слышат и&nbsp;воспринимают окружающие»</p>
+        </div>
+      </button>
+
+      <button class="collab-card coming-soon" data-collab="cardiorave">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/cardiorave/cover.jpg?v=2');background-position:center 40%">
+          <span class="soon-badge">Скоро · 28.06</span>
+        </div>
+        <div class="collab-body">
+          <div class="collab-tag">×&nbsp;Cardio Rave &amp; Reminder</div>
+          <h3 class="collab-title">Утренний рейв в&nbsp;Парке Горького</h3>
+          <p class="collab-desc">Пробежка → танцпол → паблик-ток про гаджеты для здоровья. Пляж у&nbsp;Пионерского пруда.</p>
+        </div>
+      </button>
+
+      <button class="collab-card coming-soon" data-collab="noodome">
+        <div class="collab-photo" style="background-image:url('redesign-assets/collabs/noodome/cover.jpg?v=2');background-position:center 60%">
+          <span class="soon-badge">Скоро · 01.07</span>
+        </div>
+        <div class="collab-body">
+          <div class="collab-tag">×&nbsp;Noodome</div>
+          <h3 class="collab-title">Ужин в&nbsp;Noodome</h3>
+          <p class="collab-desc">Закрытый ужин от&nbsp;Анны Евсеевой&nbsp;— участницы сообщества и&nbsp;директора Noodome.</p>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- модалка коллаба -->
+<div class="collab-modal" id="collabModal" hidden>
+  <div class="collab-modal-bg" data-close="1"></div>
+  <div class="collab-modal-inner">
+    <button class="collab-modal-close" data-close="1" aria-label="Закрыть">×</button>
+    <div class="collab-album">
+      <img class="collab-album-main" id="cmMain" src="" alt="">
+      <div class="collab-album-thumbs" id="cmThumbs"></div>
+    </div>
+    <div class="collab-modal-body">
+      <div class="collab-tag" id="cmTag"></div>
+      <h3 class="collab-modal-title" id="cmTitle"></h3>
+      <p class="collab-modal-desc" id="cmDesc"></p>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════ 9. ТАРИФЫ ══════════════ -->
 <section class="tariff" id="tariffs">
   <div class="container">
-    <h2 class="section-title" style="text-align:center;margin:0 auto 16px">Июньский поток уже&nbsp;стартовал</h2>
-    <p class="tariff-meta">Ждём вас в&nbsp;июле. Чтобы попасть в&nbsp;предзапись&nbsp;— кликай ниже.</p>
+    <h2 class="section-title" style="text-align:center;margin:0 auto 16px">Пакеты с&nbsp;ранней ценой</h2>
+    <p class="tariff-meta">Для тех, кто быстро принимает решения и&nbsp;скорее хочет попасть в&nbsp;сообщество. <strong>Старт потока&nbsp;— 14&nbsp;июля.</strong></p>
 
-    <div class="july-cta">
-      <a href="https://t.me/notfrommonday_bot?start=leto-bot-nfm" class="btn btn-primary july-btn" target="_blank" rel="noopener">Я&nbsp;с&nbsp;вами в&nbsp;июле</a>
+    <div class="tariff-grid tariff-grid-2x2">
+
+      <div class="tariff-card">
+        <div class="tariff-label">Соло</div>
+        <div class="tariff-name">Месяц</div>
+        <p class="tariff-sub">Один месяц лета в&nbsp;сообществе</p>
+        <div class="tariff-row">
+          <div class="tariff-price-row">
+            <span class="tariff-price">14&nbsp;440&nbsp;₽</span>
+            <span class="tariff-price-old">17&nbsp;770&nbsp;₽</span>
+          </div>
+        </div>
+        <a href="https://danilasavchenko.getplatinum.ru/payment/kjuW7vN" class="btn btn-month" data-pay="solo-month">Войти на&nbsp;месяц</a>
+      </div>
+
+      <div class="tariff-card tariff-card-featured">
+        <div class="tariff-label">Соло</div>
+        <div class="tariff-name">2 месяца</div>
+        <p class="tariff-sub">Июль + август&nbsp;— два месяца подряд</p>
+        <div class="tariff-row">
+          <div class="tariff-price-row">
+            <span class="tariff-price">24&nbsp;440&nbsp;₽</span>
+            <span class="tariff-price-old">28&nbsp;880&nbsp;₽</span>
+          </div>
+        </div>
+        <a href="https://danilasavchenko.getplatinum.ru/payment/0Y3NC3I" class="btn btn-primary" data-pay="solo-summer">Взять 2&nbsp;месяца</a>
+      </div>
+
+      <div class="tariff-card">
+        <div class="tariff-label">1+1</div>
+        <div class="tariff-name">Месяц вдвоём</div>
+        <p class="tariff-sub">Заходишь с&nbsp;другом, партнёром или коллегой</p>
+        <div class="tariff-row">
+          <div class="tariff-price-row">
+            <span class="tariff-price">22&nbsp;220&nbsp;₽</span>
+            <span class="tariff-price-old">29&nbsp;990&nbsp;₽</span>
+          </div>
+        </div>
+        <a href="https://danilasavchenko.getplatinum.ru/payment/BkJPhFu" class="btn btn-month" data-pay="pair-month">Войти вдвоём</a>
+      </div>
+
+      <div class="tariff-card tariff-card-featured">
+        <div class="tariff-label">1+1</div>
+        <div class="tariff-name">2 месяца вдвоём</div>
+        <p class="tariff-sub">Июль + август вдвоём&nbsp;— самая выгодная цена</p>
+        <div class="tariff-row">
+          <div class="tariff-price-row">
+            <span class="tariff-price">42&nbsp;220&nbsp;₽</span>
+            <span class="tariff-price-old">48&nbsp;880&nbsp;₽</span>
+          </div>
+        </div>
+        <a href="https://danilasavchenko.getplatinum.ru/payment/qaTMQhU" class="btn btn-primary" data-pay="pair-summer">Взять 2&nbsp;месяца вдвоём</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2108,6 +2317,73 @@ document.querySelectorAll('a[data-pay]').forEach(btn => {
     }).catch(() => {});
   });
 });
+
+// === КОЛЛАБОРАЦИИ: модалка с альбомом ===
+const COLLAB_DATA = {
+  luzhniki: {
+    tag: '× Спортивный клуб «Лужники»',
+    title: 'Гибридная тренировка',
+    desc: 'Собрались в&nbsp;новеньком спортивном клубе «Лужники». Начали с&nbsp;разминки, потом пробежали 3&nbsp;км. Тренер рассказал про технику&nbsp;— как бегать экономично. После&nbsp;— силовой комплекс. И&nbsp;вернулись в&nbsp;бар: пробовали классные спортивные напитки.',
+    images: ['redesign-assets/collabs/luzhniki/1.jpg','redesign-assets/collabs/luzhniki/2.jpg','redesign-assets/collabs/luzhniki/3.jpg'],
+  },
+  sokolov: {
+    tag: '× Андрей Соколов',
+    title: 'Воркшоп по сторителлингу',
+    desc: '<b>«Как нас слышат и&nbsp;воспринимают окружающие: исследование собственных историй»</b><br><br>Про то, как доносить смыслы и&nbsp;добиваться цели в&nbsp;коммуникации с&nbsp;командой, партнёрами, клиентами. Что разберём: считывание контекста и&nbsp;скрытых смыслов, эмоциональное вовлечение и&nbsp;управление вниманием, инструменты влияния.<br><br>Ведёт <b>Андрей Соколов</b>&nbsp;— консультант по&nbsp;бизнес-сторителлингу. Его курсы проходил Данила Савченко и&nbsp;ряд CEO известных компаний.<br><br><i>Для собственников, топов и&nbsp;руководителей.</i>',
+    images: ['redesign-assets/collabs/sokolov/cover.jpg?v=3'],
+  },
+  cardiorave: {
+    tag: '× Cardio Rave &amp; Reminder',
+    title: 'Cardio Rave × Reminder в Парке Горького',
+    desc: 'Пока город просыпается&nbsp;— мы танцуем на&nbsp;пляжном рейве в&nbsp;самом центре столицы. <b>28&nbsp;июня, Пионерский пруд, Парк Горького, 10:00.</b><br><br>В&nbsp;программе: пробежка с&nbsp;утра, танцпол КАРДИО РЕЙВ, паблик-ток от&nbsp;Reminder про гаджеты для здоровья, чилл-зона, безалкогольный бар, детская зона.<br><br><i>Дресс-код: спортивный.</i>',
+    images: ['redesign-assets/collabs/cardiorave/cover.jpg?v=2'],
+  },
+  noodome: {
+    tag: '× Noodome',
+    title: 'Ужин в Noodome',
+    desc: 'Закрытый ужин в&nbsp;клубе <b>Noodome</b>. Проведёт его прекрасная <b>Анна Евсеева</b>&nbsp;— участница сообщества «Не&nbsp;с&nbsp;понедельника» и&nbsp;директор Noodome.<br><br>Записи нигде не&nbsp;будет&nbsp;— это закрытое мероприятие только для своих.',
+    images: ['redesign-assets/collabs/noodome/cover.jpg?v=2'],
+  },
+};
+(function(){
+  const collabModal = document.getElementById('collabModal');
+  if(!collabModal) return;
+  const cmMain = document.getElementById('cmMain');
+  const cmThumbs = document.getElementById('cmThumbs');
+  const cmTag = document.getElementById('cmTag');
+  const cmTitle = document.getElementById('cmTitle');
+  const cmDesc = document.getElementById('cmDesc');
+  function openCollab(key){
+    const d = COLLAB_DATA[key]; if(!d) return;
+    cmTag.textContent = d.tag;
+    cmTitle.textContent = d.title;
+    cmDesc.innerHTML = d.desc;
+    cmMain.src = d.images[0];
+    cmThumbs.innerHTML = '';
+    d.images.forEach((src, i) => {
+      const img = document.createElement('img');
+      img.src = src; img.alt = '';
+      if(i === 0) img.classList.add('active');
+      img.addEventListener('click', () => {
+        cmMain.src = src;
+        cmThumbs.querySelectorAll('img').forEach(x => x.classList.remove('active'));
+        img.classList.add('active');
+      });
+      cmThumbs.appendChild(img);
+    });
+    collabModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCollab(){
+    collabModal.hidden = true;
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.collab-card').forEach(card => {
+    card.addEventListener('click', () => openCollab(card.dataset.collab));
+  });
+  collabModal.addEventListener('click', e => { if(e.target.dataset.close==='1') closeCollab(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && !collabModal.hidden) closeCollab(); });
+})();
 </script>
 </body>
 </html>
