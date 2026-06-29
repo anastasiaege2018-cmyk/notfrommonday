@@ -1065,6 +1065,88 @@ footer a:hover{opacity:.7}
 @media (max-width:600px){
   .camp-banner{font-size:12.5px;padding:8px 14px}
 }
+
+/* ═════ ЧТО ВНУТРИ СООБЩЕСТВА ═════ */
+.inside{background:var(--cream);padding:64px 0 88px}
+.inside .section-title{margin-bottom:48px;text-align:center}
+.inside-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;max-width:1200px;margin:0 auto;
+}
+.inside-card{
+  background:#fff;border-radius:24px;
+  padding:28px 28px 28px;
+  display:flex;flex-direction:column;
+  border:1px solid rgba(10,31,61,.06);
+  box-shadow:0 4px 20px rgba(10,31,61,.06);
+  min-height:420px;
+}
+.inside-card-text{background:#fff}
+.inside-card-bot{background:linear-gradient(160deg,#fff 0%,#FFF8EC 100%)}
+.inside-photo{
+  width:100%;aspect-ratio:5/3;
+  border-radius:16px;
+  background-size:cover;background-position:center;
+  margin-bottom:20px;
+}
+.inside-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:#0A1F3D;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;
+  margin-bottom:22px;
+}
+.inside-tag{
+  display:inline-block;
+  background:#0A1F3D;color:#fff;
+  font-family:'Manrope',sans-serif;
+  font-size:12px;font-weight:800;letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:7px 14px;border-radius:100px;
+  margin-bottom:18px;align-self:flex-start;
+}
+.inside-name{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(24px,2vw,30px);
+  line-height:1.15;letter-spacing:-0.01em;
+  color:#0A1F3D;margin-bottom:12px;
+}
+.inside-desc{
+  font-family:'Manrope',sans-serif;
+  font-size:15.5px;line-height:1.55;
+  color:#3a3f55;font-weight:400;
+  margin-bottom:auto;
+}
+.inside-list{list-style:none;padding:0;margin:0}
+.inside-list li{
+  display:flex;align-items:baseline;gap:10px;
+  font-size:15.5px;line-height:1.5;
+  padding:8px 0;color:#3a3f55;
+  border-bottom:1px solid #f1f0eb;
+}
+.inside-list li:last-child{border:none}
+.inside-list b{color:#0A1F3D;font-weight:700;margin-right:4px}
+.inside-emo{font-size:18px;line-height:1;flex-shrink:0}
+.inside-freq{
+  font-family:'Manrope',sans-serif;
+  font-size:14px;font-weight:700;
+  color:#E8856B;letter-spacing:0.03em;
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid #f1f0eb;
+}
+@media (max-width:920px){
+  .inside-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .inside-card{padding:24px;min-height:auto}
+}
+@media (max-width:600px){
+  .inside{padding:48px 0 64px}
+  .inside .section-title{margin-bottom:32px}
+  .inside-grid{grid-template-columns:1fr;max-width:520px}
+}
+
 </style>
 </head>
 <body>
@@ -1344,6 +1426,56 @@ footer a:hover{opacity:.7}
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ══════════════ ЧТО ВНУТРИ СООБЩЕСТВА ══════════════ -->
+<section class="inside" id="inside">
+  <div class="container">
+    <h2 class="section-title">Что внутри сообщества</h2>
+    <div class="inside-grid">
+
+      <div class="inside-card inside-card-text">
+        <span class="inside-tag">4 направления</span>
+        <h3 class="inside-name">Направления для&nbsp;внедрения привычек</h3>
+        <p class="inside-desc">Каждый месяц ты выбираешь одно направление и&nbsp;попадаешь в&nbsp;группу с&nbsp;теми, кто идёт туда же.</p>
+        <ul class="inside-list">
+          <li><span class="inside-emo">🎯</span> <b>Фокус</b> — закрываешь то, что давно откладывал</li>
+          <li><span class="inside-emo">🏃‍♀️</span> <b>Спорт</b> — возвращаешь движение в&nbsp;жизнь</li>
+          <li><span class="inside-emo">🧘</span> <b>Осознанность</b> — медитация, тишина, дыхание</li>
+          <li><span class="inside-emo">✨</span> <b>Что-то новое</b> — каждый день пробуешь</li>
+        </ul>
+      </div>
+
+      <div class="inside-card">
+        <div class="inside-photo" style="background-image:url('redesign-assets/activities/coworking.jpg')"></div>
+        <h3 class="inside-name">Онлайн-встречи</h3>
+        <p class="inside-desc">Co-working со&nbsp;звуком клавиатур и&nbsp;общим фокусом, эфиры с&nbsp;приглашёнными экспертами, воркшопы по&nbsp;AI и&nbsp;сторителлингу. Подключайся из&nbsp;дома, дороги или другой страны.</p>
+        <div class="inside-freq">2–3 раза в&nbsp;неделю</div>
+      </div>
+
+      <div class="inside-card">
+        <div class="inside-photo" style="background-image:url('redesign-assets/mood/run-crowd.jpg')"></div>
+        <h3 class="inside-name">Оффлайн-встречи</h3>
+        <p class="inside-desc">Совместные пробежки, гибридные тренировки в&nbsp;новых клубах, игра в&nbsp;Го за&nbsp;бокалом вина. Москва, Питер, Кипр, Лондон, Дубай&nbsp;— где ты, там и&nbsp;встреча.</p>
+        <div class="inside-freq">4–6 раз в&nbsp;месяц</div>
+      </div>
+
+      <div class="inside-card inside-card-bot">
+        <div class="inside-icon">🌅</div>
+        <h3 class="inside-name">Бот «Рассвет»</h3>
+        <p class="inside-desc">Знает твой запрос на&nbsp;месяц. Мягко напомнит о&nbsp;шаге дня, примет отчёт, поддержит. Без давления&nbsp;— в&nbsp;твоём ритме.</p>
+        <div class="inside-freq">Каждый день</div>
+      </div>
+
+      <div class="inside-card inside-card-bot">
+        <div class="inside-icon">🤝</div>
+        <h3 class="inside-name">Напарник</h3>
+        <p class="inside-desc">Бот для&nbsp;метчей. Подбирает участников под твой запрос: партнёр по&nbsp;проекту, спортивная пара или просто человек для&nbsp;встречи за&nbsp;кофе.</p>
+        <div class="inside-freq">24/7</div>
+      </div>
+
+    </div>
   </div>
 </section>
 
