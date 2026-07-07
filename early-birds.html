@@ -2323,7 +2323,8 @@ function sendPair(){
 
 // === UTM tracking ===
 const NFM_UTM = (function(){
-  const u = new URLSearchParams(window.location.search).get('utm_source');
+  const params = new URLSearchParams(window.location.search);
+  const u = params.get('utm_term') || params.get('utm_source');  // utm_term = партнёр, приоритетнее
   if(u){ try{ localStorage.setItem('nfm_utm', u.toLowerCase()); }catch(e){} return u.toLowerCase(); }
   try{ return (localStorage.getItem('nfm_utm') || 'direct'); }catch(e){ return 'direct'; }
 })();
