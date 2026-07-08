@@ -1364,9 +1364,26 @@ footer a:hover{opacity:.7}
 .july-title{text-align:center;font-size:clamp(40px,5vw,72px)!important;line-height:1.05;letter-spacing:-.02em;margin-bottom:18px}
 .july-sub{text-align:center;max-width:640px;margin:0 auto 56px;font-size:18px;line-height:1.55}
 
-/* убираем выделение клеток календаря (но оставляем правило на случай возврата) */
-.cal-d.cal-mark{background:#f4f1ea;color:#0A1F3D}
-.cal-d.cal-mark::after{display:none}
+/* выделенная клетка — 20.07 */
+.july .cal-d.cal-mark{background:#0A1F3D;color:#fff}
+.july .cal-d.cal-mark::after{
+  content:'';position:absolute;bottom:5px;left:50%;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;background:#E8856B;
+}
+/* «фича»-карточка первого события */
+.je-item.je-featured{
+  background:#0A1F3D;color:#fff;
+  border-color:transparent;
+  position:relative;
+}
+.je-item.je-featured .je-emo{background:rgba(255,255,255,.08);color:#fff}
+.je-item.je-featured .je-text b{color:#fff}
+.je-item.je-featured .je-text span{color:rgba(255,255,255,.72)}
+.je-item .je-date{
+  position:absolute;top:14px;right:16px;
+  font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;letter-spacing:.08em;
+  color:#E8856B;
+}
 
 /* крупнее текст в 1+1 «Идём вдвоём» */
 .pair-form-tag{font-size:13px!important;padding:8px 16px!important;letter-spacing:.16em!important}
@@ -1729,31 +1746,32 @@ footer a:hover{opacity:.7}
           <span class="cal-d cal-empty"></span><span class="cal-d cal-empty"></span><span class="cal-d">1</span><span class="cal-d">2</span><span class="cal-d">3</span><span class="cal-d cal-w">4</span><span class="cal-d cal-w">5</span>
           <span class="cal-d">6</span><span class="cal-d">7</span><span class="cal-d">8</span><span class="cal-d">9</span><span class="cal-d">10</span><span class="cal-d cal-w">11</span><span class="cal-d cal-w">12</span>
           <span class="cal-d">13</span><span class="cal-d">14</span><span class="cal-d">15</span><span class="cal-d">16</span><span class="cal-d">17</span><span class="cal-d cal-w">18</span><span class="cal-d cal-w">19</span>
-          <span class="cal-d">20</span><span class="cal-d">21</span><span class="cal-d">22</span><span class="cal-d">23</span><span class="cal-d">24</span><span class="cal-d cal-w">25</span><span class="cal-d cal-w">26</span>
+          <span class="cal-d cal-mark">20</span><span class="cal-d">21</span><span class="cal-d">22</span><span class="cal-d">23</span><span class="cal-d">24</span><span class="cal-d cal-w">25</span><span class="cal-d cal-w">26</span>
           <span class="cal-d">27</span><span class="cal-d">28</span><span class="cal-d">29</span><span class="cal-d">30</span><span class="cal-d">31</span><span class="cal-d cal-w cal-empty"></span><span class="cal-d cal-w cal-empty"></span>
         </div>
       </div>
 
       <div class="july-events">
+        <div class="je-item je-featured">
+          <div class="je-date">20.07</div>
+          <div class="je-emo">⚫️</div>
+          <div class="je-text"><b>Игра в&nbsp;Го</b><span>закрытая партия в&nbsp;Noôdome</span></div>
+        </div>
         <div class="je-item">
-          <div class="je-emo">🎙</div>
-          <div class="je-text"><b>Оффлайн мастер-класс</b><span>с креативным продюсером по&nbsp;управлению вниманием</span></div>
+          <div class="je-emo">🎯</div>
+          <div class="je-text"><b>Оффлайн мастер-класс</b><span>управление вниманием и&nbsp;коммуникация</span></div>
         </div>
         <div class="je-item">
           <div class="je-emo">🏃‍♂️</div>
           <div class="je-text"><b>Забег с&nbsp;брендом GRI</b><span>совместная пробежка с&nbsp;командой</span></div>
         </div>
         <div class="je-item">
-          <div class="je-emo">🖼</div>
-          <div class="je-text"><b>Экскурсия в&nbsp;музей</b><span>современное искусство, новый взгляд</span></div>
+          <div class="je-emo">🎙</div>
+          <div class="je-text"><b>Эфиры от&nbsp;приглашённых экспертов</b><span>онлайн, в&nbsp;прямом эфире</span></div>
         </div>
         <div class="je-item">
           <div class="je-emo">💪</div>
-          <div class="je-text"><b>Совместная тренировка</b><span>в&nbsp;спортивном клубе</span></div>
-        </div>
-        <div class="je-item">
-          <div class="je-emo">🥗</div>
-          <div class="je-text"><b>Эфир по&nbsp;питанию и&nbsp;здоровью</b><span>как взять от&nbsp;лета максимум</span></div>
+          <div class="je-text"><b>Открытая тренировка</b><span>в&nbsp;спортивном клубе</span></div>
         </div>
       </div>
 
