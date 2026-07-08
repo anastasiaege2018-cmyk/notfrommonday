@@ -2347,10 +2347,18 @@ const NFM_UTM = (function(){
   try{ return (localStorage.getItem('nfm_utm') || 'direct'); }catch(e){ return 'direct'; }
 })();
 
+// tg-идентификатор перешедшего (из ссылки ?tg=<uid>), чтобы клики были именными
+const NFM_TG = (function(){
+  const params = new URLSearchParams(window.location.search);
+  const t = params.get('tg');
+  if(t){ try{ localStorage.setItem('nfm_tg', t); }catch(e){} return t; }
+  try{ return (localStorage.getItem('nfm_tg') || ''); }catch(e){ return ''; }
+})();
+
 fetch(API_BASE + '/api/track-visit', {
   method: 'POST',
   headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify({ref: NFM_UTM, page: 'pervaya-smena'})
+  body: JSON.stringify({ref: NFM_UTM, page: 'pervaya-smena', tg: NFM_TG})
 }).catch(() => {});
 
 document.querySelectorAll('a[data-pay]').forEach(btn => {
@@ -2360,7 +2368,7 @@ document.querySelectorAll('a[data-pay]').forEach(btn => {
     if(!slug) return;
     fetch(API_BASE + '/api/intent', {
       method: 'POST', headers: {'Content-Type':'application/json'}, keepalive: true,
-      body: JSON.stringify({slug, ref: NFM_UTM, page: 'pervaya-smena', kind: btn.dataset.pay})
+      body: JSON.stringify({slug, ref: NFM_UTM, page: 'pervaya-smena', kind: btn.dataset.pay, tg: NFM_TG})
     }).catch(() => {});
   });
 });
