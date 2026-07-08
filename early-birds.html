@@ -2361,15 +2361,29 @@ fetch(API_BASE + '/api/track-visit', {
   body: JSON.stringify({ref: NFM_UTM, page: 'pervaya-smena', tg: NFM_TG})
 }).catch(() => {});
 
+const SOLO_PLAN = {'solo-month':'1month','solo-summer':'2months'};
+const SOLO_AMOUNT = {'1month':1444000,'2months':2444000};
 document.querySelectorAll('a[data-pay]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const url = btn.getAttribute('href') || '';
-    const slug = (url.match(/payment\/([^/?#]+)/) || [])[1] || '';
-    if(!slug) return;
-    fetch(API_BASE + '/api/intent', {
+  btn.addEventListener('click', (e) => {
+    const key = btn.dataset.pay;
+    const staticUrl = btn.getAttribute('href') || '';
+    const slug = (staticUrl.match(/payment\/([^/?#]+)/) || [])[1] || '';
+    if(slug) fetch(API_BASE + '/api/intent', {
       method: 'POST', headers: {'Content-Type':'application/json'}, keepalive: true,
-      body: JSON.stringify({slug, ref: NFM_UTM, page: 'pervaya-smena', kind: btn.dataset.pay, tg: NFM_TG})
+      body: JSON.stringify({slug, ref: NFM_UTM, page: 'pervaya-smena', kind: key, tg: NFM_TG})
     }).catch(() => {});
+    // solo — персональная ссылка через API: точная привязка к человеку и партнёру
+    const plan = SOLO_PLAN[key];
+    if(plan){
+      e.preventDefault();
+      const partner = (NFM_UTM && NFM_UTM.indexOf('p_') === 0) ? NFM_UTM : '';
+      fetch(API_BASE + '/api/create-offer-payment', {
+        method: 'POST', headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({tg_id: (NFM_TG || '0'), amount: SOLO_AMOUNT[plan], plan: plan, partner: partner})
+      }).then(r => r.json()).then(d => {
+        window.location.href = (d && d.ok && d.formUrl) ? d.formUrl : staticUrl;
+      }).catch(() => { window.location.href = staticUrl; });
+    }
   });
 });
 
