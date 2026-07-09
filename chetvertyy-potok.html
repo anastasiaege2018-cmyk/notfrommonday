@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Не с понедельника · 4-й поток · Итоги месяца</title>
+<meta property="og:title" content="4-й поток · Итоги месяца">
+<meta property="og:description" content="26 участников, 913 отчётов за 31 день. Награды сезона по 4 направлениям.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f7f4;
+  --card: #ffffff;
+  --border: #e4e2dd;
+  --text: #1a1a1f;
+  --text2: #6b6b78;
+  --text3: #9a9aaa;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'Manrope',sans-serif; min-height:100vh; -webkit-font-smoothing:antialiased; }
+.container { max-width:1200px; margin:0 auto; padding:32px 24px 80px; }
+
+.header { text-align:center; margin-bottom:36px; position:relative; }
+.badge { display:inline-block; background:linear-gradient(135deg,#8b7355,#a08865); color:#fff; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:20px; }
+h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-height:1.05; letter-spacing:-1px; margin-bottom:14px; font-weight:700; }
+.subtitle { color:var(--text2); font-size:15px; font-weight:500; }
+
+.hero-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:32px 0 20px; }
+.hero-stat { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px 20px; text-align:left; }
+.hero-stat .value { font-family:'Dela Gothic One',sans-serif; font-size:30px; line-height:1.1; margin-bottom:4px; }
+.hero-stat .label { color:var(--text2); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; }
+
+.donations-bar { background:linear-gradient(135deg,#fef3c7,#fde68a); border-radius:12px; padding:14px 20px; margin-bottom:24px; text-align:center; font-size:14px; font-weight:600; color:#78350f; }
+.donations-bar b { color:#92400e; }
+
+.tabs-nav { display:flex; gap:8px; overflow-x:auto; margin-bottom:28px; padding-bottom:8px; scrollbar-width:thin; }
+.tabs-nav::-webkit-scrollbar { height:4px; }
+.tabs-nav::-webkit-scrollbar-thumb { background:#d0d0d5; border-radius:2px; }
+.tab-btn { flex-shrink:0; background:var(--card); border:1.5px solid var(--border); color:var(--text); padding:12px 18px; border-radius:100px; font-weight:700; font-size:14px; cursor:pointer; transition:all 0.15s; font-family:inherit; }
+.tab-btn:hover { border-color:var(--btn); color:var(--btn); }
+.tab-btn.active { background:var(--btn); border-color:var(--btn); color:#fff; }
+
+.tab-pane { display:none; }
+.tab-pane.active { display:block; }
+
+.tab-header { margin-bottom:32px; padding-bottom:24px; border-bottom:1px solid var(--border); }
+.tab-emoji { font-size:44px; margin-bottom:8px; }
+.tab-header h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,42px); font-weight:700; margin-bottom:14px; letter-spacing:-0.5px; }
+.tab-stats { display:flex; flex-wrap:wrap; gap:14px 22px; color:var(--text2); font-size:14px; }
+.tab-stats b { color:var(--acc); font-weight:800; font-size:16px; }
+
+.section { margin-bottom:44px; }
+.section-title { font-family:'Playfair Display',serif; font-weight:700; font-size:22px; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+.section-title::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* AWARDS */
+.awards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+.award { background:linear-gradient(135deg,var(--acc),var(--acc2)); color:#fff; border-radius:18px; padding:22px 20px; position:relative; overflow:hidden; }
+.award::after { content:''; position:absolute; top:-40px; right:-40px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,0.08); }
+.award-icon { font-size:34px; margin-bottom:10px; }
+.award-title { font-weight:800; font-size:16px; margin-bottom:2px; }
+.award-sub { font-size:12px; opacity:0.8; margin-bottom:16px; }
+.award-winner { background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); border-radius:10px; padding:10px 12px; position:relative; z-index:1; }
+.award-name { font-weight:700; font-size:14px; margin-bottom:2px; line-height:1.3; }
+.award-num { font-family:'Dela Gothic One',sans-serif; }
+.award-num b { font-size:26px; }
+.award-num span { font-size:11px; opacity:0.8; margin-left:4px; font-family:'Manrope',sans-serif; text-transform:uppercase; letter-spacing:0.5px; }
+
+/* HEATMAP */
+.hm-legend { display:flex; gap:16px; font-size:12px; color:var(--text2); margin-bottom:14px; flex-wrap:wrap; }
+.hm-legend .hm-c { display:inline-block; width:12px; height:12px; margin-right:5px; vertical-align:middle; border-radius:2px; }
+.hm-wrap { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px; overflow-x:auto; }
+.hm-head, .hm-row { display:grid; grid-template-columns:180px repeat(31, 20px); gap:3px; align-items:center; }
+.hm-day { font-size:9px; color:var(--text3); text-align:center; font-weight:600; }
+.hm-name { font-size:12px; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-right:10px; }
+.hm-name-col { width:180px; }
+.hm-c { width:20px; height:20px; border-radius:4px; }
+.hm-empty { background:#f0efeb; }
+.hm-report { background:#059669; }
+.hm-off { background:#cbd5e1; }
+.hm-skip { background:#d4652b; }
+.hm-row { margin-top:3px; }
+
+/* LEADERBOARD */
+.leaderboard { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; }
+.progress-row { display:flex; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.05); }
+.progress-row:last-child { border:none; }
+.progress-name { width:180px; font-size:13px; font-weight:700; flex-shrink:0; }
+.progress-bar-bg { flex:1; height:26px; background:rgba(0,0,0,0.04); border-radius:6px; overflow:hidden; }
+.progress-bar { height:100%; border-radius:6px; display:flex; align-items:center; padding-left:10px; font-size:12px; font-weight:800; color:#fff; min-width:fit-content; }
+.progress-count { width:50px; text-align:right; font-size:12px; font-weight:700; color:var(--text2); flex-shrink:0; }
+
+/* PEOPLE CARDS */
+.people-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:12px; }
+.p-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px 18px; }
+.p-head { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.p-avatar { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:14px; flex-shrink:0; }
+.p-info { flex:1; min-width:0; }
+.p-name { font-weight:700; font-size:14px; margin-bottom:2px; }
+.p-nums { font-size:12px; color:var(--text2); }
+.p-nums b { color:var(--acc); font-weight:800; }
+.p-quote { font-size:12.5px; line-height:1.5; color:var(--text2); font-style:italic; border-left:2px solid var(--acc); padding-left:10px; margin-top:8px; }
+
+/* QUOTES */
+.quotes-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; }
+.quote-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; position:relative; }
+.quote-card::before { content:'\201C'; position:absolute; top:0; left:16px; font-size:48px; color:var(--acc); opacity:0.2; font-family:Georgia,serif; line-height:1; }
+.quote-text { font-size:14px; line-height:1.55; color:var(--text); font-style:italic; margin-bottom:10px; padding-top:8px; }
+.quote-author { font-size:12px; font-weight:700; color:var(--text2); }
+
+/* COMPARE bar */
+.compare-bar { display:flex; align-items:center; gap:16px; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; }
+.cb-block { flex:1; font-size:14px; }
+.cb-block span { display:block; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--text3); margin-bottom:4px; font-weight:700; }
+.cb-block b { font-family:'Dela Gothic One',sans-serif; font-size:18px; }
+.cb-arrow { font-size:20px; color:var(--acc); font-weight:800; }
+.cb-new { text-align:center; color:var(--text2); font-style:italic; }
+
+/* COMPARE TABLE */
+.compare-table-wrap { overflow-x:auto; }
+.compare-table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; font-size:14px; }
+.compare-table th { background:#f0efeb; text-align:left; padding:12px 14px; font-weight:800; font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:var(--text2); }
+.compare-table td { padding:14px; border-top:1px solid var(--border); }
+.compare-table td b { font-family:'Dela Gothic One',sans-serif; font-size:18px; }
+.cmp-dir { font-weight:700; }
+.dir-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; vertical-align:middle; }
+.delta { display:inline-block; margin-left:6px; font-size:12px; font-weight:700; color:var(--text2); }
+.delta-new { display:inline-block; padding:2px 8px; background:#dcfce7; color:#166534; border-radius:6px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; }
+.note { margin-top:14px; font-size:13px; color:var(--text2); line-height:1.5; }
+
+/* INSIGHTS */
+.insights { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.insight { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px 20px; }
+.insight-num { font-family:'Playfair Display',serif; font-weight:700; font-size:28px; color:#8b7355; margin-bottom:8px; letter-spacing:-0.5px; }
+.insight { font-size:14px; line-height:1.5; color:var(--text); }
+
+/* mobile */
+@media (max-width:640px) {
+  .container { padding:20px 14px 60px; }
+  h1 { font-size:28px; }
+  .hero-stat { padding:16px 14px; }
+  .hero-stat .value { font-size:24px; }
+  .tab-header h2 { font-size:24px; }
+  .tab-emoji { font-size:32px; }
+  .tab-stats { font-size:13px; gap:8px 14px; }
+  .section-title { font-size:18px; }
+  .progress-name { width:130px; font-size:12px; }
+  .progress-count { width:32px; font-size:11px; }
+  .compare-bar { flex-direction:column; align-items:stretch; text-align:center; }
+  .cb-arrow { transform:rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="badge">Итоги месяца</div>
+    <h1>Не с понедельника · 4-й поток</h1>
+    <div class="subtitle">9 июня — 9 июля 2026 · 31 день в сообществе</div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="value">26</div><div class="label">Участников</div></div>
+    <div class="hero-stat"><div class="value">913</div><div class="label">Отчётов сдано</div></div>
+    <div class="hero-stat"><div class="value">47</div><div class="label">Пропусков</div></div>
+    <div class="hero-stat"><div class="value">4</div><div class="label">Направления</div></div>
+  </div>
+
+  <div class="donations-bar">
+    ❤️ <b>Добрые дела:</b> 73 сообщений от 10 человек · штрафы ушли в благотворительные фонды
+  </div>
+
+  <div class="tabs-nav"><button class="tab-btn" data-tab="sport" style="--btn:#059669">🏃 Спорт</button><button class="tab-btn" data-tab="focus" style="--btn:#2b7fd4">🎯 Фокус</button><button class="tab-btn" data-tab="mind" style="--btn:#7c4dff">🧘 Осознанность</button><button class="tab-btn" data-tab="new" style="--btn:#e0436c">✨ Новое</button><button class="tab-btn" data-tab="compare" style="--btn:#8b7355">📊 Сравнение</button></div>
+
+  
+    <div class="tab-pane" data-tab="sport" style="--acc:#059669;--acc2:#34a065">
+      <div class="tab-header">
+        <div class="tab-emoji">🏃</div>
+        <h2>Спорт</h2>
+        <div class="tab-stats">
+          <span><b>12</b> участников</span>
+          <span><b>285</b> отчётов</span>
+          <span><b>16</b> пропусков</span>
+          <span><b>31</b> выходных</span>
+          <span>🔥 средний стрик <b>19.0</b></span>
+          <span>дисциплина <b>77%</b></span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🏆 Награды сезона</div>
+        <div class="awards-grid">
+        <div class="award ">
+          <div class="award-icon">🥇</div>
+          <div class="award-title">Больше всех отчётов</div>
+          <div class="award-sub">Пришёл каждый день</div>
+          <div class="award-winner">
+            <div class="award-name">Дарья</div>
+            <div class="award-num"><b>30</b> <span>отчётов</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🔥</div>
+          <div class="award-title">Лучший стрик</div>
+          <div class="award-sub">Ни одного пропуска подряд</div>
+          <div class="award-winner">
+            <div class="award-name">Дарья</div>
+            <div class="award-num"><b>31</b> <span>дней</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🚀</div>
+          <div class="award-title">Прорыв месяца</div>
+          <div class="award-sub">Разогнался ко второй половине</div>
+          <div class="award-winner">
+            <div class="award-name">Alina Kovaleva Interior Designer</div>
+            <div class="award-num"><b>+4</b> <span>к темпу</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🤝</div>
+          <div class="award-title">Опора команды</div>
+          <div class="award-sub">Больше всех откликов на отчёты</div>
+          <div class="award-winner">
+            <div class="award-name">Anastasia Popova</div>
+            <div class="award-num"><b>267</b> <span>реакций</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🔥 Стена дисциплины · 31 день</div>
+        <div class="hm-legend">
+          <span><i class="hm-c hm-report"></i> отчёт</span>
+          <span><i class="hm-c hm-off"></i> выходной</span>
+          <span><i class="hm-c hm-skip"></i> пропуск</span>
+          <span><i class="hm-c hm-empty"></i> нет данных</span>
+        </div>
+        <div class="hm-wrap"><div class="hm-head"><div class="hm-name-col"></div><div class="hm-day">9</div><div class="hm-day">10</div><div class="hm-day">11</div><div class="hm-day">12</div><div class="hm-day">13</div><div class="hm-day">14</div><div class="hm-day">15</div><div class="hm-day">16</div><div class="hm-day">17</div><div class="hm-day">18</div><div class="hm-day">19</div><div class="hm-day">20</div><div class="hm-day">21</div><div class="hm-day">22</div><div class="hm-day">23</div><div class="hm-day">24</div><div class="hm-day">25</div><div class="hm-day">26</div><div class="hm-day">27</div><div class="hm-day">28</div><div class="hm-day">29</div><div class="hm-day">30</div><div class="hm-day">1</div><div class="hm-day">2</div><div class="hm-day">3</div><div class="hm-day">4</div><div class="hm-day">5</div><div class="hm-day">6</div><div class="hm-day">7</div><div class="hm-day">8</div><div class="hm-day">9</div></div><div class="hm-row"><div class="hm-name">Дарья</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Алёна По 🌿</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-off" title="04.07 — выходной"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Olya Kharitonova</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-off" title="17.06 — выходной"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-off" title="26.06 — выходной"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anastasia Popova</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-off" title="26.06 — выходной"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-off" title="05.07 — выходной"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Mayya Zvyagintseva</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-off" title="21.06 — выходной"></div><div class="hm-c hm-off" title="22.06 — выходной"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-off" title="08.07 — выходной"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Xenia</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-off" title="21.06 — выходной"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-off" title="25.06 — выходной"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Данила Савченко</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-off" title="02.07 — выходной"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anastasia Nureeva</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-off" title="16.06 — выходной"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-off" title="28.06 — выходной"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-off" title="04.07 — выходной"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Natalia</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-off" title="22.06 — выходной"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Veronika Muravitskaia</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-off" title="22.06 — выходной"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-off" title="01.07 — выходной"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-off" title="08.07 — выходной"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Alina Ushakova</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Alina Kovaleva Interior Designer</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-off" title="27.06 — выходной"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Daria Tsema</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-off" title="15.06 — выходной"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Анастасия Астахова</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Roman</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Vicky Tsoy</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Max Golubkov</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Natalia Korosteleva</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Aron</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-skip" title="14.06 — пропуск"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Yulia Yakovenko</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anna M</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Dima Bondarev ))</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">📈 Топ-10 по отчётам</div>
+        <div class="leaderboard">
+        <div class="progress-row">
+          <div class="progress-name">Дарья</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:100%;background:linear-gradient(90deg,#059669,#34a065)">30</div>
+          </div>
+          <div class="progress-count">/ 36</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Olya Kharitonova</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:96%;background:linear-gradient(90deg,#059669,#34a065)">29</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Алёна По 🌿</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:96%;background:linear-gradient(90deg,#059669,#34a065)">29</div>
+          </div>
+          <div class="progress-count">/ 30</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Anastasia Popova</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:93%;background:linear-gradient(90deg,#059669,#34a065)">28</div>
+          </div>
+          <div class="progress-count">/ 30</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Mayya Zvyagintseva</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:86%;background:linear-gradient(90deg,#059669,#34a065)">26</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Xenia</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:86%;background:linear-gradient(90deg,#059669,#34a065)">26</div>
+          </div>
+          <div class="progress-count">/ 29</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Данила Савченко</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:86%;background:linear-gradient(90deg,#059669,#34a065)">26</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Anastasia Nureeva</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:83%;background:linear-gradient(90deg,#059669,#34a065)">25</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Veronika Muravitskaia</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:80%;background:linear-gradient(90deg,#059669,#34a065)">24</div>
+          </div>
+          <div class="progress-count">/ 28</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Natalia</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:80%;background:linear-gradient(90deg,#059669,#34a065)">24</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">👤 Каждый участник</div>
+        <div class="people-grid">
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">Д</div>
+            <div class="p-info">
+              <div class="p-name">Дарья</div>
+              <div class="p-nums">
+                <b>30</b> отчётов ·
+                <span>3</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«12 красивых км на велосипеде и не менее прекрасные 13к шагов»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">OK</div>
+            <div class="p-info">
+              <div class="p-name">Olya Kharitonova</div>
+              <div class="p-nums">
+                <b>29</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«повисела всего лишь 30 сек на турнике ну с чего-то нужно начинать;)»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">АП</div>
+            <div class="p-info">
+              <div class="p-name">Алёна По 🌿</div>
+              <div class="p-nums">
+                <b>29</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 27 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«💚 откопала и зарядила свой фитнес-браслет, который месяц не носила 💚 два раза ходила вверх по эскалатору 💚 вечерняя прогулка быстрым шагом, всего за день 9123 шага»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">AP</div>
+            <div class="p-info">
+              <div class="p-name">Anastasia Popova</div>
+              <div class="p-nums">
+                <b>28</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 27 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«В 30ти градусную жару, я не нашла ничего лучше, чем пойти на хот барре 😃 было настолько хот, что зал мы разогрели до 43 градусов 😂 я в раю , Дубай в июне меня не напугает точно 😂»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">MZ</div>
+            <div class="p-info">
+              <div class="p-name">Mayya Zvyagintseva</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«силовые не начала пока, но сделала свое любимое мобилити и старательно вышагиваю свой кортизол)»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">X</div>
+            <div class="p-info">
+              <div class="p-name">Xenia</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>1</span> проп ·
+                🔥 17 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Сегодня 3 км. Но зато купила новые кроссовки для полумарафона. Оказалось, что у меня завал стопы. Подобрали новые. Бегала еще 10 раз на дорожке, пока тестировали кроссовки)))»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">ДС</div>
+            <div class="p-info">
+              <div class="p-name">Данила Савченко</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>4</span> проп ·
+                🔥 10 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Сегодня спал 4 часа: задержали рейс а рано с утра встреча. Но нашел 5 минут чтобы выйти в свой переделки сский двор и поделать упражнения на осанку. Делал я их в майке и думаю выглядело это кринжово. Но для начала себе засчитываю!)»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">AN</div>
+            <div class="p-info">
+              <div class="p-name">Anastasia Nureeva</div>
+              <div class="p-nums">
+                <b>25</b> отчётов ·
+                <span>2</span> проп ·
+                🔥 24 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Бег + Только непонятно сколько😁страва в разных окнах пишет разную дистанцию)»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">VM</div>
+            <div class="p-info">
+              <div class="p-name">Veronika Muravitskaia</div>
+              <div class="p-nums">
+                <b>24</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 15 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«сегодня перерыв в спорте, а завтра - продолжим 🐈‍⬛»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">N</div>
+            <div class="p-info">
+              <div class="p-name">Natalia</div>
+              <div class="p-nums">
+                <b>24</b> отчётов ·
+                <span>3</span> проп ·
+                🔥 9 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«9 266 шагов, сколько сейчас успела пройти после работы»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">AK</div>
+            <div class="p-info">
+              <div class="p-name">Alina Kovaleva Interior Designer</div>
+              <div class="p-nums">
+                <b>15</b> отчётов ·
+                <span>1</span> проп ·
+                🔥 5 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Ворвусь в спортивную ветку! 🏃🏼‍♀️ Всем привет!  Вчерашний день Ходьба 11 086 шагов»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#059669,#34a065)">DT</div>
+            <div class="p-info">
+              <div class="p-name">Daria Tsema</div>
+              <div class="p-nums">
+                <b>3</b> отчётов ·
+                <span>2</span> проп ·
+                🔥 1 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Для выздоравливающего после простуды человека 5 тыс шагов в целом неплохо. Хвалю себя за них. Не понимаю правда где находила - было ощущение что весь день дома за компом провела😉»</div>
+        </div></div>
+      </div>
+
+      <div class="section"><div class="section-title">⭐ Звёздные моменты</div><div class="quotes-grid">
+        <div class="quote-card">
+          <div class="quote-text">«силовые не начала пока, но сделала свое любимое мобилити и старательно вышагиваю свой кортизол)»</div>
+          <div class="quote-author">— Mayya Zvyagintseva</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«12 красивых км на велосипеде и не менее прекрасные 13к шагов»</div>
+          <div class="quote-author">— Дарья</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Бег + Только непонятно сколько😁страва в разных окнах пишет разную дистанцию)»</div>
+          <div class="quote-author">— Anastasia Nureeva</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«повисела всего лишь 30 сек на турнике ну с чего-то нужно начинать;)»</div>
+          <div class="quote-author">— Olya Kharitonova</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Я не писала запрос на спорт, но всё-таки буду отчитываться, по желанию ) Сегодня я чуть не сдохла всего за полчаса ) Высокоинтенсивная получасовая тренировка. Все конфеты должны были погибнуть во мне.»</div>
+          <div class="quote-author">— Alina Ushakova</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«💚 откопала и зарядила свой фитнес-браслет, который месяц не носила 💚 два раза ходила вверх по эскалатору 💚 вечерняя прогулка быстрым шагом, всего за день 9123 шага»</div>
+          <div class="quote-author">— Алёна По 🌿</div>
+        </div></div></div>
+
+      <div class="section">
+        <div class="section-title">📊 Сравнение с 3-м потоком</div>
+        
+        <div class="compare-bar">
+          <div class="cb-block"><span>3-й поток</span><b>33 чел · 314 отчётов</b></div>
+          <div class="cb-arrow">→</div>
+          <div class="cb-block"><span>4-й поток</span><b>12 чел · 285 отчётов</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" data-tab="focus" style="--acc:#2b7fd4;--acc2:#4a8dd8">
+      <div class="tab-header">
+        <div class="tab-emoji">🎯</div>
+        <h2>Фокус</h2>
+        <div class="tab-stats">
+          <span><b>16</b> участников</span>
+          <span><b>389</b> отчётов</span>
+          <span><b>18</b> пропусков</span>
+          <span><b>50</b> выходных</span>
+          <span>🔥 средний стрик <b>18.0</b></span>
+          <span>дисциплина <b>78%</b></span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🏆 Награды сезона</div>
+        <div class="awards-grid">
+        <div class="award ">
+          <div class="award-icon">🥇</div>
+          <div class="award-title">Больше всех отчётов</div>
+          <div class="award-sub">Пришёл каждый день</div>
+          <div class="award-winner">
+            <div class="award-name">Olya Kharitonova</div>
+            <div class="award-num"><b>29</b> <span>отчётов</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🔥</div>
+          <div class="award-title">Лучший стрик</div>
+          <div class="award-sub">Ни одного пропуска подряд</div>
+          <div class="award-winner">
+            <div class="award-name">Olya Kharitonova</div>
+            <div class="award-num"><b>31</b> <span>дней</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🚀</div>
+          <div class="award-title">Прорыв месяца</div>
+          <div class="award-sub">Разогнался ко второй половине</div>
+          <div class="award-winner">
+            <div class="award-name">Vladimir Eremin</div>
+            <div class="award-num"><b>+4</b> <span>к темпу</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🤝</div>
+          <div class="award-title">Опора команды</div>
+          <div class="award-sub">Больше всех откликов на отчёты</div>
+          <div class="award-winner">
+            <div class="award-name">Anastasia Popova</div>
+            <div class="award-num"><b>246</b> <span>реакций</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🔥 Стена дисциплины · 31 день</div>
+        <div class="hm-legend">
+          <span><i class="hm-c hm-report"></i> отчёт</span>
+          <span><i class="hm-c hm-off"></i> выходной</span>
+          <span><i class="hm-c hm-skip"></i> пропуск</span>
+          <span><i class="hm-c hm-empty"></i> нет данных</span>
+        </div>
+        <div class="hm-wrap"><div class="hm-head"><div class="hm-name-col"></div><div class="hm-day">9</div><div class="hm-day">10</div><div class="hm-day">11</div><div class="hm-day">12</div><div class="hm-day">13</div><div class="hm-day">14</div><div class="hm-day">15</div><div class="hm-day">16</div><div class="hm-day">17</div><div class="hm-day">18</div><div class="hm-day">19</div><div class="hm-day">20</div><div class="hm-day">21</div><div class="hm-day">22</div><div class="hm-day">23</div><div class="hm-day">24</div><div class="hm-day">25</div><div class="hm-day">26</div><div class="hm-day">27</div><div class="hm-day">28</div><div class="hm-day">29</div><div class="hm-day">30</div><div class="hm-day">1</div><div class="hm-day">2</div><div class="hm-day">3</div><div class="hm-day">4</div><div class="hm-day">5</div><div class="hm-day">6</div><div class="hm-day">7</div><div class="hm-day">8</div><div class="hm-day">9</div></div><div class="hm-row"><div class="hm-name">Olya Kharitonova</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-off" title="17.06 — выходной"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-off" title="26.06 — выходной"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anastasia Popova</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-off" title="28.06 — выходной"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-off" title="05.07 — выходной"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Roman</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-off" title="11.06 — выходной"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-off" title="20.06 — выходной"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-skip" title="03.07 — пропуск"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Xenia</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-off" title="15.06 — выходной"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-off" title="25.06 — выходной"></div><div class="hm-c hm-skip" title="26.06 — пропуск"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-off" title="05.07 — выходной"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Mayya Zvyagintseva</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-off" title="21.06 — выходной"></div><div class="hm-c hm-off" title="22.06 — выходной"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Sofya Strizhko</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-off" title="16.06 — выходной"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-off" title="25.06 — выходной"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Natalia Korosteleva</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-off" title="14.06 — выходной"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-off" title="19.06 — выходной"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-off" title="27.06 — выходной"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-off" title="03.07 — выходной"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Alina Ushakova</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-off" title="21.06 — выходной"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-off" title="26.06 — выходной"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anna M</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-off" title="16.06 — выходной"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-off" title="23.06 — выходной"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-skip" title="29.06 — пропуск"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-off" title="06.07 — выходной"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Dima Bondarev ))</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Анастасия Астахова</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-off" title="12.06 — выходной"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-off" title="20.06 — выходной"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-off" title="04.07 — выходной"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Тина Гирей</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-off" title="14.06 — выходной"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-off" title="21.06 — выходной"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-skip" title="03.07 — пропуск"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-off" title="05.07 — выходной"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Vicky Tsoy</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-off" title="21.06 — выходной"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Veronika Muravitskaia</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-off" title="14.06 — выходной"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-off" title="08.07 — выходной"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Vladimir Eremin</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-off" title="14.06 — выходной"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-off" title="22.06 — выходной"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Yulia Yakovenko</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-off" title="11.06 — выходной"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-off" title="22.06 — выходной"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-off" title="04.07 — выходной"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Анна Eвсеева</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-off" title="12.06 — выходной"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Алёна По 🌿</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Данила Савченко</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Дарья</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anastasia Nureeva</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">📈 Топ-10 по отчётам</div>
+        <div class="leaderboard">
+        <div class="progress-row">
+          <div class="progress-name">Olya Kharitonova</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:100%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">29</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Roman</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:93%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">27</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Anastasia Popova</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:93%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">27</div>
+          </div>
+          <div class="progress-count">/ 29</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Mayya Zvyagintseva</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:89%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">26</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Sofya Strizhko</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:89%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">26</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Xenia</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:89%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">26</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Natalia Korosteleva</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:86%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">25</div>
+          </div>
+          <div class="progress-count">/ 30</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Anna M</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:86%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">25</div>
+          </div>
+          <div class="progress-count">/ 30</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Alina Ushakova</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:86%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">25</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Dima Bondarev ))</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:86%;background:linear-gradient(90deg,#2b7fd4,#4a8dd8)">25</div>
+          </div>
+          <div class="progress-count">/ 27</div>
+        </div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">👤 Каждый участник</div>
+        <div class="people-grid">
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">OK</div>
+            <div class="p-info">
+              <div class="p-name">Olya Kharitonova</div>
+              <div class="p-nums">
+                <b>29</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«💙 три отклика на вакансии с сопроводительными письмами. разброс специфики колоссальный;)) банк, архитектура, лодки 😅 💙 еще отправила cv 4 контактам напрямую 💙 решила, что буду смотреть вакансии и в мск. Сколько можно без меня там всюду ходить))»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">R</div>
+            <div class="p-info">
+              <div class="p-name">Roman</div>
+              <div class="p-nums">
+                <b>27</b> отчётов ·
+                <span>1</span> проп ·
+                🔥 24 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Первый день лесной свежести. Вместе с дыхательной практикой чудесно расслабляет.»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">AP</div>
+            <div class="p-info">
+              <div class="p-name">Anastasia Popova</div>
+              <div class="p-nums">
+                <b>27</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 18 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Пока отчаянно пытаюсь вылететь из Сочи, поштурмила сама с собой на тему предложенной вакансии, почти сформулировала ответ. Пытаюсь готовиться к звонку с рекрутером, но пока то туда то сюда бегаю по аэропорту )»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">MZ</div>
+            <div class="p-info">
+              <div class="p-name">Mayya Zvyagintseva</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«сделала первый набросок плана по шагам. Пока идет сложно.»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">SS</div>
+            <div class="p-info">
+              <div class="p-name">Sofya Strizhko</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«План такой: ▪︎писать один раздел книги в один/два дня. ▪︎французский: подкаст + учебник каждый день. Сегодня: ✅️ раздел в сыром виде есть ✅️ подкаст С учебником сегодня не сложилось, но я на него посмотрела!😂»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">X</div>
+            <div class="p-info">
+              <div class="p-name">Xenia</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>1</span> проп ·
+                🔥 17 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«#Отчет 1. Встреча по проекту с командой и проработка плана B. Главное, что все идут в план B. Никто не отвалится.»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">NK</div>
+            <div class="p-info">
+              <div class="p-name">Natalia Korosteleva</div>
+              <div class="p-nums">
+                <b>25</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 20 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«сегодня поговорила с клодом про стратегию моего поиска, на роль CPO/head of product стоит искать через теплые контакты. Обновила резюме на английском, вечером обновлю линкедин и завтра откликнусь на ту вакансию в деливери хироу»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">AM</div>
+            <div class="p-info">
+              <div class="p-name">Anna M</div>
+              <div class="p-nums">
+                <b>25</b> отчётов ·
+                <span>1</span> проп ·
+                🔥 17 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Сегодня немного опоздала с отчётом, т.к. Провела насыщенный день с подругами на даче. Шашлык со⁷ всеми вытекающими. Полчаса медитации на берегу реки . Поиграли на бильярде.»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">AU</div>
+            <div class="p-info">
+              <div class="p-name">Alina Ushakova</div>
+              <div class="p-nums">
+                <b>25</b> отчётов ·
+                <span>2</span> проп ·
+                🔥 14 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Простите, коротко, сейчас на свидании. Завтра отчитаюсь»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">DB</div>
+            <div class="p-info">
+              <div class="p-name">Dima Bondarev ))</div>
+              <div class="p-nums">
+                <b>25</b> отчётов ·
+                <span>2</span> проп ·
+                🔥 11 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Сегодня отконтролил себя, чтобы не нервничать что немного работал а уделил внимание природе, практикам, нашему потоку( написал визитку, записал кружочки и тд) Не нервничаю, все классно, прожил сбалансированный день в комфортнои ритме и асе супер 👍 ))»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">АА</div>
+            <div class="p-info">
+              <div class="p-name">Анастасия Астахова</div>
+              <div class="p-nums">
+                <b>24</b> отчётов ·
+                <span>1</span> проп ·
+                🔥 12 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Из фокуса сегодня: • планерка с СММ, распаковали стратегию • напарник • система грейдов • согласование коллабораций И куча-туча задач Думаю ещё над дизайном, не сильно нравится»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">VT</div>
+            <div class="p-info">
+              <div class="p-name">Vicky Tsoy</div>
+              <div class="p-nums">
+                <b>23</b> отчётов ·
+                <span>3</span> проп ·
+                🔥 14 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Я скорее всего выпадаю до конца недели из режима У меня малой на больничном еще и я уже пару дней неважно себя чувствую, надеюсь к пятнице/субботе уже буду хорошо себя чувствовать»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">ТГ</div>
+            <div class="p-info">
+              <div class="p-name">Тина Гирей</div>
+              <div class="p-nums">
+                <b>23</b> отчётов ·
+                <span>5</span> проп ·
+                🔥 13 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Написала теорию и фасилитационный гайд для первого дня первого модуля программы. + договорилась с клиентом (fashion retail) о тестовом периоде в формате advisory.»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">VE</div>
+            <div class="p-info">
+              <div class="p-name">Vladimir Eremin</div>
+              <div class="p-nums">
+                <b>21</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 13 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Сегодняшний день провожу за городом. Успел поработать и за ноутбуком тоже. Ел свежую местную клубнику, гулял по лесу, дышал воздухом, пил воду из колодца. И еще посадил дерево. Короче сегодня настоящее лакшери и роскошь (по дубайским меркам).»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">YY</div>
+            <div class="p-info">
+              <div class="p-name">Yulia Yakovenko</div>
+              <div class="p-nums">
+                <b>19</b> отчётов ·
+                <span>1</span> проп ·
+                🔥 16 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«написала сегодня 7 вопросов для встречи #7незнакомцев и поняла, что после первых трех уже можно сделать дыхательную практику для сохранения заземления 🤲»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#2b7fd4,#4a8dd8)">АE</div>
+            <div class="p-info">
+              <div class="p-name">Анна Eвсеева</div>
+              <div class="p-nums">
+                <b>18</b> отчётов ·
+                <span>1</span> проп ·
+                🔥 6 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Сегодня у меня был фокус на себе и своем здоровье, была у врача нутрициолога, делала узи. Впереди анализ крови и назначения. Хотелось бы сфокусироваться в том числе и на ментальном здоровье, как-то «подсобраться» эмоционально)»</div>
+        </div></div>
+      </div>
+
+      <div class="section"><div class="section-title">⭐ Звёздные моменты</div><div class="quotes-grid">
+        <div class="quote-card">
+          <div class="quote-text">«написала сегодня 7 вопросов для встречи #7незнакомцев и поняла, что после первых трех уже можно сделать дыхательную практику для сохранения заземления 🤲»</div>
+          <div class="quote-author">— Yulia Yakovenko</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Написала теорию и фасилитационный гайд для первого дня первого модуля программы. + договорилась с клиентом (fashion retail) о тестовом периоде в формате advisory.»</div>
+          <div class="quote-author">— Тина Гирей</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«сделала первый набросок плана по шагам. Пока идет сложно.»</div>
+          <div class="quote-author">— Mayya Zvyagintseva</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«План такой: ▪︎писать один раздел книги в один/два дня. ▪︎французский: подкаст + учебник каждый день. Сегодня: ✅️ раздел в сыром виде есть ✅️ подкаст С учебником сегодня не сложилось, но я на него посмотрела!😂»</div>
+          <div class="quote-author">— Sofya Strizhko</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Я скорее всего выпадаю до конца недели из режима У меня малой на больничном еще и я уже пару дней неважно себя чувствую, надеюсь к пятнице/субботе уже буду хорошо себя чувствовать»</div>
+          <div class="quote-author">— Vicky Tsoy</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Первый день лесной свежести. Вместе с дыхательной практикой чудесно расслабляет.»</div>
+          <div class="quote-author">— Roman</div>
+        </div></div></div>
+
+      <div class="section">
+        <div class="section-title">📊 Сравнение с 3-м потоком</div>
+        
+        <div class="compare-bar">
+          <div class="cb-block"><span>3-й поток</span><b>19 чел · 464 отчётов</b></div>
+          <div class="cb-arrow">→</div>
+          <div class="cb-block"><span>4-й поток</span><b>16 чел · 389 отчётов</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" data-tab="mind" style="--acc:#7c4dff;--acc2:#9575ff">
+      <div class="tab-header">
+        <div class="tab-emoji">🧘</div>
+        <h2>Осознанность</h2>
+        <div class="tab-stats">
+          <span><b>7</b> участников</span>
+          <span><b>124</b> отчётов</span>
+          <span><b>8</b> пропусков</span>
+          <span><b>17</b> выходных</span>
+          <span>🔥 средний стрик <b>12.9</b></span>
+          <span>дисциплина <b>57%</b></span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🏆 Награды сезона</div>
+        <div class="awards-grid">
+        <div class="award ">
+          <div class="award-icon">🥇</div>
+          <div class="award-title">Больше всех отчётов</div>
+          <div class="award-sub">Пришёл каждый день</div>
+          <div class="award-winner">
+            <div class="award-name">Mayya Zvyagintseva</div>
+            <div class="award-num"><b>26</b> <span>отчётов</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🔥</div>
+          <div class="award-title">Лучший стрик</div>
+          <div class="award-sub">Ни одного пропуска подряд</div>
+          <div class="award-winner">
+            <div class="award-name">Mayya Zvyagintseva</div>
+            <div class="award-num"><b>31</b> <span>дней</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🚀</div>
+          <div class="award-title">Прорыв месяца</div>
+          <div class="award-sub">Разогнался ко второй половине</div>
+          <div class="award-winner">
+            <div class="award-name">Дарья</div>
+            <div class="award-num"><b>+3</b> <span>к темпу</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🤝</div>
+          <div class="award-title">Опора команды</div>
+          <div class="award-sub">Больше всех откликов на отчёты</div>
+          <div class="award-winner">
+            <div class="award-name">Mayya Zvyagintseva</div>
+            <div class="award-num"><b>80</b> <span>реакций</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🔥 Стена дисциплины · 31 день</div>
+        <div class="hm-legend">
+          <span><i class="hm-c hm-report"></i> отчёт</span>
+          <span><i class="hm-c hm-off"></i> выходной</span>
+          <span><i class="hm-c hm-skip"></i> пропуск</span>
+          <span><i class="hm-c hm-empty"></i> нет данных</span>
+        </div>
+        <div class="hm-wrap"><div class="hm-head"><div class="hm-name-col"></div><div class="hm-day">9</div><div class="hm-day">10</div><div class="hm-day">11</div><div class="hm-day">12</div><div class="hm-day">13</div><div class="hm-day">14</div><div class="hm-day">15</div><div class="hm-day">16</div><div class="hm-day">17</div><div class="hm-day">18</div><div class="hm-day">19</div><div class="hm-day">20</div><div class="hm-day">21</div><div class="hm-day">22</div><div class="hm-day">23</div><div class="hm-day">24</div><div class="hm-day">25</div><div class="hm-day">26</div><div class="hm-day">27</div><div class="hm-day">28</div><div class="hm-day">29</div><div class="hm-day">30</div><div class="hm-day">1</div><div class="hm-day">2</div><div class="hm-day">3</div><div class="hm-day">4</div><div class="hm-day">5</div><div class="hm-day">6</div><div class="hm-day">7</div><div class="hm-day">8</div><div class="hm-day">9</div></div><div class="hm-row"><div class="hm-name">Mayya Zvyagintseva</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-off" title="21.06 — выходной"></div><div class="hm-c hm-off" title="22.06 — выходной"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-off" title="08.07 — выходной"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Roman</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-off" title="20.06 — выходной"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-off" title="26.06 — выходной"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-skip" title="02.07 — пропуск"></div><div class="hm-c hm-skip" title="03.07 — пропуск"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Veronika Muravitskaia</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-off" title="08.07 — выходной"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Дарья</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-off" title="15.06 — выходной"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-off" title="23.06 — выходной"></div><div class="hm-c hm-off" title="24.06 — выходной"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Alexander Ratnikov</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-off" title="18.06 — выходной"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-off" title="27.06 — выходной"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-off" title="08.07 — выходной"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Алёна По 🌿</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Aron</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-skip" title="14.06 — пропуск"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-skip" title="21.06 — пропуск"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Анастасия Астахова</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anna M</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Данила Савченко</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anastasia Popova</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Olya Kharitonova</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">📈 Топ-10 по отчётам</div>
+        <div class="leaderboard">
+        <div class="progress-row">
+          <div class="progress-name">Mayya Zvyagintseva</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:100%;background:linear-gradient(90deg,#7c4dff,#9575ff)">26</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Roman</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:96%;background:linear-gradient(90deg,#7c4dff,#9575ff)">25</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Veronika Muravitskaia</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:96%;background:linear-gradient(90deg,#7c4dff,#9575ff)">25</div>
+          </div>
+          <div class="progress-count">/ 26</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Дарья</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:84%;background:linear-gradient(90deg,#7c4dff,#9575ff)">22</div>
+          </div>
+          <div class="progress-count">/ 28</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Alexander Ratnikov</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:76%;background:linear-gradient(90deg,#7c4dff,#9575ff)">20</div>
+          </div>
+          <div class="progress-count">/ 23</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Aron</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:19%;background:linear-gradient(90deg,#7c4dff,#9575ff)">5</div>
+          </div>
+          <div class="progress-count">/ 9</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Anna M</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:3%;background:linear-gradient(90deg,#7c4dff,#9575ff)">1</div>
+          </div>
+          <div class="progress-count">/ 1</div>
+        </div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">👤 Каждый участник</div>
+        <div class="people-grid">
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#7c4dff,#9575ff)">MZ</div>
+            <div class="p-info">
+              <div class="p-name">Mayya Zvyagintseva</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«совместила 10 минут медитации со своим любимым граундингом. Понравилось!»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#7c4dff,#9575ff)">R</div>
+            <div class="p-info">
+              <div class="p-name">Roman</div>
+              <div class="p-nums">
+                <b>25</b> отчётов ·
+                <span>2</span> проп ·
+                🔥 23 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Разбил на 5 частей свои дыхательные процедуры. Делал в течение дня - понравилось)»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#7c4dff,#9575ff)">VM</div>
+            <div class="p-info">
+              <div class="p-name">Veronika Muravitskaia</div>
+              <div class="p-nums">
+                <b>25</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 15 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Ура! Только добавилась к вам, друзья 🥰  соединить медитацию со спортом, выбирать удобный тип медитации под настроение и ощущения. А еще я буддист 🪷  Осознанное питание ✅»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#7c4dff,#9575ff)">Д</div>
+            <div class="p-info">
+              <div class="p-name">Дарья</div>
+              <div class="p-nums">
+                <b>22</b> отчётов ·
+                <span>3</span> проп ·
+                🔥 11 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Удалила страницу в Инстаграме без имени и фотографий, с которой можно было делать ресерч! 😂»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#7c4dff,#9575ff)">AR</div>
+            <div class="p-info">
+              <div class="p-name">Alexander Ratnikov</div>
+              <div class="p-nums">
+                <b>20</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 7 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«ухуху. далось сложнее, чем думал. убежать ото всех на какие-то минуты вышло сложно. 😥 завтра пробую перенести время на пока все спят. продолжаем.»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#7c4dff,#9575ff)">A</div>
+            <div class="p-info">
+              <div class="p-name">Aron</div>
+              <div class="p-nums">
+                <b>5</b> отчётов ·
+                <span>3</span> проп ·
+                🔥 2 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Не хотел, но медитировал...)) если бы не вписался в этот чат, точно бы забил»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#7c4dff,#9575ff)">AM</div>
+            <div class="p-info">
+              <div class="p-name">Anna M</div>
+              <div class="p-nums">
+                <b>1</b> отчёт ·
+                <span>0</span> проп ·
+                🔥 1 стрик
+              </div>
+            </div>
+          </div>
+          
+        </div></div>
+      </div>
+
+      <div class="section"><div class="section-title">⭐ Звёздные моменты</div><div class="quotes-grid">
+        <div class="quote-card">
+          <div class="quote-text">«совместила 10 минут медитации со своим любимым граундингом. Понравилось!»</div>
+          <div class="quote-author">— Mayya Zvyagintseva</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Разбил на 5 частей свои дыхательные процедуры. Делал в течение дня - понравилось)»</div>
+          <div class="quote-author">— Roman</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«ухуху. далось сложнее, чем думал. убежать ото всех на какие-то минуты вышло сложно. 😥 завтра пробую перенести время на пока все спят. продолжаем.»</div>
+          <div class="quote-author">— Alexander Ratnikov</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Удалила страницу в Инстаграме без имени и фотографий, с которой можно было делать ресерч! 😂»</div>
+          <div class="quote-author">— Дарья</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Ура! Только добавилась к вам, друзья 🥰  соединить медитацию со спортом, выбирать удобный тип медитации под настроение и ощущения. А еще я буддист 🪷  Осознанное питание ✅»</div>
+          <div class="quote-author">— Veronika Muravitskaia</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Обнаружил, что не смотря на явную пользу от практики (в плане состояния) все равно мозг саботирует такое частое повторение одной и той же рутинной задачи. Но 20 мин, как и запланировано, готово✅ ясность ума, как результат.»</div>
+          <div class="quote-author">— Roman</div>
+        </div></div></div>
+
+      <div class="section">
+        <div class="section-title">📊 Сравнение с 3-м потоком</div>
+        <div class="compare-bar"><div class="cb-block cb-new">Новое направление · в 3-м потоке отдельно не выделяли</div></div>
+      </div>
+    </div>
+    <div class="tab-pane" data-tab="new" style="--acc:#e0436c;--acc2:#e86488">
+      <div class="tab-header">
+        <div class="tab-emoji">✨</div>
+        <h2>Новое</h2>
+        <div class="tab-stats">
+          <span><b>6</b> участников</span>
+          <span><b>115</b> отчётов</span>
+          <span><b>5</b> пропусков</span>
+          <span><b>12</b> выходных</span>
+          <span>🔥 средний стрик <b>15.5</b></span>
+          <span>дисциплина <b>62%</b></span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🏆 Награды сезона</div>
+        <div class="awards-grid">
+        <div class="award ">
+          <div class="award-icon">🥇</div>
+          <div class="award-title">Больше всех отчётов</div>
+          <div class="award-sub">Пришёл каждый день</div>
+          <div class="award-winner">
+            <div class="award-name">Veronika Muravitskaia</div>
+            <div class="award-num"><b>27</b> <span>отчётов</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🔥</div>
+          <div class="award-title">Лучший стрик</div>
+          <div class="award-sub">Ни одного пропуска подряд</div>
+          <div class="award-winner">
+            <div class="award-name">Mayya Zvyagintseva</div>
+            <div class="award-num"><b>31</b> <span>дней</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🚀</div>
+          <div class="award-title">Прорыв месяца</div>
+          <div class="award-sub">Разогнался ко второй половине</div>
+          <div class="award-winner">
+            <div class="award-name">Daria Tsema</div>
+            <div class="award-num"><b>+4</b> <span>к темпу</span></div>
+          </div>
+        </div>
+        <div class="award ">
+          <div class="award-icon">🤝</div>
+          <div class="award-title">Опора команды</div>
+          <div class="award-sub">Больше всех откликов на отчёты</div>
+          <div class="award-winner">
+            <div class="award-name">Анастасия Астахова</div>
+            <div class="award-num"><b>128</b> <span>реакций</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🔥 Стена дисциплины · 31 день</div>
+        <div class="hm-legend">
+          <span><i class="hm-c hm-report"></i> отчёт</span>
+          <span><i class="hm-c hm-off"></i> выходной</span>
+          <span><i class="hm-c hm-skip"></i> пропуск</span>
+          <span><i class="hm-c hm-empty"></i> нет данных</span>
+        </div>
+        <div class="hm-wrap"><div class="hm-head"><div class="hm-name-col"></div><div class="hm-day">9</div><div class="hm-day">10</div><div class="hm-day">11</div><div class="hm-day">12</div><div class="hm-day">13</div><div class="hm-day">14</div><div class="hm-day">15</div><div class="hm-day">16</div><div class="hm-day">17</div><div class="hm-day">18</div><div class="hm-day">19</div><div class="hm-day">20</div><div class="hm-day">21</div><div class="hm-day">22</div><div class="hm-day">23</div><div class="hm-day">24</div><div class="hm-day">25</div><div class="hm-day">26</div><div class="hm-day">27</div><div class="hm-day">28</div><div class="hm-day">29</div><div class="hm-day">30</div><div class="hm-day">1</div><div class="hm-day">2</div><div class="hm-day">3</div><div class="hm-day">4</div><div class="hm-day">5</div><div class="hm-day">6</div><div class="hm-day">7</div><div class="hm-day">8</div><div class="hm-day">9</div></div><div class="hm-row"><div class="hm-name">Veronika Muravitskaia</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Анастасия Астахова</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-off" title="20.06 — выходной"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-report" title="30.06 — отчёт"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Mayya Zvyagintseva</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-off" title="21.06 — выходной"></div><div class="hm-c hm-off" title="22.06 — выходной"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-off" title="08.07 — выходной"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Sofya Strizhko</div><div class="hm-c hm-report" title="09.06 — отчёт"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-off" title="13.06 — выходной"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-off" title="16.06 — выходной"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-report" title="18.06 — отчёт"></div><div class="hm-c hm-report" title="19.06 — отчёт"></div><div class="hm-c hm-report" title="20.06 — отчёт"></div><div class="hm-c hm-report" title="21.06 — отчёт"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-off" title="25.06 — выходной"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-report" title="28.06 — отчёт"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-off" title="30.06 — выходной"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-report" title="03.07 — отчёт"></div><div class="hm-c hm-report" title="04.07 — отчёт"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-off" title="07.07 — выходной"></div><div class="hm-c hm-report" title="08.07 — отчёт"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Алёна По 🌿</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-report" title="10.06 — отчёт"></div><div class="hm-c hm-report" title="11.06 — отчёт"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-report" title="14.06 — отчёт"></div><div class="hm-c hm-report" title="15.06 — отчёт"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-report" title="22.06 — отчёт"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-report" title="26.06 — отчёт"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-report" title="05.07 — отчёт"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Daria Tsema</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-report" title="23.06 — отчёт"></div><div class="hm-c hm-report" title="24.06 — отчёт"></div><div class="hm-c hm-report" title="25.06 — отчёт"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-report" title="27.06 — отчёт"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-report" title="29.06 — отчёт"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-report" title="01.07 — отчёт"></div><div class="hm-c hm-off" title="02.07 — выходной"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-report" title="06.07 — отчёт"></div><div class="hm-c hm-report" title="07.07 — отчёт"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Alina Ushakova</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-report" title="12.06 — отчёт"></div><div class="hm-c hm-report" title="13.06 — отчёт"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-report" title="16.06 — отчёт"></div><div class="hm-c hm-report" title="17.06 — отчёт"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-report" title="02.07 — отчёт"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Xenia</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Olya Kharitonova</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Anastasia Popova</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Dima Bondarev ))</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Анна Eвсеева</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div><div class="hm-row"><div class="hm-name">Yulia Yakovenko</div><div class="hm-c hm-empty" title="09.06 — —"></div><div class="hm-c hm-empty" title="10.06 — —"></div><div class="hm-c hm-empty" title="11.06 — —"></div><div class="hm-c hm-empty" title="12.06 — —"></div><div class="hm-c hm-empty" title="13.06 — —"></div><div class="hm-c hm-empty" title="14.06 — —"></div><div class="hm-c hm-empty" title="15.06 — —"></div><div class="hm-c hm-empty" title="16.06 — —"></div><div class="hm-c hm-empty" title="17.06 — —"></div><div class="hm-c hm-empty" title="18.06 — —"></div><div class="hm-c hm-empty" title="19.06 — —"></div><div class="hm-c hm-empty" title="20.06 — —"></div><div class="hm-c hm-empty" title="21.06 — —"></div><div class="hm-c hm-empty" title="22.06 — —"></div><div class="hm-c hm-empty" title="23.06 — —"></div><div class="hm-c hm-empty" title="24.06 — —"></div><div class="hm-c hm-empty" title="25.06 — —"></div><div class="hm-c hm-empty" title="26.06 — —"></div><div class="hm-c hm-empty" title="27.06 — —"></div><div class="hm-c hm-empty" title="28.06 — —"></div><div class="hm-c hm-empty" title="29.06 — —"></div><div class="hm-c hm-empty" title="30.06 — —"></div><div class="hm-c hm-empty" title="01.07 — —"></div><div class="hm-c hm-empty" title="02.07 — —"></div><div class="hm-c hm-empty" title="03.07 — —"></div><div class="hm-c hm-empty" title="04.07 — —"></div><div class="hm-c hm-empty" title="05.07 — —"></div><div class="hm-c hm-empty" title="06.07 — —"></div><div class="hm-c hm-empty" title="07.07 — —"></div><div class="hm-c hm-empty" title="08.07 — —"></div><div class="hm-c hm-report" title="09.07 — отчёт"></div></div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">📈 Топ-10 по отчётам</div>
+        <div class="leaderboard">
+        <div class="progress-row">
+          <div class="progress-name">Veronika Muravitskaia</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:100%;background:linear-gradient(90deg,#e0436c,#e86488)">27</div>
+          </div>
+          <div class="progress-count">/ 27</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Mayya Zvyagintseva</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:96%;background:linear-gradient(90deg,#e0436c,#e86488)">26</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Sofya Strizhko</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:96%;background:linear-gradient(90deg,#e0436c,#e86488)">26</div>
+          </div>
+          <div class="progress-count">/ 31</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Анастасия Астахова</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:96%;background:linear-gradient(90deg,#e0436c,#e86488)">26</div>
+          </div>
+          <div class="progress-count">/ 27</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Daria Tsema</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:33%;background:linear-gradient(90deg,#e0436c,#e86488)">9</div>
+          </div>
+          <div class="progress-count">/ 15</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-name">Roman</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width:3%;background:linear-gradient(90deg,#e0436c,#e86488)">1</div>
+          </div>
+          <div class="progress-count">/ 1</div>
+        </div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">👤 Каждый участник</div>
+        <div class="people-grid">
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#e0436c,#e86488)">VM</div>
+            <div class="p-info">
+              <div class="p-name">Veronika Muravitskaia</div>
+              <div class="p-nums">
+                <b>27</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 15 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«✅ сходила к Юле на 7 незнакомцев ✅ написала текст для песни»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#e0436c,#e86488)">MZ</div>
+            <div class="p-info">
+              <div class="p-name">Mayya Zvyagintseva</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Сделала для себя на завтрак абсолютно новое сочетание вкусов- гречка+ гуакомоле + пармезан+греческий йогурт. Адски вкусно! Рекомендую))»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#e0436c,#e86488)">SS</div>
+            <div class="p-info">
+              <div class="p-name">Sofya Strizhko</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 31 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«✅️ Начала формулировать мысли новые про танец после фильма Бинош. Отслеживала свои паттерны движения и от чего они зависят. ✅️ Несколько новых инструментальных треков. ✅️ Рассматриваю пионы полдня 😍»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#e0436c,#e86488)">АА</div>
+            <div class="p-info">
+              <div class="p-name">Анастасия Астахова</div>
+              <div class="p-nums">
+                <b>26</b> отчётов ·
+                <span>0</span> проп ·
+                🔥 12 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Попробовала новую модель от Клода, собираю платформу для нас с вами, это восторг!!»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#e0436c,#e86488)">DT</div>
+            <div class="p-info">
+              <div class="p-name">Daria Tsema</div>
+              <div class="p-nums">
+                <b>9</b> отчётов ·
+                <span>5</span> проп ·
+                🔥 3 стрик
+              </div>
+            </div>
+          </div>
+          <div class="p-quote">«Поговорила с коллегой по-новому, используя то, что обсуждали с коучем. Результат отличный - ушло внутреннее раздражение.»</div>
+        </div>
+        <div class="p-card">
+          <div class="p-head">
+            <div class="p-avatar" style="background:linear-gradient(135deg,#e0436c,#e86488)">R</div>
+            <div class="p-info">
+              <div class="p-name">Roman</div>
+              <div class="p-nums">
+                <b>1</b> отчёт ·
+                <span>0</span> проп ·
+                🔥 1 стрик
+              </div>
+            </div>
+          </div>
+          
+        </div></div>
+      </div>
+
+      <div class="section"><div class="section-title">⭐ Звёздные моменты</div><div class="quotes-grid">
+        <div class="quote-card">
+          <div class="quote-text">«✅ сходила к Юле на 7 незнакомцев ✅ написала текст для песни»</div>
+          <div class="quote-author">— Veronika Muravitskaia</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Попробовала новую модель от Клода, собираю платформу для нас с вами, это восторг!!»</div>
+          <div class="quote-author">— Анастасия Астахова</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«✅️ Начала формулировать мысли новые про танец после фильма Бинош. Отслеживала свои паттерны движения и от чего они зависят. ✅️ Несколько новых инструментальных треков. ✅️ Рассматриваю пионы полдня 😍»</div>
+          <div class="quote-author">— Sofya Strizhko</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Подала заявку на конференцию от Т-банка для аналитиков, продактов и дизайнеров. Ходинла на неё в прошлом году и тогда больше занималась нетворком и решением кейсов, в этом году больше хочу послушать доклады»</div>
+          <div class="quote-author">— Алёна По 🌿</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Божееее, мы записали трек наконец-то! Ждите на Яндекс Музыке 🥰»</div>
+          <div class="quote-author">— Veronika Muravitskaia</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">«Сделала для себя на завтрак абсолютно новое сочетание вкусов- гречка+ гуакомоле + пармезан+греческий йогурт. Адски вкусно! Рекомендую))»</div>
+          <div class="quote-author">— Mayya Zvyagintseva</div>
+        </div></div></div>
+
+      <div class="section">
+        <div class="section-title">📊 Сравнение с 3-м потоком</div>
+        
+        <div class="compare-bar">
+          <div class="cb-block"><span>3-й поток</span><b>12 чел · 302 отчётов</b></div>
+          <div class="cb-arrow">→</div>
+          <div class="cb-block"><span>4-й поток</span><b>6 чел · 115 отчётов</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" data-tab="compare">
+      <div class="tab-header" style="--acc:#8b7355;--acc2:#a08865">
+        <div class="tab-emoji">📊</div>
+        <h2>Сравнение с 3-м потоком</h2>
+        <div class="tab-stats"><span>агрегатные показатели по направлениям</span></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Общие числа</div>
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Направление</th>
+                <th>Было (3-й)</th>
+                <th>Стало (4-й)</th>
+                <th>Отчётов было</th>
+                <th>Отчётов стало</th>
+                <th>Средний стрик 4-й</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td class="cmp-dir"><span class="dir-dot" style="background:#059669"></span>🏃 Спорт</td>
+          <td>33</td>
+          <td><b>12</b> <span class="delta">↘ -21</span></td>
+          <td>314</td>
+          <td><b>285</b> <span class="delta">↘ -29</span></td>
+          <td>19.0</td>
+        </tr>
+        <tr>
+          <td class="cmp-dir"><span class="dir-dot" style="background:#2b7fd4"></span>🎯 Фокус</td>
+          <td>19</td>
+          <td><b>16</b> <span class="delta">↘ -3</span></td>
+          <td>464</td>
+          <td><b>389</b> <span class="delta">↘ -75</span></td>
+          <td>18.0</td>
+        </tr>
+        <tr>
+          <td class="cmp-dir"><span class="dir-dot" style="background:#7c4dff"></span>🧘 Осознанность</td>
+          <td>—</td>
+          <td><b>7</b> <span class="delta-new">новое</span></td>
+          <td>—</td>
+          <td><b>124</b> </td>
+          <td>12.9</td>
+        </tr>
+        <tr>
+          <td class="cmp-dir"><span class="dir-dot" style="background:#e0436c"></span>✨ Новое</td>
+          <td>12</td>
+          <td><b>6</b> <span class="delta">↘ -6</span></td>
+          <td>302</td>
+          <td><b>115</b> <span class="delta">↘ -187</span></td>
+          <td>15.5</td>
+        </tr></tbody>
+          </table>
+        </div>
+        <div class="note">
+          Сравнение только на уровне направлений — не по конкретным людям. В 3-м потоке участник мог быть в другом направлении, поэтому личных сравнений в дайджесте нет.
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Что изменилось</div>
+        <div class="insights">
+          <div class="insight">
+            <div class="insight-num">меньше</div>
+            <div>Групп стало компактнее — 41 участник против 64 в третьем потоке.</div>
+          </div>
+          <div class="insight">
+            <div class="insight-num">плотнее</div>
+            <div>Отчётов в среднем на человека — 22 (было 17). Дисциплина в среднем выросла.</div>
+          </div>
+          <div class="insight">
+            <div class="insight-num">4</div>
+            <div>Впервые официально выделено направление «Осознанность» — 7 человек, 124 отчёта, средний стрик 12.9.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('click', e => {
+  const b = e.target.closest('.tab-btn');
+  if (!b) return;
+  const key = b.dataset.tab;
+  document.querySelectorAll('.tab-btn').forEach(x => x.classList.toggle('active', x.dataset.tab === key));
+  document.querySelectorAll('.tab-pane').forEach(x => x.classList.toggle('active', x.dataset.tab === key));
+  history.replaceState(null, '', '#' + key);
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+// initial
+const initial = location.hash.slice(1) || 'sport';
+document.querySelector(`.tab-btn[data-tab="${initial}"]`)?.click();
+if (!document.querySelector('.tab-pane.active')) {
+  document.querySelector('.tab-btn')?.click();
+}
+</script>
+</body>
+</html>
