@@ -45,8 +45,9 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
 .tab-header { margin-bottom:32px; padding-bottom:24px; border-bottom:1px solid var(--border); }
 .tab-emoji { font-size:44px; margin-bottom:8px; }
 .tab-header h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,42px); font-weight:700; margin-bottom:14px; letter-spacing:-0.5px; }
-.tab-stats { display:flex; flex-wrap:wrap; gap:14px 22px; color:var(--text2); font-size:14px; align-items:center; }
-.tab-stats b { color:var(--acc); font-weight:800; font-size:16px; }
+.tab-stats { display:flex; flex-wrap:wrap; gap:14px 28px; color:var(--text2); font-size:17px; align-items:baseline; }
+.tab-stats span { display:inline-flex; align-items:baseline; gap:6px; }
+.tab-stats b { color:var(--acc); font-weight:800; font-size:26px; font-family:'Dela Gothic One',sans-serif; line-height:1; }
 
 .section { margin-bottom:44px; }
 .section-title { font-family:'Playfair Display',serif; font-weight:700; font-size:22px; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
@@ -163,11 +164,11 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
     <div class="hero-stat"><div class="value">26</div><div class="label">Участников</div></div>
     <div class="hero-stat"><div class="value">913</div><div class="label">Отчётов сдано</div></div>
     <div class="hero-stat"><div class="value">4</div><div class="label">Направления</div></div>
-    <div class="hero-stat"><div class="value">73</div><div class="label">Добрых дел ❤️</div></div>
+    <div class="hero-stat"><div class="value">73</div><div class="label">Помощь в фонды ❤️</div></div>
   </div>
 
   <div class="donations-bar">
-    ❤️ <b>Добрые дела:</b> 73 сообщений от 10 человек — отдельный топик о поддержке и участии
+    ❤️ <b>73 раз</b> отправили помощь в благотворительные фонды
   </div>
 
   <div class="tabs-nav"><button class="tab-btn" data-tab="sport" style="--btn:#059669">🏃 Спорт</button><button class="tab-btn" data-tab="focus" style="--btn:#2b7fd4">🎯 Фокус</button><button class="tab-btn" data-tab="mind" style="--btn:#7c4dff">🧘 Осознанность</button><button class="tab-btn" data-tab="new" style="--btn:#e0436c">✨ Новое</button></div>
@@ -179,6 +180,45 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
         <h2>Спорт</h2>
         <div class="tab-stats"><span><b>12</b> участников</span>  ·  <span><b>285</b> отчётов</span>  ·  <span>🚶 <b>1 073 644</b> шагов</span>  ·  <span>🏃 <b>468</b> км</span>  ·  <span>💪 <b>11</b> видов тренировок</span></div>
       </div>
+
+      <div class="section">
+        <div class="compare-block">
+          <div class="cmp-title">📊 Сравнение с 3-м потоком</div>
+          <div class="cmp-grid">
+            <div class="cmp-cell">
+              <div class="cmp-label">Участников</div>
+              <div class="cmp-vals">
+                <span class="cmp-prev">3-й: 33</span>
+                <span class="cmp-arrow">→</span>
+                <span class="cmp-cur">4-й: 12</span>
+              </div>
+            </div>
+            <div class="cmp-cell">
+              <div class="cmp-label">Отчётов</div>
+              <div class="cmp-vals">
+                <span class="cmp-prev">3-й: 314</span>
+                <span class="cmp-arrow">→</span>
+                <span class="cmp-cur">4-й: 285 <span class="delta delta-down">↓ -29</span></span>
+              </div>
+            </div>
+          </div>
+        </div><div class="cmp-title" style="margin-top:20px">🔁 Те, кто был здесь и в 3-м потоке</div><div class="diff-list">
+            <div class="diff-row">
+              <div class="diff-name">Дарья</div>
+              <div class="diff-values"><span class="d-prev">30</span><span class="d-arrow">→</span><span class="d-cur">30</span> <span class="delta delta-eq">±0</span></div>
+            </div>
+            <div class="diff-row">
+              <div class="diff-name">Anastasia Popova</div>
+              <div class="diff-values"><span class="d-prev">28</span><span class="d-arrow">→</span><span class="d-cur">28</span> <span class="delta delta-eq">±0</span></div>
+            </div>
+            <div class="diff-row">
+              <div class="diff-name">Данила Савченко</div>
+              <div class="diff-values"><span class="d-prev">22</span><span class="d-arrow">→</span><span class="d-cur">26</span> <span class="delta delta-up">↑ +4</span></div>
+            </div>
+            <div class="diff-row">
+              <div class="diff-name">Natalia</div>
+              <div class="diff-values"><span class="d-prev">26</span><span class="d-arrow">→</span><span class="d-cur">24</span> <span class="delta delta-down">↓ -2</span></div>
+            </div></div></div>
 
       <div class="section">
         <div class="section-title">🏆 Награды сезона</div>
@@ -439,6 +479,13 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
           <div class="quote-text">«💚 откопала и зарядила свой фитнес-браслет, который месяц не носила 💚 два раза ходила вверх по эскалатору 💚 вечерняя прогулка быстрым шагом, всего за день 9123 шага»</div>
           <div class="quote-author">— Алёна По 🌿</div>
         </div></div></div>
+    </div>
+    <div class="tab-pane" data-tab="focus" style="--acc:#2b7fd4;--acc2:#4a8dd8">
+      <div class="tab-header">
+        <div class="tab-emoji">🎯</div>
+        <h2>Фокус</h2>
+        <div class="tab-stats"><span><b>16</b> участников</span>  ·  <span>✅ <b>389</b> закрытых задач-дней</span>  ·  <span>🔥 средний стрик <b>17.8</b></span></div>
+      </div>
 
       <div class="section">
         <div class="compare-block">
@@ -447,44 +494,33 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
             <div class="cmp-cell">
               <div class="cmp-label">Участников</div>
               <div class="cmp-vals">
-                <span class="cmp-prev">3-й: 33</span>
+                <span class="cmp-prev">3-й: 19</span>
                 <span class="cmp-arrow">→</span>
-                <span class="cmp-cur">4-й: 12</span>
+                <span class="cmp-cur">4-й: 16</span>
               </div>
             </div>
             <div class="cmp-cell">
               <div class="cmp-label">Отчётов</div>
               <div class="cmp-vals">
-                <span class="cmp-prev">3-й: 314</span>
+                <span class="cmp-prev">3-й: 464</span>
                 <span class="cmp-arrow">→</span>
-                <span class="cmp-cur">4-й: 285 <span class="delta delta-down">↓ -29</span></span>
+                <span class="cmp-cur">4-й: 389 <span class="delta delta-down">↓ -75</span></span>
               </div>
             </div>
           </div>
         </div><div class="cmp-title" style="margin-top:20px">🔁 Те, кто был здесь и в 3-м потоке</div><div class="diff-list">
             <div class="diff-row">
-              <div class="diff-name">Дарья</div>
-              <div class="diff-values"><span class="d-prev">30</span><span class="d-arrow">→</span><span class="d-cur">30</span> <span class="delta delta-eq">±0</span></div>
+              <div class="diff-name">Sofya Strizhko</div>
+              <div class="diff-values"><span class="d-prev">28</span><span class="d-arrow">→</span><span class="d-cur">26</span> <span class="delta delta-down">↓ -2</span></div>
             </div>
             <div class="diff-row">
-              <div class="diff-name">Anastasia Popova</div>
-              <div class="diff-values"><span class="d-prev">28</span><span class="d-arrow">→</span><span class="d-cur">28</span> <span class="delta delta-eq">±0</span></div>
+              <div class="diff-name">Vladimir Eremin</div>
+              <div class="diff-values"><span class="d-prev">28</span><span class="d-arrow">→</span><span class="d-cur">21</span> <span class="delta delta-down">↓ -7</span></div>
             </div>
             <div class="diff-row">
-              <div class="diff-name">Данила Савченко</div>
-              <div class="diff-values"><span class="d-prev">22</span><span class="d-arrow">→</span><span class="d-cur">26</span> <span class="delta delta-up">↑ +4</span></div>
-            </div>
-            <div class="diff-row">
-              <div class="diff-name">Natalia</div>
-              <div class="diff-values"><span class="d-prev">26</span><span class="d-arrow">→</span><span class="d-cur">24</span> <span class="delta delta-down">↓ -2</span></div>
+              <div class="diff-name">Yulia Yakovenko</div>
+              <div class="diff-values"><span class="d-prev">25</span><span class="d-arrow">→</span><span class="d-cur">19</span> <span class="delta delta-down">↓ -6</span></div>
             </div></div></div>
-    </div>
-    <div class="tab-pane" data-tab="focus" style="--acc:#2b7fd4;--acc2:#4a8dd8">
-      <div class="tab-header">
-        <div class="tab-emoji">🎯</div>
-        <h2>Фокус</h2>
-        <div class="tab-stats"><span><b>16</b> участников</span>  ·  <span>✅ <b>389</b> закрытых задач-дней</span>  ·  <span>🔥 средний стрик <b>17.8</b></span></div>
-      </div>
 
       <div class="section">
         <div class="section-title">🏆 Награды сезона</div>
@@ -789,41 +825,6 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
           <div class="quote-text">«Первый день лесной свежести. Вместе с дыхательной практикой чудесно расслабляет.»</div>
           <div class="quote-author">— Roman</div>
         </div></div></div>
-
-      <div class="section">
-        <div class="compare-block">
-          <div class="cmp-title">📊 Сравнение с 3-м потоком</div>
-          <div class="cmp-grid">
-            <div class="cmp-cell">
-              <div class="cmp-label">Участников</div>
-              <div class="cmp-vals">
-                <span class="cmp-prev">3-й: 19</span>
-                <span class="cmp-arrow">→</span>
-                <span class="cmp-cur">4-й: 16</span>
-              </div>
-            </div>
-            <div class="cmp-cell">
-              <div class="cmp-label">Отчётов</div>
-              <div class="cmp-vals">
-                <span class="cmp-prev">3-й: 464</span>
-                <span class="cmp-arrow">→</span>
-                <span class="cmp-cur">4-й: 389 <span class="delta delta-down">↓ -75</span></span>
-              </div>
-            </div>
-          </div>
-        </div><div class="cmp-title" style="margin-top:20px">🔁 Те, кто был здесь и в 3-м потоке</div><div class="diff-list">
-            <div class="diff-row">
-              <div class="diff-name">Sofya Strizhko</div>
-              <div class="diff-values"><span class="d-prev">28</span><span class="d-arrow">→</span><span class="d-cur">26</span> <span class="delta delta-down">↓ -2</span></div>
-            </div>
-            <div class="diff-row">
-              <div class="diff-name">Vladimir Eremin</div>
-              <div class="diff-values"><span class="d-prev">28</span><span class="d-arrow">→</span><span class="d-cur">21</span> <span class="delta delta-down">↓ -7</span></div>
-            </div>
-            <div class="diff-row">
-              <div class="diff-name">Yulia Yakovenko</div>
-              <div class="diff-values"><span class="d-prev">25</span><span class="d-arrow">→</span><span class="d-cur">19</span> <span class="delta delta-down">↓ -6</span></div>
-            </div></div></div>
     </div>
     <div class="tab-pane" data-tab="mind" style="--acc:#7c4dff;--acc2:#9575ff">
       <div class="tab-header">
@@ -831,6 +832,12 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
         <h2>Осознанность</h2>
         <div class="tab-stats"><span><b>7</b> участников</span>  ·  <span>🧘 <b>124</b> практик</span>  ·  <span>🔥 средний стрик <b>12.6</b></span></div>
       </div>
+
+      <div class="section">
+        <div class="compare-block">
+          <div class="cmp-title">📊 Сравнение с 3-м потоком</div>
+          <div class="cmp-new">Направление «Осознанность» — впервые выделено отдельно. В 3-м потоке отдельного дайджеста не было.</div>
+        </div></div>
 
       <div class="section">
         <div class="section-title">🏆 Награды сезона</div>
@@ -1024,12 +1031,6 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
           <div class="quote-text">«Обнаружил, что не смотря на явную пользу от практики (в плане состояния) все равно мозг саботирует такое частое повторение одной и той же рутинной задачи. Но 20 мин, как и запланировано, готово✅ ясность ума, как результат.»</div>
           <div class="quote-author">— Roman</div>
         </div></div></div>
-
-      <div class="section">
-        <div class="compare-block">
-          <div class="cmp-title">📊 Сравнение с 3-м потоком</div>
-          <div class="cmp-new">Направление «Осознанность» — впервые выделено отдельно. В 3-м потоке отдельного дайджеста не было.</div>
-        </div></div>
     </div>
     <div class="tab-pane" data-tab="new" style="--acc:#e0436c;--acc2:#e86488">
       <div class="tab-header">
@@ -1037,6 +1038,29 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
         <h2>Новое</h2>
         <div class="tab-stats"><span><b>6</b> участников</span>  ·  <span>✨ <b>115</b> раз попробовали новое</span>  ·  <span>🔥 средний стрик <b>15.0</b></span></div>
       </div>
+
+      <div class="section">
+        <div class="compare-block">
+          <div class="cmp-title">📊 Сравнение с 3-м потоком</div>
+          <div class="cmp-grid">
+            <div class="cmp-cell">
+              <div class="cmp-label">Участников</div>
+              <div class="cmp-vals">
+                <span class="cmp-prev">3-й: 12</span>
+                <span class="cmp-arrow">→</span>
+                <span class="cmp-cur">4-й: 6</span>
+              </div>
+            </div>
+            <div class="cmp-cell">
+              <div class="cmp-label">Отчётов</div>
+              <div class="cmp-vals">
+                <span class="cmp-prev">3-й: 302</span>
+                <span class="cmp-arrow">→</span>
+                <span class="cmp-cur">4-й: 115 <span class="delta delta-down">↓ -187</span></span>
+              </div>
+            </div>
+          </div>
+        </div></div>
 
       <div class="section">
         <div class="section-title">🏆 Награды сезона</div>
@@ -1215,29 +1239,6 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
           <div class="quote-text">«Сделала для себя на завтрак абсолютно новое сочетание вкусов- гречка+ гуакомоле + пармезан+греческий йогурт. Адски вкусно! Рекомендую))»</div>
           <div class="quote-author">— Mayya Zvyagintseva</div>
         </div></div></div>
-
-      <div class="section">
-        <div class="compare-block">
-          <div class="cmp-title">📊 Сравнение с 3-м потоком</div>
-          <div class="cmp-grid">
-            <div class="cmp-cell">
-              <div class="cmp-label">Участников</div>
-              <div class="cmp-vals">
-                <span class="cmp-prev">3-й: 12</span>
-                <span class="cmp-arrow">→</span>
-                <span class="cmp-cur">4-й: 6</span>
-              </div>
-            </div>
-            <div class="cmp-cell">
-              <div class="cmp-label">Отчётов</div>
-              <div class="cmp-vals">
-                <span class="cmp-prev">3-й: 302</span>
-                <span class="cmp-arrow">→</span>
-                <span class="cmp-cur">4-й: 115 <span class="delta delta-down">↓ -187</span></span>
-              </div>
-            </div>
-          </div>
-        </div></div>
     </div>
 
 </div>
