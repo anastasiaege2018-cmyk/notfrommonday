@@ -24,7 +24,9 @@ body { background:var(--bg); color:var(--text); font-family:'Manrope',sans-serif
 h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-height:1.05; letter-spacing:-1px; margin-bottom:14px; font-weight:700; }
 .subtitle { color:var(--text2); font-size:15px; font-weight:500; }
 
-.hero-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:32px 0 20px; }
+.hero-block { display:none; }
+.hero-block.active { display:grid; }
+.hero-stats { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:0 0 20px; }
 .hero-stat { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px 20px; }
 .hero-stat .value { font-family:'Dela Gothic One',sans-serif; font-size:30px; line-height:1.1; margin-bottom:4px; }
 .hero-stat .label { color:var(--text2); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; }
@@ -160,25 +162,19 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
     <div class="subtitle">9 июня — 9 июля 2026 · 30 дней в сообществе</div>
   </div>
 
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="value">26</div><div class="label">Участников</div></div>
-    <div class="hero-stat"><div class="value">913</div><div class="label">Отчётов сдано</div></div>
-    <div class="hero-stat"><div class="value">4</div><div class="label">Направления</div></div>
-    <div class="hero-stat"><div class="value">73</div><div class="label">Помощь в фонды ❤️</div></div>
-  </div>
+  <div class="tabs-nav"><button class="tab-btn" data-tab="sport" style="--btn:#059669">🏃 Спорт</button><button class="tab-btn" data-tab="focus" style="--btn:#2b7fd4">🎯 Фокус</button><button class="tab-btn" data-tab="mind" style="--btn:#7c4dff">🧘 Осознанность</button><button class="tab-btn" data-tab="new" style="--btn:#e0436c">✨ Новое</button></div>
+
+  <div class="hero-stats hero-block" data-hero="sport"><div class="hero-stat"><div class="value">12</div><div class="label">Участников</div></div><div class="hero-stat"><div class="value">285</div><div class="label">Отчётов сдано</div></div><div class="hero-stat"><div class="value">1 073 644</div><div class="label">🚶 Шагов</div></div><div class="hero-stat"><div class="value">468</div><div class="label">🏃 Километров</div></div></div><div class="hero-stats hero-block" data-hero="focus"><div class="hero-stat"><div class="value">16</div><div class="label">Участников</div></div><div class="hero-stat"><div class="value">389</div><div class="label">✅ Закрытых задач-дней</div></div><div class="hero-stat"><div class="value">17.8</div><div class="label">🔥 Средний стрик</div></div><div class="hero-stat"><div class="value">73</div><div class="label">Помощь в фонды ❤️</div></div></div><div class="hero-stats hero-block" data-hero="mind"><div class="hero-stat"><div class="value">7</div><div class="label">Участников</div></div><div class="hero-stat"><div class="value">124</div><div class="label">🧘 Практик</div></div><div class="hero-stat"><div class="value">12.6</div><div class="label">🔥 Средний стрик</div></div><div class="hero-stat"><div class="value">73</div><div class="label">Помощь в фонды ❤️</div></div></div><div class="hero-stats hero-block" data-hero="new"><div class="hero-stat"><div class="value">6</div><div class="label">Участников</div></div><div class="hero-stat"><div class="value">115</div><div class="label">✨ Раз попробовали новое</div></div><div class="hero-stat"><div class="value">15.0</div><div class="label">🔥 Средний стрик</div></div><div class="hero-stat"><div class="value">73</div><div class="label">Помощь в фонды ❤️</div></div></div>
 
   <div class="donations-bar">
     ❤️ <b>73 раз</b> отправили помощь в благотворительные фонды
   </div>
-
-  <div class="tabs-nav"><button class="tab-btn" data-tab="sport" style="--btn:#059669">🏃 Спорт</button><button class="tab-btn" data-tab="focus" style="--btn:#2b7fd4">🎯 Фокус</button><button class="tab-btn" data-tab="mind" style="--btn:#7c4dff">🧘 Осознанность</button><button class="tab-btn" data-tab="new" style="--btn:#e0436c">✨ Новое</button></div>
 
   
     <div class="tab-pane" data-tab="sport" style="--acc:#059669;--acc2:#34a065">
       <div class="tab-header">
         <div class="tab-emoji">🏃</div>
         <h2>Спорт</h2>
-        <div class="tab-stats"><span><b>12</b> участников</span>  ·  <span><b>285</b> отчётов</span>  ·  <span>🚶 <b>1 073 644</b> шагов</span>  ·  <span>🏃 <b>468</b> км</span>  ·  <span>💪 <b>11</b> видов тренировок</span></div>
       </div>
 
       <div class="section">
@@ -484,7 +480,6 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
       <div class="tab-header">
         <div class="tab-emoji">🎯</div>
         <h2>Фокус</h2>
-        <div class="tab-stats"><span><b>16</b> участников</span>  ·  <span>✅ <b>389</b> закрытых задач-дней</span>  ·  <span>🔥 средний стрик <b>17.8</b></span></div>
       </div>
 
       <div class="section">
@@ -830,7 +825,6 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
       <div class="tab-header">
         <div class="tab-emoji">🧘</div>
         <h2>Осознанность</h2>
-        <div class="tab-stats"><span><b>7</b> участников</span>  ·  <span>🧘 <b>124</b> практик</span>  ·  <span>🔥 средний стрик <b>12.6</b></span></div>
       </div>
 
       <div class="section">
@@ -1036,7 +1030,6 @@ h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,54px); line-
       <div class="tab-header">
         <div class="tab-emoji">✨</div>
         <h2>Новое</h2>
-        <div class="tab-stats"><span><b>6</b> участников</span>  ·  <span>✨ <b>115</b> раз попробовали новое</span>  ·  <span>🔥 средний стрик <b>15.0</b></span></div>
       </div>
 
       <div class="section">
@@ -1250,6 +1243,7 @@ document.addEventListener('click', e => {
   const key = b.dataset.tab;
   document.querySelectorAll('.tab-btn').forEach(x => x.classList.toggle('active', x.dataset.tab === key));
   document.querySelectorAll('.tab-pane').forEach(x => x.classList.toggle('active', x.dataset.tab === key));
+  document.querySelectorAll('.hero-block').forEach(x => x.classList.toggle('active', x.dataset.hero === key));
   history.replaceState(null, '', '#' + key);
   window.scrollTo({top:0, behavior:'smooth'});
 });
