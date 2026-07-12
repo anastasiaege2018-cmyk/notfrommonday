@@ -1853,7 +1853,7 @@ footer a:hover{opacity:.7}
 <!-- ══════════════ 9. ТАРИФЫ ══════════════ -->
 <section class="tariff" id="tariffs">
   <div class="container">
-    <h2 class="section-title" style="text-align:center;margin:0 auto 16px">Пакеты с&nbsp;ранней ценой</h2>
+    <h2 class="section-title" style="text-align:center;margin:0 auto 16px" data-tariff-title>Тарифы участия</h2>
     <p class="tariff-meta">Для тех, кто быстро принимает решения и&nbsp;скорее хочет попасть в&nbsp;сообщество. <strong>Старт потока&nbsp;— 14&nbsp;июля.</strong></p>
 
     <div class="tariff-grid">
@@ -1863,8 +1863,7 @@ footer a:hover{opacity:.7}
         <p class="tariff-sub">Один месяц лета в&nbsp;сообществе без длинного коммита</p>
         <div class="tariff-row">
           <div class="tariff-price-row">
-            <span class="tariff-price">14&nbsp;440&nbsp;₽</span>
-            <span class="tariff-price-old">17&nbsp;770&nbsp;₽</span>
+            <span class="tariff-price" data-price-solo-month>17&nbsp;770&nbsp;₽</span>
           </div>
           <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;font-style:italic">цена за&nbsp;месяц участия</p>
         </div>
@@ -1875,18 +1874,17 @@ footer a:hover{opacity:.7}
           <li>4&nbsp;месяца записей эфиров и&nbsp;мастер-классов</li>
           <li>Группа по&nbsp;направлению, где каждый день&nbsp;— действие</li>
         </ul>
-        <a href="https://danilasavchenko.getplatinum.ru/payment/kjuW7vN" class="btn btn-month" data-pay="solo-month">Войти на&nbsp;месяц</a>
+        <a href="https://danilasavchenko.getplatinum.ru/payment/vHiwu38" class="btn btn-month" data-pay="solo-month">Войти на&nbsp;месяц</a>
       </div>
 
       <div class="tariff-card featured">
-        <span class="tariff-badge">Выгоднее на&nbsp;15%</span>
+        <span class="tariff-badge" data-badge-solo-summer>Выгоднее на&nbsp;19%</span>
         <div class="tariff-label">Соло</div>
         <div class="tariff-name">2 месяца</div>
         <p class="tariff-sub">Июль + август&nbsp;— два месяца изменений подряд</p>
         <div class="tariff-row">
           <div class="tariff-price-row">
-            <span class="tariff-price">24&nbsp;440&nbsp;₽</span>
-            <span class="tariff-price-old">28&nbsp;880&nbsp;₽</span>
+            <span class="tariff-price" data-price-solo-summer>28&nbsp;880&nbsp;₽</span>
           </div>
           <p style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-style:italic">цена за&nbsp;два месяца</p>
         </div>
@@ -1901,7 +1899,7 @@ footer a:hover{opacity:.7}
           <li>Связи, которые остаются дольше, чем поток</li>
           <li>Расширенный доступ к&nbsp;библиотеке эфиров</li>
         </ul>
-        <a href="https://danilasavchenko.getplatinum.ru/payment/0Y3NC3I" class="btn btn-primary" data-pay="solo-summer">Взять 2&nbsp;месяца</a>
+        <a href="https://danilasavchenko.getplatinum.ru/payment/8VcqSms" class="btn btn-primary" data-pay="solo-summer">Взять 2&nbsp;месяца</a>
       </div>
     </div>
 
@@ -1915,8 +1913,8 @@ footer a:hover{opacity:.7}
         </div>
         <div class="pair-form-body">
           <div class="dur-toggle">
-            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small>22&nbsp;220&nbsp;₽</small></button>
-            <button type="button" class="dur-btn" data-dur="summer">2&nbsp;месяца <small>42&nbsp;220&nbsp;₽</small></button>
+            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small data-price-pair-month>29&nbsp;990&nbsp;₽</small></button>
+            <button type="button" class="dur-btn" data-dur="summer">2&nbsp;месяца <small data-price-pair-summer>48&nbsp;880&nbsp;₽</small></button>
           </div>
 
           <div class="pair-error" id="pairError">Укажи оба ника в&nbsp;Telegram, чтобы я&nbsp;могла связаться.</div>
@@ -2287,10 +2285,13 @@ document.querySelectorAll('[data-target]').forEach(el => statsObserver.observe(e
 // 1+1 form — записывает заявку, открывает страницу оплаты, шлёт уведомление админу
 // TODO: подставить реальные slug'и GetPlatinum когда чеки будут готовы
 const PAY_URLS = {
-  'solo-month':   'https://danilasavchenko.getplatinum.ru/payment/kjuW7vN',
-  'solo-summer':  'https://danilasavchenko.getplatinum.ru/payment/0Y3NC3I',
-  'pair-month':   'https://danilasavchenko.getplatinum.ru/payment/BkJPhFu',
-  'pair-summer':  'https://danilasavchenko.getplatinum.ru/payment/qaTMQhU'
+  'solo-month':   'https://danilasavchenko.getplatinum.ru/payment/vHiwu38',
+  'solo-summer':  'https://danilasavchenko.getplatinum.ru/payment/8VcqSms',
+  'pair-month':   'https://danilasavchenko.getplatinum.ru/payment/6MFhkDg',
+  'pair-summer':  'https://danilasavchenko.getplatinum.ru/payment/m2TI2mo'
+};
+window.PAY_URLS = PAY_URLS;
+var _ORIG_PAY_URLS_CLOSER = {
 };
 const API_BASE = 'https://api.notfrommonday.ru';
 
@@ -2431,5 +2432,86 @@ const COLLAB_DATA = {
   document.addEventListener('keydown', e => { if(e.key==='Escape' && !collabModal.hidden) closeCollab(); });
 })();
 </script>
+
+<!-- ═══ AUTO-BUMP: до 2026-07-13 00:01 MSK показываем ранние цены ═══ -->
+<script>
+(function(){
+  var CUTOFF = new Date('2026-07-13T00:01:00+03:00').getTime();
+  var BEFORE = {
+    'solo-month':  {price: '14\u00a0440\u00a0₽', old: '17\u00a0770\u00a0₽', slug: 'kjuW7vN'},
+    'solo-summer': {price: '24\u00a0440\u00a0₽', old: '28\u00a0880\u00a0₽', slug: '0Y3NC3I', badge: 'Выгоднее на\u00a015%'},
+    'pair-month':  {price: '22\u00a0220\u00a0₽', slug: 'BkJPhFu'},
+    'pair-summer': {price: '42\u00a0220\u00a0₽', slug: 'qaTMQhU'},
+  };
+  var AMOUNT_BEFORE = {'1month':1444000,'2months':2444000};
+  var TITLE_BEFORE = 'Пакеты с\u00a0ранней ценой';
+
+  function applyEarly(){
+    // Соло Месяц
+    var p1 = document.querySelector('[data-price-solo-month]');
+    if (p1) {
+      p1.innerHTML = BEFORE['solo-month'].price;
+      // добавить перечёркнутую старую
+      var old = p1.parentNode.querySelector('.tariff-price-old');
+      if (!old) {
+        old = document.createElement('span');
+        old.className = 'tariff-price-old';
+        old.innerHTML = BEFORE['solo-month'].old;
+        p1.after(old);
+      }
+    }
+    // Соло 2 месяца
+    var p2 = document.querySelector('[data-price-solo-summer]');
+    if (p2) {
+      p2.innerHTML = BEFORE['solo-summer'].price;
+      var old2 = p2.parentNode.querySelector('.tariff-price-old');
+      if (!old2) {
+        old2 = document.createElement('span');
+        old2.className = 'tariff-price-old';
+        old2.innerHTML = BEFORE['solo-summer'].old;
+        p2.after(old2);
+      }
+    }
+    // Badge
+    var b = document.querySelector('[data-badge-solo-summer]');
+    if (b) b.innerHTML = BEFORE['solo-summer'].badge;
+    // 1+1
+    var pm = document.querySelector('[data-price-pair-month]');
+    if (pm) pm.innerHTML = BEFORE['pair-month'].price;
+    var ps = document.querySelector('[data-price-pair-summer]');
+    if (ps) ps.innerHTML = BEFORE['pair-summer'].price;
+    // Заголовок
+    var t = document.querySelector('[data-tariff-title]');
+    if (t) t.innerHTML = TITLE_BEFORE;
+    // Ссылки на карточках
+    document.querySelectorAll('[data-pay]').forEach(function(a){
+      var key = a.dataset.pay;
+      if (BEFORE[key]) a.href = 'https://danilasavchenko.getplatinum.ru/payment/' + BEFORE[key].slug;
+    });
+    // JS-объект PAY_URLS (если он объявлен как window.PAY_URLS — обновим)
+    if (window.PAY_URLS) {
+      for (var k in BEFORE) window.PAY_URLS[k] = 'https://danilasavchenko.getplatinum.ru/payment/' + BEFORE[k].slug;
+    }
+    if (window.SOLO_AMOUNT) {
+      window.SOLO_AMOUNT['1month'] = AMOUNT_BEFORE['1month'];
+      window.SOLO_AMOUNT['2months'] = AMOUNT_BEFORE['2months'];
+    }
+  }
+  function applyLater(){
+    // возврат к дефолтам не нужен — HTML уже содержит новые цены; просто снимем ранние
+    location.reload();
+  }
+  if (Date.now() < CUTOFF) {
+    // показать ранние сейчас
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyEarly);
+    else applyEarly();
+    // ровно в момент cutoff перезагрузить страницу с новыми ценами
+    var delay = CUTOFF - Date.now() + 500;
+    if (delay > 0 && delay < 2147000000) setTimeout(applyLater, delay);
+  }
+})();
+</script>
+<!-- ═══ END AUTO-BUMP ═══ -->
+
 </body>
 </html>
