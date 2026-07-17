@@ -1428,7 +1428,7 @@ footer a:hover{opacity:.7}
     </div>
 
     <div class="hero-v3-cta">
-      <a href="#tariffs" class="cta-orange">Я с вами</a>
+      <a href="#tariffs" class="cta-orange">Быть в&nbsp;курсе</a>
       <a href="#who" class="cta-ghost">Кто внутри</a>
     </div>
 
@@ -1853,91 +1853,54 @@ footer a:hover{opacity:.7}
 <!-- ══════════════ 9. ТАРИФЫ ══════════════ -->
 <section class="tariff" id="tariffs">
   <div class="container">
-    <h2 class="section-title" style="text-align:center;margin:0 auto 16px" data-tariff-title>Тарифы участия</h2>
-    <p class="tariff-meta">Для тех, кто быстро принимает решения и&nbsp;скорее хочет попасть в&nbsp;сообщество. <strong>Старт потока&nbsp;— 14&nbsp;июля.</strong></p>
-
-    <div class="tariff-grid">
-      <div class="tariff-card">
-        <div class="tariff-label">Соло</div>
-        <div class="tariff-name">Месяц</div>
-        <p class="tariff-sub">Один месяц лета в&nbsp;сообществе без длинного коммита</p>
-        <div class="tariff-row">
-          <div class="tariff-price-row">
-            <span class="tariff-price" data-price-solo-month>17&nbsp;770&nbsp;₽</span>
-          </div>
-          <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;font-style:italic">цена за&nbsp;месяц участия</p>
-        </div>
-        <ul class="tariff-bullets">
-          <li>Окружение, которое двигается и&nbsp;не&nbsp;даёт остановиться</li>
-          <li>Закрытые встречи&nbsp;— не&nbsp;найти на&nbsp;афишах</li>
-          <li>Бот «Напарник»&nbsp;— точечно находит людей под запрос</li>
-          <li>4&nbsp;месяца записей эфиров и&nbsp;мастер-классов</li>
-          <li>Группа по&nbsp;направлению, где каждый день&nbsp;— действие</li>
-        </ul>
-        <a href="https://danilasavchenko.getplatinum.ru/payment/vHiwu38" class="btn btn-month" data-pay="solo-month">Войти на&nbsp;месяц</a>
-      </div>
-
-      <div class="tariff-card featured">
-        <span class="tariff-badge" data-badge-solo-summer>Выгоднее на&nbsp;19%</span>
-        <div class="tariff-label">Соло</div>
-        <div class="tariff-name">2 месяца</div>
-        <p class="tariff-sub">Июль + август&nbsp;— два месяца изменений подряд</p>
-        <div class="tariff-row">
-          <div class="tariff-price-row">
-            <span class="tariff-price" data-price-solo-summer>28&nbsp;880&nbsp;₽</span>
-          </div>
-          <p style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-style:italic">цена за&nbsp;два месяца</p>
-        </div>
-        <ul class="tariff-bullets">
-          <li>За&nbsp;месяц с&nbsp;людьми знакомишься, за&nbsp;два&nbsp;— становишься своим</li>
-          <li>Привычка успевает войти в&nbsp;ритм жизни, а&nbsp;не&nbsp;только завестись</li>
-        </ul>
-        <div class="bonus-label">Плюсы второго месяца</div>
-        <ul class="tariff-bullets tariff-bullets-bonus">
-          <li>Все <strong>мастер-классы и&nbsp;эфиры</strong> июля и&nbsp;августа</li>
-          <li>Летние выезды, забеги и&nbsp;трекинги</li>
-          <li>Связи, которые остаются дольше, чем поток</li>
-          <li>Расширенный доступ к&nbsp;библиотеке эфиров</li>
-        </ul>
-        <a href="https://danilasavchenko.getplatinum.ru/payment/8VcqSms" class="btn btn-primary" data-pay="solo-summer">Взять 2&nbsp;месяца</a>
-      </div>
-    </div>
-
-    <!-- 1+1 ФОРМА -->
-    <div class="pair-form-wrap" id="pair-form">
-      <div class="pair-form">
-        <div class="pair-form-intro">
-          <span class="pair-form-tag">Тариф 1+1</span>
-          <h3 class="pair-form-title">Идём вдвоём</h3>
-          <p class="pair-form-desc">Особая цена, когда заходишь с&nbsp;другом, партнёром или коллегой. Заполни форму&nbsp;— я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;подтвержу участие.</p>
-        </div>
-        <div class="pair-form-body">
-          <div class="dur-toggle">
-            <button type="button" class="dur-btn active" data-dur="month">На&nbsp;месяц <small data-price-pair-month>29&nbsp;990&nbsp;₽</small></button>
-            <button type="button" class="dur-btn" data-dur="summer">2&nbsp;месяца <small data-price-pair-summer>48&nbsp;880&nbsp;₽</small></button>
-          </div>
-
-          <div class="pair-error" id="pairError">Укажи оба ника в&nbsp;Telegram, чтобы я&nbsp;могла связаться.</div>
-
-          <div class="field-row">
-            <div>
-              <label class="field-label">Твой ник</label>
-              <input type="text" class="field-input" id="p1nick" placeholder="@username" autocomplete="off">
-            </div>
-            <div>
-              <label class="field-label">Ник друга / партнёра</label>
-              <input type="text" class="field-input" id="p2nick" placeholder="@username" autocomplete="off">
-            </div>
-          </div>
-
-          <button class="btn btn-primary pair-submit" onclick="sendPair()">Перейти к&nbsp;оплате</button>
-          <div class="pair-success" id="pairSuccess">✓ Записал заявку. Сейчас переведу на&nbsp;страницу оплаты&nbsp;— а&nbsp;тебе и&nbsp;другу придут уведомления.</div>
-          <p class="pair-note">После оплаты я&nbsp;напишу обоим в&nbsp;Telegram и&nbsp;добавлю в&nbsp;группы.</p>
-        </div>
-      </div>
+    <div class="closed-card">
+      <div class="closed-badge">Пауза</div>
+      <h2 class="closed-title">Вход в&nbsp;сообщество закрыт до&nbsp;сентября</h2>
+      <p class="closed-desc">Мы&nbsp;не&nbsp;открываем новых продаж прямо сейчас&nbsp;— доделываем то, что задумали.</p>
+      <p class="closed-desc">К&nbsp;августу готовим новый продукт. Он вам точно понравится&nbsp;— мы&nbsp;соберём то, что вы&nbsp;просили: больше глубины, меньше суеты и&nbsp;формат, в&nbsp;который правда хочется возвращаться.</p>
+      <p class="closed-note">Оставайтесь на&nbsp;связи в&nbsp;нашем боте&nbsp;— первыми узнаете о&nbsp;старте.</p>
+      <a href="https://t.me/notfrommonday_bot?start=waitlist_sept" class="btn btn-primary closed-cta">Быть в&nbsp;курсе</a>
     </div>
   </div>
 </section>
+<style>
+.closed-card{
+  max-width:760px;margin:0 auto;
+  background:#fff;border:1px solid rgba(10,31,61,.08);
+  border-radius:28px;padding:56px 40px;
+  text-align:center;
+  box-shadow:0 12px 32px rgba(10,31,61,.06);
+}
+.closed-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#E8856B,#D4665A);color:#fff;
+  font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:8px 18px;border-radius:100px;margin-bottom:22px;
+}
+.closed-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3.8vw,44px);font-weight:700;
+  letter-spacing:-.015em;line-height:1.1;margin-bottom:20px;
+}
+.closed-desc{
+  font-size:17px;line-height:1.6;color:var(--ink-soft);
+  max-width:600px;margin:0 auto 16px;
+}
+.closed-note{
+  font-size:15px;color:var(--ink-soft);font-style:italic;
+  margin:24px auto 28px;max-width:520px;
+}
+.closed-cta{
+  display:inline-block;padding:16px 36px;font-size:16px;font-weight:700;
+  border-radius:100px;background:var(--ink);color:#fff;text-decoration:none;
+  box-shadow:0 8px 22px rgba(42,37,48,.20);transition:transform .15s,box-shadow .15s,background .15s;
+}
+.closed-cta:hover{background:var(--coral-deep);transform:translateY(-2px);box-shadow:0 14px 28px rgba(210,107,82,.35)}
+@media(max-width:640px){
+  .closed-card{padding:40px 22px}
+  .closed-desc{font-size:15.5px}
+}
+</style>
 
 <!-- ══════════════ 9. ЗАПРОСЫ И РЕЗУЛЬТАТЫ (после тарифов) ══════════════ -->
 <section class="section cases">
@@ -2136,7 +2099,7 @@ footer a:hover{opacity:.7}
     <div class="offer-quote">«Вам не&nbsp;нужно стать другим человеком. Нужно стать лучшей версией себя с&nbsp;помощью маленьких ежедневных шагов»</div>
     <div class="offer-author">Джеймс Клир, «Атомные привычки»</div>
     <div class="offer-date">Старт 9&nbsp;июня</div>
-    <a href="#tariffs" class="btn btn-primary">Войти в&nbsp;лето</a>
+    <a href="#tariffs" class="btn btn-primary">Быть в&nbsp;курсе</a>
     <div style="margin-top:18px"><a href="https://t.me/ast_nasty" target="_blank" class="btn btn-question">Есть вопрос?</a></div>
   </div>
 </section>
@@ -2433,85 +2396,6 @@ const COLLAB_DATA = {
 })();
 </script>
 
-<!-- ═══ AUTO-BUMP: до 2026-07-13 00:01 MSK показываем ранние цены ═══ -->
-<script>
-(function(){
-  var CUTOFF = new Date('2026-07-13T00:01:00+03:00').getTime();
-  var BEFORE = {
-    'solo-month':  {price: '14\u00a0440\u00a0₽', old: '17\u00a0770\u00a0₽', slug: 'kjuW7vN'},
-    'solo-summer': {price: '24\u00a0440\u00a0₽', old: '28\u00a0880\u00a0₽', slug: '0Y3NC3I', badge: 'Выгоднее на\u00a015%'},
-    'pair-month':  {price: '22\u00a0220\u00a0₽', slug: 'BkJPhFu'},
-    'pair-summer': {price: '42\u00a0220\u00a0₽', slug: 'qaTMQhU'},
-  };
-  var AMOUNT_BEFORE = {'1month':1444000,'2months':2444000};
-  var TITLE_BEFORE = 'Пакеты с\u00a0ранней ценой';
-
-  function applyEarly(){
-    // Соло Месяц
-    var p1 = document.querySelector('[data-price-solo-month]');
-    if (p1) {
-      p1.innerHTML = BEFORE['solo-month'].price;
-      // добавить перечёркнутую старую
-      var old = p1.parentNode.querySelector('.tariff-price-old');
-      if (!old) {
-        old = document.createElement('span');
-        old.className = 'tariff-price-old';
-        old.innerHTML = BEFORE['solo-month'].old;
-        p1.after(old);
-      }
-    }
-    // Соло 2 месяца
-    var p2 = document.querySelector('[data-price-solo-summer]');
-    if (p2) {
-      p2.innerHTML = BEFORE['solo-summer'].price;
-      var old2 = p2.parentNode.querySelector('.tariff-price-old');
-      if (!old2) {
-        old2 = document.createElement('span');
-        old2.className = 'tariff-price-old';
-        old2.innerHTML = BEFORE['solo-summer'].old;
-        p2.after(old2);
-      }
-    }
-    // Badge
-    var b = document.querySelector('[data-badge-solo-summer]');
-    if (b) b.innerHTML = BEFORE['solo-summer'].badge;
-    // 1+1
-    var pm = document.querySelector('[data-price-pair-month]');
-    if (pm) pm.innerHTML = BEFORE['pair-month'].price;
-    var ps = document.querySelector('[data-price-pair-summer]');
-    if (ps) ps.innerHTML = BEFORE['pair-summer'].price;
-    // Заголовок
-    var t = document.querySelector('[data-tariff-title]');
-    if (t) t.innerHTML = TITLE_BEFORE;
-    // Ссылки на карточках
-    document.querySelectorAll('[data-pay]').forEach(function(a){
-      var key = a.dataset.pay;
-      if (BEFORE[key]) a.href = 'https://danilasavchenko.getplatinum.ru/payment/' + BEFORE[key].slug;
-    });
-    // JS-объект PAY_URLS (если он объявлен как window.PAY_URLS — обновим)
-    if (window.PAY_URLS) {
-      for (var k in BEFORE) window.PAY_URLS[k] = 'https://danilasavchenko.getplatinum.ru/payment/' + BEFORE[k].slug;
-    }
-    if (window.SOLO_AMOUNT) {
-      window.SOLO_AMOUNT['1month'] = AMOUNT_BEFORE['1month'];
-      window.SOLO_AMOUNT['2months'] = AMOUNT_BEFORE['2months'];
-    }
-  }
-  function applyLater(){
-    // возврат к дефолтам не нужен — HTML уже содержит новые цены; просто снимем ранние
-    location.reload();
-  }
-  if (Date.now() < CUTOFF) {
-    // показать ранние сейчас
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyEarly);
-    else applyEarly();
-    // ровно в момент cutoff перезагрузить страницу с новыми ценами
-    var delay = CUTOFF - Date.now() + 500;
-    if (delay > 0 && delay < 2147000000) setTimeout(applyLater, delay);
-  }
-})();
-</script>
-<!-- ═══ END AUTO-BUMP ═══ -->
 
 </body>
 </html>
